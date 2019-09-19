@@ -1,0 +1,2349 @@
+<?php
+/**
+ * LookApi
+ * PHP version 5
+ *
+ * @category Class
+ * @package  Swagger\Client
+ * @author   Swagger Codegen team
+ * @link     https://github.com/swagger-api/swagger-codegen
+ */
+
+/**
+ * Looker API 3.1 Reference
+ *
+ * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ *
+ * OpenAPI spec version: 3.1.0
+ * Contact: support@looker.com
+ * Generated by: https://github.com/swagger-api/swagger-codegen.git
+ * Swagger Codegen version: 2.4.0-SNAPSHOT
+ */
+
+/**
+ * NOTE: This class is auto generated by the swagger code generator program.
+ * https://github.com/swagger-api/swagger-codegen
+ * Do not edit the class manually.
+ */
+
+namespace Swagger\Client\Api;
+
+use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\MultipartStream;
+use GuzzleHttp\Psr7\Request;
+use GuzzleHttp\RequestOptions;
+use Swagger\Client\ApiException;
+use Swagger\Client\Configuration;
+use Swagger\Client\HeaderSelector;
+use Swagger\Client\ObjectSerializer;
+
+/**
+ * LookApi Class Doc Comment
+ *
+ * @category Class
+ * @package  Swagger\Client
+ * @author   Swagger Codegen team
+ * @link     https://github.com/swagger-api/swagger-codegen
+ */
+class LookApi
+{
+    /**
+     * @var ClientInterface
+     */
+    protected $client;
+
+    /**
+     * @var Configuration
+     */
+    protected $config;
+
+    /**
+     * @var HeaderSelector
+     */
+    protected $headerSelector;
+
+    /**
+     * @param ClientInterface $client
+     * @param Configuration   $config
+     * @param HeaderSelector  $selector
+     */
+    public function __construct(
+        ClientInterface $client = null,
+        Configuration $config = null,
+        HeaderSelector $selector = null
+    ) {
+        $this->client = $client ?: new Client();
+        $this->config = $config ?: new Configuration();
+        $this->headerSelector = $selector ?: new HeaderSelector();
+    }
+
+    /**
+     * @return Configuration
+     */
+    public function getConfig()
+    {
+        return $this->config;
+    }
+
+    /**
+     * Operation allLooks
+     *
+     * Get All Looks
+     *
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\Look[]
+     */
+    public function allLooks($fields = null)
+    {
+        list($response) = $this->allLooksWithHttpInfo($fields);
+        return $response;
+    }
+
+    /**
+     * Operation allLooksWithHttpInfo
+     *
+     * Get All Looks
+     *
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\Look[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function allLooksWithHttpInfo($fields = null)
+    {
+        $returnType = '\Swagger\Client\Model\Look[]';
+        $request = $this->allLooksRequest($fields);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Look[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation allLooksAsync
+     *
+     * Get All Looks
+     *
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function allLooksAsync($fields = null)
+    {
+        return $this->allLooksAsyncWithHttpInfo($fields)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation allLooksAsyncWithHttpInfo
+     *
+     * Get All Looks
+     *
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function allLooksAsyncWithHttpInfo($fields = null)
+    {
+        $returnType = '\Swagger\Client\Model\Look[]';
+        $request = $this->allLooksRequest($fields);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'allLooks'
+     *
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function allLooksRequest($fields = null)
+    {
+
+        $resourcePath = '/looks';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($fields !== null) {
+            $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createLook
+     *
+     * Create Look
+     *
+     * @param  \Swagger\Client\Model\LookWithQuery $body Look (optional)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\LookWithQuery
+     */
+    public function createLook($body = null, $fields = null)
+    {
+        list($response) = $this->createLookWithHttpInfo($body, $fields);
+        return $response;
+    }
+
+    /**
+     * Operation createLookWithHttpInfo
+     *
+     * Create Look
+     *
+     * @param  \Swagger\Client\Model\LookWithQuery $body Look (optional)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\LookWithQuery, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createLookWithHttpInfo($body = null, $fields = null)
+    {
+        $returnType = '\Swagger\Client\Model\LookWithQuery';
+        $request = $this->createLookRequest($body, $fields);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\LookWithQuery',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createLookAsync
+     *
+     * Create Look
+     *
+     * @param  \Swagger\Client\Model\LookWithQuery $body Look (optional)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createLookAsync($body = null, $fields = null)
+    {
+        return $this->createLookAsyncWithHttpInfo($body, $fields)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createLookAsyncWithHttpInfo
+     *
+     * Create Look
+     *
+     * @param  \Swagger\Client\Model\LookWithQuery $body Look (optional)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createLookAsyncWithHttpInfo($body = null, $fields = null)
+    {
+        $returnType = '\Swagger\Client\Model\LookWithQuery';
+        $request = $this->createLookRequest($body, $fields);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createLook'
+     *
+     * @param  \Swagger\Client\Model\LookWithQuery $body Look (optional)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createLookRequest($body = null, $fields = null)
+    {
+
+        $resourcePath = '/looks';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($fields !== null) {
+            $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
+        }
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation deleteLook
+     *
+     * Delete Look
+     *
+     * @param  int $look_id Id of look (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function deleteLook($look_id)
+    {
+        list($response) = $this->deleteLookWithHttpInfo($look_id);
+        return $response;
+    }
+
+    /**
+     * Operation deleteLookWithHttpInfo
+     *
+     * Delete Look
+     *
+     * @param  int $look_id Id of look (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function deleteLookWithHttpInfo($look_id)
+    {
+        $returnType = 'string';
+        $request = $this->deleteLookRequest($look_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 204:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation deleteLookAsync
+     *
+     * Delete Look
+     *
+     * @param  int $look_id Id of look (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteLookAsync($look_id)
+    {
+        return $this->deleteLookAsyncWithHttpInfo($look_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation deleteLookAsyncWithHttpInfo
+     *
+     * Delete Look
+     *
+     * @param  int $look_id Id of look (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function deleteLookAsyncWithHttpInfo($look_id)
+    {
+        $returnType = 'string';
+        $request = $this->deleteLookRequest($look_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'deleteLook'
+     *
+     * @param  int $look_id Id of look (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function deleteLookRequest($look_id)
+    {
+        // verify the required parameter 'look_id' is set
+        if ($look_id === null || (is_array($look_id) && count($look_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $look_id when calling deleteLook'
+            );
+        }
+
+        $resourcePath = '/looks/{look_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($look_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'look_id' . '}',
+                ObjectSerializer::toPathValue($look_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'DELETE',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation look
+     *
+     * Get Look
+     *
+     * @param  int $look_id Id of look (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\LookWithQuery
+     */
+    public function look($look_id, $fields = null)
+    {
+        list($response) = $this->lookWithHttpInfo($look_id, $fields);
+        return $response;
+    }
+
+    /**
+     * Operation lookWithHttpInfo
+     *
+     * Get Look
+     *
+     * @param  int $look_id Id of look (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\LookWithQuery, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function lookWithHttpInfo($look_id, $fields = null)
+    {
+        $returnType = '\Swagger\Client\Model\LookWithQuery';
+        $request = $this->lookRequest($look_id, $fields);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\LookWithQuery',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation lookAsync
+     *
+     * Get Look
+     *
+     * @param  int $look_id Id of look (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function lookAsync($look_id, $fields = null)
+    {
+        return $this->lookAsyncWithHttpInfo($look_id, $fields)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation lookAsyncWithHttpInfo
+     *
+     * Get Look
+     *
+     * @param  int $look_id Id of look (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function lookAsyncWithHttpInfo($look_id, $fields = null)
+    {
+        $returnType = '\Swagger\Client\Model\LookWithQuery';
+        $request = $this->lookRequest($look_id, $fields);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'look'
+     *
+     * @param  int $look_id Id of look (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function lookRequest($look_id, $fields = null)
+    {
+        // verify the required parameter 'look_id' is set
+        if ($look_id === null || (is_array($look_id) && count($look_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $look_id when calling look'
+            );
+        }
+
+        $resourcePath = '/looks/{look_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($fields !== null) {
+            $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
+        }
+
+        // path params
+        if ($look_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'look_id' . '}',
+                ObjectSerializer::toPathValue($look_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation runLook
+     *
+     * Run Look
+     *
+     * @param  int $look_id Id of look (required)
+     * @param  string $result_format Format of result (required)
+     * @param  int $limit Row limit (may override the limit in the saved query). (optional)
+     * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
+     * @param  bool $apply_vis Apply visualization options to results. (optional)
+     * @param  bool $cache Get results from cache if available. (optional)
+     * @param  int $image_width Render width for image formats. (optional)
+     * @param  int $image_height Render height for image formats. (optional)
+     * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
+     * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
+     * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
+     * @param  bool $server_table_calcs Perform table calculations on query results (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function runLook($look_id, $result_format, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null)
+    {
+        list($response) = $this->runLookWithHttpInfo($look_id, $result_format, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs);
+        return $response;
+    }
+
+    /**
+     * Operation runLookWithHttpInfo
+     *
+     * Run Look
+     *
+     * @param  int $look_id Id of look (required)
+     * @param  string $result_format Format of result (required)
+     * @param  int $limit Row limit (may override the limit in the saved query). (optional)
+     * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
+     * @param  bool $apply_vis Apply visualization options to results. (optional)
+     * @param  bool $cache Get results from cache if available. (optional)
+     * @param  int $image_width Render width for image formats. (optional)
+     * @param  int $image_height Render height for image formats. (optional)
+     * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
+     * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
+     * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
+     * @param  bool $server_table_calcs Perform table calculations on query results (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function runLookWithHttpInfo($look_id, $result_format, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null)
+    {
+        $returnType = 'string';
+        $request = $this->runLookRequest($look_id, $result_format, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation runLookAsync
+     *
+     * Run Look
+     *
+     * @param  int $look_id Id of look (required)
+     * @param  string $result_format Format of result (required)
+     * @param  int $limit Row limit (may override the limit in the saved query). (optional)
+     * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
+     * @param  bool $apply_vis Apply visualization options to results. (optional)
+     * @param  bool $cache Get results from cache if available. (optional)
+     * @param  int $image_width Render width for image formats. (optional)
+     * @param  int $image_height Render height for image formats. (optional)
+     * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
+     * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
+     * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
+     * @param  bool $server_table_calcs Perform table calculations on query results (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function runLookAsync($look_id, $result_format, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null)
+    {
+        return $this->runLookAsyncWithHttpInfo($look_id, $result_format, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation runLookAsyncWithHttpInfo
+     *
+     * Run Look
+     *
+     * @param  int $look_id Id of look (required)
+     * @param  string $result_format Format of result (required)
+     * @param  int $limit Row limit (may override the limit in the saved query). (optional)
+     * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
+     * @param  bool $apply_vis Apply visualization options to results. (optional)
+     * @param  bool $cache Get results from cache if available. (optional)
+     * @param  int $image_width Render width for image formats. (optional)
+     * @param  int $image_height Render height for image formats. (optional)
+     * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
+     * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
+     * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
+     * @param  bool $server_table_calcs Perform table calculations on query results (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function runLookAsyncWithHttpInfo($look_id, $result_format, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null)
+    {
+        $returnType = 'string';
+        $request = $this->runLookRequest($look_id, $result_format, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'runLook'
+     *
+     * @param  int $look_id Id of look (required)
+     * @param  string $result_format Format of result (required)
+     * @param  int $limit Row limit (may override the limit in the saved query). (optional)
+     * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
+     * @param  bool $apply_vis Apply visualization options to results. (optional)
+     * @param  bool $cache Get results from cache if available. (optional)
+     * @param  int $image_width Render width for image formats. (optional)
+     * @param  int $image_height Render height for image formats. (optional)
+     * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
+     * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
+     * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
+     * @param  bool $server_table_calcs Perform table calculations on query results (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function runLookRequest($look_id, $result_format, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null)
+    {
+        // verify the required parameter 'look_id' is set
+        if ($look_id === null || (is_array($look_id) && count($look_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $look_id when calling runLook'
+            );
+        }
+        // verify the required parameter 'result_format' is set
+        if ($result_format === null || (is_array($result_format) && count($result_format) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $result_format when calling runLook'
+            );
+        }
+
+        $resourcePath = '/looks/{look_id}/run/{result_format}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+        // query params
+        if ($apply_formatting !== null) {
+            $queryParams['apply_formatting'] = ObjectSerializer::toQueryValue($apply_formatting);
+        }
+        // query params
+        if ($apply_vis !== null) {
+            $queryParams['apply_vis'] = ObjectSerializer::toQueryValue($apply_vis);
+        }
+        // query params
+        if ($cache !== null) {
+            $queryParams['cache'] = ObjectSerializer::toQueryValue($cache);
+        }
+        // query params
+        if ($image_width !== null) {
+            $queryParams['image_width'] = ObjectSerializer::toQueryValue($image_width);
+        }
+        // query params
+        if ($image_height !== null) {
+            $queryParams['image_height'] = ObjectSerializer::toQueryValue($image_height);
+        }
+        // query params
+        if ($generate_drill_links !== null) {
+            $queryParams['generate_drill_links'] = ObjectSerializer::toQueryValue($generate_drill_links);
+        }
+        // query params
+        if ($force_production !== null) {
+            $queryParams['force_production'] = ObjectSerializer::toQueryValue($force_production);
+        }
+        // query params
+        if ($cache_only !== null) {
+            $queryParams['cache_only'] = ObjectSerializer::toQueryValue($cache_only);
+        }
+        // query params
+        if ($path_prefix !== null) {
+            $queryParams['path_prefix'] = ObjectSerializer::toQueryValue($path_prefix);
+        }
+        // query params
+        if ($rebuild_pdts !== null) {
+            $queryParams['rebuild_pdts'] = ObjectSerializer::toQueryValue($rebuild_pdts);
+        }
+        // query params
+        if ($server_table_calcs !== null) {
+            $queryParams['server_table_calcs'] = ObjectSerializer::toQueryValue($server_table_calcs);
+        }
+
+        // path params
+        if ($look_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'look_id' . '}',
+                ObjectSerializer::toPathValue($look_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($result_format !== null) {
+            $resourcePath = str_replace(
+                '{' . 'result_format' . '}',
+                ObjectSerializer::toPathValue($result_format),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['text', 'application/json', 'image/png', 'image/jpg']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['text', 'application/json', 'image/png', 'image/jpg'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation searchLooks
+     *
+     * Search Looks
+     *
+     * @param  string $title Match Look title. (optional)
+     * @param  string $description Match Look description. (optional)
+     * @param  int $content_favorite_id Select looks with a particular content favorite id (optional)
+     * @param  string $space_id Select looks in a particular space. (optional)
+     * @param  string $user_id Select looks created by a particular user. (optional)
+     * @param  string $view_count Select looks with particular view_count value (optional)
+     * @param  bool $deleted Select soft-deleted looks (optional)
+     * @param  int $query_id Select looks that reference a particular query by query_id (optional)
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $page Requested page. (optional)
+     * @param  int $per_page Results per page. (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
+     * @param  string $sorts One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :query_id] (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\Look[]
+     */
+    public function searchLooks($title = null, $description = null, $content_favorite_id = null, $space_id = null, $user_id = null, $view_count = null, $deleted = null, $query_id = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
+    {
+        list($response) = $this->searchLooksWithHttpInfo($title, $description, $content_favorite_id, $space_id, $user_id, $view_count, $deleted, $query_id, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
+        return $response;
+    }
+
+    /**
+     * Operation searchLooksWithHttpInfo
+     *
+     * Search Looks
+     *
+     * @param  string $title Match Look title. (optional)
+     * @param  string $description Match Look description. (optional)
+     * @param  int $content_favorite_id Select looks with a particular content favorite id (optional)
+     * @param  string $space_id Select looks in a particular space. (optional)
+     * @param  string $user_id Select looks created by a particular user. (optional)
+     * @param  string $view_count Select looks with particular view_count value (optional)
+     * @param  bool $deleted Select soft-deleted looks (optional)
+     * @param  int $query_id Select looks that reference a particular query by query_id (optional)
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $page Requested page. (optional)
+     * @param  int $per_page Results per page. (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
+     * @param  string $sorts One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :query_id] (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\Look[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function searchLooksWithHttpInfo($title = null, $description = null, $content_favorite_id = null, $space_id = null, $user_id = null, $view_count = null, $deleted = null, $query_id = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
+    {
+        $returnType = '\Swagger\Client\Model\Look[]';
+        $request = $this->searchLooksRequest($title, $description, $content_favorite_id, $space_id, $user_id, $view_count, $deleted, $query_id, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Look[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation searchLooksAsync
+     *
+     * Search Looks
+     *
+     * @param  string $title Match Look title. (optional)
+     * @param  string $description Match Look description. (optional)
+     * @param  int $content_favorite_id Select looks with a particular content favorite id (optional)
+     * @param  string $space_id Select looks in a particular space. (optional)
+     * @param  string $user_id Select looks created by a particular user. (optional)
+     * @param  string $view_count Select looks with particular view_count value (optional)
+     * @param  bool $deleted Select soft-deleted looks (optional)
+     * @param  int $query_id Select looks that reference a particular query by query_id (optional)
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $page Requested page. (optional)
+     * @param  int $per_page Results per page. (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
+     * @param  string $sorts One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :query_id] (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchLooksAsync($title = null, $description = null, $content_favorite_id = null, $space_id = null, $user_id = null, $view_count = null, $deleted = null, $query_id = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
+    {
+        return $this->searchLooksAsyncWithHttpInfo($title, $description, $content_favorite_id, $space_id, $user_id, $view_count, $deleted, $query_id, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation searchLooksAsyncWithHttpInfo
+     *
+     * Search Looks
+     *
+     * @param  string $title Match Look title. (optional)
+     * @param  string $description Match Look description. (optional)
+     * @param  int $content_favorite_id Select looks with a particular content favorite id (optional)
+     * @param  string $space_id Select looks in a particular space. (optional)
+     * @param  string $user_id Select looks created by a particular user. (optional)
+     * @param  string $view_count Select looks with particular view_count value (optional)
+     * @param  bool $deleted Select soft-deleted looks (optional)
+     * @param  int $query_id Select looks that reference a particular query by query_id (optional)
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $page Requested page. (optional)
+     * @param  int $per_page Results per page. (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
+     * @param  string $sorts One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :query_id] (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchLooksAsyncWithHttpInfo($title = null, $description = null, $content_favorite_id = null, $space_id = null, $user_id = null, $view_count = null, $deleted = null, $query_id = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
+    {
+        $returnType = '\Swagger\Client\Model\Look[]';
+        $request = $this->searchLooksRequest($title, $description, $content_favorite_id, $space_id, $user_id, $view_count, $deleted, $query_id, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'searchLooks'
+     *
+     * @param  string $title Match Look title. (optional)
+     * @param  string $description Match Look description. (optional)
+     * @param  int $content_favorite_id Select looks with a particular content favorite id (optional)
+     * @param  string $space_id Select looks in a particular space. (optional)
+     * @param  string $user_id Select looks created by a particular user. (optional)
+     * @param  string $view_count Select looks with particular view_count value (optional)
+     * @param  bool $deleted Select soft-deleted looks (optional)
+     * @param  int $query_id Select looks that reference a particular query by query_id (optional)
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $page Requested page. (optional)
+     * @param  int $per_page Results per page. (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
+     * @param  string $sorts One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :query_id] (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function searchLooksRequest($title = null, $description = null, $content_favorite_id = null, $space_id = null, $user_id = null, $view_count = null, $deleted = null, $query_id = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
+    {
+
+        $resourcePath = '/looks/search';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($title !== null) {
+            $queryParams['title'] = ObjectSerializer::toQueryValue($title);
+        }
+        // query params
+        if ($description !== null) {
+            $queryParams['description'] = ObjectSerializer::toQueryValue($description);
+        }
+        // query params
+        if ($content_favorite_id !== null) {
+            $queryParams['content_favorite_id'] = ObjectSerializer::toQueryValue($content_favorite_id);
+        }
+        // query params
+        if ($space_id !== null) {
+            $queryParams['space_id'] = ObjectSerializer::toQueryValue($space_id);
+        }
+        // query params
+        if ($user_id !== null) {
+            $queryParams['user_id'] = ObjectSerializer::toQueryValue($user_id);
+        }
+        // query params
+        if ($view_count !== null) {
+            $queryParams['view_count'] = ObjectSerializer::toQueryValue($view_count);
+        }
+        // query params
+        if ($deleted !== null) {
+            $queryParams['deleted'] = ObjectSerializer::toQueryValue($deleted);
+        }
+        // query params
+        if ($query_id !== null) {
+            $queryParams['query_id'] = ObjectSerializer::toQueryValue($query_id);
+        }
+        // query params
+        if ($fields !== null) {
+            $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
+        }
+        // query params
+        if ($page !== null) {
+            $queryParams['page'] = ObjectSerializer::toQueryValue($page);
+        }
+        // query params
+        if ($per_page !== null) {
+            $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+        // query params
+        if ($offset !== null) {
+            $queryParams['offset'] = ObjectSerializer::toQueryValue($offset);
+        }
+        // query params
+        if ($sorts !== null) {
+            $queryParams['sorts'] = ObjectSerializer::toQueryValue($sorts);
+        }
+        // query params
+        if ($filter_or !== null) {
+            $queryParams['filter_or'] = ObjectSerializer::toQueryValue($filter_or);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation updateLook
+     *
+     * Update Look
+     *
+     * @param  int $look_id Id of look (required)
+     * @param  \Swagger\Client\Model\LookWithQuery $body Look (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\LookWithQuery
+     */
+    public function updateLook($look_id, $body, $fields = null)
+    {
+        list($response) = $this->updateLookWithHttpInfo($look_id, $body, $fields);
+        return $response;
+    }
+
+    /**
+     * Operation updateLookWithHttpInfo
+     *
+     * Update Look
+     *
+     * @param  int $look_id Id of look (required)
+     * @param  \Swagger\Client\Model\LookWithQuery $body Look (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\LookWithQuery, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function updateLookWithHttpInfo($look_id, $body, $fields = null)
+    {
+        $returnType = '\Swagger\Client\Model\LookWithQuery';
+        $request = $this->updateLookRequest($look_id, $body, $fields);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\LookWithQuery',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation updateLookAsync
+     *
+     * Update Look
+     *
+     * @param  int $look_id Id of look (required)
+     * @param  \Swagger\Client\Model\LookWithQuery $body Look (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateLookAsync($look_id, $body, $fields = null)
+    {
+        return $this->updateLookAsyncWithHttpInfo($look_id, $body, $fields)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation updateLookAsyncWithHttpInfo
+     *
+     * Update Look
+     *
+     * @param  int $look_id Id of look (required)
+     * @param  \Swagger\Client\Model\LookWithQuery $body Look (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function updateLookAsyncWithHttpInfo($look_id, $body, $fields = null)
+    {
+        $returnType = '\Swagger\Client\Model\LookWithQuery';
+        $request = $this->updateLookRequest($look_id, $body, $fields);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'updateLook'
+     *
+     * @param  int $look_id Id of look (required)
+     * @param  \Swagger\Client\Model\LookWithQuery $body Look (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function updateLookRequest($look_id, $body, $fields = null)
+    {
+        // verify the required parameter 'look_id' is set
+        if ($look_id === null || (is_array($look_id) && count($look_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $look_id when calling updateLook'
+            );
+        }
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling updateLook'
+            );
+        }
+
+        $resourcePath = '/looks/{look_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($fields !== null) {
+            $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
+        }
+
+        // path params
+        if ($look_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'look_id' . '}',
+                ObjectSerializer::toPathValue($look_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'PATCH',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Create http client option
+     *
+     * @throws \RuntimeException on file opening failure
+     * @return array of http client options
+     */
+    protected function createHttpClientOption()
+    {
+        $options = [];
+        if ($this->config->getDebug()) {
+            $options[RequestOptions::DEBUG] = fopen($this->config->getDebugFile(), 'a');
+            if (!$options[RequestOptions::DEBUG]) {
+                throw new \RuntimeException('Failed to open the debug file: ' . $this->config->getDebugFile());
+            }
+        }
+
+        return $options;
+    }
+}
