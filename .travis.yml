@@ -1,0 +1,32 @@
+language: bash
+sudo: false
+php:
+    - 7.3
+before_install:
+    - >-
+      docker
+      run
+      --rm
+      -v $(pwd):/local
+      swaggerapi/swagger-codegen-cli
+      generate
+      -i /local/swagger.json
+      -l php
+      -o /local/output
+      --git-user-id "keboola"
+      --git-repo-id "looker-api"
+      --release-note "Travis build [skip ci]"
+script:
+    - curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin/ --filename=composer
+    - cd output/SwaggerClient-php/
+    - composer install
+    - vendor/bin/phpunit
+    - deploy.sh
+
+deploy:
+    provider: script
+    script: deploy.sh
+    on:
+        tags: true
+
+
