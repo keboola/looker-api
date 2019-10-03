@@ -1,0 +1,13 @@
+version: '2'
+services:
+  build:
+    image: swaggerapi/swagger-codegen-cli:2.4.8
+    volumes:
+      - .:/local
+    command: >-
+      generate
+      -i /local/swagger.json
+      -l php
+      -o /local/output
+      --git-user-id "keboola"
+      --git-repo-id "looker-api"
