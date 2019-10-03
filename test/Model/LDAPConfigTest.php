@@ -1,0 +1,358 @@
+<?php
+/**
+ * LDAPConfigTest
+ *
+ * PHP version 5
+ *
+ * @category Class
+ * @package  Swagger\Client
+ * @author   Swagger Codegen team
+ * @link     https://github.com/swagger-api/swagger-codegen
+ */
+
+/**
+ * Looker API 3.1 Reference
+ *
+ * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ *
+ * OpenAPI spec version: 3.1.0
+ * Contact: support@looker.com
+ * Generated by: https://github.com/swagger-api/swagger-codegen.git
+ * Swagger Codegen version: 2.4.8
+ */
+
+/**
+ * NOTE: This class is auto generated by the swagger code generator program.
+ * https://github.com/swagger-api/swagger-codegen
+ * Please update the test case below to test the model.
+ */
+
+namespace Swagger\Client;
+
+/**
+ * LDAPConfigTest Class Doc Comment
+ *
+ * @category    Class
+ * @description LDAPConfig
+ * @package     Swagger\Client
+ * @author      Swagger Codegen team
+ * @link        https://github.com/swagger-api/swagger-codegen
+ */
+class LDAPConfigTest extends \PHPUnit_Framework_TestCase
+{
+
+    /**
+     * Setup before running any test case
+     */
+    public static function setUpBeforeClass()
+    {
+    }
+
+    /**
+     * Setup before running each test case
+     */
+    public function setUp()
+    {
+    }
+
+    /**
+     * Clean up after running each test case
+     */
+    public function tearDown()
+    {
+    }
+
+    /**
+     * Clean up after running all test cases
+     */
+    public static function tearDownAfterClass()
+    {
+    }
+
+    /**
+     * Test "LDAPConfig"
+     */
+    public function testLDAPConfig()
+    {
+    }
+
+    /**
+     * Test attribute "alternate_email_login_allowed"
+     */
+    public function testPropertyAlternateEmailLoginAllowed()
+    {
+    }
+
+    /**
+     * Test attribute "auth_password"
+     */
+    public function testPropertyAuthPassword()
+    {
+    }
+
+    /**
+     * Test attribute "auth_requires_role"
+     */
+    public function testPropertyAuthRequiresRole()
+    {
+    }
+
+    /**
+     * Test attribute "auth_username"
+     */
+    public function testPropertyAuthUsername()
+    {
+    }
+
+    /**
+     * Test attribute "connection_host"
+     */
+    public function testPropertyConnectionHost()
+    {
+    }
+
+    /**
+     * Test attribute "connection_port"
+     */
+    public function testPropertyConnectionPort()
+    {
+    }
+
+    /**
+     * Test attribute "connection_tls"
+     */
+    public function testPropertyConnectionTls()
+    {
+    }
+
+    /**
+     * Test attribute "connection_tls_no_verify"
+     */
+    public function testPropertyConnectionTlsNoVerify()
+    {
+    }
+
+    /**
+     * Test attribute "default_new_user_group_ids"
+     */
+    public function testPropertyDefaultNewUserGroupIds()
+    {
+    }
+
+    /**
+     * Test attribute "default_new_user_groups"
+     */
+    public function testPropertyDefaultNewUserGroups()
+    {
+    }
+
+    /**
+     * Test attribute "default_new_user_role_ids"
+     */
+    public function testPropertyDefaultNewUserRoleIds()
+    {
+    }
+
+    /**
+     * Test attribute "default_new_user_roles"
+     */
+    public function testPropertyDefaultNewUserRoles()
+    {
+    }
+
+    /**
+     * Test attribute "enabled"
+     */
+    public function testPropertyEnabled()
+    {
+    }
+
+    /**
+     * Test attribute "force_no_page"
+     */
+    public function testPropertyForceNoPage()
+    {
+    }
+
+    /**
+     * Test attribute "groups"
+     */
+    public function testPropertyGroups()
+    {
+    }
+
+    /**
+     * Test attribute "groups_base_dn"
+     */
+    public function testPropertyGroupsBaseDn()
+    {
+    }
+
+    /**
+     * Test attribute "groups_finder_type"
+     */
+    public function testPropertyGroupsFinderType()
+    {
+    }
+
+    /**
+     * Test attribute "groups_member_attribute"
+     */
+    public function testPropertyGroupsMemberAttribute()
+    {
+    }
+
+    /**
+     * Test attribute "groups_objectclasses"
+     */
+    public function testPropertyGroupsObjectclasses()
+    {
+    }
+
+    /**
+     * Test attribute "groups_user_attribute"
+     */
+    public function testPropertyGroupsUserAttribute()
+    {
+    }
+
+    /**
+     * Test attribute "groups_with_role_ids"
+     */
+    public function testPropertyGroupsWithRoleIds()
+    {
+    }
+
+    /**
+     * Test attribute "has_auth_password"
+     */
+    public function testPropertyHasAuthPassword()
+    {
+    }
+
+    /**
+     * Test attribute "merge_new_users_by_email"
+     */
+    public function testPropertyMergeNewUsersByEmail()
+    {
+    }
+
+    /**
+     * Test attribute "modified_at"
+     */
+    public function testPropertyModifiedAt()
+    {
+    }
+
+    /**
+     * Test attribute "modified_by"
+     */
+    public function testPropertyModifiedBy()
+    {
+    }
+
+    /**
+     * Test attribute "set_roles_from_groups"
+     */
+    public function testPropertySetRolesFromGroups()
+    {
+    }
+
+    /**
+     * Test attribute "test_ldap_password"
+     */
+    public function testPropertyTestLdapPassword()
+    {
+    }
+
+    /**
+     * Test attribute "test_ldap_user"
+     */
+    public function testPropertyTestLdapUser()
+    {
+    }
+
+    /**
+     * Test attribute "user_attribute_map_email"
+     */
+    public function testPropertyUserAttributeMapEmail()
+    {
+    }
+
+    /**
+     * Test attribute "user_attribute_map_first_name"
+     */
+    public function testPropertyUserAttributeMapFirstName()
+    {
+    }
+
+    /**
+     * Test attribute "user_attribute_map_last_name"
+     */
+    public function testPropertyUserAttributeMapLastName()
+    {
+    }
+
+    /**
+     * Test attribute "user_attribute_map_ldap_id"
+     */
+    public function testPropertyUserAttributeMapLdapId()
+    {
+    }
+
+    /**
+     * Test attribute "user_attributes"
+     */
+    public function testPropertyUserAttributes()
+    {
+    }
+
+    /**
+     * Test attribute "user_attributes_with_ids"
+     */
+    public function testPropertyUserAttributesWithIds()
+    {
+    }
+
+    /**
+     * Test attribute "user_bind_base_dn"
+     */
+    public function testPropertyUserBindBaseDn()
+    {
+    }
+
+    /**
+     * Test attribute "user_custom_filter"
+     */
+    public function testPropertyUserCustomFilter()
+    {
+    }
+
+    /**
+     * Test attribute "user_id_attribute_names"
+     */
+    public function testPropertyUserIdAttributeNames()
+    {
+    }
+
+    /**
+     * Test attribute "user_objectclass"
+     */
+    public function testPropertyUserObjectclass()
+    {
+    }
+
+    /**
+     * Test attribute "url"
+     */
+    public function testPropertyUrl()
+    {
+    }
+
+    /**
+     * Test attribute "can"
+     */
+    public function testPropertyCan()
+    {
+    }
+}
