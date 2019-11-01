@@ -1,1 +1,6 @@
-To generate download and replace the `swagger.json` file run the `build.sh` script
+# How to regenerate the API client
+
+* download swagger file from `https://yourcompany.looker.com:19999/api/3.1/swagger.json` 
+* replace the `swagger.json` file
+* run `build.sh`
+* commit regenerated files
