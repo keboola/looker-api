@@ -81,7 +81,7 @@ class Configuration
      *
      * @var string
      */
-    protected $host = 'https://keboolads.looker.com:19999/api/3.1';
+    protected $host = 'https://example.looker.com:19999/api/3.1';
 
     /**
      * User agent of the HTTP request, set to "PHP-Swagger" by default

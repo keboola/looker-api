@@ -97,7 +97,7 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://keboolads.looker.com:19999/api/3.1*
+All URIs are relative to *https://example.looker.com:19999/api/3.1*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------

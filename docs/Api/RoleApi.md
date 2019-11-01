@@ -1,6 +1,6 @@
 # Swagger\Client\RoleApi
 
-All URIs are relative to *https://keboolads.looker.com:19999/api/3.1*
+All URIs are relative to *https://example.looker.com:19999/api/3.1*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
