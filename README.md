@@ -610,3 +610,7 @@ Class | Method | HTTP request | Description
 support@looker.com
 
 
+
+## License
+
+MIT licensed, see [LICENSE](./LICENSE) file.
