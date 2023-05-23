@@ -11,12 +11,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -57,14 +57,14 @@ class ContentFavorite implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
-        'user_id' => 'int',
-        'content_metadata_id' => 'int',
-        'look_id' => 'int',
-        'dashboard_id' => 'int',
+        'id' => 'string',
+        'user_id' => 'string',
+        'content_metadata_id' => 'string',
+        'look_id' => 'string',
+        'dashboard_id' => 'string',
         'look' => '\Swagger\Client\Model\LookBasic',
         'dashboard' => '\Swagger\Client\Model\DashboardBase',
-        'can' => 'map[string,bool]'
+        'board_id' => 'string'
     ];
 
     /**
@@ -73,14 +73,14 @@ class ContentFavorite implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => 'int64',
-        'user_id' => 'int64',
-        'content_metadata_id' => 'int64',
-        'look_id' => 'int64',
-        'dashboard_id' => 'int64',
+        'id' => null,
+        'user_id' => null,
+        'content_metadata_id' => null,
+        'look_id' => null,
+        'dashboard_id' => null,
         'look' => null,
         'dashboard' => null,
-        'can' => null
+        'board_id' => null
     ];
 
     /**
@@ -117,7 +117,7 @@ class ContentFavorite implements ModelInterface, ArrayAccess
         'dashboard_id' => 'dashboard_id',
         'look' => 'look',
         'dashboard' => 'dashboard',
-        'can' => 'can'
+        'board_id' => 'board_id'
     ];
 
     /**
@@ -133,7 +133,7 @@ class ContentFavorite implements ModelInterface, ArrayAccess
         'dashboard_id' => 'setDashboardId',
         'look' => 'setLook',
         'dashboard' => 'setDashboard',
-        'can' => 'setCan'
+        'board_id' => 'setBoardId'
     ];
 
     /**
@@ -149,7 +149,7 @@ class ContentFavorite implements ModelInterface, ArrayAccess
         'dashboard_id' => 'getDashboardId',
         'look' => 'getLook',
         'dashboard' => 'getDashboard',
-        'can' => 'getCan'
+        'board_id' => 'getBoardId'
     ];
 
     /**
@@ -219,7 +219,7 @@ class ContentFavorite implements ModelInterface, ArrayAccess
         $this->container['dashboard_id'] = isset($data['dashboard_id']) ? $data['dashboard_id'] : null;
         $this->container['look'] = isset($data['look']) ? $data['look'] : null;
         $this->container['dashboard'] = isset($data['dashboard']) ? $data['dashboard'] : null;
-        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
+        $this->container['board_id'] = isset($data['board_id']) ? $data['board_id'] : null;
     }
 
     /**
@@ -249,7 +249,7 @@ class ContentFavorite implements ModelInterface, ArrayAccess
     /**
      * Gets id
      *
-     * @return int
+     * @return string
      */
     public function getId()
     {
@@ -259,7 +259,7 @@ class ContentFavorite implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id Unique Id
+     * @param string $id Unique Id
      *
      * @return $this
      */
@@ -273,7 +273,7 @@ class ContentFavorite implements ModelInterface, ArrayAccess
     /**
      * Gets user_id
      *
-     * @return int
+     * @return string
      */
     public function getUserId()
     {
@@ -283,7 +283,7 @@ class ContentFavorite implements ModelInterface, ArrayAccess
     /**
      * Sets user_id
      *
-     * @param int $user_id User Id which owns this ContentFavorite
+     * @param string $user_id User Id which owns this ContentFavorite
      *
      * @return $this
      */
@@ -297,7 +297,7 @@ class ContentFavorite implements ModelInterface, ArrayAccess
     /**
      * Gets content_metadata_id
      *
-     * @return int
+     * @return string
      */
     public function getContentMetadataId()
     {
@@ -307,7 +307,7 @@ class ContentFavorite implements ModelInterface, ArrayAccess
     /**
      * Sets content_metadata_id
      *
-     * @param int $content_metadata_id Content Metadata Id associated with this ContentFavorite
+     * @param string $content_metadata_id Content Metadata Id associated with this ContentFavorite
      *
      * @return $this
      */
@@ -321,7 +321,7 @@ class ContentFavorite implements ModelInterface, ArrayAccess
     /**
      * Gets look_id
      *
-     * @return int
+     * @return string
      */
     public function getLookId()
     {
@@ -331,7 +331,7 @@ class ContentFavorite implements ModelInterface, ArrayAccess
     /**
      * Sets look_id
      *
-     * @param int $look_id Id of a look
+     * @param string $look_id Id of a look
      *
      * @return $this
      */
@@ -345,7 +345,7 @@ class ContentFavorite implements ModelInterface, ArrayAccess
     /**
      * Gets dashboard_id
      *
-     * @return int
+     * @return string
      */
     public function getDashboardId()
     {
@@ -355,7 +355,7 @@ class ContentFavorite implements ModelInterface, ArrayAccess
     /**
      * Sets dashboard_id
      *
-     * @param int $dashboard_id Id of a dashboard
+     * @param string $dashboard_id Id of a dashboard
      *
      * @return $this
      */
@@ -415,25 +415,25 @@ class ContentFavorite implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets can
+     * Gets board_id
      *
-     * @return map[string,bool]
+     * @return string
      */
-    public function getCan()
+    public function getBoardId()
     {
-        return $this->container['can'];
+        return $this->container['board_id'];
     }
 
     /**
-     * Sets can
+     * Sets board_id
      *
-     * @param map[string,bool] $can Operations the current user is able to perform on this object
+     * @param string $board_id Id of a board
      *
      * @return $this
      */
-    public function setCan($can)
+    public function setBoardId($board_id)
     {
-        $this->container['can'] = $can;
+        $this->container['board_id'] = $board_id;
 
         return $this;
     }

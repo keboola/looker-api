@@ -11,12 +11,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -57,23 +57,28 @@ class Project implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'can' => 'map[string,bool]',
         'id' => 'string',
         'name' => 'string',
         'uses_git' => 'bool',
         'git_remote_url' => 'string',
         'git_username' => 'string',
         'git_password' => 'string',
+        'git_production_branch_name' => 'string',
+        'use_git_cookie_auth' => 'bool',
         'git_username_user_attribute' => 'string',
         'git_password_user_attribute' => 'string',
         'git_service_name' => 'string',
+        'git_application_server_http_port' => 'int',
+        'git_application_server_http_scheme' => 'string',
         'deploy_secret' => 'string',
         'unset_deploy_secret' => 'bool',
         'pull_request_mode' => 'string',
         'validation_required' => 'bool',
-        'folders_enabled' => 'bool',
+        'git_release_mgmt_enabled' => 'bool',
         'allow_warnings' => 'bool',
         'is_example' => 'bool',
-        'can' => 'map[string,bool]'
+        'dependency_status' => 'string'
     ];
 
     /**
@@ -82,23 +87,28 @@ class Project implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
+        'can' => null,
         'id' => null,
         'name' => null,
         'uses_git' => null,
-        'git_remote_url' => 'uri',
+        'git_remote_url' => null,
         'git_username' => null,
         'git_password' => null,
+        'git_production_branch_name' => null,
+        'use_git_cookie_auth' => null,
         'git_username_user_attribute' => null,
         'git_password_user_attribute' => null,
         'git_service_name' => null,
+        'git_application_server_http_port' => 'int64',
+        'git_application_server_http_scheme' => null,
         'deploy_secret' => null,
         'unset_deploy_secret' => null,
         'pull_request_mode' => null,
         'validation_required' => null,
-        'folders_enabled' => null,
+        'git_release_mgmt_enabled' => null,
         'allow_warnings' => null,
         'is_example' => null,
-        'can' => null
+        'dependency_status' => null
     ];
 
     /**
@@ -128,23 +138,28 @@ class Project implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'can' => 'can',
         'id' => 'id',
         'name' => 'name',
         'uses_git' => 'uses_git',
         'git_remote_url' => 'git_remote_url',
         'git_username' => 'git_username',
         'git_password' => 'git_password',
+        'git_production_branch_name' => 'git_production_branch_name',
+        'use_git_cookie_auth' => 'use_git_cookie_auth',
         'git_username_user_attribute' => 'git_username_user_attribute',
         'git_password_user_attribute' => 'git_password_user_attribute',
         'git_service_name' => 'git_service_name',
+        'git_application_server_http_port' => 'git_application_server_http_port',
+        'git_application_server_http_scheme' => 'git_application_server_http_scheme',
         'deploy_secret' => 'deploy_secret',
         'unset_deploy_secret' => 'unset_deploy_secret',
         'pull_request_mode' => 'pull_request_mode',
         'validation_required' => 'validation_required',
-        'folders_enabled' => 'folders_enabled',
+        'git_release_mgmt_enabled' => 'git_release_mgmt_enabled',
         'allow_warnings' => 'allow_warnings',
         'is_example' => 'is_example',
-        'can' => 'can'
+        'dependency_status' => 'dependency_status'
     ];
 
     /**
@@ -153,23 +168,28 @@ class Project implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'can' => 'setCan',
         'id' => 'setId',
         'name' => 'setName',
         'uses_git' => 'setUsesGit',
         'git_remote_url' => 'setGitRemoteUrl',
         'git_username' => 'setGitUsername',
         'git_password' => 'setGitPassword',
+        'git_production_branch_name' => 'setGitProductionBranchName',
+        'use_git_cookie_auth' => 'setUseGitCookieAuth',
         'git_username_user_attribute' => 'setGitUsernameUserAttribute',
         'git_password_user_attribute' => 'setGitPasswordUserAttribute',
         'git_service_name' => 'setGitServiceName',
+        'git_application_server_http_port' => 'setGitApplicationServerHttpPort',
+        'git_application_server_http_scheme' => 'setGitApplicationServerHttpScheme',
         'deploy_secret' => 'setDeploySecret',
         'unset_deploy_secret' => 'setUnsetDeploySecret',
         'pull_request_mode' => 'setPullRequestMode',
         'validation_required' => 'setValidationRequired',
-        'folders_enabled' => 'setFoldersEnabled',
+        'git_release_mgmt_enabled' => 'setGitReleaseMgmtEnabled',
         'allow_warnings' => 'setAllowWarnings',
         'is_example' => 'setIsExample',
-        'can' => 'setCan'
+        'dependency_status' => 'setDependencyStatus'
     ];
 
     /**
@@ -178,23 +198,28 @@ class Project implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'can' => 'getCan',
         'id' => 'getId',
         'name' => 'getName',
         'uses_git' => 'getUsesGit',
         'git_remote_url' => 'getGitRemoteUrl',
         'git_username' => 'getGitUsername',
         'git_password' => 'getGitPassword',
+        'git_production_branch_name' => 'getGitProductionBranchName',
+        'use_git_cookie_auth' => 'getUseGitCookieAuth',
         'git_username_user_attribute' => 'getGitUsernameUserAttribute',
         'git_password_user_attribute' => 'getGitPasswordUserAttribute',
         'git_service_name' => 'getGitServiceName',
+        'git_application_server_http_port' => 'getGitApplicationServerHttpPort',
+        'git_application_server_http_scheme' => 'getGitApplicationServerHttpScheme',
         'deploy_secret' => 'getDeploySecret',
         'unset_deploy_secret' => 'getUnsetDeploySecret',
         'pull_request_mode' => 'getPullRequestMode',
         'validation_required' => 'getValidationRequired',
-        'folders_enabled' => 'getFoldersEnabled',
+        'git_release_mgmt_enabled' => 'getGitReleaseMgmtEnabled',
         'allow_warnings' => 'getAllowWarnings',
         'is_example' => 'getIsExample',
-        'can' => 'getCan'
+        'dependency_status' => 'getDependencyStatus'
     ];
 
     /**
@@ -257,23 +282,28 @@ class Project implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['uses_git'] = isset($data['uses_git']) ? $data['uses_git'] : null;
         $this->container['git_remote_url'] = isset($data['git_remote_url']) ? $data['git_remote_url'] : null;
         $this->container['git_username'] = isset($data['git_username']) ? $data['git_username'] : null;
         $this->container['git_password'] = isset($data['git_password']) ? $data['git_password'] : null;
+        $this->container['git_production_branch_name'] = isset($data['git_production_branch_name']) ? $data['git_production_branch_name'] : null;
+        $this->container['use_git_cookie_auth'] = isset($data['use_git_cookie_auth']) ? $data['use_git_cookie_auth'] : null;
         $this->container['git_username_user_attribute'] = isset($data['git_username_user_attribute']) ? $data['git_username_user_attribute'] : null;
         $this->container['git_password_user_attribute'] = isset($data['git_password_user_attribute']) ? $data['git_password_user_attribute'] : null;
         $this->container['git_service_name'] = isset($data['git_service_name']) ? $data['git_service_name'] : null;
+        $this->container['git_application_server_http_port'] = isset($data['git_application_server_http_port']) ? $data['git_application_server_http_port'] : null;
+        $this->container['git_application_server_http_scheme'] = isset($data['git_application_server_http_scheme']) ? $data['git_application_server_http_scheme'] : null;
         $this->container['deploy_secret'] = isset($data['deploy_secret']) ? $data['deploy_secret'] : null;
         $this->container['unset_deploy_secret'] = isset($data['unset_deploy_secret']) ? $data['unset_deploy_secret'] : null;
         $this->container['pull_request_mode'] = isset($data['pull_request_mode']) ? $data['pull_request_mode'] : null;
         $this->container['validation_required'] = isset($data['validation_required']) ? $data['validation_required'] : null;
-        $this->container['folders_enabled'] = isset($data['folders_enabled']) ? $data['folders_enabled'] : null;
+        $this->container['git_release_mgmt_enabled'] = isset($data['git_release_mgmt_enabled']) ? $data['git_release_mgmt_enabled'] : null;
         $this->container['allow_warnings'] = isset($data['allow_warnings']) ? $data['allow_warnings'] : null;
         $this->container['is_example'] = isset($data['is_example']) ? $data['is_example'] : null;
-        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
+        $this->container['dependency_status'] = isset($data['dependency_status']) ? $data['dependency_status'] : null;
     }
 
     /**
@@ -299,6 +329,30 @@ class Project implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets can
+     *
+     * @return map[string,bool]
+     */
+    public function getCan()
+    {
+        return $this->container['can'];
+    }
+
+    /**
+     * Sets can
+     *
+     * @param map[string,bool] $can Operations the current user is able to perform on this object
+     *
+     * @return $this
+     */
+    public function setCan($can)
+    {
+        $this->container['can'] = $can;
+
+        return $this;
+    }
 
     /**
      * Gets id
@@ -445,6 +499,54 @@ class Project implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets git_production_branch_name
+     *
+     * @return string
+     */
+    public function getGitProductionBranchName()
+    {
+        return $this->container['git_production_branch_name'];
+    }
+
+    /**
+     * Sets git_production_branch_name
+     *
+     * @param string $git_production_branch_name Git production branch name. Defaults to master. Supported only in Looker 21.0 and higher.
+     *
+     * @return $this
+     */
+    public function setGitProductionBranchName($git_production_branch_name)
+    {
+        $this->container['git_production_branch_name'] = $git_production_branch_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets use_git_cookie_auth
+     *
+     * @return bool
+     */
+    public function getUseGitCookieAuth()
+    {
+        return $this->container['use_git_cookie_auth'];
+    }
+
+    /**
+     * Sets use_git_cookie_auth
+     *
+     * @param bool $use_git_cookie_auth If true, the project uses a git cookie for authentication.
+     *
+     * @return $this
+     */
+    public function setUseGitCookieAuth($use_git_cookie_auth)
+    {
+        $this->container['use_git_cookie_auth'] = $use_git_cookie_auth;
+
+        return $this;
+    }
+
+    /**
      * Gets git_username_user_attribute
      *
      * @return string
@@ -512,6 +614,54 @@ class Project implements ModelInterface, ArrayAccess
     public function setGitServiceName($git_service_name)
     {
         $this->container['git_service_name'] = $git_service_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets git_application_server_http_port
+     *
+     * @return int
+     */
+    public function getGitApplicationServerHttpPort()
+    {
+        return $this->container['git_application_server_http_port'];
+    }
+
+    /**
+     * Sets git_application_server_http_port
+     *
+     * @param int $git_application_server_http_port Port that HTTP(S) application server is running on (for PRs, file browsing, etc.)
+     *
+     * @return $this
+     */
+    public function setGitApplicationServerHttpPort($git_application_server_http_port)
+    {
+        $this->container['git_application_server_http_port'] = $git_application_server_http_port;
+
+        return $this;
+    }
+
+    /**
+     * Gets git_application_server_http_scheme
+     *
+     * @return string
+     */
+    public function getGitApplicationServerHttpScheme()
+    {
+        return $this->container['git_application_server_http_scheme'];
+    }
+
+    /**
+     * Sets git_application_server_http_scheme
+     *
+     * @param string $git_application_server_http_scheme Scheme that is running on application server (for PRs, file browsing, etc.)
+     *
+     * @return $this
+     */
+    public function setGitApplicationServerHttpScheme($git_application_server_http_scheme)
+    {
+        $this->container['git_application_server_http_scheme'] = $git_application_server_http_scheme;
 
         return $this;
     }
@@ -613,25 +763,25 @@ class Project implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets folders_enabled
+     * Gets git_release_mgmt_enabled
      *
      * @return bool
      */
-    public function getFoldersEnabled()
+    public function getGitReleaseMgmtEnabled()
     {
-        return $this->container['folders_enabled'];
+        return $this->container['git_release_mgmt_enabled'];
     }
 
     /**
-     * Sets folders_enabled
+     * Sets git_release_mgmt_enabled
      *
-     * @param bool $folders_enabled If true, folders are enabled for this project
+     * @param bool $git_release_mgmt_enabled If true, advanced git release management is enabled for this project
      *
      * @return $this
      */
-    public function setFoldersEnabled($folders_enabled)
+    public function setGitReleaseMgmtEnabled($git_release_mgmt_enabled)
     {
-        $this->container['folders_enabled'] = $folders_enabled;
+        $this->container['git_release_mgmt_enabled'] = $git_release_mgmt_enabled;
 
         return $this;
     }
@@ -685,25 +835,25 @@ class Project implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets can
+     * Gets dependency_status
      *
-     * @return map[string,bool]
+     * @return string
      */
-    public function getCan()
+    public function getDependencyStatus()
     {
-        return $this->container['can'];
+        return $this->container['dependency_status'];
     }
 
     /**
-     * Sets can
+     * Sets dependency_status
      *
-     * @param map[string,bool] $can Operations the current user is able to perform on this object
+     * @param string $dependency_status Status of dependencies in your manifest & lockfile
      *
      * @return $this
      */
-    public function setCan($can)
+    public function setDependencyStatus($dependency_status)
     {
-        $this->container['can'] = $can;
+        $this->container['dependency_status'] = $dependency_status;
 
         return $this;
     }

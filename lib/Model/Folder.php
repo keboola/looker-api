@@ -11,12 +11,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -57,11 +57,14 @@ class Folder implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'child_count' => 'int',
-        'content_metadata_id' => 'int',
-        'creator_id' => 'int',
-        'external_id' => 'string',
+        'name' => 'string',
+        'parent_id' => 'string',
         'id' => 'string',
+        'content_metadata_id' => 'string',
+        'created_at' => '\DateTime',
+        'creator_id' => 'string',
+        'child_count' => 'int',
+        'external_id' => 'string',
         'is_embed' => 'bool',
         'is_embed_shared_root' => 'bool',
         'is_embed_users_root' => 'bool',
@@ -69,11 +72,9 @@ class Folder implements ModelInterface, ArrayAccess
         'is_personal_descendant' => 'bool',
         'is_shared_root' => 'bool',
         'is_users_root' => 'bool',
-        'name' => 'string',
-        'parent_id' => 'string',
+        'can' => 'map[string,bool]',
         'dashboards' => '\Swagger\Client\Model\DashboardBase[]',
-        'looks' => '\Swagger\Client\Model\LookWithDashboards[]',
-        'can' => 'map[string,bool]'
+        'looks' => '\Swagger\Client\Model\LookWithDashboards[]'
     ];
 
     /**
@@ -82,11 +83,14 @@ class Folder implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'child_count' => 'int64',
-        'content_metadata_id' => 'int64',
-        'creator_id' => 'int64',
-        'external_id' => null,
+        'name' => null,
+        'parent_id' => null,
         'id' => null,
+        'content_metadata_id' => null,
+        'created_at' => 'date-time',
+        'creator_id' => null,
+        'child_count' => 'int64',
+        'external_id' => null,
         'is_embed' => null,
         'is_embed_shared_root' => null,
         'is_embed_users_root' => null,
@@ -94,11 +98,9 @@ class Folder implements ModelInterface, ArrayAccess
         'is_personal_descendant' => null,
         'is_shared_root' => null,
         'is_users_root' => null,
-        'name' => null,
-        'parent_id' => null,
+        'can' => null,
         'dashboards' => null,
-        'looks' => null,
-        'can' => null
+        'looks' => null
     ];
 
     /**
@@ -128,11 +130,14 @@ class Folder implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'child_count' => 'child_count',
-        'content_metadata_id' => 'content_metadata_id',
-        'creator_id' => 'creator_id',
-        'external_id' => 'external_id',
+        'name' => 'name',
+        'parent_id' => 'parent_id',
         'id' => 'id',
+        'content_metadata_id' => 'content_metadata_id',
+        'created_at' => 'created_at',
+        'creator_id' => 'creator_id',
+        'child_count' => 'child_count',
+        'external_id' => 'external_id',
         'is_embed' => 'is_embed',
         'is_embed_shared_root' => 'is_embed_shared_root',
         'is_embed_users_root' => 'is_embed_users_root',
@@ -140,11 +145,9 @@ class Folder implements ModelInterface, ArrayAccess
         'is_personal_descendant' => 'is_personal_descendant',
         'is_shared_root' => 'is_shared_root',
         'is_users_root' => 'is_users_root',
-        'name' => 'name',
-        'parent_id' => 'parent_id',
+        'can' => 'can',
         'dashboards' => 'dashboards',
-        'looks' => 'looks',
-        'can' => 'can'
+        'looks' => 'looks'
     ];
 
     /**
@@ -153,11 +156,14 @@ class Folder implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'child_count' => 'setChildCount',
-        'content_metadata_id' => 'setContentMetadataId',
-        'creator_id' => 'setCreatorId',
-        'external_id' => 'setExternalId',
+        'name' => 'setName',
+        'parent_id' => 'setParentId',
         'id' => 'setId',
+        'content_metadata_id' => 'setContentMetadataId',
+        'created_at' => 'setCreatedAt',
+        'creator_id' => 'setCreatorId',
+        'child_count' => 'setChildCount',
+        'external_id' => 'setExternalId',
         'is_embed' => 'setIsEmbed',
         'is_embed_shared_root' => 'setIsEmbedSharedRoot',
         'is_embed_users_root' => 'setIsEmbedUsersRoot',
@@ -165,11 +171,9 @@ class Folder implements ModelInterface, ArrayAccess
         'is_personal_descendant' => 'setIsPersonalDescendant',
         'is_shared_root' => 'setIsSharedRoot',
         'is_users_root' => 'setIsUsersRoot',
-        'name' => 'setName',
-        'parent_id' => 'setParentId',
+        'can' => 'setCan',
         'dashboards' => 'setDashboards',
-        'looks' => 'setLooks',
-        'can' => 'setCan'
+        'looks' => 'setLooks'
     ];
 
     /**
@@ -178,11 +182,14 @@ class Folder implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'child_count' => 'getChildCount',
-        'content_metadata_id' => 'getContentMetadataId',
-        'creator_id' => 'getCreatorId',
-        'external_id' => 'getExternalId',
+        'name' => 'getName',
+        'parent_id' => 'getParentId',
         'id' => 'getId',
+        'content_metadata_id' => 'getContentMetadataId',
+        'created_at' => 'getCreatedAt',
+        'creator_id' => 'getCreatorId',
+        'child_count' => 'getChildCount',
+        'external_id' => 'getExternalId',
         'is_embed' => 'getIsEmbed',
         'is_embed_shared_root' => 'getIsEmbedSharedRoot',
         'is_embed_users_root' => 'getIsEmbedUsersRoot',
@@ -190,11 +197,9 @@ class Folder implements ModelInterface, ArrayAccess
         'is_personal_descendant' => 'getIsPersonalDescendant',
         'is_shared_root' => 'getIsSharedRoot',
         'is_users_root' => 'getIsUsersRoot',
-        'name' => 'getName',
-        'parent_id' => 'getParentId',
+        'can' => 'getCan',
         'dashboards' => 'getDashboards',
-        'looks' => 'getLooks',
-        'can' => 'getCan'
+        'looks' => 'getLooks'
     ];
 
     /**
@@ -257,11 +262,14 @@ class Folder implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['child_count'] = isset($data['child_count']) ? $data['child_count'] : null;
-        $this->container['content_metadata_id'] = isset($data['content_metadata_id']) ? $data['content_metadata_id'] : null;
-        $this->container['creator_id'] = isset($data['creator_id']) ? $data['creator_id'] : null;
-        $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['parent_id'] = isset($data['parent_id']) ? $data['parent_id'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['content_metadata_id'] = isset($data['content_metadata_id']) ? $data['content_metadata_id'] : null;
+        $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['creator_id'] = isset($data['creator_id']) ? $data['creator_id'] : null;
+        $this->container['child_count'] = isset($data['child_count']) ? $data['child_count'] : null;
+        $this->container['external_id'] = isset($data['external_id']) ? $data['external_id'] : null;
         $this->container['is_embed'] = isset($data['is_embed']) ? $data['is_embed'] : null;
         $this->container['is_embed_shared_root'] = isset($data['is_embed_shared_root']) ? $data['is_embed_shared_root'] : null;
         $this->container['is_embed_users_root'] = isset($data['is_embed_users_root']) ? $data['is_embed_users_root'] : null;
@@ -269,11 +277,9 @@ class Folder implements ModelInterface, ArrayAccess
         $this->container['is_personal_descendant'] = isset($data['is_personal_descendant']) ? $data['is_personal_descendant'] : null;
         $this->container['is_shared_root'] = isset($data['is_shared_root']) ? $data['is_shared_root'] : null;
         $this->container['is_users_root'] = isset($data['is_users_root']) ? $data['is_users_root'] : null;
-        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
-        $this->container['parent_id'] = isset($data['parent_id']) ? $data['parent_id'] : null;
+        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
         $this->container['dashboards'] = isset($data['dashboards']) ? $data['dashboards'] : null;
         $this->container['looks'] = isset($data['looks']) ? $data['looks'] : null;
-        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
     }
 
     /**
@@ -287,9 +293,6 @@ class Folder implements ModelInterface, ArrayAccess
 
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['parent_id'] === null) {
-            $invalidProperties[] = "'parent_id' can't be null";
         }
         return $invalidProperties;
     }
@@ -305,6 +308,150 @@ class Folder implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name Unique Name
+     *
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets parent_id
+     *
+     * @return string
+     */
+    public function getParentId()
+    {
+        return $this->container['parent_id'];
+    }
+
+    /**
+     * Sets parent_id
+     *
+     * @param string $parent_id Id of Parent. If the parent id is null, this is a root-level entry
+     *
+     * @return $this
+     */
+    public function setParentId($parent_id)
+    {
+        $this->container['parent_id'] = $parent_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id Unique Id
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
+     * Gets content_metadata_id
+     *
+     * @return string
+     */
+    public function getContentMetadataId()
+    {
+        return $this->container['content_metadata_id'];
+    }
+
+    /**
+     * Sets content_metadata_id
+     *
+     * @param string $content_metadata_id Id of content metadata
+     *
+     * @return $this
+     */
+    public function setContentMetadataId($content_metadata_id)
+    {
+        $this->container['content_metadata_id'] = $content_metadata_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets created_at
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->container['created_at'];
+    }
+
+    /**
+     * Sets created_at
+     *
+     * @param \DateTime $created_at Time the space was created
+     *
+     * @return $this
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets creator_id
+     *
+     * @return string
+     */
+    public function getCreatorId()
+    {
+        return $this->container['creator_id'];
+    }
+
+    /**
+     * Sets creator_id
+     *
+     * @param string $creator_id User Id of Creator
+     *
+     * @return $this
+     */
+    public function setCreatorId($creator_id)
+    {
+        $this->container['creator_id'] = $creator_id;
+
+        return $this;
+    }
 
     /**
      * Gets child_count
@@ -331,54 +478,6 @@ class Folder implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets content_metadata_id
-     *
-     * @return int
-     */
-    public function getContentMetadataId()
-    {
-        return $this->container['content_metadata_id'];
-    }
-
-    /**
-     * Sets content_metadata_id
-     *
-     * @param int $content_metadata_id Id of content metadata
-     *
-     * @return $this
-     */
-    public function setContentMetadataId($content_metadata_id)
-    {
-        $this->container['content_metadata_id'] = $content_metadata_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets creator_id
-     *
-     * @return int
-     */
-    public function getCreatorId()
-    {
-        return $this->container['creator_id'];
-    }
-
-    /**
-     * Sets creator_id
-     *
-     * @param int $creator_id User Id of Creator
-     *
-     * @return $this
-     */
-    public function setCreatorId($creator_id)
-    {
-        $this->container['creator_id'] = $creator_id;
-
-        return $this;
-    }
-
-    /**
      * Gets external_id
      *
      * @return string
@@ -398,30 +497,6 @@ class Folder implements ModelInterface, ArrayAccess
     public function setExternalId($external_id)
     {
         $this->container['external_id'] = $external_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['id'];
-    }
-
-    /**
-     * Sets id
-     *
-     * @param string $id Unique Id
-     *
-     * @return $this
-     */
-    public function setId($id)
-    {
-        $this->container['id'] = $id;
 
         return $this;
     }
@@ -595,49 +670,25 @@ class Folder implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets name
+     * Gets can
      *
-     * @return string
+     * @return map[string,bool]
      */
-    public function getName()
+    public function getCan()
     {
-        return $this->container['name'];
+        return $this->container['can'];
     }
 
     /**
-     * Sets name
+     * Sets can
      *
-     * @param string $name Unique Name
+     * @param map[string,bool] $can Operations the current user is able to perform on this object
      *
      * @return $this
      */
-    public function setName($name)
+    public function setCan($can)
     {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets parent_id
-     *
-     * @return string
-     */
-    public function getParentId()
-    {
-        return $this->container['parent_id'];
-    }
-
-    /**
-     * Sets parent_id
-     *
-     * @param string $parent_id Id of Parent
-     *
-     * @return $this
-     */
-    public function setParentId($parent_id)
-    {
-        $this->container['parent_id'] = $parent_id;
+        $this->container['can'] = $can;
 
         return $this;
     }
@@ -686,30 +737,6 @@ class Folder implements ModelInterface, ArrayAccess
     public function setLooks($looks)
     {
         $this->container['looks'] = $looks;
-
-        return $this;
-    }
-
-    /**
-     * Gets can
-     *
-     * @return map[string,bool]
-     */
-    public function getCan()
-    {
-        return $this->container['can'];
-    }
-
-    /**
-     * Sets can
-     *
-     * @param map[string,bool] $can Operations the current user is able to perform on this object
-     *
-     * @return $this
-     */
-    public function setCan($can)
-    {
-        $this->container['can'] = $can;
 
         return $this;
     }

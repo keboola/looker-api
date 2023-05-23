@@ -1,15 +1,18 @@
 # Swagger\Client\DashboardApi
 
-All URIs are relative to *https://example.looker.com:19999/api/3.1*
+All URIs are relative to *https://example.looker.com:443/api/4.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**allDashboards**](DashboardApi.md#allDashboards) | **GET** /dashboards | Get All Dashboards
+[**copyDashboard**](DashboardApi.md#copyDashboard) | **POST** /dashboards/{dashboard_id}/copy | Copy Dashboard
 [**createDashboard**](DashboardApi.md#createDashboard) | **POST** /dashboards | Create Dashboard
 [**createDashboardElement**](DashboardApi.md#createDashboardElement) | **POST** /dashboard_elements | Create DashboardElement
 [**createDashboardFilter**](DashboardApi.md#createDashboardFilter) | **POST** /dashboard_filters | Create Dashboard Filter
+[**createDashboardFromLookml**](DashboardApi.md#createDashboardFromLookml) | **POST** /dashboards/from_lookml | Create Dashboard from LookML
 [**createDashboardLayout**](DashboardApi.md#createDashboardLayout) | **POST** /dashboard_layouts | Create DashboardLayout
 [**dashboard**](DashboardApi.md#dashboard) | **GET** /dashboards/{dashboard_id} | Get Dashboard
+[**dashboardAggregateTableLookml**](DashboardApi.md#dashboardAggregateTableLookml) | **GET** /dashboards/aggregate_table_lookml/{dashboard_id} | Get Aggregate Table LookML for a dashboard
 [**dashboardDashboardElements**](DashboardApi.md#dashboardDashboardElements) | **GET** /dashboards/{dashboard_id}/dashboard_elements | Get All DashboardElements
 [**dashboardDashboardFilters**](DashboardApi.md#dashboardDashboardFilters) | **GET** /dashboards/{dashboard_id}/dashboard_filters | Get All Dashboard Filters
 [**dashboardDashboardLayouts**](DashboardApi.md#dashboardDashboardLayouts) | **GET** /dashboards/{dashboard_id}/dashboard_layouts | Get All DashboardLayouts
@@ -18,11 +21,14 @@ Method | HTTP request | Description
 [**dashboardLayout**](DashboardApi.md#dashboardLayout) | **GET** /dashboard_layouts/{dashboard_layout_id} | Get DashboardLayout
 [**dashboardLayoutComponent**](DashboardApi.md#dashboardLayoutComponent) | **GET** /dashboard_layout_components/{dashboard_layout_component_id} | Get DashboardLayoutComponent
 [**dashboardLayoutDashboardLayoutComponents**](DashboardApi.md#dashboardLayoutDashboardLayoutComponents) | **GET** /dashboard_layouts/{dashboard_layout_id}/dashboard_layout_components | Get All DashboardLayoutComponents
+[**dashboardLookml**](DashboardApi.md#dashboardLookml) | **GET** /dashboards/lookml/{dashboard_id} | Get lookml of a UDD
 [**deleteDashboard**](DashboardApi.md#deleteDashboard) | **DELETE** /dashboards/{dashboard_id} | Delete Dashboard
 [**deleteDashboardElement**](DashboardApi.md#deleteDashboardElement) | **DELETE** /dashboard_elements/{dashboard_element_id} | Delete DashboardElement
 [**deleteDashboardFilter**](DashboardApi.md#deleteDashboardFilter) | **DELETE** /dashboard_filters/{dashboard_filter_id} | Delete Dashboard Filter
 [**deleteDashboardLayout**](DashboardApi.md#deleteDashboardLayout) | **DELETE** /dashboard_layouts/{dashboard_layout_id} | Delete DashboardLayout
+[**importDashboardFromLookml**](DashboardApi.md#importDashboardFromLookml) | **POST** /dashboards/lookml | Import Dashboard from LookML
 [**importLookmlDashboard**](DashboardApi.md#importLookmlDashboard) | **POST** /dashboards/{lookml_dashboard_id}/import/{space_id} | Import LookML Dashboard
+[**moveDashboard**](DashboardApi.md#moveDashboard) | **PATCH** /dashboards/{dashboard_id}/move | Move Dashboard
 [**searchDashboardElements**](DashboardApi.md#searchDashboardElements) | **GET** /dashboard_elements/search | Search Dashboard Elements
 [**searchDashboards**](DashboardApi.md#searchDashboards) | **GET** /dashboards/search | Search Dashboards
 [**syncLookmlDashboard**](DashboardApi.md#syncLookmlDashboard) | **PATCH** /dashboards/{lookml_dashboard_id}/sync | Sync LookML Dashboard
@@ -82,12 +88,63 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **copyDashboard**
+> \Swagger\Client\Model\Dashboard copyDashboard($dashboard_id, $folder_id)
+
+Copy Dashboard
+
+### Copy an existing dashboard  Creates a copy of an existing dashboard, in a specified folder, and returns the copied dashboard.  `dashboard_id` is required, `dashboard_id` and `folder_id` must already exist if specified. `folder_id` will default to the existing folder.  If a dashboard with the same title already exists in the target folder, the copy will have '(copy)'   or '(copy <# of copies>)' appended.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\DashboardApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$dashboard_id = "dashboard_id_example"; // string | Dashboard id to copy.
+$folder_id = "folder_id_example"; // string | Folder id to copy to.
+
+try {
+    $result = $apiInstance->copyDashboard($dashboard_id, $folder_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DashboardApi->copyDashboard: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dashboard_id** | **string**| Dashboard id to copy. |
+ **folder_id** | **string**| Folder id to copy to. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\Dashboard**](../Model/Dashboard.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **createDashboard**
 > \Swagger\Client\Model\Dashboard createDashboard($body)
 
 Create Dashboard
 
-### Create a new dashboard  Creates a new dashboard object and returns the details of the newly created dashboard.  `Title`, `user_id`, and `space_id` are all required fields. `Space_id` and `user_id` must contain the id of an existing space or user, respectively. A dashboard's `title` must be unique within the space in which it resides.  If you receive a 422 error response when creating a dashboard, be sure to look at the response body for information about exactly which fields are missing or contain invalid data.  You can **update** an existing dashboard with [update_dashboard()](#!/Dashboard/update_dashboard)  You can **permanently delete** an existing dashboard with [delete_dashboard()](#!/Dashboard/delete_dashboard)
+### Create a new dashboard  Creates a new dashboard object and returns the details of the newly created dashboard.  `Title` and `space_id` are required fields. `Space_id` must contain the id of an existing space. A dashboard's `title` must be unique within the space in which it resides.  If you receive a 422 error response when creating a dashboard, be sure to look at the response body for information about exactly which fields are missing or contain invalid data.  You can **update** an existing dashboard with [update_dashboard()](#!/Dashboard/update_dashboard)  You can **permanently delete** an existing dashboard with [delete_dashboard()](#!/Dashboard/delete_dashboard)
 
 ### Example
 ```php
@@ -114,7 +171,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\Dashboard**](../Model/Dashboard.md)| Dashboard | [optional]
+ **body** | [**\Swagger\Client\Model\Dashboard**](../Model/Dashboard.md)| Dashboard |
 
 ### Return type
 
@@ -132,7 +189,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createDashboardElement**
-> \Swagger\Client\Model\DashboardElement createDashboardElement($body, $fields)
+> \Swagger\Client\Model\DashboardElement createDashboardElement($body, $fields, $apply_filters)
 
 Create DashboardElement
 
@@ -150,9 +207,10 @@ $apiInstance = new Swagger\Client\Api\DashboardApi(
 );
 $body = new \Swagger\Client\Model\DashboardElement(); // \Swagger\Client\Model\DashboardElement | DashboardElement
 $fields = "fields_example"; // string | Requested fields.
+$apply_filters = true; // bool | Apply relevant filters on dashboard to this tile
 
 try {
-    $result = $apiInstance->createDashboardElement($body, $fields);
+    $result = $apiInstance->createDashboardElement($body, $fields, $apply_filters);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DashboardApi->createDashboardElement: ', $e->getMessage(), PHP_EOL;
@@ -164,8 +222,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\DashboardElement**](../Model/DashboardElement.md)| DashboardElement | [optional]
+ **body** | [**\Swagger\Client\Model\DashboardElement**](../Model/DashboardElement.md)| DashboardElement |
  **fields** | **string**| Requested fields. | [optional]
+ **apply_filters** | **bool**| Apply relevant filters on dashboard to this tile | [optional]
 
 ### Return type
 
@@ -233,6 +292,55 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **createDashboardFromLookml**
+> \Swagger\Client\Model\Dashboard createDashboardFromLookml($body)
+
+Create Dashboard from LookML
+
+# DEPRECATED:  Use [import_dashboard_from_lookml()](#!/Dashboard/import_dashboard_from_lookml)
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\DashboardApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$body = new \Swagger\Client\Model\DashboardLookml(); // \Swagger\Client\Model\DashboardLookml | DashboardLookML
+
+try {
+    $result = $apiInstance->createDashboardFromLookml($body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DashboardApi->createDashboardFromLookml: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**\Swagger\Client\Model\DashboardLookml**](../Model/DashboardLookml.md)| DashboardLookML |
+
+### Return type
+
+[**\Swagger\Client\Model\Dashboard**](../Model/Dashboard.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **createDashboardLayout**
 > \Swagger\Client\Model\DashboardLayout createDashboardLayout($body, $fields)
 
@@ -266,7 +374,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\DashboardLayout**](../Model/DashboardLayout.md)| DashboardLayout | [optional]
+ **body** | [**\Swagger\Client\Model\DashboardLayout**](../Model/DashboardLayout.md)| DashboardLayout |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -323,6 +431,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Swagger\Client\Model\Dashboard**](../Model/Dashboard.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **dashboardAggregateTableLookml**
+> \Swagger\Client\Model\DashboardAggregateTableLookml dashboardAggregateTableLookml($dashboard_id)
+
+Get Aggregate Table LookML for a dashboard
+
+### Get Aggregate Table LookML for Each Query on a Dahboard  Returns a JSON object that contains the dashboard id and Aggregate Table lookml
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\DashboardApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$dashboard_id = "dashboard_id_example"; // string | Id of dashboard
+
+try {
+    $result = $apiInstance->dashboardAggregateTableLookml($dashboard_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DashboardApi->dashboardAggregateTableLookml: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dashboard_id** | **string**| Id of dashboard |
+
+### Return type
+
+[**\Swagger\Client\Model\DashboardAggregateTableLookml**](../Model/DashboardAggregateTableLookml.md)
 
 ### Authorization
 
@@ -743,6 +900,55 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **dashboardLookml**
+> \Swagger\Client\Model\DashboardLookml dashboardLookml($dashboard_id)
+
+Get lookml of a UDD
+
+### Get lookml of a UDD  Returns a JSON object that contains the dashboard id and the full lookml
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\DashboardApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$dashboard_id = "dashboard_id_example"; // string | Id of dashboard
+
+try {
+    $result = $apiInstance->dashboardLookml($dashboard_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DashboardApi->dashboardLookml: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dashboard_id** | **string**| Id of dashboard |
+
+### Return type
+
+[**\Swagger\Client\Model\DashboardLookml**](../Model/DashboardLookml.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **deleteDashboard**
 > string deleteDashboard($dashboard_id)
 
@@ -939,12 +1145,61 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **importDashboardFromLookml**
+> \Swagger\Client\Model\Dashboard importDashboardFromLookml($body)
+
+Import Dashboard from LookML
+
+### Creates a dashboard object based on LookML Dashboard YAML, and returns the details of the newly created dashboard.  If a dashboard exists with the YAML-defined \"preferred_slug\", the new dashboard will overwrite it. Otherwise, a new dashboard will be created. Note that when a dashboard is overwritten, alerts will not be maintained.  If a folder_id is specified: new dashboards will be placed in that folder, and overwritten dashboards will be moved to it If the folder_id isn't specified: new dashboards will be placed in the caller's personal folder, and overwritten dashboards will remain where they were  LookML must contain valid LookML YAML code. It's recommended to use the LookML format returned from [dashboard_lookml()](#!/Dashboard/dashboard_lookml) as the input LookML (newlines replaced with  ).  Note that the created dashboard is not linked to any LookML Dashboard, i.e. [sync_lookml_dashboard()](#!/Dashboard/sync_lookml_dashboard) will not update dashboards created by this method.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\DashboardApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$body = new \Swagger\Client\Model\DashboardLookml(); // \Swagger\Client\Model\DashboardLookml | DashboardLookML
+
+try {
+    $result = $apiInstance->importDashboardFromLookml($body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DashboardApi->importDashboardFromLookml: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**\Swagger\Client\Model\DashboardLookml**](../Model/DashboardLookml.md)| DashboardLookML |
+
+### Return type
+
+[**\Swagger\Client\Model\Dashboard**](../Model/Dashboard.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **importLookmlDashboard**
 > \Swagger\Client\Model\Dashboard importLookmlDashboard($lookml_dashboard_id, $space_id, $body, $raw_locale)
 
 Import LookML Dashboard
 
-### Import a LookML dashboard to a space as a UDD Creates a UDD (a dashboard which exists in the Looker database rather than as a LookML file) from the LookML dashboard and puts it in the space specified. The created UDD will have a lookml_link_id which links to the original LookML dashboard.  To give the imported dashboard specify a (e.g. title: \"my title\") in the body of your request, otherwise the imported dashboard will have the same title as the original LookML dashboard.  For this operation to succeed the user must have permission to see the LookML dashboard in question, and have permission to create content in the space the dashboard is being imported to.  **Sync** a linked UDD with [sync_lookml_dashboard()](#!/Dashboard/sync_lookml_dashboard) **Unlink** a linked UDD by setting lookml_link_id to null with [update_dashboard()](#!/Dashboard/update_dashboard)
+### Import a LookML dashboard to a space as a UDD Creates a UDD (a dashboard which exists in the Looker database rather than as a LookML file) from the LookML dashboard and places it in the space specified. The created UDD will have a lookml_link_id which links to the original LookML dashboard.  To give the imported dashboard specify a (e.g. title: \"my title\") in the body of your request, otherwise the imported dashboard will have the same title as the original LookML dashboard.  For this operation to succeed the user must have permission to see the LookML dashboard in question, and have permission to create content in the space the dashboard is being imported to.  **Sync** a linked UDD with [sync_lookml_dashboard()](#!/Dashboard/sync_lookml_dashboard) **Unlink** a linked UDD by setting lookml_link_id to null with [update_dashboard()](#!/Dashboard/update_dashboard)
 
 ### Example
 ```php
@@ -994,6 +1249,57 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **moveDashboard**
+> \Swagger\Client\Model\Dashboard moveDashboard($dashboard_id, $folder_id)
+
+Move Dashboard
+
+### Move an existing dashboard  Moves a dashboard to a specified folder, and returns the moved dashboard.  `dashboard_id` and `folder_id` are required. `dashboard_id` and `folder_id` must already exist, and `folder_id` must be different from the current `folder_id` of the dashboard.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\DashboardApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$dashboard_id = "dashboard_id_example"; // string | Dashboard id to move.
+$folder_id = "folder_id_example"; // string | Folder id to move to.
+
+try {
+    $result = $apiInstance->moveDashboard($dashboard_id, $folder_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DashboardApi->moveDashboard: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **dashboard_id** | **string**| Dashboard id to move. |
+ **folder_id** | **string**| Folder id to move to. |
+
+### Return type
+
+[**\Swagger\Client\Model\Dashboard**](../Model/Dashboard.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **searchDashboardElements**
 > \Swagger\Client\Model\DashboardElement[] searchDashboardElements($dashboard_id, $look_id, $title, $deleted, $fields, $filter_or, $sorts)
 
@@ -1011,8 +1317,8 @@ $apiInstance = new Swagger\Client\Api\DashboardApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$dashboard_id = 789; // int | Select elements that refer to a given dashboard id
-$look_id = 789; // int | Select elements that refer to a given look id
+$dashboard_id = "dashboard_id_example"; // string | Select elements that refer to a given dashboard id
+$look_id = "look_id_example"; // string | Select elements that refer to a given look id
 $title = "title_example"; // string | Match the title of element
 $deleted = true; // bool | Select soft-deleted dashboard elements
 $fields = "fields_example"; // string | Requested fields.
@@ -1032,8 +1338,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **dashboard_id** | **int**| Select elements that refer to a given dashboard id | [optional]
- **look_id** | **int**| Select elements that refer to a given look id | [optional]
+ **dashboard_id** | **string**| Select elements that refer to a given dashboard id | [optional]
+ **look_id** | **string**| Select elements that refer to a given look id | [optional]
  **title** | **string**| Match the title of element | [optional]
  **deleted** | **bool**| Select soft-deleted dashboard elements | [optional]
  **fields** | **string**| Requested fields. | [optional]
@@ -1056,11 +1362,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **searchDashboards**
-> \Swagger\Client\Model\Dashboard[] searchDashboards($id, $slug, $title, $description, $content_favorite_id, $space_id, $deleted, $user_id, $view_count, $content_metadata_id, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or)
+> \Swagger\Client\Model\Dashboard[] searchDashboards($id, $slug, $title, $description, $content_favorite_id, $folder_id, $deleted, $user_id, $view_count, $content_metadata_id, $curate, $last_viewed_at, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or)
 
 Search Dashboards
 
-### Search Dashboards  Returns an **array of dashboard objects** that match the specified search criteria.  If multiple search params are given and `filter_or` is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If `filter_or` is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain `%` and '_' as SQL LIKE pattern match wildcard expressions. example=\"dan%\" will match \"danger\" and \"Danzig\" but not \"David\" example=\"D_m%\" will match \"Damage\" and \"dump\"  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \"IS NULL\" and \"NOT NULL\" as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \"true\" and \"false\" as values.   The parameters `limit`, and `offset` are recommended for fetching results in page-size chunks.  Get a **single dashboard** by id with [dashboard()](#!/Dashboard/dashboard)
+### Search Dashboards  Returns an array of **user-defined dashboard** objects that match the specified search criteria. Note, [search_dashboards()](#!/Dashboard/search_dashboards) does not return LookML dashboard objects.  If multiple search params are given and `filter_or` is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If `filter_or` is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain `%` and '_' as SQL LIKE pattern match wildcard expressions. example=\"dan%\" will match \"danger\" and \"Danzig\" but not \"David\" example=\"D_m%\" will match \"Damage\" and \"dump\"  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \"IS NULL\" and \"NOT NULL\" as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \"true\" and \"false\" as values.   The parameters `limit`, and `offset` are recommended for fetching results in page-size chunks.  Get a **single dashboard** by id with [dashboard()](#!/Dashboard/dashboard)
 
 ### Example
 ```php
@@ -1072,26 +1378,28 @@ $apiInstance = new Swagger\Client\Api\DashboardApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$id = 789; // int | Match dashboard id.
+$id = "id_example"; // string | Match dashboard id.
 $slug = "slug_example"; // string | Match dashboard slug.
 $title = "title_example"; // string | Match Dashboard title.
 $description = "description_example"; // string | Match Dashboard description.
-$content_favorite_id = 789; // int | Filter on a content favorite id.
-$space_id = "space_id_example"; // string | Filter on a particular space.
+$content_favorite_id = "content_favorite_id_example"; // string | Filter on a content favorite id.
+$folder_id = "folder_id_example"; // string | Filter on a particular space.
 $deleted = "deleted_example"; // string | Filter on dashboards deleted status.
 $user_id = "user_id_example"; // string | Filter on dashboards created by a particular user.
 $view_count = "view_count_example"; // string | Filter on a particular value of view_count
-$content_metadata_id = 789; // int | Filter on a content favorite id.
+$content_metadata_id = "content_metadata_id_example"; // string | Filter on a content favorite id.
+$curate = true; // bool | Exclude items that exist only in personal spaces other than the users
+$last_viewed_at = "last_viewed_at_example"; // string | Select dashboards based on when they were last viewed
 $fields = "fields_example"; // string | Requested fields.
-$page = 789; // int | Requested page.
-$per_page = 789; // int | Results per page.
+$page = 789; // int | DEPRECATED. Use limit and offset instead. Return only page N of paginated results
+$per_page = 789; // int | DEPRECATED. Use limit and offset instead. Return N rows of data per page
 $limit = 789; // int | Number of results to return. (used with offset and takes priority over page and per_page)
 $offset = 789; // int | Number of results to skip before returning any. (used with limit and takes priority over page and per_page)
-$sorts = "sorts_example"; // string | One or more fields to sort by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :view_count, :favorite_count, :slug, :content_favorite_id, :content_metadata_id, :deleted, :deleted_at, :last_viewed_at]
+$sorts = "sorts_example"; // string | One or more fields to sort by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :folder_id, :description, :view_count, :favorite_count, :slug, :content_favorite_id, :content_metadata_id, :deleted, :deleted_at, :last_viewed_at, :last_accessed_at]
 $filter_or = true; // bool | Combine given search criteria in a boolean OR expression
 
 try {
-    $result = $apiInstance->searchDashboards($id, $slug, $title, $description, $content_favorite_id, $space_id, $deleted, $user_id, $view_count, $content_metadata_id, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
+    $result = $apiInstance->searchDashboards($id, $slug, $title, $description, $content_favorite_id, $folder_id, $deleted, $user_id, $view_count, $content_metadata_id, $curate, $last_viewed_at, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DashboardApi->searchDashboards: ', $e->getMessage(), PHP_EOL;
@@ -1103,22 +1411,24 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Match dashboard id. | [optional]
+ **id** | **string**| Match dashboard id. | [optional]
  **slug** | **string**| Match dashboard slug. | [optional]
  **title** | **string**| Match Dashboard title. | [optional]
  **description** | **string**| Match Dashboard description. | [optional]
- **content_favorite_id** | **int**| Filter on a content favorite id. | [optional]
- **space_id** | **string**| Filter on a particular space. | [optional]
+ **content_favorite_id** | **string**| Filter on a content favorite id. | [optional]
+ **folder_id** | **string**| Filter on a particular space. | [optional]
  **deleted** | **string**| Filter on dashboards deleted status. | [optional]
  **user_id** | **string**| Filter on dashboards created by a particular user. | [optional]
  **view_count** | **string**| Filter on a particular value of view_count | [optional]
- **content_metadata_id** | **int**| Filter on a content favorite id. | [optional]
+ **content_metadata_id** | **string**| Filter on a content favorite id. | [optional]
+ **curate** | **bool**| Exclude items that exist only in personal spaces other than the users | [optional]
+ **last_viewed_at** | **string**| Select dashboards based on when they were last viewed | [optional]
  **fields** | **string**| Requested fields. | [optional]
- **page** | **int**| Requested page. | [optional]
- **per_page** | **int**| Results per page. | [optional]
+ **page** | **int**| DEPRECATED. Use limit and offset instead. Return only page N of paginated results | [optional]
+ **per_page** | **int**| DEPRECATED. Use limit and offset instead. Return N rows of data per page | [optional]
  **limit** | **int**| Number of results to return. (used with offset and takes priority over page and per_page) | [optional]
  **offset** | **int**| Number of results to skip before returning any. (used with limit and takes priority over page and per_page) | [optional]
- **sorts** | **string**| One or more fields to sort by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :view_count, :favorite_count, :slug, :content_favorite_id, :content_metadata_id, :deleted, :deleted_at, :last_viewed_at] | [optional]
+ **sorts** | **string**| One or more fields to sort by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :folder_id, :description, :view_count, :favorite_count, :slug, :content_favorite_id, :content_metadata_id, :deleted, :deleted_at, :last_viewed_at, :last_accessed_at] | [optional]
  **filter_or** | **bool**| Combine given search criteria in a boolean OR expression | [optional]
 
 ### Return type

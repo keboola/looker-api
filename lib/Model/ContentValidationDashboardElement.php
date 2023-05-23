@@ -11,12 +11,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -57,20 +57,22 @@ class ContentValidationDashboardElement implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'string',
+        'body_text' => 'string',
         'dashboard_id' => 'string',
+        'id' => 'string',
         'look_id' => 'string',
-        'query_id' => 'int',
-        'type' => 'string',
-        'note_text' => 'string',
-        'note_text_as_html' => 'string',
         'note_display' => 'string',
         'note_state' => 'string',
+        'note_text' => 'string',
+        'note_text_as_html' => 'string',
+        'query_id' => 'string',
+        'subtitle_text' => 'string',
+        'title' => 'string',
         'title_hidden' => 'bool',
         'title_text' => 'string',
-        'title' => 'string',
-        'subtitle_text' => 'string',
-        'body_text' => 'string'
+        'type' => 'string',
+        'rich_content_json' => 'string',
+        'extension_id' => 'string'
     ];
 
     /**
@@ -79,20 +81,22 @@ class ContentValidationDashboardElement implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => null,
+        'body_text' => null,
         'dashboard_id' => null,
+        'id' => null,
         'look_id' => null,
-        'query_id' => 'int64',
-        'type' => null,
-        'note_text' => null,
-        'note_text_as_html' => null,
         'note_display' => null,
         'note_state' => null,
+        'note_text' => null,
+        'note_text_as_html' => null,
+        'query_id' => null,
+        'subtitle_text' => null,
+        'title' => null,
         'title_hidden' => null,
         'title_text' => null,
-        'title' => null,
-        'subtitle_text' => null,
-        'body_text' => null
+        'type' => null,
+        'rich_content_json' => null,
+        'extension_id' => null
     ];
 
     /**
@@ -122,20 +126,22 @@ class ContentValidationDashboardElement implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
+        'body_text' => 'body_text',
         'dashboard_id' => 'dashboard_id',
+        'id' => 'id',
         'look_id' => 'look_id',
-        'query_id' => 'query_id',
-        'type' => 'type',
-        'note_text' => 'note_text',
-        'note_text_as_html' => 'note_text_as_html',
         'note_display' => 'note_display',
         'note_state' => 'note_state',
+        'note_text' => 'note_text',
+        'note_text_as_html' => 'note_text_as_html',
+        'query_id' => 'query_id',
+        'subtitle_text' => 'subtitle_text',
+        'title' => 'title',
         'title_hidden' => 'title_hidden',
         'title_text' => 'title_text',
-        'title' => 'title',
-        'subtitle_text' => 'subtitle_text',
-        'body_text' => 'body_text'
+        'type' => 'type',
+        'rich_content_json' => 'rich_content_json',
+        'extension_id' => 'extension_id'
     ];
 
     /**
@@ -144,20 +150,22 @@ class ContentValidationDashboardElement implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
+        'body_text' => 'setBodyText',
         'dashboard_id' => 'setDashboardId',
+        'id' => 'setId',
         'look_id' => 'setLookId',
-        'query_id' => 'setQueryId',
-        'type' => 'setType',
-        'note_text' => 'setNoteText',
-        'note_text_as_html' => 'setNoteTextAsHtml',
         'note_display' => 'setNoteDisplay',
         'note_state' => 'setNoteState',
+        'note_text' => 'setNoteText',
+        'note_text_as_html' => 'setNoteTextAsHtml',
+        'query_id' => 'setQueryId',
+        'subtitle_text' => 'setSubtitleText',
+        'title' => 'setTitle',
         'title_hidden' => 'setTitleHidden',
         'title_text' => 'setTitleText',
-        'title' => 'setTitle',
-        'subtitle_text' => 'setSubtitleText',
-        'body_text' => 'setBodyText'
+        'type' => 'setType',
+        'rich_content_json' => 'setRichContentJson',
+        'extension_id' => 'setExtensionId'
     ];
 
     /**
@@ -166,20 +174,22 @@ class ContentValidationDashboardElement implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
+        'body_text' => 'getBodyText',
         'dashboard_id' => 'getDashboardId',
+        'id' => 'getId',
         'look_id' => 'getLookId',
-        'query_id' => 'getQueryId',
-        'type' => 'getType',
-        'note_text' => 'getNoteText',
-        'note_text_as_html' => 'getNoteTextAsHtml',
         'note_display' => 'getNoteDisplay',
         'note_state' => 'getNoteState',
+        'note_text' => 'getNoteText',
+        'note_text_as_html' => 'getNoteTextAsHtml',
+        'query_id' => 'getQueryId',
+        'subtitle_text' => 'getSubtitleText',
+        'title' => 'getTitle',
         'title_hidden' => 'getTitleHidden',
         'title_text' => 'getTitleText',
-        'title' => 'getTitle',
-        'subtitle_text' => 'getSubtitleText',
-        'body_text' => 'getBodyText'
+        'type' => 'getType',
+        'rich_content_json' => 'getRichContentJson',
+        'extension_id' => 'getExtensionId'
     ];
 
     /**
@@ -242,20 +252,22 @@ class ContentValidationDashboardElement implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
+        $this->container['body_text'] = isset($data['body_text']) ? $data['body_text'] : null;
         $this->container['dashboard_id'] = isset($data['dashboard_id']) ? $data['dashboard_id'] : null;
+        $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['look_id'] = isset($data['look_id']) ? $data['look_id'] : null;
-        $this->container['query_id'] = isset($data['query_id']) ? $data['query_id'] : null;
-        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
-        $this->container['note_text'] = isset($data['note_text']) ? $data['note_text'] : null;
-        $this->container['note_text_as_html'] = isset($data['note_text_as_html']) ? $data['note_text_as_html'] : null;
         $this->container['note_display'] = isset($data['note_display']) ? $data['note_display'] : null;
         $this->container['note_state'] = isset($data['note_state']) ? $data['note_state'] : null;
+        $this->container['note_text'] = isset($data['note_text']) ? $data['note_text'] : null;
+        $this->container['note_text_as_html'] = isset($data['note_text_as_html']) ? $data['note_text_as_html'] : null;
+        $this->container['query_id'] = isset($data['query_id']) ? $data['query_id'] : null;
+        $this->container['subtitle_text'] = isset($data['subtitle_text']) ? $data['subtitle_text'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
         $this->container['title_hidden'] = isset($data['title_hidden']) ? $data['title_hidden'] : null;
         $this->container['title_text'] = isset($data['title_text']) ? $data['title_text'] : null;
-        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
-        $this->container['subtitle_text'] = isset($data['subtitle_text']) ? $data['subtitle_text'] : null;
-        $this->container['body_text'] = isset($data['body_text']) ? $data['body_text'] : null;
+        $this->container['type'] = isset($data['type']) ? $data['type'] : null;
+        $this->container['rich_content_json'] = isset($data['rich_content_json']) ? $data['rich_content_json'] : null;
+        $this->container['extension_id'] = isset($data['extension_id']) ? $data['extension_id'] : null;
     }
 
     /**
@@ -283,25 +295,25 @@ class ContentValidationDashboardElement implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets id
+     * Gets body_text
      *
      * @return string
      */
-    public function getId()
+    public function getBodyText()
     {
-        return $this->container['id'];
+        return $this->container['body_text'];
     }
 
     /**
-     * Sets id
+     * Sets body_text
      *
-     * @param string $id Unique Id
+     * @param string $body_text Text tile body text
      *
      * @return $this
      */
-    public function setId($id)
+    public function setBodyText($body_text)
     {
-        $this->container['id'] = $id;
+        $this->container['body_text'] = $body_text;
 
         return $this;
     }
@@ -331,6 +343,30 @@ class ContentValidationDashboardElement implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['id'];
+    }
+
+    /**
+     * Sets id
+     *
+     * @param string $id Unique Id
+     *
+     * @return $this
+     */
+    public function setId($id)
+    {
+        $this->container['id'] = $id;
+
+        return $this;
+    }
+
+    /**
      * Gets look_id
      *
      * @return string
@@ -350,102 +386,6 @@ class ContentValidationDashboardElement implements ModelInterface, ArrayAccess
     public function setLookId($look_id)
     {
         $this->container['look_id'] = $look_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets query_id
-     *
-     * @return int
-     */
-    public function getQueryId()
-    {
-        return $this->container['query_id'];
-    }
-
-    /**
-     * Sets query_id
-     *
-     * @param int $query_id Id Of Query
-     *
-     * @return $this
-     */
-    public function setQueryId($query_id)
-    {
-        $this->container['query_id'] = $query_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets type
-     *
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->container['type'];
-    }
-
-    /**
-     * Sets type
-     *
-     * @param string $type Type
-     *
-     * @return $this
-     */
-    public function setType($type)
-    {
-        $this->container['type'] = $type;
-
-        return $this;
-    }
-
-    /**
-     * Gets note_text
-     *
-     * @return string
-     */
-    public function getNoteText()
-    {
-        return $this->container['note_text'];
-    }
-
-    /**
-     * Sets note_text
-     *
-     * @param string $note_text Note Text
-     *
-     * @return $this
-     */
-    public function setNoteText($note_text)
-    {
-        $this->container['note_text'] = $note_text;
-
-        return $this;
-    }
-
-    /**
-     * Gets note_text_as_html
-     *
-     * @return string
-     */
-    public function getNoteTextAsHtml()
-    {
-        return $this->container['note_text_as_html'];
-    }
-
-    /**
-     * Sets note_text_as_html
-     *
-     * @param string $note_text_as_html Note Text as Html
-     *
-     * @return $this
-     */
-    public function setNoteTextAsHtml($note_text_as_html)
-    {
-        $this->container['note_text_as_html'] = $note_text_as_html;
 
         return $this;
     }
@@ -499,6 +439,126 @@ class ContentValidationDashboardElement implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets note_text
+     *
+     * @return string
+     */
+    public function getNoteText()
+    {
+        return $this->container['note_text'];
+    }
+
+    /**
+     * Sets note_text
+     *
+     * @param string $note_text Note Text
+     *
+     * @return $this
+     */
+    public function setNoteText($note_text)
+    {
+        $this->container['note_text'] = $note_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets note_text_as_html
+     *
+     * @return string
+     */
+    public function getNoteTextAsHtml()
+    {
+        return $this->container['note_text_as_html'];
+    }
+
+    /**
+     * Sets note_text_as_html
+     *
+     * @param string $note_text_as_html Note Text as Html
+     *
+     * @return $this
+     */
+    public function setNoteTextAsHtml($note_text_as_html)
+    {
+        $this->container['note_text_as_html'] = $note_text_as_html;
+
+        return $this;
+    }
+
+    /**
+     * Gets query_id
+     *
+     * @return string
+     */
+    public function getQueryId()
+    {
+        return $this->container['query_id'];
+    }
+
+    /**
+     * Sets query_id
+     *
+     * @param string $query_id Id Of Query
+     *
+     * @return $this
+     */
+    public function setQueryId($query_id)
+    {
+        $this->container['query_id'] = $query_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets subtitle_text
+     *
+     * @return string
+     */
+    public function getSubtitleText()
+    {
+        return $this->container['subtitle_text'];
+    }
+
+    /**
+     * Sets subtitle_text
+     *
+     * @param string $subtitle_text Text tile subtitle text
+     *
+     * @return $this
+     */
+    public function setSubtitleText($subtitle_text)
+    {
+        $this->container['subtitle_text'] = $subtitle_text;
+
+        return $this;
+    }
+
+    /**
+     * Gets title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string $title Title of dashboard element
+     *
+     * @return $this
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
      * Gets title_hidden
      *
      * @return bool
@@ -547,73 +607,73 @@ class ContentValidationDashboardElement implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets title
+     * Gets type
      *
      * @return string
      */
-    public function getTitle()
+    public function getType()
     {
-        return $this->container['title'];
+        return $this->container['type'];
     }
 
     /**
-     * Sets title
+     * Sets type
      *
-     * @param string $title Title of dashboard element
+     * @param string $type Type
      *
      * @return $this
      */
-    public function setTitle($title)
+    public function setType($type)
     {
-        $this->container['title'] = $title;
+        $this->container['type'] = $type;
 
         return $this;
     }
 
     /**
-     * Gets subtitle_text
+     * Gets rich_content_json
      *
      * @return string
      */
-    public function getSubtitleText()
+    public function getRichContentJson()
     {
-        return $this->container['subtitle_text'];
+        return $this->container['rich_content_json'];
     }
 
     /**
-     * Sets subtitle_text
+     * Sets rich_content_json
      *
-     * @param string $subtitle_text Text tile subtitle text
+     * @param string $rich_content_json JSON with all the properties required for rich editor and buttons elements
      *
      * @return $this
      */
-    public function setSubtitleText($subtitle_text)
+    public function setRichContentJson($rich_content_json)
     {
-        $this->container['subtitle_text'] = $subtitle_text;
+        $this->container['rich_content_json'] = $rich_content_json;
 
         return $this;
     }
 
     /**
-     * Gets body_text
+     * Gets extension_id
      *
      * @return string
      */
-    public function getBodyText()
+    public function getExtensionId()
     {
-        return $this->container['body_text'];
+        return $this->container['extension_id'];
     }
 
     /**
-     * Sets body_text
+     * Sets extension_id
      *
-     * @param string $body_text Text tile body text
+     * @param string $extension_id Extension ID
      *
      * @return $this
      */
-    public function setBodyText($body_text)
+    public function setExtensionId($extension_id)
     {
-        $this->container['body_text'] = $body_text;
+        $this->container['extension_id'] = $extension_id;
 
         return $this;
     }

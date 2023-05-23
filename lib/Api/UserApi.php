@@ -10,12 +10,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -90,9 +90,9 @@ class UserApi
     /**
      * Operation allUserCredentialsApi3s
      *
-     * Get All API 3 Credentials
+     * Get All API Credentials
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -108,9 +108,9 @@ class UserApi
     /**
      * Operation allUserCredentialsApi3sWithHttpInfo
      *
-     * Get All API 3 Credentials
+     * Get All API Credentials
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -184,6 +184,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -200,9 +208,9 @@ class UserApi
     /**
      * Operation allUserCredentialsApi3sAsync
      *
-     * Get All API 3 Credentials
+     * Get All API Credentials
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -221,9 +229,9 @@ class UserApi
     /**
      * Operation allUserCredentialsApi3sAsyncWithHttpInfo
      *
-     * Get All API 3 Credentials
+     * Get All API Credentials
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -274,7 +282,7 @@ class UserApi
     /**
      * Create request for operation 'allUserCredentialsApi3s'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -379,7 +387,7 @@ class UserApi
      *
      * Get All Embedding Credentials
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -397,7 +405,7 @@ class UserApi
      *
      * Get All Embedding Credentials
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -471,6 +479,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -489,7 +505,7 @@ class UserApi
      *
      * Get All Embedding Credentials
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -510,7 +526,7 @@ class UserApi
      *
      * Get All Embedding Credentials
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -561,7 +577,7 @@ class UserApi
     /**
      * Create request for operation 'allUserCredentialsEmbeds'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -666,7 +682,7 @@ class UserApi
      *
      * Get All Web Login Sessions
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -684,7 +700,7 @@ class UserApi
      *
      * Get All Web Login Sessions
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -758,6 +774,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -776,7 +800,7 @@ class UserApi
      *
      * Get All Web Login Sessions
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -797,7 +821,7 @@ class UserApi
      *
      * Get All Web Login Sessions
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -848,7 +872,7 @@ class UserApi
     /**
      * Create request for operation 'allUserSessions'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -954,18 +978,20 @@ class UserApi
      * Get All Users
      *
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
-     * @param  int[] $ids Optional list of ids to get specific users. (optional)
+     * @param  string[] $ids Optional list of ids to get specific users. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\User[]
      */
-    public function allUsers($fields = null, $page = null, $per_page = null, $sorts = null, $ids = null)
+    public function allUsers($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $ids = null)
     {
-        list($response) = $this->allUsersWithHttpInfo($fields, $page, $per_page, $sorts, $ids);
+        list($response) = $this->allUsersWithHttpInfo($fields, $page, $per_page, $limit, $offset, $sorts, $ids);
         return $response;
     }
 
@@ -975,19 +1001,21 @@ class UserApi
      * Get All Users
      *
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
-     * @param  int[] $ids Optional list of ids to get specific users. (optional)
+     * @param  string[] $ids Optional list of ids to get specific users. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\User[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function allUsersWithHttpInfo($fields = null, $page = null, $per_page = null, $sorts = null, $ids = null)
+    public function allUsersWithHttpInfo($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $ids = null)
     {
         $returnType = '\Swagger\Client\Model\User[]';
-        $request = $this->allUsersRequest($fields, $page, $per_page, $sorts, $ids);
+        $request = $this->allUsersRequest($fields, $page, $per_page, $limit, $offset, $sorts, $ids);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1070,17 +1098,19 @@ class UserApi
      * Get All Users
      *
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
-     * @param  int[] $ids Optional list of ids to get specific users. (optional)
+     * @param  string[] $ids Optional list of ids to get specific users. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function allUsersAsync($fields = null, $page = null, $per_page = null, $sorts = null, $ids = null)
+    public function allUsersAsync($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $ids = null)
     {
-        return $this->allUsersAsyncWithHttpInfo($fields, $page, $per_page, $sorts, $ids)
+        return $this->allUsersAsyncWithHttpInfo($fields, $page, $per_page, $limit, $offset, $sorts, $ids)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1094,18 +1124,20 @@ class UserApi
      * Get All Users
      *
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
-     * @param  int[] $ids Optional list of ids to get specific users. (optional)
+     * @param  string[] $ids Optional list of ids to get specific users. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function allUsersAsyncWithHttpInfo($fields = null, $page = null, $per_page = null, $sorts = null, $ids = null)
+    public function allUsersAsyncWithHttpInfo($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $ids = null)
     {
         $returnType = '\Swagger\Client\Model\User[]';
-        $request = $this->allUsersRequest($fields, $page, $per_page, $sorts, $ids);
+        $request = $this->allUsersRequest($fields, $page, $per_page, $limit, $offset, $sorts, $ids);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1148,15 +1180,17 @@ class UserApi
      * Create request for operation 'allUsers'
      *
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
-     * @param  int[] $ids Optional list of ids to get specific users. (optional)
+     * @param  string[] $ids Optional list of ids to get specific users. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function allUsersRequest($fields = null, $page = null, $per_page = null, $sorts = null, $ids = null)
+    protected function allUsersRequest($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $ids = null)
     {
 
         $resourcePath = '/users';
@@ -1177,6 +1211,14 @@ class UserApi
         // query params
         if ($per_page !== null) {
             $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+        // query params
+        if ($offset !== null) {
+            $queryParams['offset'] = ObjectSerializer::toQueryValue($offset);
         }
         // query params
         if ($sorts !== null) {
@@ -1249,6 +1291,279 @@ class UserApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createEmbedUser
+     *
+     * Create an embed user from an external user ID
+     *
+     * @param  \Swagger\Client\Model\CreateEmbedUserRequest $body null (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\UserPublic
+     */
+    public function createEmbedUser($body)
+    {
+        list($response) = $this->createEmbedUserWithHttpInfo($body);
+        return $response;
+    }
+
+    /**
+     * Operation createEmbedUserWithHttpInfo
+     *
+     * Create an embed user from an external user ID
+     *
+     * @param  \Swagger\Client\Model\CreateEmbedUserRequest $body null (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\UserPublic, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createEmbedUserWithHttpInfo($body)
+    {
+        $returnType = '\Swagger\Client\Model\UserPublic';
+        $request = $this->createEmbedUserRequest($body);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\UserPublic',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createEmbedUserAsync
+     *
+     * Create an embed user from an external user ID
+     *
+     * @param  \Swagger\Client\Model\CreateEmbedUserRequest $body null (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createEmbedUserAsync($body)
+    {
+        return $this->createEmbedUserAsyncWithHttpInfo($body)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createEmbedUserAsyncWithHttpInfo
+     *
+     * Create an embed user from an external user ID
+     *
+     * @param  \Swagger\Client\Model\CreateEmbedUserRequest $body null (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createEmbedUserAsyncWithHttpInfo($body)
+    {
+        $returnType = '\Swagger\Client\Model\UserPublic';
+        $request = $this->createEmbedUserRequest($body);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createEmbedUser'
+     *
+     * @param  \Swagger\Client\Model\CreateEmbedUserRequest $body null (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createEmbedUserRequest($body)
+    {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling createEmbedUser'
+            );
+        }
+
+        $resourcePath = '/users/embed_user';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody
@@ -1550,39 +1865,37 @@ class UserApi
     /**
      * Operation createUserCredentialsApi3
      *
-     * Create API 3 Credential
+     * Create API Credential
      *
-     * @param  int $user_id id of user (required)
-     * @param  \Swagger\Client\Model\CredentialsApi3 $body API 3 Credential (optional)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\CredentialsApi3
+     * @return \Swagger\Client\Model\CreateCredentialsApi3
      */
-    public function createUserCredentialsApi3($user_id, $body = null, $fields = null)
+    public function createUserCredentialsApi3($user_id, $fields = null)
     {
-        list($response) = $this->createUserCredentialsApi3WithHttpInfo($user_id, $body, $fields);
+        list($response) = $this->createUserCredentialsApi3WithHttpInfo($user_id, $fields);
         return $response;
     }
 
     /**
      * Operation createUserCredentialsApi3WithHttpInfo
      *
-     * Create API 3 Credential
+     * Create API Credential
      *
-     * @param  int $user_id id of user (required)
-     * @param  \Swagger\Client\Model\CredentialsApi3 $body API 3 Credential (optional)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\CredentialsApi3, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\CreateCredentialsApi3, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createUserCredentialsApi3WithHttpInfo($user_id, $body = null, $fields = null)
+    public function createUserCredentialsApi3WithHttpInfo($user_id, $fields = null)
     {
-        $returnType = '\Swagger\Client\Model\CredentialsApi3';
-        $request = $this->createUserCredentialsApi3Request($user_id, $body, $fields);
+        $returnType = '\Swagger\Client\Model\CreateCredentialsApi3';
+        $request = $this->createUserCredentialsApi3Request($user_id, $fields);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1633,12 +1946,20 @@ class UserApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\CredentialsApi3',
+                        '\Swagger\Client\Model\CreateCredentialsApi3',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
                     break;
                 case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\Error',
@@ -1670,6 +1991,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1678,18 +2007,17 @@ class UserApi
     /**
      * Operation createUserCredentialsApi3Async
      *
-     * Create API 3 Credential
+     * Create API Credential
      *
-     * @param  int $user_id id of user (required)
-     * @param  \Swagger\Client\Model\CredentialsApi3 $body API 3 Credential (optional)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createUserCredentialsApi3Async($user_id, $body = null, $fields = null)
+    public function createUserCredentialsApi3Async($user_id, $fields = null)
     {
-        return $this->createUserCredentialsApi3AsyncWithHttpInfo($user_id, $body, $fields)
+        return $this->createUserCredentialsApi3AsyncWithHttpInfo($user_id, $fields)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1700,19 +2028,18 @@ class UserApi
     /**
      * Operation createUserCredentialsApi3AsyncWithHttpInfo
      *
-     * Create API 3 Credential
+     * Create API Credential
      *
-     * @param  int $user_id id of user (required)
-     * @param  \Swagger\Client\Model\CredentialsApi3 $body API 3 Credential (optional)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createUserCredentialsApi3AsyncWithHttpInfo($user_id, $body = null, $fields = null)
+    public function createUserCredentialsApi3AsyncWithHttpInfo($user_id, $fields = null)
     {
-        $returnType = '\Swagger\Client\Model\CredentialsApi3';
-        $request = $this->createUserCredentialsApi3Request($user_id, $body, $fields);
+        $returnType = '\Swagger\Client\Model\CreateCredentialsApi3';
+        $request = $this->createUserCredentialsApi3Request($user_id, $fields);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1754,14 +2081,13 @@ class UserApi
     /**
      * Create request for operation 'createUserCredentialsApi3'
      *
-     * @param  int $user_id id of user (required)
-     * @param  \Swagger\Client\Model\CredentialsApi3 $body API 3 Credential (optional)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createUserCredentialsApi3Request($user_id, $body = null, $fields = null)
+    protected function createUserCredentialsApi3Request($user_id, $fields = null)
     {
         // verify the required parameter 'user_id' is set
         if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
@@ -1793,9 +2119,6 @@ class UserApi
 
         // body params
         $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
@@ -1863,15 +2186,15 @@ class UserApi
      *
      * Create Email/Password Credential
      *
-     * @param  int $user_id id of user (required)
-     * @param  \Swagger\Client\Model\CredentialsEmail $body Email/Password Credential (optional)
+     * @param  string $user_id Id of user (required)
+     * @param  \Swagger\Client\Model\CredentialsEmail $body Email/Password Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\CredentialsEmail
      */
-    public function createUserCredentialsEmail($user_id, $body = null, $fields = null)
+    public function createUserCredentialsEmail($user_id, $body, $fields = null)
     {
         list($response) = $this->createUserCredentialsEmailWithHttpInfo($user_id, $body, $fields);
         return $response;
@@ -1882,15 +2205,15 @@ class UserApi
      *
      * Create Email/Password Credential
      *
-     * @param  int $user_id id of user (required)
-     * @param  \Swagger\Client\Model\CredentialsEmail $body Email/Password Credential (optional)
+     * @param  string $user_id Id of user (required)
+     * @param  \Swagger\Client\Model\CredentialsEmail $body Email/Password Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\CredentialsEmail, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createUserCredentialsEmailWithHttpInfo($user_id, $body = null, $fields = null)
+    public function createUserCredentialsEmailWithHttpInfo($user_id, $body, $fields = null)
     {
         $returnType = '\Swagger\Client\Model\CredentialsEmail';
         $request = $this->createUserCredentialsEmailRequest($user_id, $body, $fields);
@@ -1957,6 +2280,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -1981,6 +2312,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1991,14 +2330,14 @@ class UserApi
      *
      * Create Email/Password Credential
      *
-     * @param  int $user_id id of user (required)
-     * @param  \Swagger\Client\Model\CredentialsEmail $body Email/Password Credential (optional)
+     * @param  string $user_id Id of user (required)
+     * @param  \Swagger\Client\Model\CredentialsEmail $body Email/Password Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createUserCredentialsEmailAsync($user_id, $body = null, $fields = null)
+    public function createUserCredentialsEmailAsync($user_id, $body, $fields = null)
     {
         return $this->createUserCredentialsEmailAsyncWithHttpInfo($user_id, $body, $fields)
             ->then(
@@ -2013,14 +2352,14 @@ class UserApi
      *
      * Create Email/Password Credential
      *
-     * @param  int $user_id id of user (required)
-     * @param  \Swagger\Client\Model\CredentialsEmail $body Email/Password Credential (optional)
+     * @param  string $user_id Id of user (required)
+     * @param  \Swagger\Client\Model\CredentialsEmail $body Email/Password Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createUserCredentialsEmailAsyncWithHttpInfo($user_id, $body = null, $fields = null)
+    public function createUserCredentialsEmailAsyncWithHttpInfo($user_id, $body, $fields = null)
     {
         $returnType = '\Swagger\Client\Model\CredentialsEmail';
         $request = $this->createUserCredentialsEmailRequest($user_id, $body, $fields);
@@ -2065,19 +2404,25 @@ class UserApi
     /**
      * Create request for operation 'createUserCredentialsEmail'
      *
-     * @param  int $user_id id of user (required)
-     * @param  \Swagger\Client\Model\CredentialsEmail $body Email/Password Credential (optional)
+     * @param  string $user_id Id of user (required)
+     * @param  \Swagger\Client\Model\CredentialsEmail $body Email/Password Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createUserCredentialsEmailRequest($user_id, $body = null, $fields = null)
+    protected function createUserCredentialsEmailRequest($user_id, $body, $fields = null)
     {
         // verify the required parameter 'user_id' is set
         if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $user_id when calling createUserCredentialsEmail'
+            );
+        }
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling createUserCredentialsEmail'
             );
         }
 
@@ -2174,7 +2519,7 @@ class UserApi
      *
      * Create Password Reset Token
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  bool $expires Expiring token. (optional)
      * @param  string $fields Requested fields. (optional)
      *
@@ -2193,7 +2538,7 @@ class UserApi
      *
      * Create Password Reset Token
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  bool $expires Expiring token. (optional)
      * @param  string $fields Requested fields. (optional)
      *
@@ -2268,6 +2613,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2286,7 +2639,7 @@ class UserApi
      *
      * Create Password Reset Token
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  bool $expires Expiring token. (optional)
      * @param  string $fields Requested fields. (optional)
      *
@@ -2308,7 +2661,7 @@ class UserApi
      *
      * Create Password Reset Token
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  bool $expires Expiring token. (optional)
      * @param  string $fields Requested fields. (optional)
      *
@@ -2360,7 +2713,7 @@ class UserApi
     /**
      * Create request for operation 'createUserCredentialsEmailPasswordReset'
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  bool $expires Expiring token. (optional)
      * @param  string $fields Requested fields. (optional)
      *
@@ -2470,7 +2823,7 @@ class UserApi
      *
      * Create Two-Factor Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  \Swagger\Client\Model\CredentialsTotp $body Two-Factor Credential (optional)
      * @param  string $fields Requested fields. (optional)
      *
@@ -2489,7 +2842,7 @@ class UserApi
      *
      * Create Two-Factor Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  \Swagger\Client\Model\CredentialsTotp $body Two-Factor Credential (optional)
      * @param  string $fields Requested fields. (optional)
      *
@@ -2564,6 +2917,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -2588,6 +2949,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -2598,7 +2967,7 @@ class UserApi
      *
      * Create Two-Factor Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  \Swagger\Client\Model\CredentialsTotp $body Two-Factor Credential (optional)
      * @param  string $fields Requested fields. (optional)
      *
@@ -2620,7 +2989,7 @@ class UserApi
      *
      * Create Two-Factor Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  \Swagger\Client\Model\CredentialsTotp $body Two-Factor Credential (optional)
      * @param  string $fields Requested fields. (optional)
      *
@@ -2672,7 +3041,7 @@ class UserApi
     /**
      * Create request for operation 'createUserCredentialsTotp'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  \Swagger\Client\Model\CredentialsTotp $body Two-Factor Credential (optional)
      * @param  string $fields Requested fields. (optional)
      *
@@ -2781,7 +3150,7 @@ class UserApi
      *
      * Delete User
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2798,7 +3167,7 @@ class UserApi
      *
      * Delete User
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2897,7 +3266,7 @@ class UserApi
      *
      * Delete User
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2917,7 +3286,7 @@ class UserApi
      *
      * Delete User
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2967,7 +3336,7 @@ class UserApi
     /**
      * Create request for operation 'deleteUser'
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3067,8 +3436,8 @@ class UserApi
      *
      * Delete User Attribute User Value
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3084,8 +3453,8 @@ class UserApi
      *
      * Delete User Attribute User Value
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3136,6 +3505,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -3154,8 +3531,8 @@ class UserApi
      *
      * Delete User Attribute User Value
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3175,8 +3552,8 @@ class UserApi
      *
      * Delete User Attribute User Value
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3212,8 +3589,8 @@ class UserApi
     /**
      * Create request for operation 'deleteUserAttributeUserValue'
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3325,10 +3702,10 @@ class UserApi
     /**
      * Operation deleteUserCredentialsApi3
      *
-     * Delete API 3 Credential
+     * Delete API Credential
      *
-     * @param  int $user_id id of user (required)
-     * @param  int $credentials_api3_id id of API 3 Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_api3_id Id of API Credential (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3343,10 +3720,10 @@ class UserApi
     /**
      * Operation deleteUserCredentialsApi3WithHttpInfo
      *
-     * Delete API 3 Credential
+     * Delete API Credential
      *
-     * @param  int $user_id id of user (required)
-     * @param  int $credentials_api3_id id of API 3 Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_api3_id Id of API Credential (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3419,7 +3796,23 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\Error',
@@ -3435,10 +3828,10 @@ class UserApi
     /**
      * Operation deleteUserCredentialsApi3Async
      *
-     * Delete API 3 Credential
+     * Delete API Credential
      *
-     * @param  int $user_id id of user (required)
-     * @param  int $credentials_api3_id id of API 3 Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_api3_id Id of API Credential (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3456,10 +3849,10 @@ class UserApi
     /**
      * Operation deleteUserCredentialsApi3AsyncWithHttpInfo
      *
-     * Delete API 3 Credential
+     * Delete API Credential
      *
-     * @param  int $user_id id of user (required)
-     * @param  int $credentials_api3_id id of API 3 Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_api3_id Id of API Credential (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3509,8 +3902,8 @@ class UserApi
     /**
      * Create request for operation 'deleteUserCredentialsApi3'
      *
-     * @param  int $user_id id of user (required)
-     * @param  int $credentials_api3_id id of API 3 Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_api3_id Id of API Credential (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3624,7 +4017,7 @@ class UserApi
      *
      * Delete Email/Password Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3641,7 +4034,7 @@ class UserApi
      *
      * Delete Email/Password Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3714,7 +4107,23 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\Error',
@@ -3732,7 +4141,7 @@ class UserApi
      *
      * Delete Email/Password Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3752,7 +4161,7 @@ class UserApi
      *
      * Delete Email/Password Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3802,7 +4211,7 @@ class UserApi
     /**
      * Create request for operation 'deleteUserCredentialsEmail'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -3902,8 +4311,8 @@ class UserApi
      *
      * Delete Embedding Credential
      *
-     * @param  int $user_id id of user (required)
-     * @param  int $credentials_embed_id id of Embedding Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_embed_id Id of Embedding Credential (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3920,8 +4329,8 @@ class UserApi
      *
      * Delete Embedding Credential
      *
-     * @param  int $user_id id of user (required)
-     * @param  int $credentials_embed_id id of Embedding Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_embed_id Id of Embedding Credential (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3994,7 +4403,23 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\Error',
@@ -4012,8 +4437,8 @@ class UserApi
      *
      * Delete Embedding Credential
      *
-     * @param  int $user_id id of user (required)
-     * @param  int $credentials_embed_id id of Embedding Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_embed_id Id of Embedding Credential (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4033,8 +4458,8 @@ class UserApi
      *
      * Delete Embedding Credential
      *
-     * @param  int $user_id id of user (required)
-     * @param  int $credentials_embed_id id of Embedding Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_embed_id Id of Embedding Credential (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4084,8 +4509,8 @@ class UserApi
     /**
      * Create request for operation 'deleteUserCredentialsEmbed'
      *
-     * @param  int $user_id id of user (required)
-     * @param  int $credentials_embed_id id of Embedding Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_embed_id Id of Embedding Credential (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4199,7 +4624,7 @@ class UserApi
      *
      * Delete Google Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4216,7 +4641,7 @@ class UserApi
      *
      * Delete Google Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4289,7 +4714,23 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\Error',
@@ -4307,7 +4748,7 @@ class UserApi
      *
      * Delete Google Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4327,7 +4768,7 @@ class UserApi
      *
      * Delete Google Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4377,7 +4818,7 @@ class UserApi
     /**
      * Create request for operation 'deleteUserCredentialsGoogle'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4477,7 +4918,7 @@ class UserApi
      *
      * Delete LDAP Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4494,7 +4935,7 @@ class UserApi
      *
      * Delete LDAP Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4567,7 +5008,23 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\Error',
@@ -4585,7 +5042,7 @@ class UserApi
      *
      * Delete LDAP Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4605,7 +5062,7 @@ class UserApi
      *
      * Delete LDAP Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4655,7 +5112,7 @@ class UserApi
     /**
      * Create request for operation 'deleteUserCredentialsLdap'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -4755,7 +5212,7 @@ class UserApi
      *
      * Delete Looker OpenId Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4772,7 +5229,7 @@ class UserApi
      *
      * Delete Looker OpenId Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -4845,7 +5302,23 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\Error',
@@ -4863,7 +5336,7 @@ class UserApi
      *
      * Delete Looker OpenId Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4883,7 +5356,7 @@ class UserApi
      *
      * Delete Looker OpenId Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -4933,7 +5406,7 @@ class UserApi
     /**
      * Create request for operation 'deleteUserCredentialsLookerOpenid'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5033,7 +5506,7 @@ class UserApi
      *
      * Delete OIDC Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5050,7 +5523,7 @@ class UserApi
      *
      * Delete OIDC Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5123,7 +5596,23 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\Error',
@@ -5141,7 +5630,7 @@ class UserApi
      *
      * Delete OIDC Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5161,7 +5650,7 @@ class UserApi
      *
      * Delete OIDC Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5211,7 +5700,7 @@ class UserApi
     /**
      * Create request for operation 'deleteUserCredentialsOidc'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5311,7 +5800,7 @@ class UserApi
      *
      * Delete Saml Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5328,7 +5817,7 @@ class UserApi
      *
      * Delete Saml Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5401,7 +5890,23 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\Error',
@@ -5419,7 +5924,7 @@ class UserApi
      *
      * Delete Saml Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5439,7 +5944,7 @@ class UserApi
      *
      * Delete Saml Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5489,7 +5994,7 @@ class UserApi
     /**
      * Create request for operation 'deleteUserCredentialsSaml'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5589,7 +6094,7 @@ class UserApi
      *
      * Delete Two-Factor Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5606,7 +6111,7 @@ class UserApi
      *
      * Delete Two-Factor Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5679,7 +6184,23 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\Error',
@@ -5697,7 +6218,7 @@ class UserApi
      *
      * Delete Two-Factor Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5717,7 +6238,7 @@ class UserApi
      *
      * Delete Two-Factor Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5767,7 +6288,7 @@ class UserApi
     /**
      * Create request for operation 'deleteUserCredentialsTotp'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -5867,8 +6388,8 @@ class UserApi
      *
      * Delete Web Login Session
      *
-     * @param  int $user_id id of user (required)
-     * @param  int $session_id id of Web Login Session (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $session_id Id of Web Login Session (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5885,8 +6406,8 @@ class UserApi
      *
      * Delete Web Login Session
      *
-     * @param  int $user_id id of user (required)
-     * @param  int $session_id id of Web Login Session (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $session_id Id of Web Login Session (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -5959,7 +6480,23 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\Error',
@@ -5977,8 +6514,8 @@ class UserApi
      *
      * Delete Web Login Session
      *
-     * @param  int $user_id id of user (required)
-     * @param  int $session_id id of Web Login Session (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $session_id Id of Web Login Session (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -5998,8 +6535,8 @@ class UserApi
      *
      * Delete Web Login Session
      *
-     * @param  int $user_id id of user (required)
-     * @param  int $session_id id of Web Login Session (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $session_id Id of Web Login Session (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -6049,8 +6586,8 @@ class UserApi
     /**
      * Create request for operation 'deleteUserSession'
      *
-     * @param  int $user_id id of user (required)
-     * @param  int $session_id id of Web Login Session (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $session_id Id of Web Login Session (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -6420,31 +6957,373 @@ class UserApi
     }
 
     /**
+     * Operation searchCredentialsEmail
+     *
+     * Search CredentialsEmail
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  string $id Match credentials_email id. (optional)
+     * @param  string $email Match credentials_email email. (optional)
+     * @param  string $emails Find credentials_email that match given emails. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\CredentialsEmailSearch[]
+     */
+    public function searchCredentialsEmail($fields = null, $limit = null, $offset = null, $sorts = null, $id = null, $email = null, $emails = null, $filter_or = null)
+    {
+        list($response) = $this->searchCredentialsEmailWithHttpInfo($fields, $limit, $offset, $sorts, $id, $email, $emails, $filter_or);
+        return $response;
+    }
+
+    /**
+     * Operation searchCredentialsEmailWithHttpInfo
+     *
+     * Search CredentialsEmail
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  string $id Match credentials_email id. (optional)
+     * @param  string $email Match credentials_email email. (optional)
+     * @param  string $emails Find credentials_email that match given emails. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\CredentialsEmailSearch[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function searchCredentialsEmailWithHttpInfo($fields = null, $limit = null, $offset = null, $sorts = null, $id = null, $email = null, $emails = null, $filter_or = null)
+    {
+        $returnType = '\Swagger\Client\Model\CredentialsEmailSearch[]';
+        $request = $this->searchCredentialsEmailRequest($fields, $limit, $offset, $sorts, $id, $email, $emails, $filter_or);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\CredentialsEmailSearch[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation searchCredentialsEmailAsync
+     *
+     * Search CredentialsEmail
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  string $id Match credentials_email id. (optional)
+     * @param  string $email Match credentials_email email. (optional)
+     * @param  string $emails Find credentials_email that match given emails. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchCredentialsEmailAsync($fields = null, $limit = null, $offset = null, $sorts = null, $id = null, $email = null, $emails = null, $filter_or = null)
+    {
+        return $this->searchCredentialsEmailAsyncWithHttpInfo($fields, $limit, $offset, $sorts, $id, $email, $emails, $filter_or)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation searchCredentialsEmailAsyncWithHttpInfo
+     *
+     * Search CredentialsEmail
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  string $id Match credentials_email id. (optional)
+     * @param  string $email Match credentials_email email. (optional)
+     * @param  string $emails Find credentials_email that match given emails. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchCredentialsEmailAsyncWithHttpInfo($fields = null, $limit = null, $offset = null, $sorts = null, $id = null, $email = null, $emails = null, $filter_or = null)
+    {
+        $returnType = '\Swagger\Client\Model\CredentialsEmailSearch[]';
+        $request = $this->searchCredentialsEmailRequest($fields, $limit, $offset, $sorts, $id, $email, $emails, $filter_or);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'searchCredentialsEmail'
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  string $id Match credentials_email id. (optional)
+     * @param  string $email Match credentials_email email. (optional)
+     * @param  string $emails Find credentials_email that match given emails. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function searchCredentialsEmailRequest($fields = null, $limit = null, $offset = null, $sorts = null, $id = null, $email = null, $emails = null, $filter_or = null)
+    {
+
+        $resourcePath = '/credentials_email/search';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($fields !== null) {
+            $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+        // query params
+        if ($offset !== null) {
+            $queryParams['offset'] = ObjectSerializer::toQueryValue($offset);
+        }
+        // query params
+        if ($sorts !== null) {
+            $queryParams['sorts'] = ObjectSerializer::toQueryValue($sorts);
+        }
+        // query params
+        if ($id !== null) {
+            $queryParams['id'] = ObjectSerializer::toQueryValue($id);
+        }
+        // query params
+        if ($email !== null) {
+            $queryParams['email'] = ObjectSerializer::toQueryValue($email);
+        }
+        // query params
+        if ($emails !== null) {
+            $queryParams['emails'] = ObjectSerializer::toQueryValue($emails);
+        }
+        // query params
+        if ($filter_or !== null) {
+            $queryParams['filter_or'] = ObjectSerializer::toQueryValue($filter_or);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation searchUsers
      *
      * Search Users
      *
      * @param  string $fields Include only these fields in the response (optional)
-     * @param  int $page Return only page N of paginated results (optional)
-     * @param  int $per_page Return N rows of data per page (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
-     * @param  int $id Match User Id. (optional)
+     * @param  string $id Match User Id. (optional)
      * @param  string $first_name Match First name. (optional)
      * @param  string $last_name Match Last name. (optional)
      * @param  bool $verified_looker_employee Search for user accounts associated with Looker employees (optional)
+     * @param  bool $embed_user Search for only embed users (optional)
      * @param  string $email Search for the user with this email address (optional)
      * @param  bool $is_disabled Search for disabled user accounts (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
-     * @param  int $content_metadata_id Search for users who have access to this content_metadata item (optional)
-     * @param  int $group_id Search for users who are direct members of this group (optional)
+     * @param  string $content_metadata_id Search for users who have access to this content_metadata item (optional)
+     * @param  string $group_id Search for users who are direct members of this group (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\User[]
      */
-    public function searchUsers($fields = null, $page = null, $per_page = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $email = null, $is_disabled = null, $filter_or = null, $content_metadata_id = null, $group_id = null)
+    public function searchUsers($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $embed_user = null, $email = null, $is_disabled = null, $filter_or = null, $content_metadata_id = null, $group_id = null)
     {
-        list($response) = $this->searchUsersWithHttpInfo($fields, $page, $per_page, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $email, $is_disabled, $filter_or, $content_metadata_id, $group_id);
+        list($response) = $this->searchUsersWithHttpInfo($fields, $page, $per_page, $limit, $offset, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $embed_user, $email, $is_disabled, $filter_or, $content_metadata_id, $group_id);
         return $response;
     }
 
@@ -6454,27 +7333,30 @@ class UserApi
      * Search Users
      *
      * @param  string $fields Include only these fields in the response (optional)
-     * @param  int $page Return only page N of paginated results (optional)
-     * @param  int $per_page Return N rows of data per page (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
-     * @param  int $id Match User Id. (optional)
+     * @param  string $id Match User Id. (optional)
      * @param  string $first_name Match First name. (optional)
      * @param  string $last_name Match Last name. (optional)
      * @param  bool $verified_looker_employee Search for user accounts associated with Looker employees (optional)
+     * @param  bool $embed_user Search for only embed users (optional)
      * @param  string $email Search for the user with this email address (optional)
      * @param  bool $is_disabled Search for disabled user accounts (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
-     * @param  int $content_metadata_id Search for users who have access to this content_metadata item (optional)
-     * @param  int $group_id Search for users who are direct members of this group (optional)
+     * @param  string $content_metadata_id Search for users who have access to this content_metadata item (optional)
+     * @param  string $group_id Search for users who are direct members of this group (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\User[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchUsersWithHttpInfo($fields = null, $page = null, $per_page = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $email = null, $is_disabled = null, $filter_or = null, $content_metadata_id = null, $group_id = null)
+    public function searchUsersWithHttpInfo($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $embed_user = null, $email = null, $is_disabled = null, $filter_or = null, $content_metadata_id = null, $group_id = null)
     {
         $returnType = '\Swagger\Client\Model\User[]';
-        $request = $this->searchUsersRequest($fields, $page, $per_page, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $email, $is_disabled, $filter_or, $content_metadata_id, $group_id);
+        $request = $this->searchUsersRequest($fields, $page, $per_page, $limit, $offset, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $embed_user, $email, $is_disabled, $filter_or, $content_metadata_id, $group_id);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6557,25 +7439,28 @@ class UserApi
      * Search Users
      *
      * @param  string $fields Include only these fields in the response (optional)
-     * @param  int $page Return only page N of paginated results (optional)
-     * @param  int $per_page Return N rows of data per page (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
-     * @param  int $id Match User Id. (optional)
+     * @param  string $id Match User Id. (optional)
      * @param  string $first_name Match First name. (optional)
      * @param  string $last_name Match Last name. (optional)
      * @param  bool $verified_looker_employee Search for user accounts associated with Looker employees (optional)
+     * @param  bool $embed_user Search for only embed users (optional)
      * @param  string $email Search for the user with this email address (optional)
      * @param  bool $is_disabled Search for disabled user accounts (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
-     * @param  int $content_metadata_id Search for users who have access to this content_metadata item (optional)
-     * @param  int $group_id Search for users who are direct members of this group (optional)
+     * @param  string $content_metadata_id Search for users who have access to this content_metadata item (optional)
+     * @param  string $group_id Search for users who are direct members of this group (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchUsersAsync($fields = null, $page = null, $per_page = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $email = null, $is_disabled = null, $filter_or = null, $content_metadata_id = null, $group_id = null)
+    public function searchUsersAsync($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $embed_user = null, $email = null, $is_disabled = null, $filter_or = null, $content_metadata_id = null, $group_id = null)
     {
-        return $this->searchUsersAsyncWithHttpInfo($fields, $page, $per_page, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $email, $is_disabled, $filter_or, $content_metadata_id, $group_id)
+        return $this->searchUsersAsyncWithHttpInfo($fields, $page, $per_page, $limit, $offset, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $embed_user, $email, $is_disabled, $filter_or, $content_metadata_id, $group_id)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6589,26 +7474,29 @@ class UserApi
      * Search Users
      *
      * @param  string $fields Include only these fields in the response (optional)
-     * @param  int $page Return only page N of paginated results (optional)
-     * @param  int $per_page Return N rows of data per page (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
-     * @param  int $id Match User Id. (optional)
+     * @param  string $id Match User Id. (optional)
      * @param  string $first_name Match First name. (optional)
      * @param  string $last_name Match Last name. (optional)
      * @param  bool $verified_looker_employee Search for user accounts associated with Looker employees (optional)
+     * @param  bool $embed_user Search for only embed users (optional)
      * @param  string $email Search for the user with this email address (optional)
      * @param  bool $is_disabled Search for disabled user accounts (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
-     * @param  int $content_metadata_id Search for users who have access to this content_metadata item (optional)
-     * @param  int $group_id Search for users who are direct members of this group (optional)
+     * @param  string $content_metadata_id Search for users who have access to this content_metadata item (optional)
+     * @param  string $group_id Search for users who are direct members of this group (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchUsersAsyncWithHttpInfo($fields = null, $page = null, $per_page = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $email = null, $is_disabled = null, $filter_or = null, $content_metadata_id = null, $group_id = null)
+    public function searchUsersAsyncWithHttpInfo($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $embed_user = null, $email = null, $is_disabled = null, $filter_or = null, $content_metadata_id = null, $group_id = null)
     {
         $returnType = '\Swagger\Client\Model\User[]';
-        $request = $this->searchUsersRequest($fields, $page, $per_page, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $email, $is_disabled, $filter_or, $content_metadata_id, $group_id);
+        $request = $this->searchUsersRequest($fields, $page, $per_page, $limit, $offset, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $embed_user, $email, $is_disabled, $filter_or, $content_metadata_id, $group_id);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6651,23 +7539,26 @@ class UserApi
      * Create request for operation 'searchUsers'
      *
      * @param  string $fields Include only these fields in the response (optional)
-     * @param  int $page Return only page N of paginated results (optional)
-     * @param  int $per_page Return N rows of data per page (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
-     * @param  int $id Match User Id. (optional)
+     * @param  string $id Match User Id. (optional)
      * @param  string $first_name Match First name. (optional)
      * @param  string $last_name Match Last name. (optional)
      * @param  bool $verified_looker_employee Search for user accounts associated with Looker employees (optional)
+     * @param  bool $embed_user Search for only embed users (optional)
      * @param  string $email Search for the user with this email address (optional)
      * @param  bool $is_disabled Search for disabled user accounts (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
-     * @param  int $content_metadata_id Search for users who have access to this content_metadata item (optional)
-     * @param  int $group_id Search for users who are direct members of this group (optional)
+     * @param  string $content_metadata_id Search for users who have access to this content_metadata item (optional)
+     * @param  string $group_id Search for users who are direct members of this group (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function searchUsersRequest($fields = null, $page = null, $per_page = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $email = null, $is_disabled = null, $filter_or = null, $content_metadata_id = null, $group_id = null)
+    protected function searchUsersRequest($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $embed_user = null, $email = null, $is_disabled = null, $filter_or = null, $content_metadata_id = null, $group_id = null)
     {
 
         $resourcePath = '/users/search';
@@ -6690,6 +7581,14 @@ class UserApi
             $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
         }
         // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+        // query params
+        if ($offset !== null) {
+            $queryParams['offset'] = ObjectSerializer::toQueryValue($offset);
+        }
+        // query params
         if ($sorts !== null) {
             $queryParams['sorts'] = ObjectSerializer::toQueryValue($sorts);
         }
@@ -6708,6 +7607,10 @@ class UserApi
         // query params
         if ($verified_looker_employee !== null) {
             $queryParams['verified_looker_employee'] = ObjectSerializer::toQueryValue($verified_looker_employee);
+        }
+        // query params
+        if ($embed_user !== null) {
+            $queryParams['embed_user'] = ObjectSerializer::toQueryValue($embed_user);
         }
         // query params
         if ($email !== null) {
@@ -6802,10 +7705,12 @@ class UserApi
      *
      * @param  string $pattern Pattern to match (required)
      * @param  string $fields Include only these fields in the response (optional)
-     * @param  int $page Return only page N of paginated results (optional)
-     * @param  int $per_page Return N rows of data per page (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by (optional)
-     * @param  int $id Match User Id (optional)
+     * @param  string $id Match User Id (optional)
      * @param  string $first_name Match First name (optional)
      * @param  string $last_name Match Last name (optional)
      * @param  bool $verified_looker_employee Match Verified Looker employee (optional)
@@ -6816,9 +7721,9 @@ class UserApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\User[]
      */
-    public function searchUsersNames($pattern, $fields = null, $page = null, $per_page = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $email = null, $is_disabled = null)
+    public function searchUsersNames($pattern, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $email = null, $is_disabled = null)
     {
-        list($response) = $this->searchUsersNamesWithHttpInfo($pattern, $fields, $page, $per_page, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $email, $is_disabled);
+        list($response) = $this->searchUsersNamesWithHttpInfo($pattern, $fields, $page, $per_page, $limit, $offset, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $email, $is_disabled);
         return $response;
     }
 
@@ -6829,10 +7734,12 @@ class UserApi
      *
      * @param  string $pattern Pattern to match (required)
      * @param  string $fields Include only these fields in the response (optional)
-     * @param  int $page Return only page N of paginated results (optional)
-     * @param  int $per_page Return N rows of data per page (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by (optional)
-     * @param  int $id Match User Id (optional)
+     * @param  string $id Match User Id (optional)
      * @param  string $first_name Match First name (optional)
      * @param  string $last_name Match Last name (optional)
      * @param  bool $verified_looker_employee Match Verified Looker employee (optional)
@@ -6843,10 +7750,10 @@ class UserApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\User[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchUsersNamesWithHttpInfo($pattern, $fields = null, $page = null, $per_page = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $email = null, $is_disabled = null)
+    public function searchUsersNamesWithHttpInfo($pattern, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $email = null, $is_disabled = null)
     {
         $returnType = '\Swagger\Client\Model\User[]';
-        $request = $this->searchUsersNamesRequest($pattern, $fields, $page, $per_page, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $email, $is_disabled);
+        $request = $this->searchUsersNamesRequest($pattern, $fields, $page, $per_page, $limit, $offset, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $email, $is_disabled);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6930,10 +7837,12 @@ class UserApi
      *
      * @param  string $pattern Pattern to match (required)
      * @param  string $fields Include only these fields in the response (optional)
-     * @param  int $page Return only page N of paginated results (optional)
-     * @param  int $per_page Return N rows of data per page (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by (optional)
-     * @param  int $id Match User Id (optional)
+     * @param  string $id Match User Id (optional)
      * @param  string $first_name Match First name (optional)
      * @param  string $last_name Match Last name (optional)
      * @param  bool $verified_looker_employee Match Verified Looker employee (optional)
@@ -6943,9 +7852,9 @@ class UserApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchUsersNamesAsync($pattern, $fields = null, $page = null, $per_page = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $email = null, $is_disabled = null)
+    public function searchUsersNamesAsync($pattern, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $email = null, $is_disabled = null)
     {
-        return $this->searchUsersNamesAsyncWithHttpInfo($pattern, $fields, $page, $per_page, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $email, $is_disabled)
+        return $this->searchUsersNamesAsyncWithHttpInfo($pattern, $fields, $page, $per_page, $limit, $offset, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $email, $is_disabled)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6960,10 +7869,12 @@ class UserApi
      *
      * @param  string $pattern Pattern to match (required)
      * @param  string $fields Include only these fields in the response (optional)
-     * @param  int $page Return only page N of paginated results (optional)
-     * @param  int $per_page Return N rows of data per page (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by (optional)
-     * @param  int $id Match User Id (optional)
+     * @param  string $id Match User Id (optional)
      * @param  string $first_name Match First name (optional)
      * @param  string $last_name Match Last name (optional)
      * @param  bool $verified_looker_employee Match Verified Looker employee (optional)
@@ -6973,10 +7884,10 @@ class UserApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchUsersNamesAsyncWithHttpInfo($pattern, $fields = null, $page = null, $per_page = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $email = null, $is_disabled = null)
+    public function searchUsersNamesAsyncWithHttpInfo($pattern, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $email = null, $is_disabled = null)
     {
         $returnType = '\Swagger\Client\Model\User[]';
-        $request = $this->searchUsersNamesRequest($pattern, $fields, $page, $per_page, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $email, $is_disabled);
+        $request = $this->searchUsersNamesRequest($pattern, $fields, $page, $per_page, $limit, $offset, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $email, $is_disabled);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -7020,10 +7931,12 @@ class UserApi
      *
      * @param  string $pattern Pattern to match (required)
      * @param  string $fields Include only these fields in the response (optional)
-     * @param  int $page Return only page N of paginated results (optional)
-     * @param  int $per_page Return N rows of data per page (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by (optional)
-     * @param  int $id Match User Id (optional)
+     * @param  string $id Match User Id (optional)
      * @param  string $first_name Match First name (optional)
      * @param  string $last_name Match Last name (optional)
      * @param  bool $verified_looker_employee Match Verified Looker employee (optional)
@@ -7033,7 +7946,7 @@ class UserApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function searchUsersNamesRequest($pattern, $fields = null, $page = null, $per_page = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $email = null, $is_disabled = null)
+    protected function searchUsersNamesRequest($pattern, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $id = null, $first_name = null, $last_name = null, $verified_looker_employee = null, $email = null, $is_disabled = null)
     {
         // verify the required parameter 'pattern' is set
         if ($pattern === null || (is_array($pattern) && count($pattern) === 0)) {
@@ -7060,6 +7973,14 @@ class UserApi
         // query params
         if ($per_page !== null) {
             $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+        // query params
+        if ($offset !== null) {
+            $queryParams['offset'] = ObjectSerializer::toQueryValue($offset);
         }
         // query params
         if ($sorts !== null) {
@@ -7164,12 +8085,307 @@ class UserApi
     }
 
     /**
+     * Operation sendUserCredentialsEmailPasswordReset
+     *
+     * Send Password Reset Token
+     *
+     * @param  string $user_id Id of user (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\CredentialsEmail
+     */
+    public function sendUserCredentialsEmailPasswordReset($user_id, $fields = null)
+    {
+        list($response) = $this->sendUserCredentialsEmailPasswordResetWithHttpInfo($user_id, $fields);
+        return $response;
+    }
+
+    /**
+     * Operation sendUserCredentialsEmailPasswordResetWithHttpInfo
+     *
+     * Send Password Reset Token
+     *
+     * @param  string $user_id Id of user (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\CredentialsEmail, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function sendUserCredentialsEmailPasswordResetWithHttpInfo($user_id, $fields = null)
+    {
+        $returnType = '\Swagger\Client\Model\CredentialsEmail';
+        $request = $this->sendUserCredentialsEmailPasswordResetRequest($user_id, $fields);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\CredentialsEmail',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation sendUserCredentialsEmailPasswordResetAsync
+     *
+     * Send Password Reset Token
+     *
+     * @param  string $user_id Id of user (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sendUserCredentialsEmailPasswordResetAsync($user_id, $fields = null)
+    {
+        return $this->sendUserCredentialsEmailPasswordResetAsyncWithHttpInfo($user_id, $fields)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation sendUserCredentialsEmailPasswordResetAsyncWithHttpInfo
+     *
+     * Send Password Reset Token
+     *
+     * @param  string $user_id Id of user (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function sendUserCredentialsEmailPasswordResetAsyncWithHttpInfo($user_id, $fields = null)
+    {
+        $returnType = '\Swagger\Client\Model\CredentialsEmail';
+        $request = $this->sendUserCredentialsEmailPasswordResetRequest($user_id, $fields);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'sendUserCredentialsEmailPasswordReset'
+     *
+     * @param  string $user_id Id of user (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function sendUserCredentialsEmailPasswordResetRequest($user_id, $fields = null)
+    {
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $user_id when calling sendUserCredentialsEmailPasswordReset'
+            );
+        }
+
+        $resourcePath = '/users/{user_id}/credentials_email/send_password_reset';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($fields !== null) {
+            $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
+        }
+
+        // path params
+        if ($user_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'user_id' . '}',
+                ObjectSerializer::toPathValue($user_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation setUserAttributeUserValue
      *
      * Set User Attribute User Value
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttributeWithValue $body New attribute value for user. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -7187,8 +8403,8 @@ class UserApi
      *
      * Set User Attribute User Value
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttributeWithValue $body New attribute value for user. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -7262,10 +8478,26 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ValidationError',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7280,8 +8512,8 @@ class UserApi
      *
      * Set User Attribute User Value
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttributeWithValue $body New attribute value for user. (required)
      *
      * @throws \InvalidArgumentException
@@ -7302,8 +8534,8 @@ class UserApi
      *
      * Set User Attribute User Value
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttributeWithValue $body New attribute value for user. (required)
      *
      * @throws \InvalidArgumentException
@@ -7354,8 +8586,8 @@ class UserApi
     /**
      * Create request for operation 'setUserAttributeUserValue'
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttributeWithValue $body New attribute value for user. (required)
      *
      * @throws \InvalidArgumentException
@@ -7479,8 +8711,8 @@ class UserApi
      *
      * Set User Roles
      *
-     * @param  int $user_id id of user (required)
-     * @param  int[] $body array of roles ids for user (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string[] $body array of roles ids for user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -7498,8 +8730,8 @@ class UserApi
      *
      * Set User Roles
      *
-     * @param  int $user_id id of user (required)
-     * @param  int[] $body array of roles ids for user (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string[] $body array of roles ids for user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -7573,6 +8805,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -7591,8 +8831,8 @@ class UserApi
      *
      * Set User Roles
      *
-     * @param  int $user_id id of user (required)
-     * @param  int[] $body array of roles ids for user (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string[] $body array of roles ids for user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -7613,8 +8853,8 @@ class UserApi
      *
      * Set User Roles
      *
-     * @param  int $user_id id of user (required)
-     * @param  int[] $body array of roles ids for user (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string[] $body array of roles ids for user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -7665,8 +8905,8 @@ class UserApi
     /**
      * Create request for operation 'setUserRoles'
      *
-     * @param  int $user_id id of user (required)
-     * @param  int[] $body array of roles ids for user (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string[] $body array of roles ids for user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -7780,7 +9020,7 @@ class UserApi
      *
      * Update User
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  \Swagger\Client\Model\User $body User (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -7799,7 +9039,7 @@ class UserApi
      *
      * Update User
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  \Swagger\Client\Model\User $body User (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -7874,6 +9114,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -7900,7 +9148,7 @@ class UserApi
      *
      * Update User
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  \Swagger\Client\Model\User $body User (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -7922,7 +9170,7 @@ class UserApi
      *
      * Update User
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  \Swagger\Client\Model\User $body User (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -7974,7 +9222,7 @@ class UserApi
     /**
      * Create request for operation 'updateUser'
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  \Swagger\Client\Model\User $body User (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -8089,7 +9337,7 @@ class UserApi
      *
      * Update Email/Password Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  \Swagger\Client\Model\CredentialsEmail $body Email/Password Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -8108,7 +9356,7 @@ class UserApi
      *
      * Update Email/Password Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  \Swagger\Client\Model\CredentialsEmail $body Email/Password Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -8183,6 +9431,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -8199,6 +9455,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -8209,7 +9473,7 @@ class UserApi
      *
      * Update Email/Password Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  \Swagger\Client\Model\CredentialsEmail $body Email/Password Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -8231,7 +9495,7 @@ class UserApi
      *
      * Update Email/Password Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  \Swagger\Client\Model\CredentialsEmail $body Email/Password Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -8283,7 +9547,7 @@ class UserApi
     /**
      * Create request for operation 'updateUserCredentialsEmail'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  \Swagger\Client\Model\CredentialsEmail $body Email/Password Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -8398,7 +9662,7 @@ class UserApi
      *
      * Get User by Id
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -8416,7 +9680,7 @@ class UserApi
      *
      * Get User by Id
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -8508,7 +9772,7 @@ class UserApi
      *
      * Get User by Id
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -8529,7 +9793,7 @@ class UserApi
      *
      * Get User by Id
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -8580,7 +9844,7 @@ class UserApi
     /**
      * Create request for operation 'user'
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -8685,9 +9949,9 @@ class UserApi
      *
      * Get User Attribute Values
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  int[] $user_attribute_ids Specific user attributes to request. Omit or leave blank to request all user attributes. (optional)
+     * @param  string[] $user_attribute_ids Specific user attributes to request. Omit or leave blank to request all user attributes. (optional)
      * @param  bool $all_values If true, returns all values in the search path instead of just the first value found. Useful for debugging group precedence. (optional)
      * @param  bool $include_unset If true, returns an empty record for each requested attribute that has no user, group, or default value. (optional)
      *
@@ -8706,9 +9970,9 @@ class UserApi
      *
      * Get User Attribute Values
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  int[] $user_attribute_ids Specific user attributes to request. Omit or leave blank to request all user attributes. (optional)
+     * @param  string[] $user_attribute_ids Specific user attributes to request. Omit or leave blank to request all user attributes. (optional)
      * @param  bool $all_values If true, returns all values in the search path instead of just the first value found. Useful for debugging group precedence. (optional)
      * @param  bool $include_unset If true, returns an empty record for each requested attribute that has no user, group, or default value. (optional)
      *
@@ -8793,9 +10057,9 @@ class UserApi
      *
      * Get User Attribute Values
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  int[] $user_attribute_ids Specific user attributes to request. Omit or leave blank to request all user attributes. (optional)
+     * @param  string[] $user_attribute_ids Specific user attributes to request. Omit or leave blank to request all user attributes. (optional)
      * @param  bool $all_values If true, returns all values in the search path instead of just the first value found. Useful for debugging group precedence. (optional)
      * @param  bool $include_unset If true, returns an empty record for each requested attribute that has no user, group, or default value. (optional)
      *
@@ -8817,9 +10081,9 @@ class UserApi
      *
      * Get User Attribute Values
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  int[] $user_attribute_ids Specific user attributes to request. Omit or leave blank to request all user attributes. (optional)
+     * @param  string[] $user_attribute_ids Specific user attributes to request. Omit or leave blank to request all user attributes. (optional)
      * @param  bool $all_values If true, returns all values in the search path instead of just the first value found. Useful for debugging group precedence. (optional)
      * @param  bool $include_unset If true, returns an empty record for each requested attribute that has no user, group, or default value. (optional)
      *
@@ -8871,9 +10135,9 @@ class UserApi
     /**
      * Create request for operation 'userAttributeUserValues'
      *
-     * @param  int $user_id Id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  int[] $user_attribute_ids Specific user attributes to request. Omit or leave blank to request all user attributes. (optional)
+     * @param  string[] $user_attribute_ids Specific user attributes to request. Omit or leave blank to request all user attributes. (optional)
      * @param  bool $all_values If true, returns all values in the search path instead of just the first value found. Useful for debugging group precedence. (optional)
      * @param  bool $include_unset If true, returns an empty record for each requested attribute that has no user, group, or default value. (optional)
      *
@@ -8992,10 +10256,10 @@ class UserApi
     /**
      * Operation userCredentialsApi3
      *
-     * Get API 3 Credential
+     * Get API Credential
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $credentials_api3_id Id of API 3 Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_api3_id Id of API Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -9011,10 +10275,10 @@ class UserApi
     /**
      * Operation userCredentialsApi3WithHttpInfo
      *
-     * Get API 3 Credential
+     * Get API Credential
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $credentials_api3_id Id of API 3 Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_api3_id Id of API Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -9088,6 +10352,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -9104,10 +10376,10 @@ class UserApi
     /**
      * Operation userCredentialsApi3Async
      *
-     * Get API 3 Credential
+     * Get API Credential
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $credentials_api3_id Id of API 3 Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_api3_id Id of API Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -9126,10 +10398,10 @@ class UserApi
     /**
      * Operation userCredentialsApi3AsyncWithHttpInfo
      *
-     * Get API 3 Credential
+     * Get API Credential
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $credentials_api3_id Id of API 3 Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_api3_id Id of API Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -9180,8 +10452,8 @@ class UserApi
     /**
      * Create request for operation 'userCredentialsApi3'
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $credentials_api3_id Id of API 3 Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_api3_id Id of API Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -9300,7 +10572,7 @@ class UserApi
      *
      * Get Email/Password Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -9318,7 +10590,7 @@ class UserApi
      *
      * Get Email/Password Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -9392,6 +10664,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -9410,7 +10690,7 @@ class UserApi
      *
      * Get Email/Password Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -9431,7 +10711,7 @@ class UserApi
      *
      * Get Email/Password Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -9482,7 +10762,7 @@ class UserApi
     /**
      * Create request for operation 'userCredentialsEmail'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -9587,8 +10867,8 @@ class UserApi
      *
      * Get Embedding Credential
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $credentials_embed_id Id of Embedding Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_embed_id Id of Embedding Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -9606,8 +10886,8 @@ class UserApi
      *
      * Get Embedding Credential
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $credentials_embed_id Id of Embedding Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_embed_id Id of Embedding Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -9681,6 +10961,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -9699,8 +10987,8 @@ class UserApi
      *
      * Get Embedding Credential
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $credentials_embed_id Id of Embedding Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_embed_id Id of Embedding Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -9721,8 +11009,8 @@ class UserApi
      *
      * Get Embedding Credential
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $credentials_embed_id Id of Embedding Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_embed_id Id of Embedding Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -9773,8 +11061,8 @@ class UserApi
     /**
      * Create request for operation 'userCredentialsEmbed'
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $credentials_embed_id Id of Embedding Credential (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $credentials_embed_id Id of Embedding Credential (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -9893,7 +11181,7 @@ class UserApi
      *
      * Get Google Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -9911,7 +11199,7 @@ class UserApi
      *
      * Get Google Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -9985,6 +11273,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -10003,7 +11299,7 @@ class UserApi
      *
      * Get Google Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -10024,7 +11320,7 @@ class UserApi
      *
      * Get Google Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -10075,7 +11371,7 @@ class UserApi
     /**
      * Create request for operation 'userCredentialsGoogle'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -10180,7 +11476,7 @@ class UserApi
      *
      * Get LDAP Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -10198,7 +11494,7 @@ class UserApi
      *
      * Get LDAP Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -10272,6 +11568,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -10290,7 +11594,7 @@ class UserApi
      *
      * Get LDAP Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -10311,7 +11615,7 @@ class UserApi
      *
      * Get LDAP Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -10362,7 +11666,7 @@ class UserApi
     /**
      * Create request for operation 'userCredentialsLdap'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -10467,7 +11771,7 @@ class UserApi
      *
      * Get Looker OpenId Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -10485,7 +11789,7 @@ class UserApi
      *
      * Get Looker OpenId Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -10559,6 +11863,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -10577,7 +11889,7 @@ class UserApi
      *
      * Get Looker OpenId Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -10598,7 +11910,7 @@ class UserApi
      *
      * Get Looker OpenId Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -10649,7 +11961,7 @@ class UserApi
     /**
      * Create request for operation 'userCredentialsLookerOpenid'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -10754,7 +12066,7 @@ class UserApi
      *
      * Get OIDC Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -10772,7 +12084,7 @@ class UserApi
      *
      * Get OIDC Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -10846,6 +12158,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -10864,7 +12184,7 @@ class UserApi
      *
      * Get OIDC Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -10885,7 +12205,7 @@ class UserApi
      *
      * Get OIDC Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -10936,7 +12256,7 @@ class UserApi
     /**
      * Create request for operation 'userCredentialsOidc'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -11041,7 +12361,7 @@ class UserApi
      *
      * Get Saml Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -11059,7 +12379,7 @@ class UserApi
      *
      * Get Saml Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -11133,6 +12453,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -11151,7 +12479,7 @@ class UserApi
      *
      * Get Saml Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -11172,7 +12500,7 @@ class UserApi
      *
      * Get Saml Auth Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -11223,7 +12551,7 @@ class UserApi
     /**
      * Create request for operation 'userCredentialsSaml'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -11328,7 +12656,7 @@ class UserApi
      *
      * Get Two-Factor Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -11346,7 +12674,7 @@ class UserApi
      *
      * Get Two-Factor Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -11420,6 +12748,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -11438,7 +12774,7 @@ class UserApi
      *
      * Get Two-Factor Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -11459,7 +12795,7 @@ class UserApi
      *
      * Get Two-Factor Credential
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -11510,7 +12846,7 @@ class UserApi
     /**
      * Create request for operation 'userCredentialsTotp'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -11702,6 +13038,14 @@ class UserApi
                     $e->setResponseObject($data);
                     break;
                 case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\Error',
@@ -11921,7 +13265,7 @@ class UserApi
      *
      * Get User Roles
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      * @param  bool $direct_association_only Get only roles associated directly with the user: exclude those only associated through groups. (optional)
      *
@@ -11940,7 +13284,7 @@ class UserApi
      *
      * Get User Roles
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      * @param  bool $direct_association_only Get only roles associated directly with the user: exclude those only associated through groups. (optional)
      *
@@ -12033,7 +13377,7 @@ class UserApi
      *
      * Get User Roles
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      * @param  bool $direct_association_only Get only roles associated directly with the user: exclude those only associated through groups. (optional)
      *
@@ -12055,7 +13399,7 @@ class UserApi
      *
      * Get User Roles
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      * @param  bool $direct_association_only Get only roles associated directly with the user: exclude those only associated through groups. (optional)
      *
@@ -12107,7 +13451,7 @@ class UserApi
     /**
      * Create request for operation 'userRoles'
      *
-     * @param  int $user_id id of user (required)
+     * @param  string $user_id Id of user (required)
      * @param  string $fields Requested fields. (optional)
      * @param  bool $direct_association_only Get only roles associated directly with the user: exclude those only associated through groups. (optional)
      *
@@ -12217,8 +13561,8 @@ class UserApi
      *
      * Get Web Login Session
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $session_id Id of Web Login Session (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $session_id Id of Web Login Session (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -12236,8 +13580,8 @@ class UserApi
      *
      * Get Web Login Session
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $session_id Id of Web Login Session (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $session_id Id of Web Login Session (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -12311,6 +13655,14 @@ class UserApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -12329,8 +13681,8 @@ class UserApi
      *
      * Get Web Login Session
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $session_id Id of Web Login Session (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $session_id Id of Web Login Session (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -12351,8 +13703,8 @@ class UserApi
      *
      * Get Web Login Session
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $session_id Id of Web Login Session (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $session_id Id of Web Login Session (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -12403,8 +13755,8 @@ class UserApi
     /**
      * Create request for operation 'userSession'
      *
-     * @param  int $user_id Id of user (required)
-     * @param  int $session_id Id of Web Login Session (required)
+     * @param  string $user_id Id of user (required)
+     * @param  string $session_id Id of Web Login Session (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -12512,6 +13864,331 @@ class UserApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation wipeoutUserEmails
+     *
+     * Wipeout User Emails
+     *
+     * @param  string $user_id Id of user (required)
+     * @param  \Swagger\Client\Model\UserEmailOnly $body null (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\User
+     */
+    public function wipeoutUserEmails($user_id, $body, $fields = null)
+    {
+        list($response) = $this->wipeoutUserEmailsWithHttpInfo($user_id, $body, $fields);
+        return $response;
+    }
+
+    /**
+     * Operation wipeoutUserEmailsWithHttpInfo
+     *
+     * Wipeout User Emails
+     *
+     * @param  string $user_id Id of user (required)
+     * @param  \Swagger\Client\Model\UserEmailOnly $body null (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\User, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function wipeoutUserEmailsWithHttpInfo($user_id, $body, $fields = null)
+    {
+        $returnType = '\Swagger\Client\Model\User';
+        $request = $this->wipeoutUserEmailsRequest($user_id, $body, $fields);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\User',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation wipeoutUserEmailsAsync
+     *
+     * Wipeout User Emails
+     *
+     * @param  string $user_id Id of user (required)
+     * @param  \Swagger\Client\Model\UserEmailOnly $body null (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function wipeoutUserEmailsAsync($user_id, $body, $fields = null)
+    {
+        return $this->wipeoutUserEmailsAsyncWithHttpInfo($user_id, $body, $fields)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation wipeoutUserEmailsAsyncWithHttpInfo
+     *
+     * Wipeout User Emails
+     *
+     * @param  string $user_id Id of user (required)
+     * @param  \Swagger\Client\Model\UserEmailOnly $body null (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function wipeoutUserEmailsAsyncWithHttpInfo($user_id, $body, $fields = null)
+    {
+        $returnType = '\Swagger\Client\Model\User';
+        $request = $this->wipeoutUserEmailsRequest($user_id, $body, $fields);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'wipeoutUserEmails'
+     *
+     * @param  string $user_id Id of user (required)
+     * @param  \Swagger\Client\Model\UserEmailOnly $body null (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function wipeoutUserEmailsRequest($user_id, $body, $fields = null)
+    {
+        // verify the required parameter 'user_id' is set
+        if ($user_id === null || (is_array($user_id) && count($user_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $user_id when calling wipeoutUserEmails'
+            );
+        }
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling wipeoutUserEmails'
+            );
+        }
+
+        $resourcePath = '/users/{user_id}/update_emails';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($fields !== null) {
+            $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
+        }
+
+        // path params
+        if ($user_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'user_id' . '}',
+                ObjectSerializer::toPathValue($user_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

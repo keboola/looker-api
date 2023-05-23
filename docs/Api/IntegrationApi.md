@@ -1,6 +1,6 @@
 # Swagger\Client\IntegrationApi
 
-All URIs are relative to *https://example.looker.com:19999/api/3.1*
+All URIs are relative to *https://example.looker.com:443/api/4.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -34,7 +34,7 @@ $apiInstance = new Swagger\Client\Api\IntegrationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$integration_hub_id = 789; // int | Id of integration_hub
+$integration_hub_id = "integration_hub_id_example"; // string | Id of integration_hub
 
 try {
     $result = $apiInstance->acceptIntegrationHubLegalAgreement($integration_hub_id);
@@ -49,7 +49,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integration_hub_id** | **int**| Id of integration_hub |
+ **integration_hub_id** | **string**| Id of integration_hub |
 
 ### Return type
 
@@ -171,7 +171,7 @@ No authorization required
 
 Create Integration Hub
 
-### Create a new Integration Hub.
+### Create a new Integration Hub.  This API is rate limited to prevent it from being used for SSRF attacks
 
 ### Example
 ```php
@@ -199,7 +199,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\IntegrationHub**](../Model/IntegrationHub.md)| Integration Hub | [optional]
+ **body** | [**\Swagger\Client\Model\IntegrationHub**](../Model/IntegrationHub.md)| Integration Hub |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -234,7 +234,7 @@ $apiInstance = new Swagger\Client\Api\IntegrationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$integration_hub_id = 789; // int | Id of integration_hub
+$integration_hub_id = "integration_hub_id_example"; // string | Id of integration_hub
 
 try {
     $result = $apiInstance->deleteIntegrationHub($integration_hub_id);
@@ -249,7 +249,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integration_hub_id** | **int**| Id of integration_hub |
+ **integration_hub_id** | **string**| Id of integration_hub |
 
 ### Return type
 
@@ -267,7 +267,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **fetchIntegrationForm**
-> \Swagger\Client\Model\DataActionForm fetchIntegrationForm($integration_id)
+> \Swagger\Client\Model\DataActionForm fetchIntegrationForm($integration_id, $body)
 
 Fetch Remote Integration Form
 
@@ -283,10 +283,11 @@ $apiInstance = new Swagger\Client\Api\IntegrationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$integration_id = 789; // int | Id of Integration
+$integration_id = "integration_id_example"; // string | Id of integration
+$body = new \stdClass; // object | Integration Form Request
 
 try {
-    $result = $apiInstance->fetchIntegrationForm($integration_id);
+    $result = $apiInstance->fetchIntegrationForm($integration_id, $body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling IntegrationApi->fetchIntegrationForm: ', $e->getMessage(), PHP_EOL;
@@ -298,7 +299,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integration_id** | **int**| Id of Integration |
+ **integration_id** | **string**| Id of integration |
+ **body** | **object**| Integration Form Request | [optional]
 
 ### Return type
 
@@ -332,7 +334,7 @@ $apiInstance = new Swagger\Client\Api\IntegrationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$integration_id = 789; // int | Id of Integration
+$integration_id = "integration_id_example"; // string | Id of integration
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -348,7 +350,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integration_id** | **int**| Id of Integration |
+ **integration_id** | **string**| Id of integration |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -383,7 +385,7 @@ $apiInstance = new Swagger\Client\Api\IntegrationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$integration_hub_id = 789; // int | Id of Integration Hub
+$integration_hub_id = "integration_hub_id_example"; // string | Id of integration_hub
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -399,7 +401,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integration_hub_id** | **int**| Id of Integration Hub |
+ **integration_hub_id** | **string**| Id of integration_hub |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -434,7 +436,7 @@ $apiInstance = new Swagger\Client\Api\IntegrationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$integration_id = 789; // int | Id of Integration
+$integration_id = "integration_id_example"; // string | Id of integration
 
 try {
     $result = $apiInstance->testIntegration($integration_id);
@@ -449,7 +451,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integration_id** | **int**| Id of Integration |
+ **integration_id** | **string**| Id of integration |
 
 ### Return type
 
@@ -483,7 +485,7 @@ $apiInstance = new Swagger\Client\Api\IntegrationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$integration_id = 789; // int | Id of Integration
+$integration_id = "integration_id_example"; // string | Id of integration
 $body = new \Swagger\Client\Model\Integration(); // \Swagger\Client\Model\Integration | Integration
 $fields = "fields_example"; // string | Requested fields.
 
@@ -500,7 +502,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integration_id** | **int**| Id of Integration |
+ **integration_id** | **string**| Id of integration |
  **body** | [**\Swagger\Client\Model\Integration**](../Model/Integration.md)| Integration |
  **fields** | **string**| Requested fields. | [optional]
 
@@ -524,7 +526,7 @@ No authorization required
 
 Update Integration Hub
 
-### Update a Integration Hub definition.
+### Update a Integration Hub definition.  This API is rate limited to prevent it from being used for SSRF attacks
 
 ### Example
 ```php
@@ -536,7 +538,7 @@ $apiInstance = new Swagger\Client\Api\IntegrationApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$integration_hub_id = 789; // int | Id of Integration Hub
+$integration_hub_id = "integration_hub_id_example"; // string | Id of integration_hub
 $body = new \Swagger\Client\Model\IntegrationHub(); // \Swagger\Client\Model\IntegrationHub | Integration Hub
 $fields = "fields_example"; // string | Requested fields.
 
@@ -553,7 +555,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **integration_hub_id** | **int**| Id of Integration Hub |
+ **integration_hub_id** | **string**| Id of integration_hub |
  **body** | [**\Swagger\Client\Model\IntegrationHub**](../Model/IntegrationHub.md)| Integration Hub |
  **fields** | **string**| Requested fields. | [optional]
 

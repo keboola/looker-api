@@ -1,6 +1,6 @@
 # Swagger\Client\ProjectApi
 
-All URIs are relative to *https://example.looker.com:19999/api/3.1*
+All URIs are relative to *https://example.looker.com:443/api/4.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -14,11 +14,13 @@ Method | HTTP request | Description
 [**createProject**](ProjectApi.md#createProject) | **POST** /projects | Create Project
 [**deleteGitBranch**](ProjectApi.md#deleteGitBranch) | **DELETE** /projects/{project_id}/git_branch/{branch_name} | Delete a Git Branch
 [**deleteRepositoryCredential**](ProjectApi.md#deleteRepositoryCredential) | **DELETE** /projects/{root_project_id}/credential/{credential_id} | Delete Repository Credential
+[**deployRefToProduction**](ProjectApi.md#deployRefToProduction) | **POST** /projects/{project_id}/deploy_ref_to_production | Deploy Remote Branch or Ref to Production
 [**deployToProduction**](ProjectApi.md#deployToProduction) | **POST** /projects/{project_id}/deploy_to_production | Deploy To Production
 [**findGitBranch**](ProjectApi.md#findGitBranch) | **GET** /projects/{project_id}/git_branch/{branch_name} | Find a Git Branch
 [**getAllRepositoryCredentials**](ProjectApi.md#getAllRepositoryCredentials) | **GET** /projects/{root_project_id}/credentials | Get All Repository Credentials
 [**gitBranch**](ProjectApi.md#gitBranch) | **GET** /projects/{project_id}/git_branch | Get Active Git Branch
 [**gitDeployKey**](ProjectApi.md#gitDeployKey) | **GET** /projects/{project_id}/git/deploy_key | Git Deploy Key
+[**lockAll**](ProjectApi.md#lockAll) | **POST** /projects/{project_id}/manifest/lock_all | Lock All
 [**manifest**](ProjectApi.md#manifest) | **GET** /projects/{project_id}/manifest | Get Manifest
 [**project**](ProjectApi.md#project) | **GET** /projects/{project_id} | Get Project
 [**projectFile**](ProjectApi.md#projectFile) | **GET** /projects/{project_id}/files/file | Get Project File
@@ -28,6 +30,7 @@ Method | HTTP request | Description
 [**resetProjectToRemote**](ProjectApi.md#resetProjectToRemote) | **POST** /projects/{project_id}/reset_to_remote | Reset To Remote
 [**runGitConnectionTest**](ProjectApi.md#runGitConnectionTest) | **GET** /projects/{project_id}/git_connection_tests/{test_id} | Run Git Connection Test
 [**runLookmlTest**](ProjectApi.md#runLookmlTest) | **GET** /projects/{project_id}/lookml_tests/run | Run LookML Test
+[**tagRef**](ProjectApi.md#tagRef) | **POST** /projects/{project_id}/tag | Tag Ref
 [**updateGitBranch**](ProjectApi.md#updateGitBranch) | **PUT** /projects/{project_id}/git_branch | Update Project Git Branch
 [**updateProject**](ProjectApi.md#updateProject) | **PATCH** /projects/{project_id} | Update Project
 [**updateRepositoryCredential**](ProjectApi.md#updateRepositoryCredential) | **PUT** /projects/{root_project_id}/credential/{credential_id} | Create Repository Credential
@@ -88,7 +91,7 @@ No authorization required
 
 Get All Git Connection Tests
 
-### Get All Git Connection Tests  Returns a list of tests which can be run against a project's (or the dependency project for the provided remote_url) git connection. Call [Run Git Connection Test](#!/Project/run_git_connection_test) to execute each test in sequence.  Tests are ordered by increasing specificity. Tests should be run in the order returned because later tests require functionality tested by tests earlier in the test list.  For example, a late-stage test for write access is meaningless if connecting to the git server (an early test) is failing.
+### Get All Git Connection Tests  dev mode required.   - Call `update_session` to select the 'dev' workspace.  Returns a list of tests which can be run against a project's (or the dependency project for the provided remote_url) git connection. Call [Run Git Connection Test](#!/Project/run_git_connection_test) to execute each test in sequence.  Tests are ordered by increasing specificity. Tests should be run in the order returned because later tests require functionality tested by tests earlier in the test list.  For example, a late-stage test for write access is meaningless if connecting to the git server (an early test) is failing.
 
 ### Example
 ```php
@@ -319,7 +322,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_id** | **string**| Project Id |
- **body** | [**\Swagger\Client\Model\GitBranch**](../Model/GitBranch.md)| Git Branch | [optional]
+ **body** | [**\Swagger\Client\Model\GitBranch**](../Model/GitBranch.md)| Git Branch |
 
 ### Return type
 
@@ -417,7 +420,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\Project**](../Model/Project.md)| Project | [optional]
+ **body** | [**\Swagger\Client\Model\Project**](../Model/Project.md)| Project |
 
 ### Return type
 
@@ -536,12 +539,65 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **deployRefToProduction**
+> string deployRefToProduction($project_id, $branch, $ref)
+
+Deploy Remote Branch or Ref to Production
+
+### Deploy a Remote Branch or Ref to Production  Git must have been configured and deploy permission required.  Deploy is a one/two step process 1. If this is the first deploy of this project, create the production project with git repository. 2. Pull the branch or ref into the production project.  Can only specify either a branch or a ref.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\ProjectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$project_id = "project_id_example"; // string | Id of project
+$branch = "branch_example"; // string | Branch to deploy to production
+$ref = "ref_example"; // string | Ref to deploy to production
+
+try {
+    $result = $apiInstance->deployRefToProduction($project_id, $branch, $ref);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ProjectApi->deployRefToProduction: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **string**| Id of project |
+ **branch** | **string**| Branch to deploy to production | [optional]
+ **ref** | **string**| Ref to deploy to production | [optional]
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **deployToProduction**
 > string deployToProduction($project_id)
 
 Deploy To Production
 
-### Deploy LookML from this Development Mode Project to Production  Git must have been configured, must be in dev mode and deploy permission required  Deploy is a two / three step process 1. Push commits in current branch of dev mode project to the production branch (origin/master).    Note a. This step is skipped in read-only projects.    Note b. If this step is unsuccessful for any reason (e.g. rejected non-fastforward because production branch has              commits not in current branch), subsequent steps will be skipped. 2. If this is the first deploy of this project, create the production project with git repository. 3. Pull the production branch into the production project.
+### Deploy LookML from this Development Mode Project to Production  Git must have been configured, must be in dev mode and deploy permission required  Deploy is a two / three step process:  1. Push commits in current branch of dev mode project to the production branch (origin/master).    Note a. This step is skipped in read-only projects.    Note b. If this step is unsuccessful for any reason (e.g. rejected non-fastforward because production branch has              commits not in current branch), subsequent steps will be skipped. 2. If this is the first deploy of this project, create the production project with git repository. 3. Pull the production branch into the production project.
 
 ### Example
 ```php
@@ -780,6 +836,57 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: text/plain
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **lockAll**
+> string lockAll($project_id, $fields)
+
+Lock All
+
+### Generate Lockfile for All LookML Dependencies        Git must have been configured, must be in dev mode and deploy permission required        Install_all is a two step process       1. For each remote_dependency in a project the dependency manager will resolve any ambiguous ref.       2. The project will then write out a lockfile including each remote_dependency with its resolved ref.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\ProjectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$project_id = "project_id_example"; // string | Id of project
+$fields = "fields_example"; // string | Requested fields
+
+try {
+    $result = $apiInstance->lockAll($project_id, $fields);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ProjectApi->lockAll: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **string**| Id of project |
+ **fields** | **string**| Requested fields | [optional]
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -1137,7 +1244,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **runGitConnectionTest**
-> \Swagger\Client\Model\GitConnectionTestResult runGitConnectionTest($project_id, $test_id, $remote_url)
+> \Swagger\Client\Model\GitConnectionTestResult runGitConnectionTest($project_id, $test_id, $remote_url, $use_production)
 
 Run Git Connection Test
 
@@ -1156,9 +1263,10 @@ $apiInstance = new Swagger\Client\Api\ProjectApi(
 $project_id = "project_id_example"; // string | Project Id
 $test_id = "test_id_example"; // string | Test Id
 $remote_url = "remote_url_example"; // string | (Optional: leave blank for root project) The remote url for remote dependency to test.
+$use_production = "use_production_example"; // string | (Optional: leave blank for dev credentials) Whether to use git production credentials.
 
 try {
-    $result = $apiInstance->runGitConnectionTest($project_id, $test_id, $remote_url);
+    $result = $apiInstance->runGitConnectionTest($project_id, $test_id, $remote_url, $use_production);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectApi->runGitConnectionTest: ', $e->getMessage(), PHP_EOL;
@@ -1173,6 +1281,7 @@ Name | Type | Description  | Notes
  **project_id** | **string**| Project Id |
  **test_id** | **string**| Test Id |
  **remote_url** | **string**| (Optional: leave blank for root project) The remote url for remote dependency to test. | [optional]
+ **use_production** | **string**| (Optional: leave blank for dev credentials) Whether to use git production credentials. | [optional]
 
 ### Return type
 
@@ -1244,6 +1353,63 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **tagRef**
+> \Swagger\Client\Model\Project tagRef($project_id, $body, $commit_sha, $tag_name, $tag_message)
+
+Tag Ref
+
+### Creates a tag for the most recent commit, or a specific ref is a SHA is provided  This is an internal-only, undocumented route.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\ProjectApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$project_id = "project_id_example"; // string | Project Id
+$body = new \Swagger\Client\Model\Project(); // \Swagger\Client\Model\Project | Project
+$commit_sha = "commit_sha_example"; // string | (Optional): Commit Sha to Tag
+$tag_name = "tag_name_example"; // string | Tag Name
+$tag_message = "tag_message_example"; // string | (Optional): Tag Message
+
+try {
+    $result = $apiInstance->tagRef($project_id, $body, $commit_sha, $tag_name, $tag_message);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ProjectApi->tagRef: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_id** | **string**| Project Id |
+ **body** | [**\Swagger\Client\Model\Project**](../Model/Project.md)| Project |
+ **commit_sha** | **string**| (Optional): Commit Sha to Tag | [optional]
+ **tag_name** | **string**| Tag Name | [optional]
+ **tag_message** | **string**| (Optional): Tag Message | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\Project**](../Model/Project.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **updateGitBranch**
 > \Swagger\Client\Model\GitBranch updateGitBranch($project_id, $body)
 
@@ -1300,7 +1466,7 @@ No authorization required
 
 Update Project
 
-### Update Project Configuration  Apply changes to a project's configuration.   #### Configuring Git for a Project  To set up a Looker project with a remote git repository, follow these steps:  1. Call `update_session` to select the 'dev' workspace. 1. Call `create_git_deploy_key` to create a new deploy key for the project 1. Copy the deploy key text into the remote git repository's ssh key configuration 1. Call `update_project` to set project's `git_remote_url` ()and `git_service_name`, if necessary).  When you modify a project's `git_remote_url`, Looker connects to the remote repository to fetch metadata. The remote git repository MUST be configured with the Looker-generated deploy key for this project prior to setting the project's `git_remote_url`.  To set up a Looker project with a git repository residing on the Looker server (a 'bare' git repo): 1. Call `update_session` to select the 'dev' workspace. 1. Call `update_project` setting `git_remote_url` to nil and `git_service_name` to \"bare\".
+### Update Project Configuration  Apply changes to a project's configuration.   #### Configuring Git for a Project  To set up a Looker project with a remote git repository, follow these steps:  1. Call `update_session` to select the 'dev' workspace. 1. Call `create_git_deploy_key` to create a new deploy key for the project 1. Copy the deploy key text into the remote git repository's ssh key configuration 1. Call `update_project` to set project's `git_remote_url` ()and `git_service_name`, if necessary).  When you modify a project's `git_remote_url`, Looker connects to the remote repository to fetch metadata. The remote git repository MUST be configured with the Looker-generated deploy key for this project prior to setting the project's `git_remote_url`.  To set up a Looker project with a git repository residing on the Looker server (a 'bare' git repo):  1. Call `update_session` to select the 'dev' workspace. 1. Call `update_project` setting `git_remote_url` to null and `git_service_name` to \"bare\".
 
 ### Example
 ```php

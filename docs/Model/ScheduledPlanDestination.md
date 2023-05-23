@@ -3,8 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | Unique Id | [optional] 
-**scheduled_plan_id** | **int** | Id of a scheduled plan you own | [optional] 
+**id** | **string** | Unique Id | [optional] 
+**scheduled_plan_id** | **string** | Id of a scheduled plan you own | [optional] 
 **format** | **string** | The data format to send to the given destination. Supported formats vary by destination, but include: \&quot;txt\&quot;, \&quot;csv\&quot;, \&quot;inline_json\&quot;, \&quot;json\&quot;, \&quot;json_detail\&quot;, \&quot;xlsx\&quot;, \&quot;html\&quot;, \&quot;wysiwyg_pdf\&quot;, \&quot;assembled_pdf\&quot;, \&quot;wysiwyg_png\&quot; | [optional] 
 **apply_formatting** | **bool** | Are values formatted? (containing currency symbols, digit separators, etc. | [optional] 
 **apply_vis** | **bool** | Whether visualization options are applied to the results. | [optional] 
@@ -14,7 +14,6 @@ Name | Type | Description | Notes
 **parameters** | **string** | JSON object containing parameters for external scheduling. For Amazon S3, this requires keys and values for access_key_id and region. For SFTP, this requires a key and value for username. | [optional] 
 **secret_parameters** | **string** | (Write-Only) JSON object containing secret parameters for external scheduling. For Amazon S3, this requires a key and value for secret_access_key. For SFTP, this requires a key and value for password. | [optional] 
 **message** | **string** | Optional message to be included in scheduled emails | [optional] 
-**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

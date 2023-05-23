@@ -11,12 +11,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -58,16 +58,26 @@ class DialectInfoOptions implements ModelInterface, ArrayAccess
       */
     protected static $swaggerTypes = [
         'additional_params' => 'bool',
+        'after_connect_statements' => 'bool',
+        'analytical_view_dataset' => 'bool',
         'auth' => 'bool',
+        'cost_estimate' => 'bool',
+        'disable_context_comment' => 'bool',
         'host' => 'bool',
+        'instance_name' => 'bool',
+        'max_billing_gigabytes' => 'bool',
         'oauth_credentials' => 'bool',
+        'pdts_for_oauth' => 'bool',
+        'port' => 'bool',
         'project_name' => 'bool',
         'schema' => 'bool',
+        'service_account_credentials' => 'bool',
         'ssl' => 'bool',
         'timezone' => 'bool',
         'tmp_table' => 'bool',
-        'username_required' => 'bool',
-        'can' => 'map[string,bool]'
+        'tns' => 'bool',
+        'username' => 'bool',
+        'username_required' => 'bool'
     ];
 
     /**
@@ -77,16 +87,26 @@ class DialectInfoOptions implements ModelInterface, ArrayAccess
       */
     protected static $swaggerFormats = [
         'additional_params' => null,
+        'after_connect_statements' => null,
+        'analytical_view_dataset' => null,
         'auth' => null,
+        'cost_estimate' => null,
+        'disable_context_comment' => null,
         'host' => null,
+        'instance_name' => null,
+        'max_billing_gigabytes' => null,
         'oauth_credentials' => null,
+        'pdts_for_oauth' => null,
+        'port' => null,
         'project_name' => null,
         'schema' => null,
+        'service_account_credentials' => null,
         'ssl' => null,
         'timezone' => null,
         'tmp_table' => null,
-        'username_required' => null,
-        'can' => null
+        'tns' => null,
+        'username' => null,
+        'username_required' => null
     ];
 
     /**
@@ -117,16 +137,26 @@ class DialectInfoOptions implements ModelInterface, ArrayAccess
      */
     protected static $attributeMap = [
         'additional_params' => 'additional_params',
+        'after_connect_statements' => 'after_connect_statements',
+        'analytical_view_dataset' => 'analytical_view_dataset',
         'auth' => 'auth',
+        'cost_estimate' => 'cost_estimate',
+        'disable_context_comment' => 'disable_context_comment',
         'host' => 'host',
+        'instance_name' => 'instance_name',
+        'max_billing_gigabytes' => 'max_billing_gigabytes',
         'oauth_credentials' => 'oauth_credentials',
+        'pdts_for_oauth' => 'pdts_for_oauth',
+        'port' => 'port',
         'project_name' => 'project_name',
         'schema' => 'schema',
+        'service_account_credentials' => 'service_account_credentials',
         'ssl' => 'ssl',
         'timezone' => 'timezone',
         'tmp_table' => 'tmp_table',
-        'username_required' => 'username_required',
-        'can' => 'can'
+        'tns' => 'tns',
+        'username' => 'username',
+        'username_required' => 'username_required'
     ];
 
     /**
@@ -136,16 +166,26 @@ class DialectInfoOptions implements ModelInterface, ArrayAccess
      */
     protected static $setters = [
         'additional_params' => 'setAdditionalParams',
+        'after_connect_statements' => 'setAfterConnectStatements',
+        'analytical_view_dataset' => 'setAnalyticalViewDataset',
         'auth' => 'setAuth',
+        'cost_estimate' => 'setCostEstimate',
+        'disable_context_comment' => 'setDisableContextComment',
         'host' => 'setHost',
+        'instance_name' => 'setInstanceName',
+        'max_billing_gigabytes' => 'setMaxBillingGigabytes',
         'oauth_credentials' => 'setOauthCredentials',
+        'pdts_for_oauth' => 'setPdtsForOauth',
+        'port' => 'setPort',
         'project_name' => 'setProjectName',
         'schema' => 'setSchema',
+        'service_account_credentials' => 'setServiceAccountCredentials',
         'ssl' => 'setSsl',
         'timezone' => 'setTimezone',
         'tmp_table' => 'setTmpTable',
-        'username_required' => 'setUsernameRequired',
-        'can' => 'setCan'
+        'tns' => 'setTns',
+        'username' => 'setUsername',
+        'username_required' => 'setUsernameRequired'
     ];
 
     /**
@@ -155,16 +195,26 @@ class DialectInfoOptions implements ModelInterface, ArrayAccess
      */
     protected static $getters = [
         'additional_params' => 'getAdditionalParams',
+        'after_connect_statements' => 'getAfterConnectStatements',
+        'analytical_view_dataset' => 'getAnalyticalViewDataset',
         'auth' => 'getAuth',
+        'cost_estimate' => 'getCostEstimate',
+        'disable_context_comment' => 'getDisableContextComment',
         'host' => 'getHost',
+        'instance_name' => 'getInstanceName',
+        'max_billing_gigabytes' => 'getMaxBillingGigabytes',
         'oauth_credentials' => 'getOauthCredentials',
+        'pdts_for_oauth' => 'getPdtsForOauth',
+        'port' => 'getPort',
         'project_name' => 'getProjectName',
         'schema' => 'getSchema',
+        'service_account_credentials' => 'getServiceAccountCredentials',
         'ssl' => 'getSsl',
         'timezone' => 'getTimezone',
         'tmp_table' => 'getTmpTable',
-        'username_required' => 'getUsernameRequired',
-        'can' => 'getCan'
+        'tns' => 'getTns',
+        'username' => 'getUsername',
+        'username_required' => 'getUsernameRequired'
     ];
 
     /**
@@ -228,16 +278,26 @@ class DialectInfoOptions implements ModelInterface, ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['additional_params'] = isset($data['additional_params']) ? $data['additional_params'] : null;
+        $this->container['after_connect_statements'] = isset($data['after_connect_statements']) ? $data['after_connect_statements'] : null;
+        $this->container['analytical_view_dataset'] = isset($data['analytical_view_dataset']) ? $data['analytical_view_dataset'] : null;
         $this->container['auth'] = isset($data['auth']) ? $data['auth'] : null;
+        $this->container['cost_estimate'] = isset($data['cost_estimate']) ? $data['cost_estimate'] : null;
+        $this->container['disable_context_comment'] = isset($data['disable_context_comment']) ? $data['disable_context_comment'] : null;
         $this->container['host'] = isset($data['host']) ? $data['host'] : null;
+        $this->container['instance_name'] = isset($data['instance_name']) ? $data['instance_name'] : null;
+        $this->container['max_billing_gigabytes'] = isset($data['max_billing_gigabytes']) ? $data['max_billing_gigabytes'] : null;
         $this->container['oauth_credentials'] = isset($data['oauth_credentials']) ? $data['oauth_credentials'] : null;
+        $this->container['pdts_for_oauth'] = isset($data['pdts_for_oauth']) ? $data['pdts_for_oauth'] : null;
+        $this->container['port'] = isset($data['port']) ? $data['port'] : null;
         $this->container['project_name'] = isset($data['project_name']) ? $data['project_name'] : null;
         $this->container['schema'] = isset($data['schema']) ? $data['schema'] : null;
+        $this->container['service_account_credentials'] = isset($data['service_account_credentials']) ? $data['service_account_credentials'] : null;
         $this->container['ssl'] = isset($data['ssl']) ? $data['ssl'] : null;
         $this->container['timezone'] = isset($data['timezone']) ? $data['timezone'] : null;
         $this->container['tmp_table'] = isset($data['tmp_table']) ? $data['tmp_table'] : null;
+        $this->container['tns'] = isset($data['tns']) ? $data['tns'] : null;
+        $this->container['username'] = isset($data['username']) ? $data['username'] : null;
         $this->container['username_required'] = isset($data['username_required']) ? $data['username_required'] : null;
-        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
     }
 
     /**
@@ -289,6 +349,54 @@ class DialectInfoOptions implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets after_connect_statements
+     *
+     * @return bool
+     */
+    public function getAfterConnectStatements()
+    {
+        return $this->container['after_connect_statements'];
+    }
+
+    /**
+     * Sets after_connect_statements
+     *
+     * @param bool $after_connect_statements Has support for issuing statements after connecting to the database
+     *
+     * @return $this
+     */
+    public function setAfterConnectStatements($after_connect_statements)
+    {
+        $this->container['after_connect_statements'] = $after_connect_statements;
+
+        return $this;
+    }
+
+    /**
+     * Gets analytical_view_dataset
+     *
+     * @return bool
+     */
+    public function getAnalyticalViewDataset()
+    {
+        return $this->container['analytical_view_dataset'];
+    }
+
+    /**
+     * Sets analytical_view_dataset
+     *
+     * @param bool $analytical_view_dataset Has analytical view support
+     *
+     * @return $this
+     */
+    public function setAnalyticalViewDataset($analytical_view_dataset)
+    {
+        $this->container['analytical_view_dataset'] = $analytical_view_dataset;
+
+        return $this;
+    }
+
+    /**
      * Gets auth
      *
      * @return bool
@@ -313,6 +421,54 @@ class DialectInfoOptions implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets cost_estimate
+     *
+     * @return bool
+     */
+    public function getCostEstimate()
+    {
+        return $this->container['cost_estimate'];
+    }
+
+    /**
+     * Sets cost_estimate
+     *
+     * @param bool $cost_estimate Has configurable cost estimation
+     *
+     * @return $this
+     */
+    public function setCostEstimate($cost_estimate)
+    {
+        $this->container['cost_estimate'] = $cost_estimate;
+
+        return $this;
+    }
+
+    /**
+     * Gets disable_context_comment
+     *
+     * @return bool
+     */
+    public function getDisableContextComment()
+    {
+        return $this->container['disable_context_comment'];
+    }
+
+    /**
+     * Sets disable_context_comment
+     *
+     * @param bool $disable_context_comment Can disable query context comments
+     *
+     * @return $this
+     */
+    public function setDisableContextComment($disable_context_comment)
+    {
+        $this->container['disable_context_comment'] = $disable_context_comment;
+
+        return $this;
+    }
+
+    /**
      * Gets host
      *
      * @return bool
@@ -325,13 +481,61 @@ class DialectInfoOptions implements ModelInterface, ArrayAccess
     /**
      * Sets host
      *
-     * @param bool $host Has host support
+     * @param bool $host Host is required
      *
      * @return $this
      */
     public function setHost($host)
     {
         $this->container['host'] = $host;
+
+        return $this;
+    }
+
+    /**
+     * Gets instance_name
+     *
+     * @return bool
+     */
+    public function getInstanceName()
+    {
+        return $this->container['instance_name'];
+    }
+
+    /**
+     * Sets instance_name
+     *
+     * @param bool $instance_name Instance name is required
+     *
+     * @return $this
+     */
+    public function setInstanceName($instance_name)
+    {
+        $this->container['instance_name'] = $instance_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets max_billing_gigabytes
+     *
+     * @return bool
+     */
+    public function getMaxBillingGigabytes()
+    {
+        return $this->container['max_billing_gigabytes'];
+    }
+
+    /**
+     * Sets max_billing_gigabytes
+     *
+     * @param bool $max_billing_gigabytes Has max billing gigabytes support
+     *
+     * @return $this
+     */
+    public function setMaxBillingGigabytes($max_billing_gigabytes)
+    {
+        $this->container['max_billing_gigabytes'] = $max_billing_gigabytes;
 
         return $this;
     }
@@ -356,6 +560,54 @@ class DialectInfoOptions implements ModelInterface, ArrayAccess
     public function setOauthCredentials($oauth_credentials)
     {
         $this->container['oauth_credentials'] = $oauth_credentials;
+
+        return $this;
+    }
+
+    /**
+     * Gets pdts_for_oauth
+     *
+     * @return bool
+     */
+    public function getPdtsForOauth()
+    {
+        return $this->container['pdts_for_oauth'];
+    }
+
+    /**
+     * Sets pdts_for_oauth
+     *
+     * @param bool $pdts_for_oauth Has OAuth for PDT support
+     *
+     * @return $this
+     */
+    public function setPdtsForOauth($pdts_for_oauth)
+    {
+        $this->container['pdts_for_oauth'] = $pdts_for_oauth;
+
+        return $this;
+    }
+
+    /**
+     * Gets port
+     *
+     * @return bool
+     */
+    public function getPort()
+    {
+        return $this->container['port'];
+    }
+
+    /**
+     * Sets port
+     *
+     * @param bool $port Port can be specified
+     *
+     * @return $this
+     */
+    public function setPort($port)
+    {
+        $this->container['port'] = $port;
 
         return $this;
     }
@@ -397,13 +649,37 @@ class DialectInfoOptions implements ModelInterface, ArrayAccess
     /**
      * Sets schema
      *
-     * @param bool $schema Has schema support
+     * @param bool $schema Schema can be specified
      *
      * @return $this
      */
     public function setSchema($schema)
     {
         $this->container['schema'] = $schema;
+
+        return $this;
+    }
+
+    /**
+     * Gets service_account_credentials
+     *
+     * @return bool
+     */
+    public function getServiceAccountCredentials()
+    {
+        return $this->container['service_account_credentials'];
+    }
+
+    /**
+     * Sets service_account_credentials
+     *
+     * @param bool $service_account_credentials Has support for a service account
+     *
+     * @return $this
+     */
+    public function setServiceAccountCredentials($service_account_credentials)
+    {
+        $this->container['service_account_credentials'] = $service_account_credentials;
 
         return $this;
     }
@@ -421,7 +697,7 @@ class DialectInfoOptions implements ModelInterface, ArrayAccess
     /**
      * Sets ssl
      *
-     * @param bool $ssl Has SSL support
+     * @param bool $ssl Has TLS/SSL support
      *
      * @return $this
      */
@@ -481,6 +757,54 @@ class DialectInfoOptions implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets tns
+     *
+     * @return bool
+     */
+    public function getTns()
+    {
+        return $this->container['tns'];
+    }
+
+    /**
+     * Sets tns
+     *
+     * @param bool $tns Has Oracle TNS support
+     *
+     * @return $this
+     */
+    public function setTns($tns)
+    {
+        $this->container['tns'] = $tns;
+
+        return $this;
+    }
+
+    /**
+     * Gets username
+     *
+     * @return bool
+     */
+    public function getUsername()
+    {
+        return $this->container['username'];
+    }
+
+    /**
+     * Sets username
+     *
+     * @param bool $username Username can be specified
+     *
+     * @return $this
+     */
+    public function setUsername($username)
+    {
+        $this->container['username'] = $username;
+
+        return $this;
+    }
+
+    /**
      * Gets username_required
      *
      * @return bool
@@ -500,30 +824,6 @@ class DialectInfoOptions implements ModelInterface, ArrayAccess
     public function setUsernameRequired($username_required)
     {
         $this->container['username_required'] = $username_required;
-
-        return $this;
-    }
-
-    /**
-     * Gets can
-     *
-     * @return map[string,bool]
-     */
-    public function getCan()
-    {
-        return $this->container['can'];
-    }
-
-    /**
-     * Sets can
-     *
-     * @param map[string,bool] $can Operations the current user is able to perform on this object
-     *
-     * @return $this
-     */
-    public function setCan($can)
-    {
-        $this->container['can'] = $can;
 
         return $this;
     }

@@ -1,21 +1,22 @@
 # Swagger\Client\UserApi
 
-All URIs are relative to *https://example.looker.com:19999/api/3.1*
+All URIs are relative to *https://example.looker.com:443/api/4.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**allUserCredentialsApi3s**](UserApi.md#allUserCredentialsApi3s) | **GET** /users/{user_id}/credentials_api3 | Get All API 3 Credentials
+[**allUserCredentialsApi3s**](UserApi.md#allUserCredentialsApi3s) | **GET** /users/{user_id}/credentials_api3 | Get All API Credentials
 [**allUserCredentialsEmbeds**](UserApi.md#allUserCredentialsEmbeds) | **GET** /users/{user_id}/credentials_embed | Get All Embedding Credentials
 [**allUserSessions**](UserApi.md#allUserSessions) | **GET** /users/{user_id}/sessions | Get All Web Login Sessions
 [**allUsers**](UserApi.md#allUsers) | **GET** /users | Get All Users
+[**createEmbedUser**](UserApi.md#createEmbedUser) | **POST** /users/embed_user | Create an embed user from an external user ID
 [**createUser**](UserApi.md#createUser) | **POST** /users | Create User
-[**createUserCredentialsApi3**](UserApi.md#createUserCredentialsApi3) | **POST** /users/{user_id}/credentials_api3 | Create API 3 Credential
+[**createUserCredentialsApi3**](UserApi.md#createUserCredentialsApi3) | **POST** /users/{user_id}/credentials_api3 | Create API Credential
 [**createUserCredentialsEmail**](UserApi.md#createUserCredentialsEmail) | **POST** /users/{user_id}/credentials_email | Create Email/Password Credential
 [**createUserCredentialsEmailPasswordReset**](UserApi.md#createUserCredentialsEmailPasswordReset) | **POST** /users/{user_id}/credentials_email/password_reset | Create Password Reset Token
 [**createUserCredentialsTotp**](UserApi.md#createUserCredentialsTotp) | **POST** /users/{user_id}/credentials_totp | Create Two-Factor Credential
 [**deleteUser**](UserApi.md#deleteUser) | **DELETE** /users/{user_id} | Delete User
 [**deleteUserAttributeUserValue**](UserApi.md#deleteUserAttributeUserValue) | **DELETE** /users/{user_id}/attribute_values/{user_attribute_id} | Delete User Attribute User Value
-[**deleteUserCredentialsApi3**](UserApi.md#deleteUserCredentialsApi3) | **DELETE** /users/{user_id}/credentials_api3/{credentials_api3_id} | Delete API 3 Credential
+[**deleteUserCredentialsApi3**](UserApi.md#deleteUserCredentialsApi3) | **DELETE** /users/{user_id}/credentials_api3/{credentials_api3_id} | Delete API Credential
 [**deleteUserCredentialsEmail**](UserApi.md#deleteUserCredentialsEmail) | **DELETE** /users/{user_id}/credentials_email | Delete Email/Password Credential
 [**deleteUserCredentialsEmbed**](UserApi.md#deleteUserCredentialsEmbed) | **DELETE** /users/{user_id}/credentials_embed/{credentials_embed_id} | Delete Embedding Credential
 [**deleteUserCredentialsGoogle**](UserApi.md#deleteUserCredentialsGoogle) | **DELETE** /users/{user_id}/credentials_google | Delete Google Auth Credential
@@ -26,15 +27,17 @@ Method | HTTP request | Description
 [**deleteUserCredentialsTotp**](UserApi.md#deleteUserCredentialsTotp) | **DELETE** /users/{user_id}/credentials_totp | Delete Two-Factor Credential
 [**deleteUserSession**](UserApi.md#deleteUserSession) | **DELETE** /users/{user_id}/sessions/{session_id} | Delete Web Login Session
 [**me**](UserApi.md#me) | **GET** /user | Get Current User
+[**searchCredentialsEmail**](UserApi.md#searchCredentialsEmail) | **GET** /credentials_email/search | Search CredentialsEmail
 [**searchUsers**](UserApi.md#searchUsers) | **GET** /users/search | Search Users
 [**searchUsersNames**](UserApi.md#searchUsersNames) | **GET** /users/search/names/{pattern} | Search User Names
+[**sendUserCredentialsEmailPasswordReset**](UserApi.md#sendUserCredentialsEmailPasswordReset) | **POST** /users/{user_id}/credentials_email/send_password_reset | Send Password Reset Token
 [**setUserAttributeUserValue**](UserApi.md#setUserAttributeUserValue) | **PATCH** /users/{user_id}/attribute_values/{user_attribute_id} | Set User Attribute User Value
 [**setUserRoles**](UserApi.md#setUserRoles) | **PUT** /users/{user_id}/roles | Set User Roles
 [**updateUser**](UserApi.md#updateUser) | **PATCH** /users/{user_id} | Update User
 [**updateUserCredentialsEmail**](UserApi.md#updateUserCredentialsEmail) | **PATCH** /users/{user_id}/credentials_email | Update Email/Password Credential
 [**user**](UserApi.md#user) | **GET** /users/{user_id} | Get User by Id
 [**userAttributeUserValues**](UserApi.md#userAttributeUserValues) | **GET** /users/{user_id}/attribute_values | Get User Attribute Values
-[**userCredentialsApi3**](UserApi.md#userCredentialsApi3) | **GET** /users/{user_id}/credentials_api3/{credentials_api3_id} | Get API 3 Credential
+[**userCredentialsApi3**](UserApi.md#userCredentialsApi3) | **GET** /users/{user_id}/credentials_api3/{credentials_api3_id} | Get API Credential
 [**userCredentialsEmail**](UserApi.md#userCredentialsEmail) | **GET** /users/{user_id}/credentials_email | Get Email/Password Credential
 [**userCredentialsEmbed**](UserApi.md#userCredentialsEmbed) | **GET** /users/{user_id}/credentials_embed/{credentials_embed_id} | Get Embedding Credential
 [**userCredentialsGoogle**](UserApi.md#userCredentialsGoogle) | **GET** /users/{user_id}/credentials_google | Get Google Auth Credential
@@ -46,14 +49,15 @@ Method | HTTP request | Description
 [**userForCredential**](UserApi.md#userForCredential) | **GET** /users/credential/{credential_type}/{credential_id} | Get User by Credential Id
 [**userRoles**](UserApi.md#userRoles) | **GET** /users/{user_id}/roles | Get User Roles
 [**userSession**](UserApi.md#userSession) | **GET** /users/{user_id}/sessions/{session_id} | Get Web Login Session
+[**wipeoutUserEmails**](UserApi.md#wipeoutUserEmails) | **POST** /users/{user_id}/update_emails | Wipeout User Emails
 
 
 # **allUserCredentialsApi3s**
 > \Swagger\Client\Model\CredentialsApi3[] allUserCredentialsApi3s($user_id, $fields)
 
-Get All API 3 Credentials
+Get All API Credentials
 
-### API 3 login information for the specified user. This is for the newer API keys that can be added for any user.
+### API login information for the specified user. This is for the newer API keys that can be added for any user.
 
 ### Example
 ```php
@@ -65,7 +69,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -81,7 +85,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -116,7 +120,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -132,7 +136,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -167,7 +171,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -183,7 +187,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -202,7 +206,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **allUsers**
-> \Swagger\Client\Model\User[] allUsers($fields, $page, $per_page, $sorts, $ids)
+> \Swagger\Client\Model\User[] allUsers($fields, $page, $per_page, $limit, $offset, $sorts, $ids)
 
 Get All Users
 
@@ -219,13 +223,15 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     new GuzzleHttp\Client()
 );
 $fields = "fields_example"; // string | Requested fields.
-$page = 789; // int | Requested page.
-$per_page = 789; // int | Results per page.
+$page = 789; // int | DEPRECATED. Use limit and offset instead. Return only page N of paginated results
+$per_page = 789; // int | DEPRECATED. Use limit and offset instead. Return N rows of data per page
+$limit = 789; // int | Number of results to return. (used with offset and takes priority over page and per_page)
+$offset = 789; // int | Number of results to skip before returning any. (used with limit and takes priority over page and per_page)
 $sorts = "sorts_example"; // string | Fields to sort by.
-$ids = array(56); // int[] | Optional list of ids to get specific users.
+$ids = array("ids_example"); // string[] | Optional list of ids to get specific users.
 
 try {
-    $result = $apiInstance->allUsers($fields, $page, $per_page, $sorts, $ids);
+    $result = $apiInstance->allUsers($fields, $page, $per_page, $limit, $offset, $sorts, $ids);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserApi->allUsers: ', $e->getMessage(), PHP_EOL;
@@ -238,14 +244,65 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fields** | **string**| Requested fields. | [optional]
- **page** | **int**| Requested page. | [optional]
- **per_page** | **int**| Results per page. | [optional]
+ **page** | **int**| DEPRECATED. Use limit and offset instead. Return only page N of paginated results | [optional]
+ **per_page** | **int**| DEPRECATED. Use limit and offset instead. Return N rows of data per page | [optional]
+ **limit** | **int**| Number of results to return. (used with offset and takes priority over page and per_page) | [optional]
+ **offset** | **int**| Number of results to skip before returning any. (used with limit and takes priority over page and per_page) | [optional]
  **sorts** | **string**| Fields to sort by. | [optional]
- **ids** | [**int[]**](../Model/int.md)| Optional list of ids to get specific users. | [optional]
+ **ids** | [**string[]**](../Model/string.md)| Optional list of ids to get specific users. | [optional]
 
 ### Return type
 
 [**\Swagger\Client\Model\User[]**](../Model/User.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **createEmbedUser**
+> \Swagger\Client\Model\UserPublic createEmbedUser($body)
+
+Create an embed user from an external user ID
+
+Create an embed user from an external user ID
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\UserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$body = new \Swagger\Client\Model\CreateEmbedUserRequest(); // \Swagger\Client\Model\CreateEmbedUserRequest | null
+
+try {
+    $result = $apiInstance->createEmbedUser($body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling UserApi->createEmbedUser: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **body** | [**\Swagger\Client\Model\CreateEmbedUserRequest**](../Model/CreateEmbedUserRequest.md)| null |
+
+### Return type
+
+[**\Swagger\Client\Model\UserPublic**](../Model/UserPublic.md)
 
 ### Authorization
 
@@ -310,11 +367,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createUserCredentialsApi3**
-> \Swagger\Client\Model\CredentialsApi3 createUserCredentialsApi3($user_id, $body, $fields)
+> \Swagger\Client\Model\CreateCredentialsApi3 createUserCredentialsApi3($user_id, $fields)
 
-Create API 3 Credential
+Create API Credential
 
-### API 3 login information for the specified user. This is for the newer API keys that can be added for any user.
+### API login information for the specified user. This is for the newer API keys that can be added for any user.
 
 ### Example
 ```php
@@ -326,12 +383,11 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
-$body = new \Swagger\Client\Model\CredentialsApi3(); // \Swagger\Client\Model\CredentialsApi3 | API 3 Credential
+$user_id = "user_id_example"; // string | Id of user
 $fields = "fields_example"; // string | Requested fields.
 
 try {
-    $result = $apiInstance->createUserCredentialsApi3($user_id, $body, $fields);
+    $result = $apiInstance->createUserCredentialsApi3($user_id, $fields);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserApi->createUserCredentialsApi3: ', $e->getMessage(), PHP_EOL;
@@ -343,13 +399,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
- **body** | [**\Swagger\Client\Model\CredentialsApi3**](../Model/CredentialsApi3.md)| API 3 Credential | [optional]
+ **user_id** | **string**| Id of user |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\CredentialsApi3**](../Model/CredentialsApi3.md)
+[**\Swagger\Client\Model\CreateCredentialsApi3**](../Model/CreateCredentialsApi3.md)
 
 ### Authorization
 
@@ -379,7 +434,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 $body = new \Swagger\Client\Model\CredentialsEmail(); // \Swagger\Client\Model\CredentialsEmail | Email/Password Credential
 $fields = "fields_example"; // string | Requested fields.
 
@@ -396,8 +451,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
- **body** | [**\Swagger\Client\Model\CredentialsEmail**](../Model/CredentialsEmail.md)| Email/Password Credential | [optional]
+ **user_id** | **string**| Id of user |
+ **body** | [**\Swagger\Client\Model\CredentialsEmail**](../Model/CredentialsEmail.md)| Email/Password Credential |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -432,7 +487,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | Id of user
+$user_id = "user_id_example"; // string | Id of user
 $expires = true; // bool | Expiring token.
 $fields = "fields_example"; // string | Requested fields.
 
@@ -449,7 +504,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| Id of user |
+ **user_id** | **string**| Id of user |
  **expires** | **bool**| Expiring token. | [optional]
  **fields** | **string**| Requested fields. | [optional]
 
@@ -485,7 +540,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 $body = new \Swagger\Client\Model\CredentialsTotp(); // \Swagger\Client\Model\CredentialsTotp | Two-Factor Credential
 $fields = "fields_example"; // string | Requested fields.
 
@@ -502,7 +557,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
  **body** | [**\Swagger\Client\Model\CredentialsTotp**](../Model/CredentialsTotp.md)| Two-Factor Credential | [optional]
  **fields** | **string**| Requested fields. | [optional]
 
@@ -538,7 +593,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | Id of user
+$user_id = "user_id_example"; // string | Id of user
 
 try {
     $result = $apiInstance->deleteUser($user_id);
@@ -553,7 +608,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| Id of user |
+ **user_id** | **string**| Id of user |
 
 ### Return type
 
@@ -587,8 +642,8 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | Id of user
-$user_attribute_id = 789; // int | Id of user attribute
+$user_id = "user_id_example"; // string | Id of user
+$user_attribute_id = "user_attribute_id_example"; // string | Id of user attribute
 
 try {
     $apiInstance->deleteUserAttributeUserValue($user_id, $user_attribute_id);
@@ -602,8 +657,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| Id of user |
- **user_attribute_id** | **int**| Id of user attribute |
+ **user_id** | **string**| Id of user |
+ **user_attribute_id** | **string**| Id of user attribute |
 
 ### Return type
 
@@ -623,9 +678,9 @@ No authorization required
 # **deleteUserCredentialsApi3**
 > string deleteUserCredentialsApi3($user_id, $credentials_api3_id)
 
-Delete API 3 Credential
+Delete API Credential
 
-### API 3 login information for the specified user. This is for the newer API keys that can be added for any user.
+### API login information for the specified user. This is for the newer API keys that can be added for any user.
 
 ### Example
 ```php
@@ -637,8 +692,8 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
-$credentials_api3_id = 789; // int | id of API 3 Credential
+$user_id = "user_id_example"; // string | Id of user
+$credentials_api3_id = "credentials_api3_id_example"; // string | Id of API Credential
 
 try {
     $result = $apiInstance->deleteUserCredentialsApi3($user_id, $credentials_api3_id);
@@ -653,8 +708,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
- **credentials_api3_id** | **int**| id of API 3 Credential |
+ **user_id** | **string**| Id of user |
+ **credentials_api3_id** | **string**| Id of API Credential |
 
 ### Return type
 
@@ -688,7 +743,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 
 try {
     $result = $apiInstance->deleteUserCredentialsEmail($user_id);
@@ -703,7 +758,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
 
 ### Return type
 
@@ -737,8 +792,8 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
-$credentials_embed_id = 789; // int | id of Embedding Credential
+$user_id = "user_id_example"; // string | Id of user
+$credentials_embed_id = "credentials_embed_id_example"; // string | Id of Embedding Credential
 
 try {
     $result = $apiInstance->deleteUserCredentialsEmbed($user_id, $credentials_embed_id);
@@ -753,8 +808,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
- **credentials_embed_id** | **int**| id of Embedding Credential |
+ **user_id** | **string**| Id of user |
+ **credentials_embed_id** | **string**| Id of Embedding Credential |
 
 ### Return type
 
@@ -788,7 +843,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 
 try {
     $result = $apiInstance->deleteUserCredentialsGoogle($user_id);
@@ -803,7 +858,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
 
 ### Return type
 
@@ -837,7 +892,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 
 try {
     $result = $apiInstance->deleteUserCredentialsLdap($user_id);
@@ -852,7 +907,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
 
 ### Return type
 
@@ -886,7 +941,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 
 try {
     $result = $apiInstance->deleteUserCredentialsLookerOpenid($user_id);
@@ -901,7 +956,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
 
 ### Return type
 
@@ -935,7 +990,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 
 try {
     $result = $apiInstance->deleteUserCredentialsOidc($user_id);
@@ -950,7 +1005,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
 
 ### Return type
 
@@ -984,7 +1039,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 
 try {
     $result = $apiInstance->deleteUserCredentialsSaml($user_id);
@@ -999,7 +1054,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
 
 ### Return type
 
@@ -1033,7 +1088,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 
 try {
     $result = $apiInstance->deleteUserCredentialsTotp($user_id);
@@ -1048,7 +1103,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
 
 ### Return type
 
@@ -1082,8 +1137,8 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
-$session_id = 789; // int | id of Web Login Session
+$user_id = "user_id_example"; // string | Id of user
+$session_id = "session_id_example"; // string | Id of Web Login Session
 
 try {
     $result = $apiInstance->deleteUserSession($user_id, $session_id);
@@ -1098,8 +1153,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
- **session_id** | **int**| id of Web Login Session |
+ **user_id** | **string**| Id of user |
+ **session_id** | **string**| Id of Web Login Session |
 
 ### Return type
 
@@ -1165,8 +1220,71 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **searchCredentialsEmail**
+> \Swagger\Client\Model\CredentialsEmailSearch[] searchCredentialsEmail($fields, $limit, $offset, $sorts, $id, $email, $emails, $filter_or)
+
+Search CredentialsEmail
+
+### Search email credentials  Returns all credentials_email records that match the given search criteria.  If multiple search params are given and `filter_or` is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If `filter_or` is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain `%` and '_' as SQL LIKE pattern match wildcard expressions. example=\"dan%\" will match \"danger\" and \"Danzig\" but not \"David\" example=\"D_m%\" will match \"Damage\" and \"dump\"  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \"IS NULL\" and \"NOT NULL\" as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \"true\" and \"false\" as values.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\UserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$fields = "fields_example"; // string | Requested fields.
+$limit = 789; // int | Number of results to return (used with `offset`).
+$offset = 789; // int | Number of results to skip before returning any (used with `limit`).
+$sorts = "sorts_example"; // string | Fields to sort by.
+$id = "id_example"; // string | Match credentials_email id.
+$email = "email_example"; // string | Match credentials_email email.
+$emails = "emails_example"; // string | Find credentials_email that match given emails.
+$filter_or = true; // bool | Combine given search criteria in a boolean OR expression.
+
+try {
+    $result = $apiInstance->searchCredentialsEmail($fields, $limit, $offset, $sorts, $id, $email, $emails, $filter_or);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling UserApi->searchCredentialsEmail: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fields** | **string**| Requested fields. | [optional]
+ **limit** | **int**| Number of results to return (used with &#x60;offset&#x60;). | [optional]
+ **offset** | **int**| Number of results to skip before returning any (used with &#x60;limit&#x60;). | [optional]
+ **sorts** | **string**| Fields to sort by. | [optional]
+ **id** | **string**| Match credentials_email id. | [optional]
+ **email** | **string**| Match credentials_email email. | [optional]
+ **emails** | **string**| Find credentials_email that match given emails. | [optional]
+ **filter_or** | **bool**| Combine given search criteria in a boolean OR expression. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\CredentialsEmailSearch[]**](../Model/CredentialsEmailSearch.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **searchUsers**
-> \Swagger\Client\Model\User[] searchUsers($fields, $page, $per_page, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $email, $is_disabled, $filter_or, $content_metadata_id, $group_id)
+> \Swagger\Client\Model\User[] searchUsers($fields, $page, $per_page, $limit, $offset, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $embed_user, $email, $is_disabled, $filter_or, $content_metadata_id, $group_id)
 
 Search Users
 
@@ -1183,21 +1301,24 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     new GuzzleHttp\Client()
 );
 $fields = "fields_example"; // string | Include only these fields in the response
-$page = 789; // int | Return only page N of paginated results
-$per_page = 789; // int | Return N rows of data per page
+$page = 789; // int | DEPRECATED. Use limit and offset instead. Return only page N of paginated results
+$per_page = 789; // int | DEPRECATED. Use limit and offset instead. Return N rows of data per page
+$limit = 789; // int | Number of results to return. (used with offset and takes priority over page and per_page)
+$offset = 789; // int | Number of results to skip before returning any. (used with limit and takes priority over page and per_page)
 $sorts = "sorts_example"; // string | Fields to sort by.
-$id = 789; // int | Match User Id.
+$id = "id_example"; // string | Match User Id.
 $first_name = "first_name_example"; // string | Match First name.
 $last_name = "last_name_example"; // string | Match Last name.
 $verified_looker_employee = true; // bool | Search for user accounts associated with Looker employees
+$embed_user = true; // bool | Search for only embed users
 $email = "email_example"; // string | Search for the user with this email address
 $is_disabled = true; // bool | Search for disabled user accounts
 $filter_or = true; // bool | Combine given search criteria in a boolean OR expression
-$content_metadata_id = 789; // int | Search for users who have access to this content_metadata item
-$group_id = 789; // int | Search for users who are direct members of this group
+$content_metadata_id = "content_metadata_id_example"; // string | Search for users who have access to this content_metadata item
+$group_id = "group_id_example"; // string | Search for users who are direct members of this group
 
 try {
-    $result = $apiInstance->searchUsers($fields, $page, $per_page, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $email, $is_disabled, $filter_or, $content_metadata_id, $group_id);
+    $result = $apiInstance->searchUsers($fields, $page, $per_page, $limit, $offset, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $embed_user, $email, $is_disabled, $filter_or, $content_metadata_id, $group_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserApi->searchUsers: ', $e->getMessage(), PHP_EOL;
@@ -1210,18 +1331,21 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fields** | **string**| Include only these fields in the response | [optional]
- **page** | **int**| Return only page N of paginated results | [optional]
- **per_page** | **int**| Return N rows of data per page | [optional]
+ **page** | **int**| DEPRECATED. Use limit and offset instead. Return only page N of paginated results | [optional]
+ **per_page** | **int**| DEPRECATED. Use limit and offset instead. Return N rows of data per page | [optional]
+ **limit** | **int**| Number of results to return. (used with offset and takes priority over page and per_page) | [optional]
+ **offset** | **int**| Number of results to skip before returning any. (used with limit and takes priority over page and per_page) | [optional]
  **sorts** | **string**| Fields to sort by. | [optional]
- **id** | **int**| Match User Id. | [optional]
+ **id** | **string**| Match User Id. | [optional]
  **first_name** | **string**| Match First name. | [optional]
  **last_name** | **string**| Match Last name. | [optional]
  **verified_looker_employee** | **bool**| Search for user accounts associated with Looker employees | [optional]
+ **embed_user** | **bool**| Search for only embed users | [optional]
  **email** | **string**| Search for the user with this email address | [optional]
  **is_disabled** | **bool**| Search for disabled user accounts | [optional]
  **filter_or** | **bool**| Combine given search criteria in a boolean OR expression | [optional]
- **content_metadata_id** | **int**| Search for users who have access to this content_metadata item | [optional]
- **group_id** | **int**| Search for users who are direct members of this group | [optional]
+ **content_metadata_id** | **string**| Search for users who have access to this content_metadata item | [optional]
+ **group_id** | **string**| Search for users who are direct members of this group | [optional]
 
 ### Return type
 
@@ -1239,7 +1363,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **searchUsersNames**
-> \Swagger\Client\Model\User[] searchUsersNames($pattern, $fields, $page, $per_page, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $email, $is_disabled)
+> \Swagger\Client\Model\User[] searchUsersNames($pattern, $fields, $page, $per_page, $limit, $offset, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $email, $is_disabled)
 
 Search User Names
 
@@ -1257,10 +1381,12 @@ $apiInstance = new Swagger\Client\Api\UserApi(
 );
 $pattern = "pattern_example"; // string | Pattern to match
 $fields = "fields_example"; // string | Include only these fields in the response
-$page = 789; // int | Return only page N of paginated results
-$per_page = 789; // int | Return N rows of data per page
+$page = 789; // int | DEPRECATED. Use limit and offset instead. Return only page N of paginated results
+$per_page = 789; // int | DEPRECATED. Use limit and offset instead. Return N rows of data per page
+$limit = 789; // int | Number of results to return. (used with offset and takes priority over page and per_page)
+$offset = 789; // int | Number of results to skip before returning any. (used with limit and takes priority over page and per_page)
 $sorts = "sorts_example"; // string | Fields to sort by
-$id = 789; // int | Match User Id
+$id = "id_example"; // string | Match User Id
 $first_name = "first_name_example"; // string | Match First name
 $last_name = "last_name_example"; // string | Match Last name
 $verified_looker_employee = true; // bool | Match Verified Looker employee
@@ -1268,7 +1394,7 @@ $email = "email_example"; // string | Match Email Address
 $is_disabled = true; // bool | Include or exclude disabled accounts in the results
 
 try {
-    $result = $apiInstance->searchUsersNames($pattern, $fields, $page, $per_page, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $email, $is_disabled);
+    $result = $apiInstance->searchUsersNames($pattern, $fields, $page, $per_page, $limit, $offset, $sorts, $id, $first_name, $last_name, $verified_looker_employee, $email, $is_disabled);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserApi->searchUsersNames: ', $e->getMessage(), PHP_EOL;
@@ -1282,10 +1408,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **pattern** | **string**| Pattern to match |
  **fields** | **string**| Include only these fields in the response | [optional]
- **page** | **int**| Return only page N of paginated results | [optional]
- **per_page** | **int**| Return N rows of data per page | [optional]
+ **page** | **int**| DEPRECATED. Use limit and offset instead. Return only page N of paginated results | [optional]
+ **per_page** | **int**| DEPRECATED. Use limit and offset instead. Return N rows of data per page | [optional]
+ **limit** | **int**| Number of results to return. (used with offset and takes priority over page and per_page) | [optional]
+ **offset** | **int**| Number of results to skip before returning any. (used with limit and takes priority over page and per_page) | [optional]
  **sorts** | **string**| Fields to sort by | [optional]
- **id** | **int**| Match User Id | [optional]
+ **id** | **string**| Match User Id | [optional]
  **first_name** | **string**| Match First name | [optional]
  **last_name** | **string**| Match Last name | [optional]
  **verified_looker_employee** | **bool**| Match Verified Looker employee | [optional]
@@ -1295,6 +1423,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\Swagger\Client\Model\User[]**](../Model/User.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **sendUserCredentialsEmailPasswordReset**
+> \Swagger\Client\Model\CredentialsEmail sendUserCredentialsEmailPasswordReset($user_id, $fields)
+
+Send Password Reset Token
+
+### Send a password reset token. This will send a password reset email to the user. If a password reset token does not already exist for this user, it will create one and then send it. If the user has not yet set up their account, it will send a setup email to the user. The URL sent in the email is expressed as the 'password_reset_url' of the user's email/password credential object. Password reset URLs will expire in 60 minutes. This method can be called with an empty body.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\UserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$user_id = "user_id_example"; // string | Id of user
+$fields = "fields_example"; // string | Requested fields.
+
+try {
+    $result = $apiInstance->sendUserCredentialsEmailPasswordReset($user_id, $fields);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling UserApi->sendUserCredentialsEmailPasswordReset: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_id** | **string**| Id of user |
+ **fields** | **string**| Requested fields. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\CredentialsEmail**](../Model/CredentialsEmail.md)
 
 ### Authorization
 
@@ -1324,8 +1503,8 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | Id of user
-$user_attribute_id = 789; // int | Id of user attribute
+$user_id = "user_id_example"; // string | Id of user
+$user_attribute_id = "user_attribute_id_example"; // string | Id of user attribute
 $body = new \Swagger\Client\Model\UserAttributeWithValue(); // \Swagger\Client\Model\UserAttributeWithValue | New attribute value for user.
 
 try {
@@ -1341,8 +1520,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| Id of user |
- **user_attribute_id** | **int**| Id of user attribute |
+ **user_id** | **string**| Id of user |
+ **user_attribute_id** | **string**| Id of user attribute |
  **body** | [**\Swagger\Client\Model\UserAttributeWithValue**](../Model/UserAttributeWithValue.md)| New attribute value for user. |
 
 ### Return type
@@ -1377,8 +1556,8 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
-$body = array(new \Swagger\Client\Model\int[]()); // int[] | array of roles ids for user
+$user_id = "user_id_example"; // string | Id of user
+$body = array(new \Swagger\Client\Model\string[]()); // string[] | array of roles ids for user
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -1394,8 +1573,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
- **body** | **int[]**| array of roles ids for user |
+ **user_id** | **string**| Id of user |
+ **body** | **string[]**| array of roles ids for user |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -1430,7 +1609,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | Id of user
+$user_id = "user_id_example"; // string | Id of user
 $body = new \Swagger\Client\Model\User(); // \Swagger\Client\Model\User | User
 $fields = "fields_example"; // string | Requested fields.
 
@@ -1447,7 +1626,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| Id of user |
+ **user_id** | **string**| Id of user |
  **body** | [**\Swagger\Client\Model\User**](../Model/User.md)| User |
  **fields** | **string**| Requested fields. | [optional]
 
@@ -1483,7 +1662,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 $body = new \Swagger\Client\Model\CredentialsEmail(); // \Swagger\Client\Model\CredentialsEmail | Email/Password Credential
 $fields = "fields_example"; // string | Requested fields.
 
@@ -1500,7 +1679,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
  **body** | [**\Swagger\Client\Model\CredentialsEmail**](../Model/CredentialsEmail.md)| Email/Password Credential |
  **fields** | **string**| Requested fields. | [optional]
 
@@ -1536,7 +1715,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | Id of user
+$user_id = "user_id_example"; // string | Id of user
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -1552,7 +1731,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| Id of user |
+ **user_id** | **string**| Id of user |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -1575,7 +1754,7 @@ No authorization required
 
 Get User Attribute Values
 
-### Get user attribute values for a given user.  Returns the values of specified user attributes (or all user attributes) for a certain user.  A value for each user attribute is searched for in the following locations, in this order: 1. in the user's account information 1. in groups that the user is a member of 1. the default value of the user attribute  If more than one group has a value defined for a user attribute, the group with the lowest rank wins.  The response will only include user attributes for which values were found. Use `include_unset=true` to include empty records for user attributes with no value.  The value of all hidden user attributes will be blank.
+### Get user attribute values for a given user.  Returns the values of specified user attributes (or all user attributes) for a certain user.  A value for each user attribute is searched for in the following locations, in this order:  1. in the user's account information 1. in groups that the user is a member of 1. the default value of the user attribute  If more than one group has a value defined for a user attribute, the group with the lowest rank wins.  The response will only include user attributes for which values were found. Use `include_unset=true` to include empty records for user attributes with no value.  The value of all hidden user attributes will be blank.
 
 ### Example
 ```php
@@ -1587,9 +1766,9 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | Id of user
+$user_id = "user_id_example"; // string | Id of user
 $fields = "fields_example"; // string | Requested fields.
-$user_attribute_ids = array(56); // int[] | Specific user attributes to request. Omit or leave blank to request all user attributes.
+$user_attribute_ids = array("user_attribute_ids_example"); // string[] | Specific user attributes to request. Omit or leave blank to request all user attributes.
 $all_values = true; // bool | If true, returns all values in the search path instead of just the first value found. Useful for debugging group precedence.
 $include_unset = true; // bool | If true, returns an empty record for each requested attribute that has no user, group, or default value.
 
@@ -1606,9 +1785,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| Id of user |
+ **user_id** | **string**| Id of user |
  **fields** | **string**| Requested fields. | [optional]
- **user_attribute_ids** | [**int[]**](../Model/int.md)| Specific user attributes to request. Omit or leave blank to request all user attributes. | [optional]
+ **user_attribute_ids** | [**string[]**](../Model/string.md)| Specific user attributes to request. Omit or leave blank to request all user attributes. | [optional]
  **all_values** | **bool**| If true, returns all values in the search path instead of just the first value found. Useful for debugging group precedence. | [optional]
  **include_unset** | **bool**| If true, returns an empty record for each requested attribute that has no user, group, or default value. | [optional]
 
@@ -1630,9 +1809,9 @@ No authorization required
 # **userCredentialsApi3**
 > \Swagger\Client\Model\CredentialsApi3 userCredentialsApi3($user_id, $credentials_api3_id, $fields)
 
-Get API 3 Credential
+Get API Credential
 
-### API 3 login information for the specified user. This is for the newer API keys that can be added for any user.
+### API login information for the specified user. This is for the newer API keys that can be added for any user.
 
 ### Example
 ```php
@@ -1644,8 +1823,8 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | Id of user
-$credentials_api3_id = 789; // int | Id of API 3 Credential
+$user_id = "user_id_example"; // string | Id of user
+$credentials_api3_id = "credentials_api3_id_example"; // string | Id of API Credential
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -1661,8 +1840,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| Id of user |
- **credentials_api3_id** | **int**| Id of API 3 Credential |
+ **user_id** | **string**| Id of user |
+ **credentials_api3_id** | **string**| Id of API Credential |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -1697,7 +1876,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -1713,7 +1892,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -1748,8 +1927,8 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | Id of user
-$credentials_embed_id = 789; // int | Id of Embedding Credential
+$user_id = "user_id_example"; // string | Id of user
+$credentials_embed_id = "credentials_embed_id_example"; // string | Id of Embedding Credential
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -1765,8 +1944,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| Id of user |
- **credentials_embed_id** | **int**| Id of Embedding Credential |
+ **user_id** | **string**| Id of user |
+ **credentials_embed_id** | **string**| Id of Embedding Credential |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -1801,7 +1980,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -1817,7 +1996,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -1852,7 +2031,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -1868,7 +2047,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -1903,7 +2082,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -1919,7 +2098,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -1954,7 +2133,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -1970,7 +2149,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -2005,7 +2184,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -2021,7 +2200,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -2056,7 +2235,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -2072,7 +2251,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -2095,7 +2274,7 @@ No authorization required
 
 Get User by Credential Id
 
-### Get information about the user with a credential of given type with specific id.  This is used to do things like find users by their embed external_user_id. Or, find the user with a given api3 client_id, etc. The 'credential_type' matchs the 'type' name of the various credential types. It must be one of the values listed in the table below. The 'credential_id' is your unique Id for the user and is specific to each type of credential.  An example using the Ruby sdk might look like:  `sdk.user_for_credential('embed', 'customer-4959425')`  This table shows the supported 'Credential Type' strings. The right column is for reference; it shows which field in the given credential type is actually searched when finding a user with the supplied 'credential_id'.  | Credential Types | Id Field Matched | | ---------------- | ---------------- | | email            | email            | | google           | google_user_id   | | saml             | saml_user_id     | | oidc             | oidc_user_id     | | ldap             | ldap_id          | | api              | token            | | api3             | client_id        | | embed            | external_user_id | | looker_openid    | email            |  NOTE: The 'api' credential type was only used with the legacy Looker query API and is no longer supported. The credential type for API you are currently looking at is 'api3'.
+### Get information about the user with a credential of given type with specific id.  This is used to do things like find users by their embed external_user_id. Or, find the user with a given api3 client_id, etc. The 'credential_type' matches the 'type' name of the various credential types. It must be one of the values listed in the table below. The 'credential_id' is your unique Id for the user and is specific to each type of credential.  An example using the Ruby sdk might look like:  `sdk.user_for_credential('embed', 'customer-4959425')`  This table shows the supported 'Credential Type' strings. The right column is for reference; it shows which field in the given credential type is actually searched when finding a user with the supplied 'credential_id'.  | Credential Types | Id Field Matched | | ---------------- | ---------------- | | email            | email            | | google           | google_user_id   | | saml             | saml_user_id     | | oidc             | oidc_user_id     | | ldap             | ldap_id          | | api              | token            | | api3             | client_id        | | embed            | external_user_id | | looker_openid    | email            |  **NOTE**: The 'api' credential type was only used with the legacy Looker query API and is no longer supported. The credential type for API you are currently looking at is 'api3'.
 
 ### Example
 ```php
@@ -2160,7 +2339,7 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | id of user
+$user_id = "user_id_example"; // string | Id of user
 $fields = "fields_example"; // string | Requested fields.
 $direct_association_only = true; // bool | Get only roles associated directly with the user: exclude those only associated through groups.
 
@@ -2177,7 +2356,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| id of user |
+ **user_id** | **string**| Id of user |
  **fields** | **string**| Requested fields. | [optional]
  **direct_association_only** | **bool**| Get only roles associated directly with the user: exclude those only associated through groups. | [optional]
 
@@ -2213,8 +2392,8 @@ $apiInstance = new Swagger\Client\Api\UserApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_id = 789; // int | Id of user
-$session_id = 789; // int | Id of Web Login Session
+$user_id = "user_id_example"; // string | Id of user
+$session_id = "session_id_example"; // string | Id of Web Login Session
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -2230,13 +2409,66 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_id** | **int**| Id of user |
- **session_id** | **int**| Id of Web Login Session |
+ **user_id** | **string**| Id of user |
+ **session_id** | **string**| Id of Web Login Session |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
 
 [**\Swagger\Client\Model\Session**](../Model/Session.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **wipeoutUserEmails**
+> \Swagger\Client\Model\User wipeoutUserEmails($user_id, $body, $fields)
+
+Wipeout User Emails
+
+### Change a disabled user's email addresses  Allows the admin to change the email addresses for all the user's associated credentials.  Will overwrite all associated email addresses with the value supplied in the 'email' body param. The user's 'is_disabled' status must be true.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\UserApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$user_id = "user_id_example"; // string | Id of user
+$body = new \Swagger\Client\Model\UserEmailOnly(); // \Swagger\Client\Model\UserEmailOnly | null
+$fields = "fields_example"; // string | Requested fields.
+
+try {
+    $result = $apiInstance->wipeoutUserEmails($user_id, $body, $fields);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling UserApi->wipeoutUserEmails: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **user_id** | **string**| Id of user |
+ **body** | [**\Swagger\Client\Model\UserEmailOnly**](../Model/UserEmailOnly.md)| null |
+ **fields** | **string**| Requested fields. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\User**](../Model/User.md)
 
 ### Authorization
 

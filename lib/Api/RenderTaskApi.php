@@ -10,12 +10,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -88,51 +88,45 @@ class RenderTaskApi
     }
 
     /**
-     * Operation createDashboardRenderTask
+     * Operation createDashboardElementRenderTask
      *
-     * Create Dashboard Render Task
+     * Create Dashboard Element Render Task
      *
-     * @param  int $dashboard_id Id of dashboard to render (required)
-     * @param  string $result_format Output type: pdf, png, or jpg (required)
-     * @param  \Swagger\Client\Model\CreateDashboardRenderTask $body Dashboard render task parameters (required)
+     * @param  string $dashboard_element_id Id of dashboard element to render: UDD dashboard element would be numeric and LookML dashboard element would be model_name::dashboard_title::lookml_link_id (required)
+     * @param  string $result_format Output type: png or jpg (required)
      * @param  int $width Output width in pixels (required)
      * @param  int $height Output height in pixels (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  string $pdf_paper_size Paper size for pdf (optional)
-     * @param  bool $pdf_landscape Whether to render pdf in landscape (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\RenderTask
      */
-    public function createDashboardRenderTask($dashboard_id, $result_format, $body, $width, $height, $fields = null, $pdf_paper_size = null, $pdf_landscape = null)
+    public function createDashboardElementRenderTask($dashboard_element_id, $result_format, $width, $height, $fields = null)
     {
-        list($response) = $this->createDashboardRenderTaskWithHttpInfo($dashboard_id, $result_format, $body, $width, $height, $fields, $pdf_paper_size, $pdf_landscape);
+        list($response) = $this->createDashboardElementRenderTaskWithHttpInfo($dashboard_element_id, $result_format, $width, $height, $fields);
         return $response;
     }
 
     /**
-     * Operation createDashboardRenderTaskWithHttpInfo
+     * Operation createDashboardElementRenderTaskWithHttpInfo
      *
-     * Create Dashboard Render Task
+     * Create Dashboard Element Render Task
      *
-     * @param  int $dashboard_id Id of dashboard to render (required)
-     * @param  string $result_format Output type: pdf, png, or jpg (required)
-     * @param  \Swagger\Client\Model\CreateDashboardRenderTask $body Dashboard render task parameters (required)
+     * @param  string $dashboard_element_id Id of dashboard element to render: UDD dashboard element would be numeric and LookML dashboard element would be model_name::dashboard_title::lookml_link_id (required)
+     * @param  string $result_format Output type: png or jpg (required)
      * @param  int $width Output width in pixels (required)
      * @param  int $height Output height in pixels (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  string $pdf_paper_size Paper size for pdf (optional)
-     * @param  bool $pdf_landscape Whether to render pdf in landscape (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\RenderTask, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createDashboardRenderTaskWithHttpInfo($dashboard_id, $result_format, $body, $width, $height, $fields = null, $pdf_paper_size = null, $pdf_landscape = null)
+    public function createDashboardElementRenderTaskWithHttpInfo($dashboard_element_id, $result_format, $width, $height, $fields = null)
     {
         $returnType = '\Swagger\Client\Model\RenderTask';
-        $request = $this->createDashboardRenderTaskRequest($dashboard_id, $result_format, $body, $width, $height, $fields, $pdf_paper_size, $pdf_landscape);
+        $request = $this->createDashboardElementRenderTaskRequest($dashboard_element_id, $result_format, $width, $height, $fields);
 
         try {
             $options = $this->createHttpClientOption();
@@ -220,6 +214,382 @@ class RenderTaskApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createDashboardElementRenderTaskAsync
+     *
+     * Create Dashboard Element Render Task
+     *
+     * @param  string $dashboard_element_id Id of dashboard element to render: UDD dashboard element would be numeric and LookML dashboard element would be model_name::dashboard_title::lookml_link_id (required)
+     * @param  string $result_format Output type: png or jpg (required)
+     * @param  int $width Output width in pixels (required)
+     * @param  int $height Output height in pixels (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createDashboardElementRenderTaskAsync($dashboard_element_id, $result_format, $width, $height, $fields = null)
+    {
+        return $this->createDashboardElementRenderTaskAsyncWithHttpInfo($dashboard_element_id, $result_format, $width, $height, $fields)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createDashboardElementRenderTaskAsyncWithHttpInfo
+     *
+     * Create Dashboard Element Render Task
+     *
+     * @param  string $dashboard_element_id Id of dashboard element to render: UDD dashboard element would be numeric and LookML dashboard element would be model_name::dashboard_title::lookml_link_id (required)
+     * @param  string $result_format Output type: png or jpg (required)
+     * @param  int $width Output width in pixels (required)
+     * @param  int $height Output height in pixels (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createDashboardElementRenderTaskAsyncWithHttpInfo($dashboard_element_id, $result_format, $width, $height, $fields = null)
+    {
+        $returnType = '\Swagger\Client\Model\RenderTask';
+        $request = $this->createDashboardElementRenderTaskRequest($dashboard_element_id, $result_format, $width, $height, $fields);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createDashboardElementRenderTask'
+     *
+     * @param  string $dashboard_element_id Id of dashboard element to render: UDD dashboard element would be numeric and LookML dashboard element would be model_name::dashboard_title::lookml_link_id (required)
+     * @param  string $result_format Output type: png or jpg (required)
+     * @param  int $width Output width in pixels (required)
+     * @param  int $height Output height in pixels (required)
+     * @param  string $fields Requested fields. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createDashboardElementRenderTaskRequest($dashboard_element_id, $result_format, $width, $height, $fields = null)
+    {
+        // verify the required parameter 'dashboard_element_id' is set
+        if ($dashboard_element_id === null || (is_array($dashboard_element_id) && count($dashboard_element_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $dashboard_element_id when calling createDashboardElementRenderTask'
+            );
+        }
+        // verify the required parameter 'result_format' is set
+        if ($result_format === null || (is_array($result_format) && count($result_format) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $result_format when calling createDashboardElementRenderTask'
+            );
+        }
+        // verify the required parameter 'width' is set
+        if ($width === null || (is_array($width) && count($width) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $width when calling createDashboardElementRenderTask'
+            );
+        }
+        // verify the required parameter 'height' is set
+        if ($height === null || (is_array($height) && count($height) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $height when calling createDashboardElementRenderTask'
+            );
+        }
+
+        $resourcePath = '/render_tasks/dashboard_elements/{dashboard_element_id}/{result_format}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($width !== null) {
+            $queryParams['width'] = ObjectSerializer::toQueryValue($width);
+        }
+        // query params
+        if ($height !== null) {
+            $queryParams['height'] = ObjectSerializer::toQueryValue($height);
+        }
+        // query params
+        if ($fields !== null) {
+            $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
+        }
+
+        // path params
+        if ($dashboard_element_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'dashboard_element_id' . '}',
+                ObjectSerializer::toPathValue($dashboard_element_id),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($result_format !== null) {
+            $resourcePath = str_replace(
+                '{' . 'result_format' . '}',
+                ObjectSerializer::toPathValue($result_format),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createDashboardRenderTask
+     *
+     * Create Dashboard Render Task
+     *
+     * @param  string $dashboard_id Id of dashboard to render. The ID can be a LookML dashboard also. (required)
+     * @param  string $result_format Output type: pdf, png, or jpg (required)
+     * @param  \Swagger\Client\Model\CreateDashboardRenderTask $body Dashboard render task parameters (required)
+     * @param  int $width Output width in pixels (required)
+     * @param  int $height Output height in pixels (required)
+     * @param  string $fields Requested fields. (optional)
+     * @param  string $pdf_paper_size Paper size for pdf. Value can be one of: [\&quot;letter\&quot;,\&quot;legal\&quot;,\&quot;tabloid\&quot;,\&quot;a0\&quot;,\&quot;a1\&quot;,\&quot;a2\&quot;,\&quot;a3\&quot;,\&quot;a4\&quot;,\&quot;a5\&quot;] (optional)
+     * @param  bool $pdf_landscape Whether to render pdf in landscape paper orientation (optional)
+     * @param  bool $long_tables Whether or not to expand table vis to full length (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\RenderTask
+     */
+    public function createDashboardRenderTask($dashboard_id, $result_format, $body, $width, $height, $fields = null, $pdf_paper_size = null, $pdf_landscape = null, $long_tables = null)
+    {
+        list($response) = $this->createDashboardRenderTaskWithHttpInfo($dashboard_id, $result_format, $body, $width, $height, $fields, $pdf_paper_size, $pdf_landscape, $long_tables);
+        return $response;
+    }
+
+    /**
+     * Operation createDashboardRenderTaskWithHttpInfo
+     *
+     * Create Dashboard Render Task
+     *
+     * @param  string $dashboard_id Id of dashboard to render. The ID can be a LookML dashboard also. (required)
+     * @param  string $result_format Output type: pdf, png, or jpg (required)
+     * @param  \Swagger\Client\Model\CreateDashboardRenderTask $body Dashboard render task parameters (required)
+     * @param  int $width Output width in pixels (required)
+     * @param  int $height Output height in pixels (required)
+     * @param  string $fields Requested fields. (optional)
+     * @param  string $pdf_paper_size Paper size for pdf. Value can be one of: [\&quot;letter\&quot;,\&quot;legal\&quot;,\&quot;tabloid\&quot;,\&quot;a0\&quot;,\&quot;a1\&quot;,\&quot;a2\&quot;,\&quot;a3\&quot;,\&quot;a4\&quot;,\&quot;a5\&quot;] (optional)
+     * @param  bool $pdf_landscape Whether to render pdf in landscape paper orientation (optional)
+     * @param  bool $long_tables Whether or not to expand table vis to full length (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\RenderTask, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createDashboardRenderTaskWithHttpInfo($dashboard_id, $result_format, $body, $width, $height, $fields = null, $pdf_paper_size = null, $pdf_landscape = null, $long_tables = null)
+    {
+        $returnType = '\Swagger\Client\Model\RenderTask';
+        $request = $this->createDashboardRenderTaskRequest($dashboard_id, $result_format, $body, $width, $height, $fields, $pdf_paper_size, $pdf_landscape, $long_tables);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\RenderTask',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -230,21 +600,22 @@ class RenderTaskApi
      *
      * Create Dashboard Render Task
      *
-     * @param  int $dashboard_id Id of dashboard to render (required)
+     * @param  string $dashboard_id Id of dashboard to render. The ID can be a LookML dashboard also. (required)
      * @param  string $result_format Output type: pdf, png, or jpg (required)
      * @param  \Swagger\Client\Model\CreateDashboardRenderTask $body Dashboard render task parameters (required)
      * @param  int $width Output width in pixels (required)
      * @param  int $height Output height in pixels (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  string $pdf_paper_size Paper size for pdf (optional)
-     * @param  bool $pdf_landscape Whether to render pdf in landscape (optional)
+     * @param  string $pdf_paper_size Paper size for pdf. Value can be one of: [\&quot;letter\&quot;,\&quot;legal\&quot;,\&quot;tabloid\&quot;,\&quot;a0\&quot;,\&quot;a1\&quot;,\&quot;a2\&quot;,\&quot;a3\&quot;,\&quot;a4\&quot;,\&quot;a5\&quot;] (optional)
+     * @param  bool $pdf_landscape Whether to render pdf in landscape paper orientation (optional)
+     * @param  bool $long_tables Whether or not to expand table vis to full length (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createDashboardRenderTaskAsync($dashboard_id, $result_format, $body, $width, $height, $fields = null, $pdf_paper_size = null, $pdf_landscape = null)
+    public function createDashboardRenderTaskAsync($dashboard_id, $result_format, $body, $width, $height, $fields = null, $pdf_paper_size = null, $pdf_landscape = null, $long_tables = null)
     {
-        return $this->createDashboardRenderTaskAsyncWithHttpInfo($dashboard_id, $result_format, $body, $width, $height, $fields, $pdf_paper_size, $pdf_landscape)
+        return $this->createDashboardRenderTaskAsyncWithHttpInfo($dashboard_id, $result_format, $body, $width, $height, $fields, $pdf_paper_size, $pdf_landscape, $long_tables)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -257,22 +628,23 @@ class RenderTaskApi
      *
      * Create Dashboard Render Task
      *
-     * @param  int $dashboard_id Id of dashboard to render (required)
+     * @param  string $dashboard_id Id of dashboard to render. The ID can be a LookML dashboard also. (required)
      * @param  string $result_format Output type: pdf, png, or jpg (required)
      * @param  \Swagger\Client\Model\CreateDashboardRenderTask $body Dashboard render task parameters (required)
      * @param  int $width Output width in pixels (required)
      * @param  int $height Output height in pixels (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  string $pdf_paper_size Paper size for pdf (optional)
-     * @param  bool $pdf_landscape Whether to render pdf in landscape (optional)
+     * @param  string $pdf_paper_size Paper size for pdf. Value can be one of: [\&quot;letter\&quot;,\&quot;legal\&quot;,\&quot;tabloid\&quot;,\&quot;a0\&quot;,\&quot;a1\&quot;,\&quot;a2\&quot;,\&quot;a3\&quot;,\&quot;a4\&quot;,\&quot;a5\&quot;] (optional)
+     * @param  bool $pdf_landscape Whether to render pdf in landscape paper orientation (optional)
+     * @param  bool $long_tables Whether or not to expand table vis to full length (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createDashboardRenderTaskAsyncWithHttpInfo($dashboard_id, $result_format, $body, $width, $height, $fields = null, $pdf_paper_size = null, $pdf_landscape = null)
+    public function createDashboardRenderTaskAsyncWithHttpInfo($dashboard_id, $result_format, $body, $width, $height, $fields = null, $pdf_paper_size = null, $pdf_landscape = null, $long_tables = null)
     {
         $returnType = '\Swagger\Client\Model\RenderTask';
-        $request = $this->createDashboardRenderTaskRequest($dashboard_id, $result_format, $body, $width, $height, $fields, $pdf_paper_size, $pdf_landscape);
+        $request = $this->createDashboardRenderTaskRequest($dashboard_id, $result_format, $body, $width, $height, $fields, $pdf_paper_size, $pdf_landscape, $long_tables);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -314,19 +686,20 @@ class RenderTaskApi
     /**
      * Create request for operation 'createDashboardRenderTask'
      *
-     * @param  int $dashboard_id Id of dashboard to render (required)
+     * @param  string $dashboard_id Id of dashboard to render. The ID can be a LookML dashboard also. (required)
      * @param  string $result_format Output type: pdf, png, or jpg (required)
      * @param  \Swagger\Client\Model\CreateDashboardRenderTask $body Dashboard render task parameters (required)
      * @param  int $width Output width in pixels (required)
      * @param  int $height Output height in pixels (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  string $pdf_paper_size Paper size for pdf (optional)
-     * @param  bool $pdf_landscape Whether to render pdf in landscape (optional)
+     * @param  string $pdf_paper_size Paper size for pdf. Value can be one of: [\&quot;letter\&quot;,\&quot;legal\&quot;,\&quot;tabloid\&quot;,\&quot;a0\&quot;,\&quot;a1\&quot;,\&quot;a2\&quot;,\&quot;a3\&quot;,\&quot;a4\&quot;,\&quot;a5\&quot;] (optional)
+     * @param  bool $pdf_landscape Whether to render pdf in landscape paper orientation (optional)
+     * @param  bool $long_tables Whether or not to expand table vis to full length (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createDashboardRenderTaskRequest($dashboard_id, $result_format, $body, $width, $height, $fields = null, $pdf_paper_size = null, $pdf_landscape = null)
+    protected function createDashboardRenderTaskRequest($dashboard_id, $result_format, $body, $width, $height, $fields = null, $pdf_paper_size = null, $pdf_landscape = null, $long_tables = null)
     {
         // verify the required parameter 'dashboard_id' is set
         if ($dashboard_id === null || (is_array($dashboard_id) && count($dashboard_id) === 0)) {
@@ -385,6 +758,10 @@ class RenderTaskApi
         // query params
         if ($pdf_landscape !== null) {
             $queryParams['pdf_landscape'] = ObjectSerializer::toQueryValue($pdf_landscape);
+        }
+        // query params
+        if ($long_tables !== null) {
+            $queryParams['long_tables'] = ObjectSerializer::toQueryValue($long_tables);
         }
 
         // path params
@@ -476,7 +853,7 @@ class RenderTaskApi
      *
      * Create Look Render Task
      *
-     * @param  int $look_id Id of look to render (required)
+     * @param  string $look_id Id of look to render (required)
      * @param  string $result_format Output type: png, or jpg (required)
      * @param  int $width Output width in pixels (required)
      * @param  int $height Output height in pixels (required)
@@ -497,7 +874,7 @@ class RenderTaskApi
      *
      * Create Look Render Task
      *
-     * @param  int $look_id Id of look to render (required)
+     * @param  string $look_id Id of look to render (required)
      * @param  string $result_format Output type: png, or jpg (required)
      * @param  int $width Output width in pixels (required)
      * @param  int $height Output height in pixels (required)
@@ -598,6 +975,14 @@ class RenderTaskApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -608,7 +993,7 @@ class RenderTaskApi
      *
      * Create Look Render Task
      *
-     * @param  int $look_id Id of look to render (required)
+     * @param  string $look_id Id of look to render (required)
      * @param  string $result_format Output type: png, or jpg (required)
      * @param  int $width Output width in pixels (required)
      * @param  int $height Output height in pixels (required)
@@ -632,7 +1017,7 @@ class RenderTaskApi
      *
      * Create Look Render Task
      *
-     * @param  int $look_id Id of look to render (required)
+     * @param  string $look_id Id of look to render (required)
      * @param  string $result_format Output type: png, or jpg (required)
      * @param  int $width Output width in pixels (required)
      * @param  int $height Output height in pixels (required)
@@ -686,7 +1071,7 @@ class RenderTaskApi
     /**
      * Create request for operation 'createLookRenderTask'
      *
-     * @param  int $look_id Id of look to render (required)
+     * @param  string $look_id Id of look to render (required)
      * @param  string $result_format Output type: png, or jpg (required)
      * @param  int $width Output width in pixels (required)
      * @param  int $height Output height in pixels (required)
@@ -824,395 +1209,11 @@ class RenderTaskApi
     }
 
     /**
-     * Operation createLookmlDashboardRenderTask
-     *
-     * Create Lookml Dashboard Render Task
-     *
-     * @param  string $dashboard_id Id of lookml dashboard to render (required)
-     * @param  string $result_format Output type: pdf, png, or jpg (required)
-     * @param  \Swagger\Client\Model\CreateDashboardRenderTask $body Dashboard render task parameters (required)
-     * @param  int $width Output width in pixels (required)
-     * @param  int $height Output height in pixels (required)
-     * @param  string $fields Requested fields. (optional)
-     * @param  string $pdf_paper_size Paper size for pdf (optional)
-     * @param  bool $pdf_landscape Whether to render pdf in landscape (optional)
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\RenderTask
-     */
-    public function createLookmlDashboardRenderTask($dashboard_id, $result_format, $body, $width, $height, $fields = null, $pdf_paper_size = null, $pdf_landscape = null)
-    {
-        list($response) = $this->createLookmlDashboardRenderTaskWithHttpInfo($dashboard_id, $result_format, $body, $width, $height, $fields, $pdf_paper_size, $pdf_landscape);
-        return $response;
-    }
-
-    /**
-     * Operation createLookmlDashboardRenderTaskWithHttpInfo
-     *
-     * Create Lookml Dashboard Render Task
-     *
-     * @param  string $dashboard_id Id of lookml dashboard to render (required)
-     * @param  string $result_format Output type: pdf, png, or jpg (required)
-     * @param  \Swagger\Client\Model\CreateDashboardRenderTask $body Dashboard render task parameters (required)
-     * @param  int $width Output width in pixels (required)
-     * @param  int $height Output height in pixels (required)
-     * @param  string $fields Requested fields. (optional)
-     * @param  string $pdf_paper_size Paper size for pdf (optional)
-     * @param  bool $pdf_landscape Whether to render pdf in landscape (optional)
-     *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\RenderTask, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function createLookmlDashboardRenderTaskWithHttpInfo($dashboard_id, $result_format, $body, $width, $height, $fields = null, $pdf_paper_size = null, $pdf_landscape = null)
-    {
-        $returnType = '\Swagger\Client\Model\RenderTask';
-        $request = $this->createLookmlDashboardRenderTaskRequest($dashboard_id, $result_format, $body, $width, $height, $fields, $pdf_paper_size, $pdf_landscape);
-
-        try {
-            $options = $this->createHttpClientOption();
-            try {
-                $response = $this->client->send($request, $options);
-            } catch (RequestException $e) {
-                throw new ApiException(
-                    "[{$e->getCode()}] {$e->getMessage()}",
-                    $e->getCode(),
-                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
-                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
-                );
-            }
-
-            $statusCode = $response->getStatusCode();
-
-            if ($statusCode < 200 || $statusCode > 299) {
-                throw new ApiException(
-                    sprintf(
-                        '[%d] Error connecting to the API (%s)',
-                        $statusCode,
-                        $request->getUri()
-                    ),
-                    $statusCode,
-                    $response->getHeaders(),
-                    $response->getBody()
-                );
-            }
-
-            $responseBody = $response->getBody();
-            if ($returnType === '\SplFileObject') {
-                $content = $responseBody; //stream goes to serializer
-            } else {
-                $content = $responseBody->getContents();
-                if ($returnType !== 'string') {
-                    $content = json_decode($content);
-                }
-            }
-
-            return [
-                ObjectSerializer::deserialize($content, $returnType, []),
-                $response->getStatusCode(),
-                $response->getHeaders()
-            ];
-
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Swagger\Client\Model\RenderTask',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 400:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Swagger\Client\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 404:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Swagger\Client\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 409:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Swagger\Client\Model\Error',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-                case 422:
-                    $data = ObjectSerializer::deserialize(
-                        $e->getResponseBody(),
-                        '\Swagger\Client\Model\ValidationError',
-                        $e->getResponseHeaders()
-                    );
-                    $e->setResponseObject($data);
-                    break;
-            }
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation createLookmlDashboardRenderTaskAsync
-     *
-     * Create Lookml Dashboard Render Task
-     *
-     * @param  string $dashboard_id Id of lookml dashboard to render (required)
-     * @param  string $result_format Output type: pdf, png, or jpg (required)
-     * @param  \Swagger\Client\Model\CreateDashboardRenderTask $body Dashboard render task parameters (required)
-     * @param  int $width Output width in pixels (required)
-     * @param  int $height Output height in pixels (required)
-     * @param  string $fields Requested fields. (optional)
-     * @param  string $pdf_paper_size Paper size for pdf (optional)
-     * @param  bool $pdf_landscape Whether to render pdf in landscape (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createLookmlDashboardRenderTaskAsync($dashboard_id, $result_format, $body, $width, $height, $fields = null, $pdf_paper_size = null, $pdf_landscape = null)
-    {
-        return $this->createLookmlDashboardRenderTaskAsyncWithHttpInfo($dashboard_id, $result_format, $body, $width, $height, $fields, $pdf_paper_size, $pdf_landscape)
-            ->then(
-                function ($response) {
-                    return $response[0];
-                }
-            );
-    }
-
-    /**
-     * Operation createLookmlDashboardRenderTaskAsyncWithHttpInfo
-     *
-     * Create Lookml Dashboard Render Task
-     *
-     * @param  string $dashboard_id Id of lookml dashboard to render (required)
-     * @param  string $result_format Output type: pdf, png, or jpg (required)
-     * @param  \Swagger\Client\Model\CreateDashboardRenderTask $body Dashboard render task parameters (required)
-     * @param  int $width Output width in pixels (required)
-     * @param  int $height Output height in pixels (required)
-     * @param  string $fields Requested fields. (optional)
-     * @param  string $pdf_paper_size Paper size for pdf (optional)
-     * @param  bool $pdf_landscape Whether to render pdf in landscape (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Promise\PromiseInterface
-     */
-    public function createLookmlDashboardRenderTaskAsyncWithHttpInfo($dashboard_id, $result_format, $body, $width, $height, $fields = null, $pdf_paper_size = null, $pdf_landscape = null)
-    {
-        $returnType = '\Swagger\Client\Model\RenderTask';
-        $request = $this->createLookmlDashboardRenderTaskRequest($dashboard_id, $result_format, $body, $width, $height, $fields, $pdf_paper_size, $pdf_landscape);
-
-        return $this->client
-            ->sendAsync($request, $this->createHttpClientOption())
-            ->then(
-                function ($response) use ($returnType) {
-                    $responseBody = $response->getBody();
-                    if ($returnType === '\SplFileObject') {
-                        $content = $responseBody; //stream goes to serializer
-                    } else {
-                        $content = $responseBody->getContents();
-                        if ($returnType !== 'string') {
-                            $content = json_decode($content);
-                        }
-                    }
-
-                    return [
-                        ObjectSerializer::deserialize($content, $returnType, []),
-                        $response->getStatusCode(),
-                        $response->getHeaders()
-                    ];
-                },
-                function ($exception) {
-                    $response = $exception->getResponse();
-                    $statusCode = $response->getStatusCode();
-                    throw new ApiException(
-                        sprintf(
-                            '[%d] Error connecting to the API (%s)',
-                            $statusCode,
-                            $exception->getRequest()->getUri()
-                        ),
-                        $statusCode,
-                        $response->getHeaders(),
-                        $response->getBody()
-                    );
-                }
-            );
-    }
-
-    /**
-     * Create request for operation 'createLookmlDashboardRenderTask'
-     *
-     * @param  string $dashboard_id Id of lookml dashboard to render (required)
-     * @param  string $result_format Output type: pdf, png, or jpg (required)
-     * @param  \Swagger\Client\Model\CreateDashboardRenderTask $body Dashboard render task parameters (required)
-     * @param  int $width Output width in pixels (required)
-     * @param  int $height Output height in pixels (required)
-     * @param  string $fields Requested fields. (optional)
-     * @param  string $pdf_paper_size Paper size for pdf (optional)
-     * @param  bool $pdf_landscape Whether to render pdf in landscape (optional)
-     *
-     * @throws \InvalidArgumentException
-     * @return \GuzzleHttp\Psr7\Request
-     */
-    protected function createLookmlDashboardRenderTaskRequest($dashboard_id, $result_format, $body, $width, $height, $fields = null, $pdf_paper_size = null, $pdf_landscape = null)
-    {
-        // verify the required parameter 'dashboard_id' is set
-        if ($dashboard_id === null || (is_array($dashboard_id) && count($dashboard_id) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $dashboard_id when calling createLookmlDashboardRenderTask'
-            );
-        }
-        // verify the required parameter 'result_format' is set
-        if ($result_format === null || (is_array($result_format) && count($result_format) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $result_format when calling createLookmlDashboardRenderTask'
-            );
-        }
-        // verify the required parameter 'body' is set
-        if ($body === null || (is_array($body) && count($body) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $body when calling createLookmlDashboardRenderTask'
-            );
-        }
-        // verify the required parameter 'width' is set
-        if ($width === null || (is_array($width) && count($width) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $width when calling createLookmlDashboardRenderTask'
-            );
-        }
-        // verify the required parameter 'height' is set
-        if ($height === null || (is_array($height) && count($height) === 0)) {
-            throw new \InvalidArgumentException(
-                'Missing the required parameter $height when calling createLookmlDashboardRenderTask'
-            );
-        }
-
-        $resourcePath = '/render_tasks/lookml_dashboards/{dashboard_id}/{result_format}';
-        $formParams = [];
-        $queryParams = [];
-        $headerParams = [];
-        $httpBody = '';
-        $multipart = false;
-
-        // query params
-        if ($width !== null) {
-            $queryParams['width'] = ObjectSerializer::toQueryValue($width);
-        }
-        // query params
-        if ($height !== null) {
-            $queryParams['height'] = ObjectSerializer::toQueryValue($height);
-        }
-        // query params
-        if ($fields !== null) {
-            $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
-        }
-        // query params
-        if ($pdf_paper_size !== null) {
-            $queryParams['pdf_paper_size'] = ObjectSerializer::toQueryValue($pdf_paper_size);
-        }
-        // query params
-        if ($pdf_landscape !== null) {
-            $queryParams['pdf_landscape'] = ObjectSerializer::toQueryValue($pdf_landscape);
-        }
-
-        // path params
-        if ($dashboard_id !== null) {
-            $resourcePath = str_replace(
-                '{' . 'dashboard_id' . '}',
-                ObjectSerializer::toPathValue($dashboard_id),
-                $resourcePath
-            );
-        }
-        // path params
-        if ($result_format !== null) {
-            $resourcePath = str_replace(
-                '{' . 'result_format' . '}',
-                ObjectSerializer::toPathValue($result_format),
-                $resourcePath
-            );
-        }
-
-        // body params
-        $_tempBody = null;
-        if (isset($body)) {
-            $_tempBody = $body;
-        }
-
-        if ($multipart) {
-            $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['application/json']
-            );
-        } else {
-            $headers = $this->headerSelector->selectHeaders(
-                ['application/json'],
-                ['application/json']
-            );
-        }
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            // $_tempBody is the method argument, if present
-            $httpBody = $_tempBody;
-            // \stdClass has no __toString(), so we should encode it manually
-            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($httpBody);
-            }
-        } elseif (count($formParams) > 0) {
-            if ($multipart) {
-                $multipartContents = [];
-                foreach ($formParams as $formParamName => $formParamValue) {
-                    $multipartContents[] = [
-                        'name' => $formParamName,
-                        'contents' => $formParamValue
-                    ];
-                }
-                // for HTTP post (form)
-                $httpBody = new MultipartStream($multipartContents);
-
-            } elseif ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode($formParams);
-
-            } else {
-                // for HTTP post (form)
-                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
-            }
-        }
-
-
-        $defaultHeaders = [];
-        if ($this->config->getUserAgent()) {
-            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
-        }
-
-        $headers = array_merge(
-            $defaultHeaders,
-            $headerParams,
-            $headers
-        );
-
-        $query = \GuzzleHttp\Psr7\build_query($queryParams);
-        return new Request(
-            'POST',
-            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
-            $headers,
-            $httpBody
-        );
-    }
-
-    /**
      * Operation createQueryRenderTask
      *
      * Create Query Render Task
      *
-     * @param  int $query_id Id of the query to render (required)
+     * @param  string $query_id Id of the query to render (required)
      * @param  string $result_format Output type: png or jpg (required)
      * @param  int $width Output width in pixels (required)
      * @param  int $height Output height in pixels (required)
@@ -1233,7 +1234,7 @@ class RenderTaskApi
      *
      * Create Query Render Task
      *
-     * @param  int $query_id Id of the query to render (required)
+     * @param  string $query_id Id of the query to render (required)
      * @param  string $result_format Output type: png or jpg (required)
      * @param  int $width Output width in pixels (required)
      * @param  int $height Output height in pixels (required)
@@ -1334,6 +1335,14 @@ class RenderTaskApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1344,7 +1353,7 @@ class RenderTaskApi
      *
      * Create Query Render Task
      *
-     * @param  int $query_id Id of the query to render (required)
+     * @param  string $query_id Id of the query to render (required)
      * @param  string $result_format Output type: png or jpg (required)
      * @param  int $width Output width in pixels (required)
      * @param  int $height Output height in pixels (required)
@@ -1368,7 +1377,7 @@ class RenderTaskApi
      *
      * Create Query Render Task
      *
-     * @param  int $query_id Id of the query to render (required)
+     * @param  string $query_id Id of the query to render (required)
      * @param  string $result_format Output type: png or jpg (required)
      * @param  int $width Output width in pixels (required)
      * @param  int $height Output height in pixels (required)
@@ -1422,7 +1431,7 @@ class RenderTaskApi
     /**
      * Create request for operation 'createQueryRenderTask'
      *
-     * @param  int $query_id Id of the query to render (required)
+     * @param  string $query_id Id of the query to render (required)
      * @param  string $result_format Output type: png or jpg (required)
      * @param  int $width Output width in pixels (required)
      * @param  int $height Output height in pixels (required)
@@ -1644,6 +1653,14 @@ class RenderTaskApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\RenderTask',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1921,6 +1938,14 @@ class RenderTaskApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

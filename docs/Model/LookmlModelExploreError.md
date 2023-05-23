@@ -4,7 +4,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **message** | **string** | Error Message | [optional] 
-**details** | **string** | Details | [optional] 
 **error_pos** | **string** | Error source location | [optional] 
 **field_error** | **bool** | Is this a field error | [optional] 
 

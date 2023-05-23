@@ -10,12 +10,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -356,18 +356,337 @@ class LookApi
     }
 
     /**
+     * Operation copyLook
+     *
+     * Copy Look
+     *
+     * @param  string $look_id Look id to copy. (required)
+     * @param  string $folder_id Folder id to copy to. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\LookWithQuery
+     */
+    public function copyLook($look_id, $folder_id = null)
+    {
+        list($response) = $this->copyLookWithHttpInfo($look_id, $folder_id);
+        return $response;
+    }
+
+    /**
+     * Operation copyLookWithHttpInfo
+     *
+     * Copy Look
+     *
+     * @param  string $look_id Look id to copy. (required)
+     * @param  string $folder_id Folder id to copy to. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\LookWithQuery, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function copyLookWithHttpInfo($look_id, $folder_id = null)
+    {
+        $returnType = '\Swagger\Client\Model\LookWithQuery';
+        $request = $this->copyLookRequest($look_id, $folder_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\LookWithQuery',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Look',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation copyLookAsync
+     *
+     * Copy Look
+     *
+     * @param  string $look_id Look id to copy. (required)
+     * @param  string $folder_id Folder id to copy to. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function copyLookAsync($look_id, $folder_id = null)
+    {
+        return $this->copyLookAsyncWithHttpInfo($look_id, $folder_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation copyLookAsyncWithHttpInfo
+     *
+     * Copy Look
+     *
+     * @param  string $look_id Look id to copy. (required)
+     * @param  string $folder_id Folder id to copy to. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function copyLookAsyncWithHttpInfo($look_id, $folder_id = null)
+    {
+        $returnType = '\Swagger\Client\Model\LookWithQuery';
+        $request = $this->copyLookRequest($look_id, $folder_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'copyLook'
+     *
+     * @param  string $look_id Look id to copy. (required)
+     * @param  string $folder_id Folder id to copy to. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function copyLookRequest($look_id, $folder_id = null)
+    {
+        // verify the required parameter 'look_id' is set
+        if ($look_id === null || (is_array($look_id) && count($look_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $look_id when calling copyLook'
+            );
+        }
+
+        $resourcePath = '/looks/{look_id}/copy';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($folder_id !== null) {
+            $queryParams['folder_id'] = ObjectSerializer::toQueryValue($folder_id);
+        }
+
+        // path params
+        if ($look_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'look_id' . '}',
+                ObjectSerializer::toPathValue($look_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation createLook
      *
      * Create Look
      *
-     * @param  \Swagger\Client\Model\LookWithQuery $body Look (optional)
+     * @param  \Swagger\Client\Model\LookWithQuery $body Look (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\LookWithQuery
      */
-    public function createLook($body = null, $fields = null)
+    public function createLook($body, $fields = null)
     {
         list($response) = $this->createLookWithHttpInfo($body, $fields);
         return $response;
@@ -378,14 +697,14 @@ class LookApi
      *
      * Create Look
      *
-     * @param  \Swagger\Client\Model\LookWithQuery $body Look (optional)
+     * @param  \Swagger\Client\Model\LookWithQuery $body Look (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\LookWithQuery, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createLookWithHttpInfo($body = null, $fields = null)
+    public function createLookWithHttpInfo($body, $fields = null)
     {
         $returnType = '\Swagger\Client\Model\LookWithQuery';
         $request = $this->createLookRequest($body, $fields);
@@ -476,6 +795,14 @@ class LookApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -486,13 +813,13 @@ class LookApi
      *
      * Create Look
      *
-     * @param  \Swagger\Client\Model\LookWithQuery $body Look (optional)
+     * @param  \Swagger\Client\Model\LookWithQuery $body Look (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createLookAsync($body = null, $fields = null)
+    public function createLookAsync($body, $fields = null)
     {
         return $this->createLookAsyncWithHttpInfo($body, $fields)
             ->then(
@@ -507,13 +834,13 @@ class LookApi
      *
      * Create Look
      *
-     * @param  \Swagger\Client\Model\LookWithQuery $body Look (optional)
+     * @param  \Swagger\Client\Model\LookWithQuery $body Look (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createLookAsyncWithHttpInfo($body = null, $fields = null)
+    public function createLookAsyncWithHttpInfo($body, $fields = null)
     {
         $returnType = '\Swagger\Client\Model\LookWithQuery';
         $request = $this->createLookRequest($body, $fields);
@@ -558,14 +885,20 @@ class LookApi
     /**
      * Create request for operation 'createLook'
      *
-     * @param  \Swagger\Client\Model\LookWithQuery $body Look (optional)
+     * @param  \Swagger\Client\Model\LookWithQuery $body Look (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createLookRequest($body = null, $fields = null)
+    protected function createLookRequest($body, $fields = null)
     {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling createLook'
+            );
+        }
 
         $resourcePath = '/looks';
         $formParams = [];
@@ -652,7 +985,7 @@ class LookApi
      *
      * Delete Look
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -669,7 +1002,7 @@ class LookApi
      *
      * Delete Look
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -750,6 +1083,14 @@ class LookApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -760,7 +1101,7 @@ class LookApi
      *
      * Delete Look
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -780,7 +1121,7 @@ class LookApi
      *
      * Delete Look
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -830,7 +1171,7 @@ class LookApi
     /**
      * Create request for operation 'deleteLook'
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -930,7 +1271,7 @@ class LookApi
      *
      * Get Look
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -948,7 +1289,7 @@ class LookApi
      *
      * Get Look
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -1040,7 +1381,7 @@ class LookApi
      *
      * Get Look
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -1061,7 +1402,7 @@ class LookApi
      *
      * Get Look
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -1112,7 +1453,7 @@ class LookApi
     /**
      * Create request for operation 'look'
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -1213,11 +1554,328 @@ class LookApi
     }
 
     /**
+     * Operation moveLook
+     *
+     * Move Look
+     *
+     * @param  string $look_id Look id to move. (required)
+     * @param  string $folder_id Folder id to move to. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\LookWithQuery
+     */
+    public function moveLook($look_id, $folder_id)
+    {
+        list($response) = $this->moveLookWithHttpInfo($look_id, $folder_id);
+        return $response;
+    }
+
+    /**
+     * Operation moveLookWithHttpInfo
+     *
+     * Move Look
+     *
+     * @param  string $look_id Look id to move. (required)
+     * @param  string $folder_id Folder id to move to. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\LookWithQuery, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function moveLookWithHttpInfo($look_id, $folder_id)
+    {
+        $returnType = '\Swagger\Client\Model\LookWithQuery';
+        $request = $this->moveLookRequest($look_id, $folder_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\LookWithQuery',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Look',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation moveLookAsync
+     *
+     * Move Look
+     *
+     * @param  string $look_id Look id to move. (required)
+     * @param  string $folder_id Folder id to move to. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function moveLookAsync($look_id, $folder_id)
+    {
+        return $this->moveLookAsyncWithHttpInfo($look_id, $folder_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation moveLookAsyncWithHttpInfo
+     *
+     * Move Look
+     *
+     * @param  string $look_id Look id to move. (required)
+     * @param  string $folder_id Folder id to move to. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function moveLookAsyncWithHttpInfo($look_id, $folder_id)
+    {
+        $returnType = '\Swagger\Client\Model\LookWithQuery';
+        $request = $this->moveLookRequest($look_id, $folder_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'moveLook'
+     *
+     * @param  string $look_id Look id to move. (required)
+     * @param  string $folder_id Folder id to move to. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function moveLookRequest($look_id, $folder_id)
+    {
+        // verify the required parameter 'look_id' is set
+        if ($look_id === null || (is_array($look_id) && count($look_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $look_id when calling moveLook'
+            );
+        }
+        // verify the required parameter 'folder_id' is set
+        if ($folder_id === null || (is_array($folder_id) && count($folder_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $folder_id when calling moveLook'
+            );
+        }
+
+        $resourcePath = '/looks/{look_id}/move';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($folder_id !== null) {
+            $queryParams['folder_id'] = ObjectSerializer::toQueryValue($folder_id);
+        }
+
+        // path params
+        if ($look_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'look_id' . '}',
+                ObjectSerializer::toPathValue($look_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'PATCH',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation runLook
      *
      * Run Look
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      * @param  string $result_format Format of result (required)
      * @param  int $limit Row limit (may override the limit in the saved query). (optional)
      * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
@@ -1226,7 +1884,7 @@ class LookApi
      * @param  int $image_width Render width for image formats. (optional)
      * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
@@ -1247,7 +1905,7 @@ class LookApi
      *
      * Run Look
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      * @param  string $result_format Format of result (required)
      * @param  int $limit Row limit (may override the limit in the saved query). (optional)
      * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
@@ -1256,7 +1914,7 @@ class LookApi
      * @param  int $image_width Render width for image formats. (optional)
      * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
@@ -1349,6 +2007,14 @@ class LookApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1359,7 +2025,7 @@ class LookApi
      *
      * Run Look
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      * @param  string $result_format Format of result (required)
      * @param  int $limit Row limit (may override the limit in the saved query). (optional)
      * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
@@ -1368,7 +2034,7 @@ class LookApi
      * @param  int $image_width Render width for image formats. (optional)
      * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
@@ -1392,7 +2058,7 @@ class LookApi
      *
      * Run Look
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      * @param  string $result_format Format of result (required)
      * @param  int $limit Row limit (may override the limit in the saved query). (optional)
      * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
@@ -1401,7 +2067,7 @@ class LookApi
      * @param  int $image_width Render width for image formats. (optional)
      * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
@@ -1455,7 +2121,7 @@ class LookApi
     /**
      * Create request for operation 'runLook'
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      * @param  string $result_format Format of result (required)
      * @param  int $limit Row limit (may override the limit in the saved query). (optional)
      * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
@@ -1464,7 +2130,7 @@ class LookApi
      * @param  int $image_width Render width for image formats. (optional)
      * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
@@ -1566,11 +2232,11 @@ class LookApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['text', 'application/json', 'image/png', 'image/jpg']
+                ['text', 'application/json', 'image/png', 'image/jpeg']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['text', 'application/json', 'image/png', 'image/jpg'],
+                ['text', 'application/json', 'image/png', 'image/jpeg'],
                 ['application/json']
             );
         }
@@ -1630,29 +2296,32 @@ class LookApi
      *
      * Search Looks
      *
+     * @param  string $id Match look id. (optional)
      * @param  string $title Match Look title. (optional)
      * @param  string $description Match Look description. (optional)
-     * @param  int $content_favorite_id Select looks with a particular content favorite id (optional)
-     * @param  string $space_id Select looks in a particular space. (optional)
+     * @param  string $content_favorite_id Select looks with a particular content favorite id (optional)
+     * @param  string $folder_id Select looks in a particular folder. (optional)
      * @param  string $user_id Select looks created by a particular user. (optional)
      * @param  string $view_count Select looks with particular view_count value (optional)
      * @param  bool $deleted Select soft-deleted looks (optional)
-     * @param  int $query_id Select looks that reference a particular query by query_id (optional)
+     * @param  string $query_id Select looks that reference a particular query by query_id (optional)
+     * @param  bool $curate Exclude items that exist only in personal spaces other than the users (optional)
+     * @param  string $last_viewed_at Select looks based on when they were last viewed (optional)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
      * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
-     * @param  string $sorts One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :query_id] (optional)
+     * @param  string $sorts One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :folder_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :last_accessed_at, :query_id] (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\Look[]
      */
-    public function searchLooks($title = null, $description = null, $content_favorite_id = null, $space_id = null, $user_id = null, $view_count = null, $deleted = null, $query_id = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
+    public function searchLooks($id = null, $title = null, $description = null, $content_favorite_id = null, $folder_id = null, $user_id = null, $view_count = null, $deleted = null, $query_id = null, $curate = null, $last_viewed_at = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
     {
-        list($response) = $this->searchLooksWithHttpInfo($title, $description, $content_favorite_id, $space_id, $user_id, $view_count, $deleted, $query_id, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
+        list($response) = $this->searchLooksWithHttpInfo($id, $title, $description, $content_favorite_id, $folder_id, $user_id, $view_count, $deleted, $query_id, $curate, $last_viewed_at, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
         return $response;
     }
 
@@ -1661,30 +2330,33 @@ class LookApi
      *
      * Search Looks
      *
+     * @param  string $id Match look id. (optional)
      * @param  string $title Match Look title. (optional)
      * @param  string $description Match Look description. (optional)
-     * @param  int $content_favorite_id Select looks with a particular content favorite id (optional)
-     * @param  string $space_id Select looks in a particular space. (optional)
+     * @param  string $content_favorite_id Select looks with a particular content favorite id (optional)
+     * @param  string $folder_id Select looks in a particular folder. (optional)
      * @param  string $user_id Select looks created by a particular user. (optional)
      * @param  string $view_count Select looks with particular view_count value (optional)
      * @param  bool $deleted Select soft-deleted looks (optional)
-     * @param  int $query_id Select looks that reference a particular query by query_id (optional)
+     * @param  string $query_id Select looks that reference a particular query by query_id (optional)
+     * @param  bool $curate Exclude items that exist only in personal spaces other than the users (optional)
+     * @param  string $last_viewed_at Select looks based on when they were last viewed (optional)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
      * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
-     * @param  string $sorts One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :query_id] (optional)
+     * @param  string $sorts One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :folder_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :last_accessed_at, :query_id] (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\Look[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchLooksWithHttpInfo($title = null, $description = null, $content_favorite_id = null, $space_id = null, $user_id = null, $view_count = null, $deleted = null, $query_id = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
+    public function searchLooksWithHttpInfo($id = null, $title = null, $description = null, $content_favorite_id = null, $folder_id = null, $user_id = null, $view_count = null, $deleted = null, $query_id = null, $curate = null, $last_viewed_at = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
     {
         $returnType = '\Swagger\Client\Model\Look[]';
-        $request = $this->searchLooksRequest($title, $description, $content_favorite_id, $space_id, $user_id, $view_count, $deleted, $query_id, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
+        $request = $this->searchLooksRequest($id, $title, $description, $content_favorite_id, $folder_id, $user_id, $view_count, $deleted, $query_id, $curate, $last_viewed_at, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1766,28 +2438,31 @@ class LookApi
      *
      * Search Looks
      *
+     * @param  string $id Match look id. (optional)
      * @param  string $title Match Look title. (optional)
      * @param  string $description Match Look description. (optional)
-     * @param  int $content_favorite_id Select looks with a particular content favorite id (optional)
-     * @param  string $space_id Select looks in a particular space. (optional)
+     * @param  string $content_favorite_id Select looks with a particular content favorite id (optional)
+     * @param  string $folder_id Select looks in a particular folder. (optional)
      * @param  string $user_id Select looks created by a particular user. (optional)
      * @param  string $view_count Select looks with particular view_count value (optional)
      * @param  bool $deleted Select soft-deleted looks (optional)
-     * @param  int $query_id Select looks that reference a particular query by query_id (optional)
+     * @param  string $query_id Select looks that reference a particular query by query_id (optional)
+     * @param  bool $curate Exclude items that exist only in personal spaces other than the users (optional)
+     * @param  string $last_viewed_at Select looks based on when they were last viewed (optional)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
      * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
-     * @param  string $sorts One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :query_id] (optional)
+     * @param  string $sorts One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :folder_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :last_accessed_at, :query_id] (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchLooksAsync($title = null, $description = null, $content_favorite_id = null, $space_id = null, $user_id = null, $view_count = null, $deleted = null, $query_id = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
+    public function searchLooksAsync($id = null, $title = null, $description = null, $content_favorite_id = null, $folder_id = null, $user_id = null, $view_count = null, $deleted = null, $query_id = null, $curate = null, $last_viewed_at = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
     {
-        return $this->searchLooksAsyncWithHttpInfo($title, $description, $content_favorite_id, $space_id, $user_id, $view_count, $deleted, $query_id, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or)
+        return $this->searchLooksAsyncWithHttpInfo($id, $title, $description, $content_favorite_id, $folder_id, $user_id, $view_count, $deleted, $query_id, $curate, $last_viewed_at, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1800,29 +2475,32 @@ class LookApi
      *
      * Search Looks
      *
+     * @param  string $id Match look id. (optional)
      * @param  string $title Match Look title. (optional)
      * @param  string $description Match Look description. (optional)
-     * @param  int $content_favorite_id Select looks with a particular content favorite id (optional)
-     * @param  string $space_id Select looks in a particular space. (optional)
+     * @param  string $content_favorite_id Select looks with a particular content favorite id (optional)
+     * @param  string $folder_id Select looks in a particular folder. (optional)
      * @param  string $user_id Select looks created by a particular user. (optional)
      * @param  string $view_count Select looks with particular view_count value (optional)
      * @param  bool $deleted Select soft-deleted looks (optional)
-     * @param  int $query_id Select looks that reference a particular query by query_id (optional)
+     * @param  string $query_id Select looks that reference a particular query by query_id (optional)
+     * @param  bool $curate Exclude items that exist only in personal spaces other than the users (optional)
+     * @param  string $last_viewed_at Select looks based on when they were last viewed (optional)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
      * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
-     * @param  string $sorts One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :query_id] (optional)
+     * @param  string $sorts One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :folder_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :last_accessed_at, :query_id] (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchLooksAsyncWithHttpInfo($title = null, $description = null, $content_favorite_id = null, $space_id = null, $user_id = null, $view_count = null, $deleted = null, $query_id = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
+    public function searchLooksAsyncWithHttpInfo($id = null, $title = null, $description = null, $content_favorite_id = null, $folder_id = null, $user_id = null, $view_count = null, $deleted = null, $query_id = null, $curate = null, $last_viewed_at = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
     {
         $returnType = '\Swagger\Client\Model\Look[]';
-        $request = $this->searchLooksRequest($title, $description, $content_favorite_id, $space_id, $user_id, $view_count, $deleted, $query_id, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
+        $request = $this->searchLooksRequest($id, $title, $description, $content_favorite_id, $folder_id, $user_id, $view_count, $deleted, $query_id, $curate, $last_viewed_at, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1864,26 +2542,29 @@ class LookApi
     /**
      * Create request for operation 'searchLooks'
      *
+     * @param  string $id Match look id. (optional)
      * @param  string $title Match Look title. (optional)
      * @param  string $description Match Look description. (optional)
-     * @param  int $content_favorite_id Select looks with a particular content favorite id (optional)
-     * @param  string $space_id Select looks in a particular space. (optional)
+     * @param  string $content_favorite_id Select looks with a particular content favorite id (optional)
+     * @param  string $folder_id Select looks in a particular folder. (optional)
      * @param  string $user_id Select looks created by a particular user. (optional)
      * @param  string $view_count Select looks with particular view_count value (optional)
      * @param  bool $deleted Select soft-deleted looks (optional)
-     * @param  int $query_id Select looks that reference a particular query by query_id (optional)
+     * @param  string $query_id Select looks that reference a particular query by query_id (optional)
+     * @param  bool $curate Exclude items that exist only in personal spaces other than the users (optional)
+     * @param  string $last_viewed_at Select looks based on when they were last viewed (optional)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
      * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
-     * @param  string $sorts One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :query_id] (optional)
+     * @param  string $sorts One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :folder_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :last_accessed_at, :query_id] (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function searchLooksRequest($title = null, $description = null, $content_favorite_id = null, $space_id = null, $user_id = null, $view_count = null, $deleted = null, $query_id = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
+    protected function searchLooksRequest($id = null, $title = null, $description = null, $content_favorite_id = null, $folder_id = null, $user_id = null, $view_count = null, $deleted = null, $query_id = null, $curate = null, $last_viewed_at = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
     {
 
         $resourcePath = '/looks/search';
@@ -1893,6 +2574,10 @@ class LookApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($id !== null) {
+            $queryParams['id'] = ObjectSerializer::toQueryValue($id);
+        }
         // query params
         if ($title !== null) {
             $queryParams['title'] = ObjectSerializer::toQueryValue($title);
@@ -1906,8 +2591,8 @@ class LookApi
             $queryParams['content_favorite_id'] = ObjectSerializer::toQueryValue($content_favorite_id);
         }
         // query params
-        if ($space_id !== null) {
-            $queryParams['space_id'] = ObjectSerializer::toQueryValue($space_id);
+        if ($folder_id !== null) {
+            $queryParams['folder_id'] = ObjectSerializer::toQueryValue($folder_id);
         }
         // query params
         if ($user_id !== null) {
@@ -1924,6 +2609,14 @@ class LookApi
         // query params
         if ($query_id !== null) {
             $queryParams['query_id'] = ObjectSerializer::toQueryValue($query_id);
+        }
+        // query params
+        if ($curate !== null) {
+            $queryParams['curate'] = ObjectSerializer::toQueryValue($curate);
+        }
+        // query params
+        if ($last_viewed_at !== null) {
+            $queryParams['last_viewed_at'] = ObjectSerializer::toQueryValue($last_viewed_at);
         }
         // query params
         if ($fields !== null) {
@@ -2024,7 +2717,7 @@ class LookApi
      *
      * Update Look
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      * @param  \Swagger\Client\Model\LookWithQuery $body Look (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -2043,7 +2736,7 @@ class LookApi
      *
      * Update Look
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      * @param  \Swagger\Client\Model\LookWithQuery $body Look (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -2134,6 +2827,14 @@ class LookApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -2144,7 +2845,7 @@ class LookApi
      *
      * Update Look
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      * @param  \Swagger\Client\Model\LookWithQuery $body Look (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -2166,7 +2867,7 @@ class LookApi
      *
      * Update Look
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      * @param  \Swagger\Client\Model\LookWithQuery $body Look (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -2218,7 +2919,7 @@ class LookApi
     /**
      * Create request for operation 'updateLook'
      *
-     * @param  int $look_id Id of look (required)
+     * @param  string $look_id Id of look (required)
      * @param  \Swagger\Client\Model\LookWithQuery $body Look (required)
      * @param  string $fields Requested fields. (optional)
      *

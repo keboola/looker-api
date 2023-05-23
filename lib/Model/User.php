@@ -11,12 +11,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -57,7 +57,9 @@ class User implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'can' => 'map[string,bool]',
         'avatar_url' => 'string',
+        'avatar_url_without_sizing' => 'string',
         'credentials_api3' => '\Swagger\Client\Model\CredentialsApi3[]',
         'credentials_email' => '\Swagger\Client\Model\CredentialsEmail',
         'credentials_embed' => '\Swagger\Client\Model\CredentialsEmbed[]',
@@ -69,25 +71,28 @@ class User implements ModelInterface, ArrayAccess
         'credentials_totp' => '\Swagger\Client\Model\CredentialsTotp',
         'display_name' => 'string',
         'email' => 'string',
-        'embed_group_space_id' => 'int',
+        'embed_group_space_id' => 'string',
         'first_name' => 'string',
-        'group_ids' => 'int[]',
-        'home_space_id' => 'string',
-        'id' => 'int',
+        'group_ids' => 'string[]',
+        'home_folder_id' => 'string',
+        'id' => 'string',
         'is_disabled' => 'bool',
         'last_name' => 'string',
         'locale' => 'string',
         'looker_versions' => 'string[]',
         'models_dir_validated' => 'bool',
-        'personal_space_id' => 'int',
+        'personal_folder_id' => 'string',
         'presumed_looker_employee' => 'bool',
-        'role_ids' => 'int[]',
+        'role_ids' => 'string[]',
         'sessions' => '\Swagger\Client\Model\Session[]',
         'ui_state' => 'map[string,string]',
         'verified_looker_employee' => 'bool',
         'roles_externally_managed' => 'bool',
-        'url' => 'string',
-        'can' => 'map[string,bool]'
+        'allow_direct_roles' => 'bool',
+        'allow_normal_group_membership' => 'bool',
+        'allow_roles_from_normal_groups' => 'bool',
+        'embed_group_folder_id' => 'string',
+        'url' => 'string'
     ];
 
     /**
@@ -96,7 +101,9 @@ class User implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'avatar_url' => 'uri',
+        'can' => null,
+        'avatar_url' => 'uri-reference',
+        'avatar_url_without_sizing' => 'uri-reference',
         'credentials_api3' => null,
         'credentials_email' => null,
         'credentials_embed' => null,
@@ -108,25 +115,28 @@ class User implements ModelInterface, ArrayAccess
         'credentials_totp' => null,
         'display_name' => null,
         'email' => null,
-        'embed_group_space_id' => 'int64',
+        'embed_group_space_id' => null,
         'first_name' => null,
-        'group_ids' => 'int64',
-        'home_space_id' => null,
-        'id' => 'int64',
+        'group_ids' => null,
+        'home_folder_id' => null,
+        'id' => null,
         'is_disabled' => null,
         'last_name' => null,
         'locale' => null,
         'looker_versions' => null,
         'models_dir_validated' => null,
-        'personal_space_id' => 'int64',
+        'personal_folder_id' => null,
         'presumed_looker_employee' => null,
-        'role_ids' => 'int64',
+        'role_ids' => null,
         'sessions' => null,
         'ui_state' => null,
         'verified_looker_employee' => null,
         'roles_externally_managed' => null,
-        'url' => 'uri',
-        'can' => null
+        'allow_direct_roles' => null,
+        'allow_normal_group_membership' => null,
+        'allow_roles_from_normal_groups' => null,
+        'embed_group_folder_id' => null,
+        'url' => 'uri-reference'
     ];
 
     /**
@@ -156,7 +166,9 @@ class User implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'can' => 'can',
         'avatar_url' => 'avatar_url',
+        'avatar_url_without_sizing' => 'avatar_url_without_sizing',
         'credentials_api3' => 'credentials_api3',
         'credentials_email' => 'credentials_email',
         'credentials_embed' => 'credentials_embed',
@@ -171,22 +183,25 @@ class User implements ModelInterface, ArrayAccess
         'embed_group_space_id' => 'embed_group_space_id',
         'first_name' => 'first_name',
         'group_ids' => 'group_ids',
-        'home_space_id' => 'home_space_id',
+        'home_folder_id' => 'home_folder_id',
         'id' => 'id',
         'is_disabled' => 'is_disabled',
         'last_name' => 'last_name',
         'locale' => 'locale',
         'looker_versions' => 'looker_versions',
         'models_dir_validated' => 'models_dir_validated',
-        'personal_space_id' => 'personal_space_id',
+        'personal_folder_id' => 'personal_folder_id',
         'presumed_looker_employee' => 'presumed_looker_employee',
         'role_ids' => 'role_ids',
         'sessions' => 'sessions',
         'ui_state' => 'ui_state',
         'verified_looker_employee' => 'verified_looker_employee',
         'roles_externally_managed' => 'roles_externally_managed',
-        'url' => 'url',
-        'can' => 'can'
+        'allow_direct_roles' => 'allow_direct_roles',
+        'allow_normal_group_membership' => 'allow_normal_group_membership',
+        'allow_roles_from_normal_groups' => 'allow_roles_from_normal_groups',
+        'embed_group_folder_id' => 'embed_group_folder_id',
+        'url' => 'url'
     ];
 
     /**
@@ -195,7 +210,9 @@ class User implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'can' => 'setCan',
         'avatar_url' => 'setAvatarUrl',
+        'avatar_url_without_sizing' => 'setAvatarUrlWithoutSizing',
         'credentials_api3' => 'setCredentialsApi3',
         'credentials_email' => 'setCredentialsEmail',
         'credentials_embed' => 'setCredentialsEmbed',
@@ -210,22 +227,25 @@ class User implements ModelInterface, ArrayAccess
         'embed_group_space_id' => 'setEmbedGroupSpaceId',
         'first_name' => 'setFirstName',
         'group_ids' => 'setGroupIds',
-        'home_space_id' => 'setHomeSpaceId',
+        'home_folder_id' => 'setHomeFolderId',
         'id' => 'setId',
         'is_disabled' => 'setIsDisabled',
         'last_name' => 'setLastName',
         'locale' => 'setLocale',
         'looker_versions' => 'setLookerVersions',
         'models_dir_validated' => 'setModelsDirValidated',
-        'personal_space_id' => 'setPersonalSpaceId',
+        'personal_folder_id' => 'setPersonalFolderId',
         'presumed_looker_employee' => 'setPresumedLookerEmployee',
         'role_ids' => 'setRoleIds',
         'sessions' => 'setSessions',
         'ui_state' => 'setUiState',
         'verified_looker_employee' => 'setVerifiedLookerEmployee',
         'roles_externally_managed' => 'setRolesExternallyManaged',
-        'url' => 'setUrl',
-        'can' => 'setCan'
+        'allow_direct_roles' => 'setAllowDirectRoles',
+        'allow_normal_group_membership' => 'setAllowNormalGroupMembership',
+        'allow_roles_from_normal_groups' => 'setAllowRolesFromNormalGroups',
+        'embed_group_folder_id' => 'setEmbedGroupFolderId',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -234,7 +254,9 @@ class User implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'can' => 'getCan',
         'avatar_url' => 'getAvatarUrl',
+        'avatar_url_without_sizing' => 'getAvatarUrlWithoutSizing',
         'credentials_api3' => 'getCredentialsApi3',
         'credentials_email' => 'getCredentialsEmail',
         'credentials_embed' => 'getCredentialsEmbed',
@@ -249,22 +271,25 @@ class User implements ModelInterface, ArrayAccess
         'embed_group_space_id' => 'getEmbedGroupSpaceId',
         'first_name' => 'getFirstName',
         'group_ids' => 'getGroupIds',
-        'home_space_id' => 'getHomeSpaceId',
+        'home_folder_id' => 'getHomeFolderId',
         'id' => 'getId',
         'is_disabled' => 'getIsDisabled',
         'last_name' => 'getLastName',
         'locale' => 'getLocale',
         'looker_versions' => 'getLookerVersions',
         'models_dir_validated' => 'getModelsDirValidated',
-        'personal_space_id' => 'getPersonalSpaceId',
+        'personal_folder_id' => 'getPersonalFolderId',
         'presumed_looker_employee' => 'getPresumedLookerEmployee',
         'role_ids' => 'getRoleIds',
         'sessions' => 'getSessions',
         'ui_state' => 'getUiState',
         'verified_looker_employee' => 'getVerifiedLookerEmployee',
         'roles_externally_managed' => 'getRolesExternallyManaged',
-        'url' => 'getUrl',
-        'can' => 'getCan'
+        'allow_direct_roles' => 'getAllowDirectRoles',
+        'allow_normal_group_membership' => 'getAllowNormalGroupMembership',
+        'allow_roles_from_normal_groups' => 'getAllowRolesFromNormalGroups',
+        'embed_group_folder_id' => 'getEmbedGroupFolderId',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -327,7 +352,9 @@ class User implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
         $this->container['avatar_url'] = isset($data['avatar_url']) ? $data['avatar_url'] : null;
+        $this->container['avatar_url_without_sizing'] = isset($data['avatar_url_without_sizing']) ? $data['avatar_url_without_sizing'] : null;
         $this->container['credentials_api3'] = isset($data['credentials_api3']) ? $data['credentials_api3'] : null;
         $this->container['credentials_email'] = isset($data['credentials_email']) ? $data['credentials_email'] : null;
         $this->container['credentials_embed'] = isset($data['credentials_embed']) ? $data['credentials_embed'] : null;
@@ -342,22 +369,25 @@ class User implements ModelInterface, ArrayAccess
         $this->container['embed_group_space_id'] = isset($data['embed_group_space_id']) ? $data['embed_group_space_id'] : null;
         $this->container['first_name'] = isset($data['first_name']) ? $data['first_name'] : null;
         $this->container['group_ids'] = isset($data['group_ids']) ? $data['group_ids'] : null;
-        $this->container['home_space_id'] = isset($data['home_space_id']) ? $data['home_space_id'] : null;
+        $this->container['home_folder_id'] = isset($data['home_folder_id']) ? $data['home_folder_id'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['is_disabled'] = isset($data['is_disabled']) ? $data['is_disabled'] : null;
         $this->container['last_name'] = isset($data['last_name']) ? $data['last_name'] : null;
         $this->container['locale'] = isset($data['locale']) ? $data['locale'] : null;
         $this->container['looker_versions'] = isset($data['looker_versions']) ? $data['looker_versions'] : null;
         $this->container['models_dir_validated'] = isset($data['models_dir_validated']) ? $data['models_dir_validated'] : null;
-        $this->container['personal_space_id'] = isset($data['personal_space_id']) ? $data['personal_space_id'] : null;
+        $this->container['personal_folder_id'] = isset($data['personal_folder_id']) ? $data['personal_folder_id'] : null;
         $this->container['presumed_looker_employee'] = isset($data['presumed_looker_employee']) ? $data['presumed_looker_employee'] : null;
         $this->container['role_ids'] = isset($data['role_ids']) ? $data['role_ids'] : null;
         $this->container['sessions'] = isset($data['sessions']) ? $data['sessions'] : null;
         $this->container['ui_state'] = isset($data['ui_state']) ? $data['ui_state'] : null;
         $this->container['verified_looker_employee'] = isset($data['verified_looker_employee']) ? $data['verified_looker_employee'] : null;
         $this->container['roles_externally_managed'] = isset($data['roles_externally_managed']) ? $data['roles_externally_managed'] : null;
+        $this->container['allow_direct_roles'] = isset($data['allow_direct_roles']) ? $data['allow_direct_roles'] : null;
+        $this->container['allow_normal_group_membership'] = isset($data['allow_normal_group_membership']) ? $data['allow_normal_group_membership'] : null;
+        $this->container['allow_roles_from_normal_groups'] = isset($data['allow_roles_from_normal_groups']) ? $data['allow_roles_from_normal_groups'] : null;
+        $this->container['embed_group_folder_id'] = isset($data['embed_group_folder_id']) ? $data['embed_group_folder_id'] : null;
         $this->container['url'] = isset($data['url']) ? $data['url'] : null;
-        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
     }
 
     /**
@@ -385,6 +415,30 @@ class User implements ModelInterface, ArrayAccess
 
 
     /**
+     * Gets can
+     *
+     * @return map[string,bool]
+     */
+    public function getCan()
+    {
+        return $this->container['can'];
+    }
+
+    /**
+     * Sets can
+     *
+     * @param map[string,bool] $can Operations the current user is able to perform on this object
+     *
+     * @return $this
+     */
+    public function setCan($can)
+    {
+        $this->container['can'] = $can;
+
+        return $this;
+    }
+
+    /**
      * Gets avatar_url
      *
      * @return string
@@ -409,6 +463,30 @@ class User implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets avatar_url_without_sizing
+     *
+     * @return string
+     */
+    public function getAvatarUrlWithoutSizing()
+    {
+        return $this->container['avatar_url_without_sizing'];
+    }
+
+    /**
+     * Sets avatar_url_without_sizing
+     *
+     * @param string $avatar_url_without_sizing URL for the avatar image (may be generic), does not specify size
+     *
+     * @return $this
+     */
+    public function setAvatarUrlWithoutSizing($avatar_url_without_sizing)
+    {
+        $this->container['avatar_url_without_sizing'] = $avatar_url_without_sizing;
+
+        return $this;
+    }
+
+    /**
      * Gets credentials_api3
      *
      * @return \Swagger\Client\Model\CredentialsApi3[]
@@ -421,7 +499,7 @@ class User implements ModelInterface, ArrayAccess
     /**
      * Sets credentials_api3
      *
-     * @param \Swagger\Client\Model\CredentialsApi3[] $credentials_api3 API 3 credentials
+     * @param \Swagger\Client\Model\CredentialsApi3[] $credentials_api3 API credentials
      *
      * @return $this
      */
@@ -675,7 +753,7 @@ class User implements ModelInterface, ArrayAccess
     /**
      * Gets embed_group_space_id
      *
-     * @return int
+     * @return string
      */
     public function getEmbedGroupSpaceId()
     {
@@ -685,7 +763,7 @@ class User implements ModelInterface, ArrayAccess
     /**
      * Sets embed_group_space_id
      *
-     * @param int $embed_group_space_id (Embed only) ID of user's group space based on the external_group_id optionally specified during embed user login
+     * @param string $embed_group_space_id (DEPRECATED) (Embed only) ID of user's group space based on the external_group_id optionally specified during embed user login
      *
      * @return $this
      */
@@ -723,7 +801,7 @@ class User implements ModelInterface, ArrayAccess
     /**
      * Gets group_ids
      *
-     * @return int[]
+     * @return string[]
      */
     public function getGroupIds()
     {
@@ -733,7 +811,7 @@ class User implements ModelInterface, ArrayAccess
     /**
      * Sets group_ids
      *
-     * @param int[] $group_ids Array of ids of the groups for this user
+     * @param string[] $group_ids Array of ids of the groups for this user
      *
      * @return $this
      */
@@ -745,25 +823,25 @@ class User implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets home_space_id
+     * Gets home_folder_id
      *
      * @return string
      */
-    public function getHomeSpaceId()
+    public function getHomeFolderId()
     {
-        return $this->container['home_space_id'];
+        return $this->container['home_folder_id'];
     }
 
     /**
-     * Sets home_space_id
+     * Sets home_folder_id
      *
-     * @param string $home_space_id ID string for user's home space
+     * @param string $home_folder_id ID string for user's home folder
      *
      * @return $this
      */
-    public function setHomeSpaceId($home_space_id)
+    public function setHomeFolderId($home_folder_id)
     {
-        $this->container['home_space_id'] = $home_space_id;
+        $this->container['home_folder_id'] = $home_folder_id;
 
         return $this;
     }
@@ -771,7 +849,7 @@ class User implements ModelInterface, ArrayAccess
     /**
      * Gets id
      *
-     * @return int
+     * @return string
      */
     public function getId()
     {
@@ -781,7 +859,7 @@ class User implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id Unique Id
+     * @param string $id Unique Id
      *
      * @return $this
      */
@@ -913,25 +991,25 @@ class User implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets personal_space_id
+     * Gets personal_folder_id
      *
-     * @return int
+     * @return string
      */
-    public function getPersonalSpaceId()
+    public function getPersonalFolderId()
     {
-        return $this->container['personal_space_id'];
+        return $this->container['personal_folder_id'];
     }
 
     /**
-     * Sets personal_space_id
+     * Sets personal_folder_id
      *
-     * @param int $personal_space_id ID of user's personal space
+     * @param string $personal_folder_id ID of user's personal folder
      *
      * @return $this
      */
-    public function setPersonalSpaceId($personal_space_id)
+    public function setPersonalFolderId($personal_folder_id)
     {
-        $this->container['personal_space_id'] = $personal_space_id;
+        $this->container['personal_folder_id'] = $personal_folder_id;
 
         return $this;
     }
@@ -963,7 +1041,7 @@ class User implements ModelInterface, ArrayAccess
     /**
      * Gets role_ids
      *
-     * @return int[]
+     * @return string[]
      */
     public function getRoleIds()
     {
@@ -973,7 +1051,7 @@ class User implements ModelInterface, ArrayAccess
     /**
      * Sets role_ids
      *
-     * @param int[] $role_ids Array of ids of the roles for this user
+     * @param string[] $role_ids Array of ids of the roles for this user
      *
      * @return $this
      */
@@ -1081,6 +1159,102 @@ class User implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets allow_direct_roles
+     *
+     * @return bool
+     */
+    public function getAllowDirectRoles()
+    {
+        return $this->container['allow_direct_roles'];
+    }
+
+    /**
+     * Sets allow_direct_roles
+     *
+     * @param bool $allow_direct_roles User can be directly assigned a role.
+     *
+     * @return $this
+     */
+    public function setAllowDirectRoles($allow_direct_roles)
+    {
+        $this->container['allow_direct_roles'] = $allow_direct_roles;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_normal_group_membership
+     *
+     * @return bool
+     */
+    public function getAllowNormalGroupMembership()
+    {
+        return $this->container['allow_normal_group_membership'];
+    }
+
+    /**
+     * Sets allow_normal_group_membership
+     *
+     * @param bool $allow_normal_group_membership User can be a direct member of a normal Looker group.
+     *
+     * @return $this
+     */
+    public function setAllowNormalGroupMembership($allow_normal_group_membership)
+    {
+        $this->container['allow_normal_group_membership'] = $allow_normal_group_membership;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_roles_from_normal_groups
+     *
+     * @return bool
+     */
+    public function getAllowRolesFromNormalGroups()
+    {
+        return $this->container['allow_roles_from_normal_groups'];
+    }
+
+    /**
+     * Sets allow_roles_from_normal_groups
+     *
+     * @param bool $allow_roles_from_normal_groups User can inherit roles from a normal Looker group.
+     *
+     * @return $this
+     */
+    public function setAllowRolesFromNormalGroups($allow_roles_from_normal_groups)
+    {
+        $this->container['allow_roles_from_normal_groups'] = $allow_roles_from_normal_groups;
+
+        return $this;
+    }
+
+    /**
+     * Gets embed_group_folder_id
+     *
+     * @return string
+     */
+    public function getEmbedGroupFolderId()
+    {
+        return $this->container['embed_group_folder_id'];
+    }
+
+    /**
+     * Sets embed_group_folder_id
+     *
+     * @param string $embed_group_folder_id (Embed only) ID of user's group folder based on the external_group_id optionally specified during embed user login
+     *
+     * @return $this
+     */
+    public function setEmbedGroupFolderId($embed_group_folder_id)
+    {
+        $this->container['embed_group_folder_id'] = $embed_group_folder_id;
+
+        return $this;
+    }
+
+    /**
      * Gets url
      *
      * @return string
@@ -1100,30 +1274,6 @@ class User implements ModelInterface, ArrayAccess
     public function setUrl($url)
     {
         $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets can
-     *
-     * @return map[string,bool]
-     */
-    public function getCan()
-    {
-        return $this->container['can'];
-    }
-
-    /**
-     * Sets can
-     *
-     * @param map[string,bool] $can Operations the current user is able to perform on this object
-     *
-     * @return $this
-     */
-    public function setCan($can)
-    {
-        $this->container['can'] = $can;
 
         return $this;
     }

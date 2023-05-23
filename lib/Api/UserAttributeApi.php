@@ -10,12 +10,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -92,7 +92,7 @@ class UserAttributeApi
      *
      * Get User Attribute Group Values
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -110,7 +110,7 @@ class UserAttributeApi
      *
      * Get User Attribute Group Values
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -202,7 +202,7 @@ class UserAttributeApi
      *
      * Get User Attribute Group Values
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -223,7 +223,7 @@ class UserAttributeApi
      *
      * Get User Attribute Group Values
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -274,7 +274,7 @@ class UserAttributeApi
     /**
      * Create request for operation 'allUserAttributeGroupValues'
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -656,14 +656,14 @@ class UserAttributeApi
      *
      * Create User Attribute
      *
-     * @param  \Swagger\Client\Model\UserAttribute $body User Attribute (optional)
+     * @param  \Swagger\Client\Model\UserAttribute $body User Attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\UserAttribute
      */
-    public function createUserAttribute($body = null, $fields = null)
+    public function createUserAttribute($body, $fields = null)
     {
         list($response) = $this->createUserAttributeWithHttpInfo($body, $fields);
         return $response;
@@ -674,14 +674,14 @@ class UserAttributeApi
      *
      * Create User Attribute
      *
-     * @param  \Swagger\Client\Model\UserAttribute $body User Attribute (optional)
+     * @param  \Swagger\Client\Model\UserAttribute $body User Attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\UserAttribute, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createUserAttributeWithHttpInfo($body = null, $fields = null)
+    public function createUserAttributeWithHttpInfo($body, $fields = null)
     {
         $returnType = '\Swagger\Client\Model\UserAttribute';
         $request = $this->createUserAttributeRequest($body, $fields);
@@ -772,6 +772,14 @@ class UserAttributeApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -782,13 +790,13 @@ class UserAttributeApi
      *
      * Create User Attribute
      *
-     * @param  \Swagger\Client\Model\UserAttribute $body User Attribute (optional)
+     * @param  \Swagger\Client\Model\UserAttribute $body User Attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createUserAttributeAsync($body = null, $fields = null)
+    public function createUserAttributeAsync($body, $fields = null)
     {
         return $this->createUserAttributeAsyncWithHttpInfo($body, $fields)
             ->then(
@@ -803,13 +811,13 @@ class UserAttributeApi
      *
      * Create User Attribute
      *
-     * @param  \Swagger\Client\Model\UserAttribute $body User Attribute (optional)
+     * @param  \Swagger\Client\Model\UserAttribute $body User Attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createUserAttributeAsyncWithHttpInfo($body = null, $fields = null)
+    public function createUserAttributeAsyncWithHttpInfo($body, $fields = null)
     {
         $returnType = '\Swagger\Client\Model\UserAttribute';
         $request = $this->createUserAttributeRequest($body, $fields);
@@ -854,14 +862,20 @@ class UserAttributeApi
     /**
      * Create request for operation 'createUserAttribute'
      *
-     * @param  \Swagger\Client\Model\UserAttribute $body User Attribute (optional)
+     * @param  \Swagger\Client\Model\UserAttribute $body User Attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createUserAttributeRequest($body = null, $fields = null)
+    protected function createUserAttributeRequest($body, $fields = null)
     {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling createUserAttribute'
+            );
+        }
 
         $resourcePath = '/user_attributes';
         $formParams = [];
@@ -948,7 +962,7 @@ class UserAttributeApi
      *
      * Delete User Attribute
      *
-     * @param  int $user_attribute_id Id of user_attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -965,7 +979,7 @@ class UserAttributeApi
      *
      * Delete User Attribute
      *
-     * @param  int $user_attribute_id Id of user_attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1046,6 +1060,14 @@ class UserAttributeApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1056,7 +1078,7 @@ class UserAttributeApi
      *
      * Delete User Attribute
      *
-     * @param  int $user_attribute_id Id of user_attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1076,7 +1098,7 @@ class UserAttributeApi
      *
      * Delete User Attribute
      *
-     * @param  int $user_attribute_id Id of user_attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -1126,7 +1148,7 @@ class UserAttributeApi
     /**
      * Create request for operation 'deleteUserAttribute'
      *
-     * @param  int $user_attribute_id Id of user_attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -1226,7 +1248,7 @@ class UserAttributeApi
      *
      * Set User Attribute Group Values
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttributeGroupValue[] $body Array of group values. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -1244,7 +1266,7 @@ class UserAttributeApi
      *
      * Set User Attribute Group Values
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttributeGroupValue[] $body Array of group values. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -1342,6 +1364,14 @@ class UserAttributeApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1352,7 +1382,7 @@ class UserAttributeApi
      *
      * Set User Attribute Group Values
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttributeGroupValue[] $body Array of group values. (required)
      *
      * @throws \InvalidArgumentException
@@ -1373,7 +1403,7 @@ class UserAttributeApi
      *
      * Set User Attribute Group Values
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttributeGroupValue[] $body Array of group values. (required)
      *
      * @throws \InvalidArgumentException
@@ -1424,7 +1454,7 @@ class UserAttributeApi
     /**
      * Create request for operation 'setUserAttributeGroupValues'
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttributeGroupValue[] $body Array of group values. (required)
      *
      * @throws \InvalidArgumentException
@@ -1534,7 +1564,7 @@ class UserAttributeApi
      *
      * Update User Attribute
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttribute $body User Attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -1553,7 +1583,7 @@ class UserAttributeApi
      *
      * Update User Attribute
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttribute $body User Attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -1644,6 +1674,14 @@ class UserAttributeApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1654,7 +1692,7 @@ class UserAttributeApi
      *
      * Update User Attribute
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttribute $body User Attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -1676,7 +1714,7 @@ class UserAttributeApi
      *
      * Update User Attribute
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttribute $body User Attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -1728,7 +1766,7 @@ class UserAttributeApi
     /**
      * Create request for operation 'updateUserAttribute'
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttribute $body User Attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -1843,7 +1881,7 @@ class UserAttributeApi
      *
      * Get User Attribute
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -1861,7 +1899,7 @@ class UserAttributeApi
      *
      * Get User Attribute
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -1953,7 +1991,7 @@ class UserAttributeApi
      *
      * Get User Attribute
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -1974,7 +2012,7 @@ class UserAttributeApi
      *
      * Get User Attribute
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -2025,7 +2063,7 @@ class UserAttributeApi
     /**
      * Create request for operation 'userAttribute'
      *
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException

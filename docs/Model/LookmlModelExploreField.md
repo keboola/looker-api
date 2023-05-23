@@ -3,11 +3,12 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**align** | **string** | The appropriate horizontal text alignment the values of this field shoud be displayed in. Valid values are: \&quot;left\&quot;, \&quot;right\&quot;. | [optional] 
+**align** | **string** | The appropriate horizontal text alignment the values of this field should be displayed in. Valid values are: \&quot;left\&quot;, \&quot;right\&quot;. | [optional] 
 **can_filter** | **bool** | Whether it&#39;s possible to filter on this field. | [optional] 
 **category** | **string** | Field category Valid values are: \&quot;parameter\&quot;, \&quot;filter\&quot;, \&quot;measure\&quot;, \&quot;dimension\&quot;. | [optional] 
 **default_filter_value** | **string** | The default value that this field uses when filtering. Null if there is no default value. | [optional] 
 **description** | **string** | Description | [optional] 
+**dimension_group** | **string** | Dimension group if this field is part of a dimension group. If not, this will be null. | [optional] 
 **enumerations** | [**\Swagger\Client\Model\LookmlModelExploreFieldEnumeration[]**](LookmlModelExploreFieldEnumeration.md) | An array enumerating all the possible values that this field can contain. When null, there is no limit to the set of possible values this field can contain. | [optional] 
 **error** | **string** | An error message indicating a problem with the definition of this field. If there are no errors, this will be null. | [optional] 
 **field_group_label** | **string** | A label creating a grouping of fields. All fields with this label should be presented together when displayed in a UI. | [optional] 
@@ -41,18 +42,21 @@ Name | Type | Description | Notes
 **source_file_path** | **string** | The fully-qualified path of the project file this field is defined in. | [optional] 
 **sql** | **string** | SQL expression as defined in the LookML model. The SQL syntax shown here is a representation intended for auditability, and is not neccessarily an exact match for what will ultimately be run in the database. It may contain special LookML syntax or annotations that are not valid SQL. This will be null if the current user does not have the see_lookml permission for the field&#39;s model. | [optional] 
 **sql_case** | [**\Swagger\Client\Model\LookmlModelExploreFieldSqlCase[]**](LookmlModelExploreFieldSqlCase.md) | An array of conditions and values that make up a SQL Case expression, as defined in the LookML model. The SQL syntax shown here is a representation intended for auditability, and is not neccessarily an exact match for what will ultimately be run in the database. It may contain special LookML syntax or annotations that are not valid SQL. This will be null if the current user does not have the see_lookml permission for the field&#39;s model. | [optional] 
+**filters** | [**\Swagger\Client\Model\LookmlModelExploreFieldMeasureFilters[]**](LookmlModelExploreFieldMeasureFilters.md) | Array of filter conditions defined for the measure in LookML. | [optional] 
 **suggest_dimension** | **string** | The name of the dimension to base suggest queries from. | [optional] 
 **suggest_explore** | **string** | The name of the explore to base suggest queries from. | [optional] 
 **suggestable** | **bool** | Whether or not suggestions are possible for this field. | [optional] 
 **suggestions** | **string[]** | If available, a list of suggestions for this field. For most fields, a suggest query is a more appropriate way to get an up-to-date list of suggestions. Or use enumerations to list all the possible values. | [optional] 
 **tags** | **string[]** | An array of arbitrary string tags provided in the model for this field. | [optional] 
 **type** | **string** | The LookML type of the field. | [optional] 
-**user_attribute_filter_types** | **string[]** | An array of user attribute types that are allowed to be used in filters on this field. Valid values are: \&quot;advanced_filter_string\&quot;, \&quot;advanced_filter_number\&quot;, \&quot;advanced_filter_datetime\&quot;, \&quot;string\&quot;, \&quot;number\&quot;, \&quot;datetime\&quot;, \&quot;yesno\&quot;, \&quot;zipcode\&quot;. | [optional] 
+**user_attribute_filter_types** | **string[]** | An array of user attribute types that are allowed to be used in filters on this field. Valid values are: \&quot;advanced_filter_string\&quot;, \&quot;advanced_filter_number\&quot;, \&quot;advanced_filter_datetime\&quot;, \&quot;string\&quot;, \&quot;number\&quot;, \&quot;datetime\&quot;, \&quot;relative_url\&quot;, \&quot;yesno\&quot;, \&quot;zipcode\&quot;. | [optional] 
 **value_format** | **string** | If specified, the LookML value format string for formatting values of this field. | [optional] 
 **view** | **string** | The name of the view this field belongs to. | [optional] 
 **view_label** | **string** | The human-readable label of the view the field belongs to. | [optional] 
 **dynamic** | **bool** | Whether this field was specified in \&quot;dynamic_fields\&quot; and is not part of the model. | [optional] 
 **week_start_day** | **string** | The name of the starting day of the week. Valid values are: \&quot;monday\&quot;, \&quot;tuesday\&quot;, \&quot;wednesday\&quot;, \&quot;thursday\&quot;, \&quot;friday\&quot;, \&quot;saturday\&quot;, \&quot;sunday\&quot;. | [optional] 
+**times_used** | **int** | The number of times this field has been used in queries | [optional] 
+**original_view** | **string** | The name of the view this field is defined in. This will be different than \&quot;view\&quot; when the view has been joined via a different name using the \&quot;from\&quot; parameter. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

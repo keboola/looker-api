@@ -11,12 +11,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -57,9 +57,11 @@ class DBConnection implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'can' => 'map[string,bool]',
         'name' => 'string',
         'dialect' => '\Swagger\Client\Model\Dialect',
         'snippets' => '\Swagger\Client\Model\Snippet[]',
+        'pdts_enabled' => 'bool',
         'host' => 'string',
         'port' => 'string',
         'username' => 'string',
@@ -79,6 +81,7 @@ class DBConnection implements ModelInterface, ArrayAccess
         'jdbc_additional_params' => 'string',
         'pool_timeout' => 'int',
         'dialect_name' => 'string',
+        'supports_data_studio_link' => 'bool',
         'created_at' => 'string',
         'user_id' => 'string',
         'example' => 'bool',
@@ -88,9 +91,19 @@ class DBConnection implements ModelInterface, ArrayAccess
         'last_regen_at' => 'string',
         'last_reap_at' => 'string',
         'sql_runner_precache_tables' => 'bool',
+        'sql_writing_with_info_schema' => 'bool',
         'after_connect_statements' => 'string',
         'pdt_context_override' => '\Swagger\Client\Model\DBConnectionOverride',
-        'can' => 'map[string,bool]'
+        'managed' => 'bool',
+        'custom_local_port' => 'int',
+        'tunnel_id' => 'string',
+        'uses_tns' => 'bool',
+        'pdt_concurrency' => 'int',
+        'disable_context_comment' => 'bool',
+        'oauth_application_id' => 'string',
+        'always_retry_failed_builds' => 'bool',
+        'cost_estimate_enabled' => 'bool',
+        'pdt_api_control_enabled' => 'bool'
     ];
 
     /**
@@ -99,9 +112,11 @@ class DBConnection implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
+        'can' => null,
         'name' => null,
         'dialect' => null,
         'snippets' => null,
+        'pdts_enabled' => null,
         'host' => null,
         'port' => null,
         'username' => null,
@@ -121,6 +136,7 @@ class DBConnection implements ModelInterface, ArrayAccess
         'jdbc_additional_params' => null,
         'pool_timeout' => 'int64',
         'dialect_name' => null,
+        'supports_data_studio_link' => null,
         'created_at' => null,
         'user_id' => null,
         'example' => null,
@@ -130,9 +146,19 @@ class DBConnection implements ModelInterface, ArrayAccess
         'last_regen_at' => null,
         'last_reap_at' => null,
         'sql_runner_precache_tables' => null,
+        'sql_writing_with_info_schema' => null,
         'after_connect_statements' => null,
         'pdt_context_override' => null,
-        'can' => null
+        'managed' => null,
+        'custom_local_port' => 'int64',
+        'tunnel_id' => null,
+        'uses_tns' => null,
+        'pdt_concurrency' => 'int64',
+        'disable_context_comment' => null,
+        'oauth_application_id' => null,
+        'always_retry_failed_builds' => null,
+        'cost_estimate_enabled' => null,
+        'pdt_api_control_enabled' => null
     ];
 
     /**
@@ -162,9 +188,11 @@ class DBConnection implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'can' => 'can',
         'name' => 'name',
         'dialect' => 'dialect',
         'snippets' => 'snippets',
+        'pdts_enabled' => 'pdts_enabled',
         'host' => 'host',
         'port' => 'port',
         'username' => 'username',
@@ -184,6 +212,7 @@ class DBConnection implements ModelInterface, ArrayAccess
         'jdbc_additional_params' => 'jdbc_additional_params',
         'pool_timeout' => 'pool_timeout',
         'dialect_name' => 'dialect_name',
+        'supports_data_studio_link' => 'supports_data_studio_link',
         'created_at' => 'created_at',
         'user_id' => 'user_id',
         'example' => 'example',
@@ -193,9 +222,19 @@ class DBConnection implements ModelInterface, ArrayAccess
         'last_regen_at' => 'last_regen_at',
         'last_reap_at' => 'last_reap_at',
         'sql_runner_precache_tables' => 'sql_runner_precache_tables',
+        'sql_writing_with_info_schema' => 'sql_writing_with_info_schema',
         'after_connect_statements' => 'after_connect_statements',
         'pdt_context_override' => 'pdt_context_override',
-        'can' => 'can'
+        'managed' => 'managed',
+        'custom_local_port' => 'custom_local_port',
+        'tunnel_id' => 'tunnel_id',
+        'uses_tns' => 'uses_tns',
+        'pdt_concurrency' => 'pdt_concurrency',
+        'disable_context_comment' => 'disable_context_comment',
+        'oauth_application_id' => 'oauth_application_id',
+        'always_retry_failed_builds' => 'always_retry_failed_builds',
+        'cost_estimate_enabled' => 'cost_estimate_enabled',
+        'pdt_api_control_enabled' => 'pdt_api_control_enabled'
     ];
 
     /**
@@ -204,9 +243,11 @@ class DBConnection implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'can' => 'setCan',
         'name' => 'setName',
         'dialect' => 'setDialect',
         'snippets' => 'setSnippets',
+        'pdts_enabled' => 'setPdtsEnabled',
         'host' => 'setHost',
         'port' => 'setPort',
         'username' => 'setUsername',
@@ -226,6 +267,7 @@ class DBConnection implements ModelInterface, ArrayAccess
         'jdbc_additional_params' => 'setJdbcAdditionalParams',
         'pool_timeout' => 'setPoolTimeout',
         'dialect_name' => 'setDialectName',
+        'supports_data_studio_link' => 'setSupportsDataStudioLink',
         'created_at' => 'setCreatedAt',
         'user_id' => 'setUserId',
         'example' => 'setExample',
@@ -235,9 +277,19 @@ class DBConnection implements ModelInterface, ArrayAccess
         'last_regen_at' => 'setLastRegenAt',
         'last_reap_at' => 'setLastReapAt',
         'sql_runner_precache_tables' => 'setSqlRunnerPrecacheTables',
+        'sql_writing_with_info_schema' => 'setSqlWritingWithInfoSchema',
         'after_connect_statements' => 'setAfterConnectStatements',
         'pdt_context_override' => 'setPdtContextOverride',
-        'can' => 'setCan'
+        'managed' => 'setManaged',
+        'custom_local_port' => 'setCustomLocalPort',
+        'tunnel_id' => 'setTunnelId',
+        'uses_tns' => 'setUsesTns',
+        'pdt_concurrency' => 'setPdtConcurrency',
+        'disable_context_comment' => 'setDisableContextComment',
+        'oauth_application_id' => 'setOauthApplicationId',
+        'always_retry_failed_builds' => 'setAlwaysRetryFailedBuilds',
+        'cost_estimate_enabled' => 'setCostEstimateEnabled',
+        'pdt_api_control_enabled' => 'setPdtApiControlEnabled'
     ];
 
     /**
@@ -246,9 +298,11 @@ class DBConnection implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'can' => 'getCan',
         'name' => 'getName',
         'dialect' => 'getDialect',
         'snippets' => 'getSnippets',
+        'pdts_enabled' => 'getPdtsEnabled',
         'host' => 'getHost',
         'port' => 'getPort',
         'username' => 'getUsername',
@@ -268,6 +322,7 @@ class DBConnection implements ModelInterface, ArrayAccess
         'jdbc_additional_params' => 'getJdbcAdditionalParams',
         'pool_timeout' => 'getPoolTimeout',
         'dialect_name' => 'getDialectName',
+        'supports_data_studio_link' => 'getSupportsDataStudioLink',
         'created_at' => 'getCreatedAt',
         'user_id' => 'getUserId',
         'example' => 'getExample',
@@ -277,9 +332,19 @@ class DBConnection implements ModelInterface, ArrayAccess
         'last_regen_at' => 'getLastRegenAt',
         'last_reap_at' => 'getLastReapAt',
         'sql_runner_precache_tables' => 'getSqlRunnerPrecacheTables',
+        'sql_writing_with_info_schema' => 'getSqlWritingWithInfoSchema',
         'after_connect_statements' => 'getAfterConnectStatements',
         'pdt_context_override' => 'getPdtContextOverride',
-        'can' => 'getCan'
+        'managed' => 'getManaged',
+        'custom_local_port' => 'getCustomLocalPort',
+        'tunnel_id' => 'getTunnelId',
+        'uses_tns' => 'getUsesTns',
+        'pdt_concurrency' => 'getPdtConcurrency',
+        'disable_context_comment' => 'getDisableContextComment',
+        'oauth_application_id' => 'getOauthApplicationId',
+        'always_retry_failed_builds' => 'getAlwaysRetryFailedBuilds',
+        'cost_estimate_enabled' => 'getCostEstimateEnabled',
+        'pdt_api_control_enabled' => 'getPdtApiControlEnabled'
     ];
 
     /**
@@ -342,9 +407,11 @@ class DBConnection implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['dialect'] = isset($data['dialect']) ? $data['dialect'] : null;
         $this->container['snippets'] = isset($data['snippets']) ? $data['snippets'] : null;
+        $this->container['pdts_enabled'] = isset($data['pdts_enabled']) ? $data['pdts_enabled'] : null;
         $this->container['host'] = isset($data['host']) ? $data['host'] : null;
         $this->container['port'] = isset($data['port']) ? $data['port'] : null;
         $this->container['username'] = isset($data['username']) ? $data['username'] : null;
@@ -364,6 +431,7 @@ class DBConnection implements ModelInterface, ArrayAccess
         $this->container['jdbc_additional_params'] = isset($data['jdbc_additional_params']) ? $data['jdbc_additional_params'] : null;
         $this->container['pool_timeout'] = isset($data['pool_timeout']) ? $data['pool_timeout'] : null;
         $this->container['dialect_name'] = isset($data['dialect_name']) ? $data['dialect_name'] : null;
+        $this->container['supports_data_studio_link'] = isset($data['supports_data_studio_link']) ? $data['supports_data_studio_link'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
         $this->container['example'] = isset($data['example']) ? $data['example'] : null;
@@ -373,9 +441,19 @@ class DBConnection implements ModelInterface, ArrayAccess
         $this->container['last_regen_at'] = isset($data['last_regen_at']) ? $data['last_regen_at'] : null;
         $this->container['last_reap_at'] = isset($data['last_reap_at']) ? $data['last_reap_at'] : null;
         $this->container['sql_runner_precache_tables'] = isset($data['sql_runner_precache_tables']) ? $data['sql_runner_precache_tables'] : null;
+        $this->container['sql_writing_with_info_schema'] = isset($data['sql_writing_with_info_schema']) ? $data['sql_writing_with_info_schema'] : null;
         $this->container['after_connect_statements'] = isset($data['after_connect_statements']) ? $data['after_connect_statements'] : null;
         $this->container['pdt_context_override'] = isset($data['pdt_context_override']) ? $data['pdt_context_override'] : null;
-        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
+        $this->container['managed'] = isset($data['managed']) ? $data['managed'] : null;
+        $this->container['custom_local_port'] = isset($data['custom_local_port']) ? $data['custom_local_port'] : null;
+        $this->container['tunnel_id'] = isset($data['tunnel_id']) ? $data['tunnel_id'] : null;
+        $this->container['uses_tns'] = isset($data['uses_tns']) ? $data['uses_tns'] : null;
+        $this->container['pdt_concurrency'] = isset($data['pdt_concurrency']) ? $data['pdt_concurrency'] : null;
+        $this->container['disable_context_comment'] = isset($data['disable_context_comment']) ? $data['disable_context_comment'] : null;
+        $this->container['oauth_application_id'] = isset($data['oauth_application_id']) ? $data['oauth_application_id'] : null;
+        $this->container['always_retry_failed_builds'] = isset($data['always_retry_failed_builds']) ? $data['always_retry_failed_builds'] : null;
+        $this->container['cost_estimate_enabled'] = isset($data['cost_estimate_enabled']) ? $data['cost_estimate_enabled'] : null;
+        $this->container['pdt_api_control_enabled'] = isset($data['pdt_api_control_enabled']) ? $data['pdt_api_control_enabled'] : null;
     }
 
     /**
@@ -401,6 +479,30 @@ class DBConnection implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets can
+     *
+     * @return map[string,bool]
+     */
+    public function getCan()
+    {
+        return $this->container['can'];
+    }
+
+    /**
+     * Sets can
+     *
+     * @param map[string,bool] $can Operations the current user is able to perform on this object
+     *
+     * @return $this
+     */
+    public function setCan($can)
+    {
+        $this->container['can'] = $can;
+
+        return $this;
+    }
 
     /**
      * Gets name
@@ -475,6 +577,30 @@ class DBConnection implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets pdts_enabled
+     *
+     * @return bool
+     */
+    public function getPdtsEnabled()
+    {
+        return $this->container['pdts_enabled'];
+    }
+
+    /**
+     * Sets pdts_enabled
+     *
+     * @param bool $pdts_enabled True if PDTs are enabled on this connection
+     *
+     * @return $this
+     */
+    public function setPdtsEnabled($pdts_enabled)
+    {
+        $this->container['pdts_enabled'] = $pdts_enabled;
+
+        return $this;
+    }
+
+    /**
      * Gets host
      *
      * @return string
@@ -487,7 +613,7 @@ class DBConnection implements ModelInterface, ArrayAccess
     /**
      * Sets host
      *
-     * @param string $host Host name/address of server
+     * @param string $host Host name/address of server; or the string 'localhost' in case of a connection over an SSH tunnel.
      *
      * @return $this
      */
@@ -511,7 +637,7 @@ class DBConnection implements ModelInterface, ArrayAccess
     /**
      * Sets port
      *
-     * @param string $port Port number on server
+     * @param string $port Port number on server. If the connection is over an SSH tunnel, then the local port associated with the SSH tunnel.
      *
      * @return $this
      */
@@ -727,7 +853,7 @@ class DBConnection implements ModelInterface, ArrayAccess
     /**
      * Sets schema
      *
-     * @param string $schema Scheme name
+     * @param string $schema Schema name
      *
      * @return $this
      */
@@ -895,7 +1021,7 @@ class DBConnection implements ModelInterface, ArrayAccess
     /**
      * Sets pool_timeout
      *
-     * @param int $pool_timeout Pool Timeout
+     * @param int $pool_timeout Connection Pool Timeout, in seconds
      *
      * @return $this
      */
@@ -926,6 +1052,30 @@ class DBConnection implements ModelInterface, ArrayAccess
     public function setDialectName($dialect_name)
     {
         $this->container['dialect_name'] = $dialect_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets supports_data_studio_link
+     *
+     * @return bool
+     */
+    public function getSupportsDataStudioLink()
+    {
+        return $this->container['supports_data_studio_link'];
+    }
+
+    /**
+     * Sets supports_data_studio_link
+     *
+     * @param bool $supports_data_studio_link Database connection has the ability to support open data studio from explore
+     *
+     * @return $this
+     */
+    public function setSupportsDataStudioLink($supports_data_studio_link)
+    {
+        $this->container['supports_data_studio_link'] = $supports_data_studio_link;
 
         return $this;
     }
@@ -991,7 +1141,7 @@ class DBConnection implements ModelInterface, ArrayAccess
     /**
      * Sets example
      *
-     * @param bool $example Is this an example connection
+     * @param bool $example Is this an example connection?
      *
      * @return $this
      */
@@ -1147,6 +1297,30 @@ class DBConnection implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets sql_writing_with_info_schema
+     *
+     * @return bool
+     */
+    public function getSqlWritingWithInfoSchema()
+    {
+        return $this->container['sql_writing_with_info_schema'];
+    }
+
+    /**
+     * Sets sql_writing_with_info_schema
+     *
+     * @param bool $sql_writing_with_info_schema Fetch Information Schema For SQL Writing
+     *
+     * @return $this
+     */
+    public function setSqlWritingWithInfoSchema($sql_writing_with_info_schema)
+    {
+        $this->container['sql_writing_with_info_schema'] = $sql_writing_with_info_schema;
+
+        return $this;
+    }
+
+    /**
      * Gets after_connect_statements
      *
      * @return string
@@ -1195,25 +1369,241 @@ class DBConnection implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets can
+     * Gets managed
      *
-     * @return map[string,bool]
+     * @return bool
      */
-    public function getCan()
+    public function getManaged()
     {
-        return $this->container['can'];
+        return $this->container['managed'];
     }
 
     /**
-     * Sets can
+     * Sets managed
      *
-     * @param map[string,bool] $can Operations the current user is able to perform on this object
+     * @param bool $managed Is this connection created and managed by Looker
      *
      * @return $this
      */
-    public function setCan($can)
+    public function setManaged($managed)
     {
-        $this->container['can'] = $can;
+        $this->container['managed'] = $managed;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_local_port
+     *
+     * @return int
+     */
+    public function getCustomLocalPort()
+    {
+        return $this->container['custom_local_port'];
+    }
+
+    /**
+     * Sets custom_local_port
+     *
+     * @param int $custom_local_port This field is only applicable to connections over an SSH Tunnel. The value of this field would be the local port associated with the SSH tunnel if configured manually. Otherwise either enter NULL or exclude this field.
+     *
+     * @return $this
+     */
+    public function setCustomLocalPort($custom_local_port)
+    {
+        $this->container['custom_local_port'] = $custom_local_port;
+
+        return $this;
+    }
+
+    /**
+     * Gets tunnel_id
+     *
+     * @return string
+     */
+    public function getTunnelId()
+    {
+        return $this->container['tunnel_id'];
+    }
+
+    /**
+     * Sets tunnel_id
+     *
+     * @param string $tunnel_id The Id of the ssh tunnel this connection uses
+     *
+     * @return $this
+     */
+    public function setTunnelId($tunnel_id)
+    {
+        $this->container['tunnel_id'] = $tunnel_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets uses_tns
+     *
+     * @return bool
+     */
+    public function getUsesTns()
+    {
+        return $this->container['uses_tns'];
+    }
+
+    /**
+     * Sets uses_tns
+     *
+     * @param bool $uses_tns Enable Transparent Network Substrate (TNS) connections
+     *
+     * @return $this
+     */
+    public function setUsesTns($uses_tns)
+    {
+        $this->container['uses_tns'] = $uses_tns;
+
+        return $this;
+    }
+
+    /**
+     * Gets pdt_concurrency
+     *
+     * @return int
+     */
+    public function getPdtConcurrency()
+    {
+        return $this->container['pdt_concurrency'];
+    }
+
+    /**
+     * Sets pdt_concurrency
+     *
+     * @param int $pdt_concurrency Maximum number of threads to use to build PDTs in parallel
+     *
+     * @return $this
+     */
+    public function setPdtConcurrency($pdt_concurrency)
+    {
+        $this->container['pdt_concurrency'] = $pdt_concurrency;
+
+        return $this;
+    }
+
+    /**
+     * Gets disable_context_comment
+     *
+     * @return bool
+     */
+    public function getDisableContextComment()
+    {
+        return $this->container['disable_context_comment'];
+    }
+
+    /**
+     * Sets disable_context_comment
+     *
+     * @param bool $disable_context_comment When disable_context_comment is true comment will not be added to SQL
+     *
+     * @return $this
+     */
+    public function setDisableContextComment($disable_context_comment)
+    {
+        $this->container['disable_context_comment'] = $disable_context_comment;
+
+        return $this;
+    }
+
+    /**
+     * Gets oauth_application_id
+     *
+     * @return string
+     */
+    public function getOauthApplicationId()
+    {
+        return $this->container['oauth_application_id'];
+    }
+
+    /**
+     * Sets oauth_application_id
+     *
+     * @param string $oauth_application_id An External OAuth Application to use for authenticating to the database
+     *
+     * @return $this
+     */
+    public function setOauthApplicationId($oauth_application_id)
+    {
+        $this->container['oauth_application_id'] = $oauth_application_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets always_retry_failed_builds
+     *
+     * @return bool
+     */
+    public function getAlwaysRetryFailedBuilds()
+    {
+        return $this->container['always_retry_failed_builds'];
+    }
+
+    /**
+     * Sets always_retry_failed_builds
+     *
+     * @param bool $always_retry_failed_builds When true, error PDTs will be retried every regenerator cycle
+     *
+     * @return $this
+     */
+    public function setAlwaysRetryFailedBuilds($always_retry_failed_builds)
+    {
+        $this->container['always_retry_failed_builds'] = $always_retry_failed_builds;
+
+        return $this;
+    }
+
+    /**
+     * Gets cost_estimate_enabled
+     *
+     * @return bool
+     */
+    public function getCostEstimateEnabled()
+    {
+        return $this->container['cost_estimate_enabled'];
+    }
+
+    /**
+     * Sets cost_estimate_enabled
+     *
+     * @param bool $cost_estimate_enabled When true, query cost estimate will be displayed in explore.
+     *
+     * @return $this
+     */
+    public function setCostEstimateEnabled($cost_estimate_enabled)
+    {
+        $this->container['cost_estimate_enabled'] = $cost_estimate_enabled;
+
+        return $this;
+    }
+
+    /**
+     * Gets pdt_api_control_enabled
+     *
+     * @return bool
+     */
+    public function getPdtApiControlEnabled()
+    {
+        return $this->container['pdt_api_control_enabled'];
+    }
+
+    /**
+     * Sets pdt_api_control_enabled
+     *
+     * @param bool $pdt_api_control_enabled PDT builds on this connection can be kicked off and cancelled via API.
+     *
+     * @return $this
+     */
+    public function setPdtApiControlEnabled($pdt_api_control_enabled)
+    {
+        $this->container['pdt_api_control_enabled'] = $pdt_api_control_enabled;
 
         return $this;
     }

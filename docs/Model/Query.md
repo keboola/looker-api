@@ -3,7 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | Unique Id | [optional] 
+**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
+**id** | **string** | Unique Id | [optional] 
 **model** | **string** | Model | 
 **view** | **string** | Explore Name | 
 **fields** | **string[]** | Fields | [optional] 
@@ -17,9 +18,8 @@ Name | Type | Description | Notes
 **total** | **bool** | Total | [optional] 
 **row_total** | **string** | Raw Total | [optional] 
 **subtotals** | **string[]** | Fields on which to run subtotals | [optional] 
-**runtime** | **double** | Runtime | [optional] 
-**vis_config** | **map[string,string]** | Visualization configuration properties. These properties are typically opaque and differ based on the type of visualization used. There is no specified set of allowed keys. The values can be any type supported by JSON. A \&quot;type\&quot; key with a string value is often present, and is used by Looker to determine which visualization to present. Visualizations ignore unknown vis_config properties. | [optional] 
-**filter_config** | **map[string,string]** | The filter_config represents the state of the filter UI on the explore page for a given query. When running a query via the Looker UI, this parameter takes precedence over \&quot;filters\&quot;. When creating a query or modifying an existing query, \&quot;filter_config\&quot; should be set to null. Setting it to any other value could cause unexpected filtering behavior. The format should be considered opaque. | [optional] 
+**vis_config** | **object** | Visualization configuration properties. These properties are typically opaque and differ based on the type of visualization used. There is no specified set of allowed keys. The values can be any type supported by JSON. A \&quot;type\&quot; key with a string value is often present, and is used by Looker to determine which visualization to present. Visualizations ignore unknown vis_config properties. | [optional] 
+**filter_config** | **object** | The filter_config represents the state of the filter UI on the explore page for a given query. When running a query via the Looker UI, this parameter takes precedence over \&quot;filters\&quot;. When creating a query or modifying an existing query, \&quot;filter_config\&quot; should be set to null. Setting it to any other value could cause unexpected filtering behavior. The format should be considered opaque. | [optional] 
 **visible_ui_sections** | **string** | Visible UI Sections | [optional] 
 **slug** | **string** | Slug | [optional] 
 **dynamic_fields** | **string** | Dynamic Fields | [optional] 
@@ -29,7 +29,6 @@ Name | Type | Description | Notes
 **url** | **string** | Expanded Url | [optional] 
 **query_timezone** | **string** | Query Timezone | [optional] 
 **has_table_calculations** | **bool** | Has Table Calculations | [optional] 
-**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -11,12 +11,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -69,9 +69,20 @@ class ThemeSettings implements ModelInterface, ArrayAccess
         'show_title' => 'bool',
         'text_tile_text_color' => 'string',
         'tile_background_color' => 'string',
+        'text_tile_background_color' => 'string',
         'tile_text_color' => 'string',
         'title_color' => 'string',
-        'warn_button_color' => 'string'
+        'warn_button_color' => 'string',
+        'tile_title_alignment' => 'string',
+        'tile_shadow' => 'bool',
+        'show_last_updated_indicator' => 'bool',
+        'show_reload_data_icon' => 'bool',
+        'show_dashboard_menu' => 'bool',
+        'show_filters_toggle' => 'bool',
+        'show_dashboard_header' => 'bool',
+        'center_dashboard_title' => 'bool',
+        'dashboard_title_font_size' => 'string',
+        'box_shadow' => 'string'
     ];
 
     /**
@@ -92,9 +103,20 @@ class ThemeSettings implements ModelInterface, ArrayAccess
         'show_title' => null,
         'text_tile_text_color' => null,
         'tile_background_color' => null,
+        'text_tile_background_color' => null,
         'tile_text_color' => null,
         'title_color' => null,
-        'warn_button_color' => null
+        'warn_button_color' => null,
+        'tile_title_alignment' => null,
+        'tile_shadow' => null,
+        'show_last_updated_indicator' => null,
+        'show_reload_data_icon' => null,
+        'show_dashboard_menu' => null,
+        'show_filters_toggle' => null,
+        'show_dashboard_header' => null,
+        'center_dashboard_title' => null,
+        'dashboard_title_font_size' => null,
+        'box_shadow' => null
     ];
 
     /**
@@ -136,9 +158,20 @@ class ThemeSettings implements ModelInterface, ArrayAccess
         'show_title' => 'show_title',
         'text_tile_text_color' => 'text_tile_text_color',
         'tile_background_color' => 'tile_background_color',
+        'text_tile_background_color' => 'text_tile_background_color',
         'tile_text_color' => 'tile_text_color',
         'title_color' => 'title_color',
-        'warn_button_color' => 'warn_button_color'
+        'warn_button_color' => 'warn_button_color',
+        'tile_title_alignment' => 'tile_title_alignment',
+        'tile_shadow' => 'tile_shadow',
+        'show_last_updated_indicator' => 'show_last_updated_indicator',
+        'show_reload_data_icon' => 'show_reload_data_icon',
+        'show_dashboard_menu' => 'show_dashboard_menu',
+        'show_filters_toggle' => 'show_filters_toggle',
+        'show_dashboard_header' => 'show_dashboard_header',
+        'center_dashboard_title' => 'center_dashboard_title',
+        'dashboard_title_font_size' => 'dashboard_title_font_size',
+        'box_shadow' => 'box_shadow'
     ];
 
     /**
@@ -159,9 +192,20 @@ class ThemeSettings implements ModelInterface, ArrayAccess
         'show_title' => 'setShowTitle',
         'text_tile_text_color' => 'setTextTileTextColor',
         'tile_background_color' => 'setTileBackgroundColor',
+        'text_tile_background_color' => 'setTextTileBackgroundColor',
         'tile_text_color' => 'setTileTextColor',
         'title_color' => 'setTitleColor',
-        'warn_button_color' => 'setWarnButtonColor'
+        'warn_button_color' => 'setWarnButtonColor',
+        'tile_title_alignment' => 'setTileTitleAlignment',
+        'tile_shadow' => 'setTileShadow',
+        'show_last_updated_indicator' => 'setShowLastUpdatedIndicator',
+        'show_reload_data_icon' => 'setShowReloadDataIcon',
+        'show_dashboard_menu' => 'setShowDashboardMenu',
+        'show_filters_toggle' => 'setShowFiltersToggle',
+        'show_dashboard_header' => 'setShowDashboardHeader',
+        'center_dashboard_title' => 'setCenterDashboardTitle',
+        'dashboard_title_font_size' => 'setDashboardTitleFontSize',
+        'box_shadow' => 'setBoxShadow'
     ];
 
     /**
@@ -182,9 +226,20 @@ class ThemeSettings implements ModelInterface, ArrayAccess
         'show_title' => 'getShowTitle',
         'text_tile_text_color' => 'getTextTileTextColor',
         'tile_background_color' => 'getTileBackgroundColor',
+        'text_tile_background_color' => 'getTextTileBackgroundColor',
         'tile_text_color' => 'getTileTextColor',
         'title_color' => 'getTitleColor',
-        'warn_button_color' => 'getWarnButtonColor'
+        'warn_button_color' => 'getWarnButtonColor',
+        'tile_title_alignment' => 'getTileTitleAlignment',
+        'tile_shadow' => 'getTileShadow',
+        'show_last_updated_indicator' => 'getShowLastUpdatedIndicator',
+        'show_reload_data_icon' => 'getShowReloadDataIcon',
+        'show_dashboard_menu' => 'getShowDashboardMenu',
+        'show_filters_toggle' => 'getShowFiltersToggle',
+        'show_dashboard_header' => 'getShowDashboardHeader',
+        'center_dashboard_title' => 'getCenterDashboardTitle',
+        'dashboard_title_font_size' => 'getDashboardTitleFontSize',
+        'box_shadow' => 'getBoxShadow'
     ];
 
     /**
@@ -259,9 +314,20 @@ class ThemeSettings implements ModelInterface, ArrayAccess
         $this->container['show_title'] = isset($data['show_title']) ? $data['show_title'] : null;
         $this->container['text_tile_text_color'] = isset($data['text_tile_text_color']) ? $data['text_tile_text_color'] : null;
         $this->container['tile_background_color'] = isset($data['tile_background_color']) ? $data['tile_background_color'] : null;
+        $this->container['text_tile_background_color'] = isset($data['text_tile_background_color']) ? $data['text_tile_background_color'] : null;
         $this->container['tile_text_color'] = isset($data['tile_text_color']) ? $data['tile_text_color'] : null;
         $this->container['title_color'] = isset($data['title_color']) ? $data['title_color'] : null;
         $this->container['warn_button_color'] = isset($data['warn_button_color']) ? $data['warn_button_color'] : null;
+        $this->container['tile_title_alignment'] = isset($data['tile_title_alignment']) ? $data['tile_title_alignment'] : null;
+        $this->container['tile_shadow'] = isset($data['tile_shadow']) ? $data['tile_shadow'] : null;
+        $this->container['show_last_updated_indicator'] = isset($data['show_last_updated_indicator']) ? $data['show_last_updated_indicator'] : null;
+        $this->container['show_reload_data_icon'] = isset($data['show_reload_data_icon']) ? $data['show_reload_data_icon'] : null;
+        $this->container['show_dashboard_menu'] = isset($data['show_dashboard_menu']) ? $data['show_dashboard_menu'] : null;
+        $this->container['show_filters_toggle'] = isset($data['show_filters_toggle']) ? $data['show_filters_toggle'] : null;
+        $this->container['show_dashboard_header'] = isset($data['show_dashboard_header']) ? $data['show_dashboard_header'] : null;
+        $this->container['center_dashboard_title'] = isset($data['center_dashboard_title']) ? $data['center_dashboard_title'] : null;
+        $this->container['dashboard_title_font_size'] = isset($data['dashboard_title_font_size']) ? $data['dashboard_title_font_size'] : null;
+        $this->container['box_shadow'] = isset($data['box_shadow']) ? $data['box_shadow'] : null;
     }
 
     /**
@@ -325,7 +391,7 @@ class ThemeSettings implements ModelInterface, ArrayAccess
     /**
      * Sets base_font_size
      *
-     * @param string $base_font_size Base font size for scaling fonts
+     * @param string $base_font_size Base font size for scaling fonts (only supported by legacy dashboards)
      *
      * @return $this
      */
@@ -445,7 +511,7 @@ class ThemeSettings implements ModelInterface, ArrayAccess
     /**
      * Sets info_button_color
      *
-     * @param string $info_button_color Info button color
+     * @param string $info_button_color (DEPRECATED) Info button color
      *
      * @return $this
      */
@@ -577,6 +643,30 @@ class ThemeSettings implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets text_tile_background_color
+     *
+     * @return string
+     */
+    public function getTextTileBackgroundColor()
+    {
+        return $this->container['text_tile_background_color'];
+    }
+
+    /**
+     * Sets text_tile_background_color
+     *
+     * @param string $text_tile_background_color Background color for text tiles
+     *
+     * @return $this
+     */
+    public function setTextTileBackgroundColor($text_tile_background_color)
+    {
+        $this->container['text_tile_background_color'] = $text_tile_background_color;
+
+        return $this;
+    }
+
+    /**
      * Gets tile_text_color
      *
      * @return string
@@ -637,13 +727,253 @@ class ThemeSettings implements ModelInterface, ArrayAccess
     /**
      * Sets warn_button_color
      *
-     * @param string $warn_button_color Warning button color
+     * @param string $warn_button_color (DEPRECATED) Warning button color
      *
      * @return $this
      */
     public function setWarnButtonColor($warn_button_color)
     {
         $this->container['warn_button_color'] = $warn_button_color;
+
+        return $this;
+    }
+
+    /**
+     * Gets tile_title_alignment
+     *
+     * @return string
+     */
+    public function getTileTitleAlignment()
+    {
+        return $this->container['tile_title_alignment'];
+    }
+
+    /**
+     * Sets tile_title_alignment
+     *
+     * @param string $tile_title_alignment The text alignment of tile titles (New Dashboards)
+     *
+     * @return $this
+     */
+    public function setTileTitleAlignment($tile_title_alignment)
+    {
+        $this->container['tile_title_alignment'] = $tile_title_alignment;
+
+        return $this;
+    }
+
+    /**
+     * Gets tile_shadow
+     *
+     * @return bool
+     */
+    public function getTileShadow()
+    {
+        return $this->container['tile_shadow'];
+    }
+
+    /**
+     * Sets tile_shadow
+     *
+     * @param bool $tile_shadow Toggles the tile shadow (not supported)
+     *
+     * @return $this
+     */
+    public function setTileShadow($tile_shadow)
+    {
+        $this->container['tile_shadow'] = $tile_shadow;
+
+        return $this;
+    }
+
+    /**
+     * Gets show_last_updated_indicator
+     *
+     * @return bool
+     */
+    public function getShowLastUpdatedIndicator()
+    {
+        return $this->container['show_last_updated_indicator'];
+    }
+
+    /**
+     * Sets show_last_updated_indicator
+     *
+     * @param bool $show_last_updated_indicator Toggle to show the dashboard last updated indicator. Defaults to true.
+     *
+     * @return $this
+     */
+    public function setShowLastUpdatedIndicator($show_last_updated_indicator)
+    {
+        $this->container['show_last_updated_indicator'] = $show_last_updated_indicator;
+
+        return $this;
+    }
+
+    /**
+     * Gets show_reload_data_icon
+     *
+     * @return bool
+     */
+    public function getShowReloadDataIcon()
+    {
+        return $this->container['show_reload_data_icon'];
+    }
+
+    /**
+     * Sets show_reload_data_icon
+     *
+     * @param bool $show_reload_data_icon Toggle to show reload data icon/button. Defaults to true.
+     *
+     * @return $this
+     */
+    public function setShowReloadDataIcon($show_reload_data_icon)
+    {
+        $this->container['show_reload_data_icon'] = $show_reload_data_icon;
+
+        return $this;
+    }
+
+    /**
+     * Gets show_dashboard_menu
+     *
+     * @return bool
+     */
+    public function getShowDashboardMenu()
+    {
+        return $this->container['show_dashboard_menu'];
+    }
+
+    /**
+     * Sets show_dashboard_menu
+     *
+     * @param bool $show_dashboard_menu Toggle to show the dashboard actions menu. Defaults to true.
+     *
+     * @return $this
+     */
+    public function setShowDashboardMenu($show_dashboard_menu)
+    {
+        $this->container['show_dashboard_menu'] = $show_dashboard_menu;
+
+        return $this;
+    }
+
+    /**
+     * Gets show_filters_toggle
+     *
+     * @return bool
+     */
+    public function getShowFiltersToggle()
+    {
+        return $this->container['show_filters_toggle'];
+    }
+
+    /**
+     * Sets show_filters_toggle
+     *
+     * @param bool $show_filters_toggle Toggle to show the filters icon/toggle. Defaults to true.
+     *
+     * @return $this
+     */
+    public function setShowFiltersToggle($show_filters_toggle)
+    {
+        $this->container['show_filters_toggle'] = $show_filters_toggle;
+
+        return $this;
+    }
+
+    /**
+     * Gets show_dashboard_header
+     *
+     * @return bool
+     */
+    public function getShowDashboardHeader()
+    {
+        return $this->container['show_dashboard_header'];
+    }
+
+    /**
+     * Sets show_dashboard_header
+     *
+     * @param bool $show_dashboard_header Toggle to show the dashboard header. Defaults to true.
+     *
+     * @return $this
+     */
+    public function setShowDashboardHeader($show_dashboard_header)
+    {
+        $this->container['show_dashboard_header'] = $show_dashboard_header;
+
+        return $this;
+    }
+
+    /**
+     * Gets center_dashboard_title
+     *
+     * @return bool
+     */
+    public function getCenterDashboardTitle()
+    {
+        return $this->container['center_dashboard_title'];
+    }
+
+    /**
+     * Sets center_dashboard_title
+     *
+     * @param bool $center_dashboard_title Toggle to center the dashboard title. Defaults to false.
+     *
+     * @return $this
+     */
+    public function setCenterDashboardTitle($center_dashboard_title)
+    {
+        $this->container['center_dashboard_title'] = $center_dashboard_title;
+
+        return $this;
+    }
+
+    /**
+     * Gets dashboard_title_font_size
+     *
+     * @return string
+     */
+    public function getDashboardTitleFontSize()
+    {
+        return $this->container['dashboard_title_font_size'];
+    }
+
+    /**
+     * Sets dashboard_title_font_size
+     *
+     * @param string $dashboard_title_font_size Dashboard title font size.
+     *
+     * @return $this
+     */
+    public function setDashboardTitleFontSize($dashboard_title_font_size)
+    {
+        $this->container['dashboard_title_font_size'] = $dashboard_title_font_size;
+
+        return $this;
+    }
+
+    /**
+     * Gets box_shadow
+     *
+     * @return string
+     */
+    public function getBoxShadow()
+    {
+        return $this->container['box_shadow'];
+    }
+
+    /**
+     * Sets box_shadow
+     *
+     * @param string $box_shadow Default box shadow.
+     *
+     * @return $this
+     */
+    public function setBoxShadow($box_shadow)
+    {
+        $this->container['box_shadow'] = $box_shadow;
 
         return $this;
     }

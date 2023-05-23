@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
 **id** | **string** | Unique Id | [optional] 
 **name** | **string** | Name | [optional] 
 **description** | **string** | Description | [optional] 
@@ -15,7 +16,6 @@ Name | Type | Description | Notes
 **approximate_disable_date** | [**\DateTime**](\DateTime.md) | Approximate date that this feature will be automatically disabled. | [optional] 
 **approximate_end_of_life_date** | [**\DateTime**](\DateTime.md) | Approximate date that this feature will be removed. | [optional] 
 **has_disabled_on_upgrade** | **bool** | Whether this legacy feature may have been automatically disabled when upgrading to the current version. | [optional] 
-**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

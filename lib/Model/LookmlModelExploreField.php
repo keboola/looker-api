@@ -11,12 +11,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -62,6 +62,7 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
         'category' => 'string',
         'default_filter_value' => 'string',
         'description' => 'string',
+        'dimension_group' => 'string',
         'enumerations' => '\Swagger\Client\Model\LookmlModelExploreFieldEnumeration[]',
         'error' => 'string',
         'field_group_label' => 'string',
@@ -95,6 +96,7 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
         'source_file_path' => 'string',
         'sql' => 'string',
         'sql_case' => '\Swagger\Client\Model\LookmlModelExploreFieldSqlCase[]',
+        'filters' => '\Swagger\Client\Model\LookmlModelExploreFieldMeasureFilters[]',
         'suggest_dimension' => 'string',
         'suggest_explore' => 'string',
         'suggestable' => 'bool',
@@ -106,7 +108,9 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
         'view' => 'string',
         'view_label' => 'string',
         'dynamic' => 'bool',
-        'week_start_day' => 'string'
+        'week_start_day' => 'string',
+        'times_used' => 'int',
+        'original_view' => 'string'
     ];
 
     /**
@@ -120,6 +124,7 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
         'category' => null,
         'default_filter_value' => null,
         'description' => null,
+        'dimension_group' => null,
         'enumerations' => null,
         'error' => null,
         'field_group_label' => null,
@@ -153,6 +158,7 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
         'source_file_path' => null,
         'sql' => null,
         'sql_case' => null,
+        'filters' => null,
         'suggest_dimension' => null,
         'suggest_explore' => null,
         'suggestable' => null,
@@ -164,7 +170,9 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
         'view' => null,
         'view_label' => null,
         'dynamic' => null,
-        'week_start_day' => null
+        'week_start_day' => null,
+        'times_used' => 'int64',
+        'original_view' => null
     ];
 
     /**
@@ -199,6 +207,7 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
         'category' => 'category',
         'default_filter_value' => 'default_filter_value',
         'description' => 'description',
+        'dimension_group' => 'dimension_group',
         'enumerations' => 'enumerations',
         'error' => 'error',
         'field_group_label' => 'field_group_label',
@@ -232,6 +241,7 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
         'source_file_path' => 'source_file_path',
         'sql' => 'sql',
         'sql_case' => 'sql_case',
+        'filters' => 'filters',
         'suggest_dimension' => 'suggest_dimension',
         'suggest_explore' => 'suggest_explore',
         'suggestable' => 'suggestable',
@@ -243,7 +253,9 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
         'view' => 'view',
         'view_label' => 'view_label',
         'dynamic' => 'dynamic',
-        'week_start_day' => 'week_start_day'
+        'week_start_day' => 'week_start_day',
+        'times_used' => 'times_used',
+        'original_view' => 'original_view'
     ];
 
     /**
@@ -257,6 +269,7 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
         'category' => 'setCategory',
         'default_filter_value' => 'setDefaultFilterValue',
         'description' => 'setDescription',
+        'dimension_group' => 'setDimensionGroup',
         'enumerations' => 'setEnumerations',
         'error' => 'setError',
         'field_group_label' => 'setFieldGroupLabel',
@@ -290,6 +303,7 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
         'source_file_path' => 'setSourceFilePath',
         'sql' => 'setSql',
         'sql_case' => 'setSqlCase',
+        'filters' => 'setFilters',
         'suggest_dimension' => 'setSuggestDimension',
         'suggest_explore' => 'setSuggestExplore',
         'suggestable' => 'setSuggestable',
@@ -301,7 +315,9 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
         'view' => 'setView',
         'view_label' => 'setViewLabel',
         'dynamic' => 'setDynamic',
-        'week_start_day' => 'setWeekStartDay'
+        'week_start_day' => 'setWeekStartDay',
+        'times_used' => 'setTimesUsed',
+        'original_view' => 'setOriginalView'
     ];
 
     /**
@@ -315,6 +331,7 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
         'category' => 'getCategory',
         'default_filter_value' => 'getDefaultFilterValue',
         'description' => 'getDescription',
+        'dimension_group' => 'getDimensionGroup',
         'enumerations' => 'getEnumerations',
         'error' => 'getError',
         'field_group_label' => 'getFieldGroupLabel',
@@ -348,6 +365,7 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
         'source_file_path' => 'getSourceFilePath',
         'sql' => 'getSql',
         'sql_case' => 'getSqlCase',
+        'filters' => 'getFilters',
         'suggest_dimension' => 'getSuggestDimension',
         'suggest_explore' => 'getSuggestExplore',
         'suggestable' => 'getSuggestable',
@@ -359,7 +377,9 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
         'view' => 'getView',
         'view_label' => 'getViewLabel',
         'dynamic' => 'getDynamic',
-        'week_start_day' => 'getWeekStartDay'
+        'week_start_day' => 'getWeekStartDay',
+        'times_used' => 'getTimesUsed',
+        'original_view' => 'getOriginalView'
     ];
 
     /**
@@ -427,6 +447,7 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
         $this->container['category'] = isset($data['category']) ? $data['category'] : null;
         $this->container['default_filter_value'] = isset($data['default_filter_value']) ? $data['default_filter_value'] : null;
         $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['dimension_group'] = isset($data['dimension_group']) ? $data['dimension_group'] : null;
         $this->container['enumerations'] = isset($data['enumerations']) ? $data['enumerations'] : null;
         $this->container['error'] = isset($data['error']) ? $data['error'] : null;
         $this->container['field_group_label'] = isset($data['field_group_label']) ? $data['field_group_label'] : null;
@@ -460,6 +481,7 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
         $this->container['source_file_path'] = isset($data['source_file_path']) ? $data['source_file_path'] : null;
         $this->container['sql'] = isset($data['sql']) ? $data['sql'] : null;
         $this->container['sql_case'] = isset($data['sql_case']) ? $data['sql_case'] : null;
+        $this->container['filters'] = isset($data['filters']) ? $data['filters'] : null;
         $this->container['suggest_dimension'] = isset($data['suggest_dimension']) ? $data['suggest_dimension'] : null;
         $this->container['suggest_explore'] = isset($data['suggest_explore']) ? $data['suggest_explore'] : null;
         $this->container['suggestable'] = isset($data['suggestable']) ? $data['suggestable'] : null;
@@ -472,6 +494,8 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
         $this->container['view_label'] = isset($data['view_label']) ? $data['view_label'] : null;
         $this->container['dynamic'] = isset($data['dynamic']) ? $data['dynamic'] : null;
         $this->container['week_start_day'] = isset($data['week_start_day']) ? $data['week_start_day'] : null;
+        $this->container['times_used'] = isset($data['times_used']) ? $data['times_used'] : null;
+        $this->container['original_view'] = isset($data['original_view']) ? $data['original_view'] : null;
     }
 
     /**
@@ -511,7 +535,7 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
     /**
      * Sets align
      *
-     * @param string $align The appropriate horizontal text alignment the values of this field shoud be displayed in. Valid values are: \"left\", \"right\".
+     * @param string $align The appropriate horizontal text alignment the values of this field should be displayed in. Valid values are: \"left\", \"right\".
      *
      * @return $this
      */
@@ -614,6 +638,30 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
     public function setDescription($description)
     {
         $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets dimension_group
+     *
+     * @return string
+     */
+    public function getDimensionGroup()
+    {
+        return $this->container['dimension_group'];
+    }
+
+    /**
+     * Sets dimension_group
+     *
+     * @param string $dimension_group Dimension group if this field is part of a dimension group. If not, this will be null.
+     *
+     * @return $this
+     */
+    public function setDimensionGroup($dimension_group)
+    {
+        $this->container['dimension_group'] = $dimension_group;
 
         return $this;
     }
@@ -1411,6 +1459,30 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets filters
+     *
+     * @return \Swagger\Client\Model\LookmlModelExploreFieldMeasureFilters[]
+     */
+    public function getFilters()
+    {
+        return $this->container['filters'];
+    }
+
+    /**
+     * Sets filters
+     *
+     * @param \Swagger\Client\Model\LookmlModelExploreFieldMeasureFilters[] $filters Array of filter conditions defined for the measure in LookML.
+     *
+     * @return $this
+     */
+    public function setFilters($filters)
+    {
+        $this->container['filters'] = $filters;
+
+        return $this;
+    }
+
+    /**
      * Gets suggest_dimension
      *
      * @return string
@@ -1567,7 +1639,7 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
     /**
      * Sets user_attribute_filter_types
      *
-     * @param string[] $user_attribute_filter_types An array of user attribute types that are allowed to be used in filters on this field. Valid values are: \"advanced_filter_string\", \"advanced_filter_number\", \"advanced_filter_datetime\", \"string\", \"number\", \"datetime\", \"yesno\", \"zipcode\".
+     * @param string[] $user_attribute_filter_types An array of user attribute types that are allowed to be used in filters on this field. Valid values are: \"advanced_filter_string\", \"advanced_filter_number\", \"advanced_filter_datetime\", \"string\", \"number\", \"datetime\", \"relative_url\", \"yesno\", \"zipcode\".
      *
      * @return $this
      */
@@ -1694,6 +1766,54 @@ class LookmlModelExploreField implements ModelInterface, ArrayAccess
     public function setWeekStartDay($week_start_day)
     {
         $this->container['week_start_day'] = $week_start_day;
+
+        return $this;
+    }
+
+    /**
+     * Gets times_used
+     *
+     * @return int
+     */
+    public function getTimesUsed()
+    {
+        return $this->container['times_used'];
+    }
+
+    /**
+     * Sets times_used
+     *
+     * @param int $times_used The number of times this field has been used in queries
+     *
+     * @return $this
+     */
+    public function setTimesUsed($times_used)
+    {
+        $this->container['times_used'] = $times_used;
+
+        return $this;
+    }
+
+    /**
+     * Gets original_view
+     *
+     * @return string
+     */
+    public function getOriginalView()
+    {
+        return $this->container['original_view'];
+    }
+
+    /**
+     * Sets original_view
+     *
+     * @param string $original_view The name of the view this field is defined in. This will be different than \"view\" when the view has been joined via a different name using the \"from\" parameter.
+     *
+     * @return $this
+     */
+    public function setOriginalView($original_view)
+    {
+        $this->container['original_view'] = $original_view;
 
         return $this;
     }

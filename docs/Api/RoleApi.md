@@ -1,6 +1,6 @@
 # Swagger\Client\RoleApi
 
-All URIs are relative to *https://example.looker.com:19999/api/3.1*
+All URIs are relative to *https://example.looker.com:443/api/4.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -19,6 +19,10 @@ Method | HTTP request | Description
 [**role**](RoleApi.md#role) | **GET** /roles/{role_id} | Get Role
 [**roleGroups**](RoleApi.md#roleGroups) | **GET** /roles/{role_id}/groups | Get Role Groups
 [**roleUsers**](RoleApi.md#roleUsers) | **GET** /roles/{role_id}/users | Get Role Users
+[**searchModelSets**](RoleApi.md#searchModelSets) | **GET** /model_sets/search | Search Model Sets
+[**searchPermissionSets**](RoleApi.md#searchPermissionSets) | **GET** /permission_sets/search | Search Permission Sets
+[**searchRoles**](RoleApi.md#searchRoles) | **GET** /roles/search | Search Roles
+[**searchRolesWithUserCount**](RoleApi.md#searchRolesWithUserCount) | **GET** /roles/search/with_user_count | Search Roles with User Count
 [**setRoleGroups**](RoleApi.md#setRoleGroups) | **PUT** /roles/{role_id}/groups | Update Role Groups
 [**setRoleUsers**](RoleApi.md#setRoleUsers) | **PUT** /roles/{role_id}/users | Update Role Users
 [**updateModelSet**](RoleApi.md#updateModelSet) | **PATCH** /model_sets/{model_set_id} | Update Model Set
@@ -187,7 +191,7 @@ $apiInstance = new Swagger\Client\Api\RoleApi(
     new GuzzleHttp\Client()
 );
 $fields = "fields_example"; // string | Requested fields.
-$ids = array(56); // int[] | Optional list of ids to get specific roles.
+$ids = array("ids_example"); // string[] | Optional list of ids to get specific roles.
 
 try {
     $result = $apiInstance->allRoles($fields, $ids);
@@ -203,7 +207,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fields** | **string**| Requested fields. | [optional]
- **ids** | [**int[]**](../Model/int.md)| Optional list of ids to get specific roles. | [optional]
+ **ids** | [**string[]**](../Model/string.md)| Optional list of ids to get specific roles. | [optional]
 
 ### Return type
 
@@ -252,7 +256,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\ModelSet**](../Model/ModelSet.md)| ModelSet | [optional]
+ **body** | [**\Swagger\Client\Model\ModelSet**](../Model/ModelSet.md)| ModelSet |
 
 ### Return type
 
@@ -301,7 +305,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\PermissionSet**](../Model/PermissionSet.md)| Permission Set | [optional]
+ **body** | [**\Swagger\Client\Model\PermissionSet**](../Model/PermissionSet.md)| Permission Set |
 
 ### Return type
 
@@ -350,7 +354,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\Role**](../Model/Role.md)| Role | [optional]
+ **body** | [**\Swagger\Client\Model\Role**](../Model/Role.md)| Role |
 
 ### Return type
 
@@ -384,7 +388,7 @@ $apiInstance = new Swagger\Client\Api\RoleApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$model_set_id = 789; // int | id of model set
+$model_set_id = "model_set_id_example"; // string | id of model set
 
 try {
     $result = $apiInstance->deleteModelSet($model_set_id);
@@ -399,7 +403,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_set_id** | **int**| id of model set |
+ **model_set_id** | **string**| id of model set |
 
 ### Return type
 
@@ -433,7 +437,7 @@ $apiInstance = new Swagger\Client\Api\RoleApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$permission_set_id = 789; // int | Id of permission set
+$permission_set_id = "permission_set_id_example"; // string | Id of permission set
 
 try {
     $result = $apiInstance->deletePermissionSet($permission_set_id);
@@ -448,7 +452,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **permission_set_id** | **int**| Id of permission set |
+ **permission_set_id** | **string**| Id of permission set |
 
 ### Return type
 
@@ -482,7 +486,7 @@ $apiInstance = new Swagger\Client\Api\RoleApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$role_id = 789; // int | id of role
+$role_id = "role_id_example"; // string | id of role
 
 try {
     $result = $apiInstance->deleteRole($role_id);
@@ -497,7 +501,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **role_id** | **int**| id of role |
+ **role_id** | **string**| id of role |
 
 ### Return type
 
@@ -531,7 +535,7 @@ $apiInstance = new Swagger\Client\Api\RoleApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$model_set_id = 789; // int | Id of model set
+$model_set_id = "model_set_id_example"; // string | Id of model set
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -547,7 +551,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_set_id** | **int**| Id of model set |
+ **model_set_id** | **string**| Id of model set |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -582,7 +586,7 @@ $apiInstance = new Swagger\Client\Api\RoleApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$permission_set_id = 789; // int | Id of permission set
+$permission_set_id = "permission_set_id_example"; // string | Id of permission set
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -598,7 +602,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **permission_set_id** | **int**| Id of permission set |
+ **permission_set_id** | **string**| Id of permission set |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -633,7 +637,7 @@ $apiInstance = new Swagger\Client\Api\RoleApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$role_id = 789; // int | id of role
+$role_id = "role_id_example"; // string | id of role
 
 try {
     $result = $apiInstance->role($role_id);
@@ -648,7 +652,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **role_id** | **int**| id of role |
+ **role_id** | **string**| id of role |
 
 ### Return type
 
@@ -682,7 +686,7 @@ $apiInstance = new Swagger\Client\Api\RoleApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$role_id = 789; // int | id of role
+$role_id = "role_id_example"; // string | id of role
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -698,7 +702,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **role_id** | **int**| id of role |
+ **role_id** | **string**| id of role |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -733,7 +737,7 @@ $apiInstance = new Swagger\Client\Api\RoleApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$role_id = 789; // int | id of user
+$role_id = "role_id_example"; // string | id of role
 $fields = "fields_example"; // string | Requested fields.
 $direct_association_only = true; // bool | Get only users associated directly with the role: exclude those only associated through groups.
 
@@ -750,13 +754,269 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **role_id** | **int**| id of user |
+ **role_id** | **string**| id of role |
  **fields** | **string**| Requested fields. | [optional]
  **direct_association_only** | **bool**| Get only users associated directly with the role: exclude those only associated through groups. | [optional]
 
 ### Return type
 
 [**\Swagger\Client\Model\User[]**](../Model/User.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **searchModelSets**
+> \Swagger\Client\Model\ModelSet[] searchModelSets($fields, $limit, $offset, $sorts, $id, $name, $all_access, $built_in, $filter_or)
+
+Search Model Sets
+
+### Search model sets Returns all model set records that match the given search criteria. If multiple search params are given and `filter_or` is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If `filter_or` is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain `%` and '_' as SQL LIKE pattern match wildcard expressions. example=\"dan%\" will match \"danger\" and \"Danzig\" but not \"David\" example=\"D_m%\" will match \"Damage\" and \"dump\"  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \"IS NULL\" and \"NOT NULL\" as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \"true\" and \"false\" as values.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\RoleApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$fields = "fields_example"; // string | Requested fields.
+$limit = 789; // int | Number of results to return (used with `offset`).
+$offset = 789; // int | Number of results to skip before returning any (used with `limit`).
+$sorts = "sorts_example"; // string | Fields to sort by.
+$id = "id_example"; // string | Match model set id.
+$name = "name_example"; // string | Match model set name.
+$all_access = true; // bool | Match model sets by all_access status.
+$built_in = true; // bool | Match model sets by built_in status.
+$filter_or = true; // bool | Combine given search criteria in a boolean OR expression.
+
+try {
+    $result = $apiInstance->searchModelSets($fields, $limit, $offset, $sorts, $id, $name, $all_access, $built_in, $filter_or);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling RoleApi->searchModelSets: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fields** | **string**| Requested fields. | [optional]
+ **limit** | **int**| Number of results to return (used with &#x60;offset&#x60;). | [optional]
+ **offset** | **int**| Number of results to skip before returning any (used with &#x60;limit&#x60;). | [optional]
+ **sorts** | **string**| Fields to sort by. | [optional]
+ **id** | **string**| Match model set id. | [optional]
+ **name** | **string**| Match model set name. | [optional]
+ **all_access** | **bool**| Match model sets by all_access status. | [optional]
+ **built_in** | **bool**| Match model sets by built_in status. | [optional]
+ **filter_or** | **bool**| Combine given search criteria in a boolean OR expression. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\ModelSet[]**](../Model/ModelSet.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **searchPermissionSets**
+> \Swagger\Client\Model\PermissionSet[] searchPermissionSets($fields, $limit, $offset, $sorts, $id, $name, $all_access, $built_in, $filter_or)
+
+Search Permission Sets
+
+### Search permission sets Returns all permission set records that match the given search criteria. If multiple search params are given and `filter_or` is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If `filter_or` is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain `%` and '_' as SQL LIKE pattern match wildcard expressions. example=\"dan%\" will match \"danger\" and \"Danzig\" but not \"David\" example=\"D_m%\" will match \"Damage\" and \"dump\"  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \"IS NULL\" and \"NOT NULL\" as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \"true\" and \"false\" as values.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\RoleApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$fields = "fields_example"; // string | Requested fields.
+$limit = 789; // int | Number of results to return (used with `offset`).
+$offset = 789; // int | Number of results to skip before returning any (used with `limit`).
+$sorts = "sorts_example"; // string | Fields to sort by.
+$id = "id_example"; // string | Match permission set id.
+$name = "name_example"; // string | Match permission set name.
+$all_access = true; // bool | Match permission sets by all_access status.
+$built_in = true; // bool | Match permission sets by built_in status.
+$filter_or = true; // bool | Combine given search criteria in a boolean OR expression.
+
+try {
+    $result = $apiInstance->searchPermissionSets($fields, $limit, $offset, $sorts, $id, $name, $all_access, $built_in, $filter_or);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling RoleApi->searchPermissionSets: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fields** | **string**| Requested fields. | [optional]
+ **limit** | **int**| Number of results to return (used with &#x60;offset&#x60;). | [optional]
+ **offset** | **int**| Number of results to skip before returning any (used with &#x60;limit&#x60;). | [optional]
+ **sorts** | **string**| Fields to sort by. | [optional]
+ **id** | **string**| Match permission set id. | [optional]
+ **name** | **string**| Match permission set name. | [optional]
+ **all_access** | **bool**| Match permission sets by all_access status. | [optional]
+ **built_in** | **bool**| Match permission sets by built_in status. | [optional]
+ **filter_or** | **bool**| Combine given search criteria in a boolean OR expression. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\PermissionSet[]**](../Model/PermissionSet.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **searchRoles**
+> \Swagger\Client\Model\Role[] searchRoles($fields, $limit, $offset, $sorts, $id, $name, $built_in, $filter_or)
+
+Search Roles
+
+### Search roles  Returns all role records that match the given search criteria.  If multiple search params are given and `filter_or` is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If `filter_or` is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain `%` and '_' as SQL LIKE pattern match wildcard expressions. example=\"dan%\" will match \"danger\" and \"Danzig\" but not \"David\" example=\"D_m%\" will match \"Damage\" and \"dump\"  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \"IS NULL\" and \"NOT NULL\" as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \"true\" and \"false\" as values.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\RoleApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$fields = "fields_example"; // string | Requested fields.
+$limit = 789; // int | Number of results to return (used with `offset`).
+$offset = 789; // int | Number of results to skip before returning any (used with `limit`).
+$sorts = "sorts_example"; // string | Fields to sort by.
+$id = "id_example"; // string | Match role id.
+$name = "name_example"; // string | Match role name.
+$built_in = true; // bool | Match roles by built_in status.
+$filter_or = true; // bool | Combine given search criteria in a boolean OR expression.
+
+try {
+    $result = $apiInstance->searchRoles($fields, $limit, $offset, $sorts, $id, $name, $built_in, $filter_or);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling RoleApi->searchRoles: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fields** | **string**| Requested fields. | [optional]
+ **limit** | **int**| Number of results to return (used with &#x60;offset&#x60;). | [optional]
+ **offset** | **int**| Number of results to skip before returning any (used with &#x60;limit&#x60;). | [optional]
+ **sorts** | **string**| Fields to sort by. | [optional]
+ **id** | **string**| Match role id. | [optional]
+ **name** | **string**| Match role name. | [optional]
+ **built_in** | **bool**| Match roles by built_in status. | [optional]
+ **filter_or** | **bool**| Combine given search criteria in a boolean OR expression. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\Role[]**](../Model/Role.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **searchRolesWithUserCount**
+> \Swagger\Client\Model\RoleSearch[] searchRolesWithUserCount($fields, $limit, $offset, $sorts, $id, $name, $built_in, $filter_or)
+
+Search Roles with User Count
+
+### Search roles include user count  Returns all role records that match the given search criteria, and attaches associated user counts.  If multiple search params are given and `filter_or` is FALSE or not specified, search params are combined in a logical AND operation. Only rows that match *all* search param criteria will be returned.  If `filter_or` is TRUE, multiple search params are combined in a logical OR operation. Results will include rows that match **any** of the search criteria.  String search params use case-insensitive matching. String search params can contain `%` and '_' as SQL LIKE pattern match wildcard expressions. example=\"dan%\" will match \"danger\" and \"Danzig\" but not \"David\" example=\"D_m%\" will match \"Damage\" and \"dump\"  Integer search params can accept a single value or a comma separated list of values. The multiple values will be combined under a logical OR operation - results will match at least one of the given values.  Most search params can accept \"IS NULL\" and \"NOT NULL\" as special expressions to match or exclude (respectively) rows where the column is null.  Boolean search params accept only \"true\" and \"false\" as values.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\RoleApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$fields = "fields_example"; // string | Requested fields.
+$limit = 789; // int | Number of results to return (used with `offset`).
+$offset = 789; // int | Number of results to skip before returning any (used with `limit`).
+$sorts = "sorts_example"; // string | Fields to sort by.
+$id = "id_example"; // string | Match role id.
+$name = "name_example"; // string | Match role name.
+$built_in = true; // bool | Match roles by built_in status.
+$filter_or = true; // bool | Combine given search criteria in a boolean OR expression.
+
+try {
+    $result = $apiInstance->searchRolesWithUserCount($fields, $limit, $offset, $sorts, $id, $name, $built_in, $filter_or);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling RoleApi->searchRolesWithUserCount: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **fields** | **string**| Requested fields. | [optional]
+ **limit** | **int**| Number of results to return (used with &#x60;offset&#x60;). | [optional]
+ **offset** | **int**| Number of results to skip before returning any (used with &#x60;limit&#x60;). | [optional]
+ **sorts** | **string**| Fields to sort by. | [optional]
+ **id** | **string**| Match role id. | [optional]
+ **name** | **string**| Match role name. | [optional]
+ **built_in** | **bool**| Match roles by built_in status. | [optional]
+ **filter_or** | **bool**| Combine given search criteria in a boolean OR expression. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\RoleSearch[]**](../Model/RoleSearch.md)
 
 ### Authorization
 
@@ -786,8 +1046,8 @@ $apiInstance = new Swagger\Client\Api\RoleApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$role_id = 789; // int | Id of Role
-$body = array(new \Swagger\Client\Model\int[]()); // int[] | Array of Group Ids
+$role_id = "role_id_example"; // string | id of role
+$body = array(new \Swagger\Client\Model\string[]()); // string[] | Array of Group Ids
 
 try {
     $result = $apiInstance->setRoleGroups($role_id, $body);
@@ -802,8 +1062,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **role_id** | **int**| Id of Role |
- **body** | **int[]**| Array of Group Ids |
+ **role_id** | **string**| id of role |
+ **body** | **string[]**| Array of Group Ids |
 
 ### Return type
 
@@ -837,8 +1097,8 @@ $apiInstance = new Swagger\Client\Api\RoleApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$role_id = 789; // int | id of role
-$body = array(new \Swagger\Client\Model\int[]()); // int[] | array of user ids for role
+$role_id = "role_id_example"; // string | id of role
+$body = array(new \Swagger\Client\Model\string[]()); // string[] | array of user ids for role
 
 try {
     $result = $apiInstance->setRoleUsers($role_id, $body);
@@ -853,8 +1113,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **role_id** | **int**| id of role |
- **body** | **int[]**| array of user ids for role |
+ **role_id** | **string**| id of role |
+ **body** | **string[]**| array of user ids for role |
 
 ### Return type
 
@@ -888,7 +1148,7 @@ $apiInstance = new Swagger\Client\Api\RoleApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$model_set_id = 789; // int | id of model set
+$model_set_id = "model_set_id_example"; // string | id of model set
 $body = new \Swagger\Client\Model\ModelSet(); // \Swagger\Client\Model\ModelSet | ModelSet
 
 try {
@@ -904,7 +1164,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **model_set_id** | **int**| id of model set |
+ **model_set_id** | **string**| id of model set |
  **body** | [**\Swagger\Client\Model\ModelSet**](../Model/ModelSet.md)| ModelSet |
 
 ### Return type
@@ -939,7 +1199,7 @@ $apiInstance = new Swagger\Client\Api\RoleApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$permission_set_id = 789; // int | id of permission set
+$permission_set_id = "permission_set_id_example"; // string | Id of permission set
 $body = new \Swagger\Client\Model\PermissionSet(); // \Swagger\Client\Model\PermissionSet | Permission Set
 
 try {
@@ -955,7 +1215,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **permission_set_id** | **int**| id of permission set |
+ **permission_set_id** | **string**| Id of permission set |
  **body** | [**\Swagger\Client\Model\PermissionSet**](../Model/PermissionSet.md)| Permission Set |
 
 ### Return type
@@ -990,7 +1250,7 @@ $apiInstance = new Swagger\Client\Api\RoleApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$role_id = 789; // int | id of role
+$role_id = "role_id_example"; // string | id of role
 $body = new \Swagger\Client\Model\Role(); // \Swagger\Client\Model\Role | Role
 
 try {
@@ -1006,7 +1266,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **role_id** | **int**| id of role |
+ **role_id** | **string**| id of role |
  **body** | [**\Swagger\Client\Model\Role**](../Model/Role.md)| Role |
 
 ### Return type

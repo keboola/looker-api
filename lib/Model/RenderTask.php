@@ -11,12 +11,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -57,25 +57,26 @@ class RenderTask implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'can' => 'map[string,bool]',
         'created_at' => 'string',
         'dashboard_filters' => 'string',
-        'dashboard_id' => 'int',
+        'dashboard_id' => 'string',
         'dashboard_style' => 'string',
         'finalized_at' => 'string',
         'height' => 'int',
         'id' => 'string',
-        'look_id' => 'int',
+        'look_id' => 'string',
         'lookml_dashboard_id' => 'string',
-        'query_id' => 'int',
+        'query_id' => 'string',
+        'dashboard_element_id' => 'string',
         'query_runtime' => 'double',
         'render_runtime' => 'double',
         'result_format' => 'string',
         'runtime' => 'double',
         'status' => 'string',
         'status_detail' => 'string',
-        'user_id' => 'int',
-        'width' => 'int',
-        'can' => 'map[string,bool]'
+        'user_id' => 'string',
+        'width' => 'int'
     ];
 
     /**
@@ -84,25 +85,26 @@ class RenderTask implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
+        'can' => null,
         'created_at' => null,
         'dashboard_filters' => null,
-        'dashboard_id' => 'int64',
+        'dashboard_id' => null,
         'dashboard_style' => null,
         'finalized_at' => null,
         'height' => 'int64',
         'id' => null,
-        'look_id' => 'int64',
+        'look_id' => null,
         'lookml_dashboard_id' => null,
-        'query_id' => 'int64',
+        'query_id' => null,
+        'dashboard_element_id' => null,
         'query_runtime' => 'double',
         'render_runtime' => 'double',
         'result_format' => null,
         'runtime' => 'double',
         'status' => null,
         'status_detail' => null,
-        'user_id' => 'int64',
-        'width' => 'int64',
-        'can' => null
+        'user_id' => null,
+        'width' => 'int64'
     ];
 
     /**
@@ -132,6 +134,7 @@ class RenderTask implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'can' => 'can',
         'created_at' => 'created_at',
         'dashboard_filters' => 'dashboard_filters',
         'dashboard_id' => 'dashboard_id',
@@ -142,6 +145,7 @@ class RenderTask implements ModelInterface, ArrayAccess
         'look_id' => 'look_id',
         'lookml_dashboard_id' => 'lookml_dashboard_id',
         'query_id' => 'query_id',
+        'dashboard_element_id' => 'dashboard_element_id',
         'query_runtime' => 'query_runtime',
         'render_runtime' => 'render_runtime',
         'result_format' => 'result_format',
@@ -149,8 +153,7 @@ class RenderTask implements ModelInterface, ArrayAccess
         'status' => 'status',
         'status_detail' => 'status_detail',
         'user_id' => 'user_id',
-        'width' => 'width',
-        'can' => 'can'
+        'width' => 'width'
     ];
 
     /**
@@ -159,6 +162,7 @@ class RenderTask implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'can' => 'setCan',
         'created_at' => 'setCreatedAt',
         'dashboard_filters' => 'setDashboardFilters',
         'dashboard_id' => 'setDashboardId',
@@ -169,6 +173,7 @@ class RenderTask implements ModelInterface, ArrayAccess
         'look_id' => 'setLookId',
         'lookml_dashboard_id' => 'setLookmlDashboardId',
         'query_id' => 'setQueryId',
+        'dashboard_element_id' => 'setDashboardElementId',
         'query_runtime' => 'setQueryRuntime',
         'render_runtime' => 'setRenderRuntime',
         'result_format' => 'setResultFormat',
@@ -176,8 +181,7 @@ class RenderTask implements ModelInterface, ArrayAccess
         'status' => 'setStatus',
         'status_detail' => 'setStatusDetail',
         'user_id' => 'setUserId',
-        'width' => 'setWidth',
-        'can' => 'setCan'
+        'width' => 'setWidth'
     ];
 
     /**
@@ -186,6 +190,7 @@ class RenderTask implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'can' => 'getCan',
         'created_at' => 'getCreatedAt',
         'dashboard_filters' => 'getDashboardFilters',
         'dashboard_id' => 'getDashboardId',
@@ -196,6 +201,7 @@ class RenderTask implements ModelInterface, ArrayAccess
         'look_id' => 'getLookId',
         'lookml_dashboard_id' => 'getLookmlDashboardId',
         'query_id' => 'getQueryId',
+        'dashboard_element_id' => 'getDashboardElementId',
         'query_runtime' => 'getQueryRuntime',
         'render_runtime' => 'getRenderRuntime',
         'result_format' => 'getResultFormat',
@@ -203,8 +209,7 @@ class RenderTask implements ModelInterface, ArrayAccess
         'status' => 'getStatus',
         'status_detail' => 'getStatusDetail',
         'user_id' => 'getUserId',
-        'width' => 'getWidth',
-        'can' => 'getCan'
+        'width' => 'getWidth'
     ];
 
     /**
@@ -267,6 +272,7 @@ class RenderTask implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
         $this->container['dashboard_filters'] = isset($data['dashboard_filters']) ? $data['dashboard_filters'] : null;
         $this->container['dashboard_id'] = isset($data['dashboard_id']) ? $data['dashboard_id'] : null;
@@ -277,6 +283,7 @@ class RenderTask implements ModelInterface, ArrayAccess
         $this->container['look_id'] = isset($data['look_id']) ? $data['look_id'] : null;
         $this->container['lookml_dashboard_id'] = isset($data['lookml_dashboard_id']) ? $data['lookml_dashboard_id'] : null;
         $this->container['query_id'] = isset($data['query_id']) ? $data['query_id'] : null;
+        $this->container['dashboard_element_id'] = isset($data['dashboard_element_id']) ? $data['dashboard_element_id'] : null;
         $this->container['query_runtime'] = isset($data['query_runtime']) ? $data['query_runtime'] : null;
         $this->container['render_runtime'] = isset($data['render_runtime']) ? $data['render_runtime'] : null;
         $this->container['result_format'] = isset($data['result_format']) ? $data['result_format'] : null;
@@ -285,7 +292,6 @@ class RenderTask implements ModelInterface, ArrayAccess
         $this->container['status_detail'] = isset($data['status_detail']) ? $data['status_detail'] : null;
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
         $this->container['width'] = isset($data['width']) ? $data['width'] : null;
-        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
     }
 
     /**
@@ -311,6 +317,30 @@ class RenderTask implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets can
+     *
+     * @return map[string,bool]
+     */
+    public function getCan()
+    {
+        return $this->container['can'];
+    }
+
+    /**
+     * Sets can
+     *
+     * @param map[string,bool] $can Operations the current user is able to perform on this object
+     *
+     * @return $this
+     */
+    public function setCan($can)
+    {
+        $this->container['can'] = $can;
+
+        return $this;
+    }
 
     /**
      * Gets created_at
@@ -363,7 +393,7 @@ class RenderTask implements ModelInterface, ArrayAccess
     /**
      * Gets dashboard_id
      *
-     * @return int
+     * @return string
      */
     public function getDashboardId()
     {
@@ -373,7 +403,7 @@ class RenderTask implements ModelInterface, ArrayAccess
     /**
      * Sets dashboard_id
      *
-     * @param int $dashboard_id Id of dashboard to render
+     * @param string $dashboard_id Id of dashboard to render
      *
      * @return $this
      */
@@ -483,7 +513,7 @@ class RenderTask implements ModelInterface, ArrayAccess
     /**
      * Gets look_id
      *
-     * @return int
+     * @return string
      */
     public function getLookId()
     {
@@ -493,7 +523,7 @@ class RenderTask implements ModelInterface, ArrayAccess
     /**
      * Sets look_id
      *
-     * @param int $look_id Id of look to render
+     * @param string $look_id Id of look to render
      *
      * @return $this
      */
@@ -531,7 +561,7 @@ class RenderTask implements ModelInterface, ArrayAccess
     /**
      * Gets query_id
      *
-     * @return int
+     * @return string
      */
     public function getQueryId()
     {
@@ -541,13 +571,37 @@ class RenderTask implements ModelInterface, ArrayAccess
     /**
      * Sets query_id
      *
-     * @param int $query_id Id of query to render
+     * @param string $query_id Id of query to render
      *
      * @return $this
      */
     public function setQueryId($query_id)
     {
         $this->container['query_id'] = $query_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets dashboard_element_id
+     *
+     * @return string
+     */
+    public function getDashboardElementId()
+    {
+        return $this->container['dashboard_element_id'];
+    }
+
+    /**
+     * Sets dashboard_element_id
+     *
+     * @param string $dashboard_element_id Id of dashboard element to render: UDD dashboard element would be numeric and LookML dashboard element would be model_name::dashboard_title::lookml_link_id
+     *
+     * @return $this
+     */
+    public function setDashboardElementId($dashboard_element_id)
+    {
+        $this->container['dashboard_element_id'] = $dashboard_element_id;
 
         return $this;
     }
@@ -699,7 +753,7 @@ class RenderTask implements ModelInterface, ArrayAccess
     /**
      * Gets user_id
      *
-     * @return int
+     * @return string
      */
     public function getUserId()
     {
@@ -709,7 +763,7 @@ class RenderTask implements ModelInterface, ArrayAccess
     /**
      * Sets user_id
      *
-     * @param int $user_id The user account permissions in which the render task will execute
+     * @param string $user_id The user account permissions in which the render task will execute
      *
      * @return $this
      */
@@ -740,30 +794,6 @@ class RenderTask implements ModelInterface, ArrayAccess
     public function setWidth($width)
     {
         $this->container['width'] = $width;
-
-        return $this;
-    }
-
-    /**
-     * Gets can
-     *
-     * @return map[string,bool]
-     */
-    public function getCan()
-    {
-        return $this->container['can'];
-    }
-
-    /**
-     * Sets can
-     *
-     * @param map[string,bool] $can Operations the current user is able to perform on this object
-     *
-     * @return $this
-     */
-    public function setCan($can)
-    {
-        $this->container['can'] = $can;
 
         return $this;
     }

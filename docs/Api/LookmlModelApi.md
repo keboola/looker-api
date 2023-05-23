@@ -1,6 +1,6 @@
 # Swagger\Client\LookmlModelApi
 
-All URIs are relative to *https://example.looker.com:19999/api/3.1*
+All URIs are relative to *https://example.looker.com:443/api/4.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 
 # **allLookmlModels**
-> \Swagger\Client\Model\LookmlModel[] allLookmlModels($fields)
+> \Swagger\Client\Model\LookmlModel[] allLookmlModels($fields, $limit, $offset)
 
 Get All LookML Models
 
@@ -30,9 +30,11 @@ $apiInstance = new Swagger\Client\Api\LookmlModelApi(
     new GuzzleHttp\Client()
 );
 $fields = "fields_example"; // string | Requested fields.
+$limit = 789; // int | Number of results to return. (can be used with offset)
+$offset = 789; // int | Number of results to skip before returning any. (Defaults to 0 if not set when limit is used)
 
 try {
-    $result = $apiInstance->allLookmlModels($fields);
+    $result = $apiInstance->allLookmlModels($fields, $limit, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LookmlModelApi->allLookmlModels: ', $e->getMessage(), PHP_EOL;
@@ -45,6 +47,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fields** | **string**| Requested fields. | [optional]
+ **limit** | **int**| Number of results to return. (can be used with offset) | [optional]
+ **offset** | **int**| Number of results to skip before returning any. (Defaults to 0 if not set when limit is used) | [optional]
 
 ### Return type
 
@@ -93,7 +97,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\LookmlModel**](../Model/LookmlModel.md)| LookML Model | [optional]
+ **body** | [**\Swagger\Client\Model\LookmlModel**](../Model/LookmlModel.md)| LookML Model |
 
 ### Return type
 

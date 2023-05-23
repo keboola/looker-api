@@ -10,12 +10,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -360,13 +360,13 @@ class FolderApi
      *
      * Create Folder
      *
-     * @param  \Swagger\Client\Model\Folder $body Folder (optional)
+     * @param  \Swagger\Client\Model\CreateFolder $body Folder parameters (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\Folder
      */
-    public function createFolder($body = null)
+    public function createFolder($body)
     {
         list($response) = $this->createFolderWithHttpInfo($body);
         return $response;
@@ -377,13 +377,13 @@ class FolderApi
      *
      * Create Folder
      *
-     * @param  \Swagger\Client\Model\Folder $body Folder (optional)
+     * @param  \Swagger\Client\Model\CreateFolder $body Folder parameters (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\Folder, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createFolderWithHttpInfo($body = null)
+    public function createFolderWithHttpInfo($body)
     {
         $returnType = '\Swagger\Client\Model\Folder';
         $request = $this->createFolderRequest($body);
@@ -474,6 +474,14 @@ class FolderApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -484,12 +492,12 @@ class FolderApi
      *
      * Create Folder
      *
-     * @param  \Swagger\Client\Model\Folder $body Folder (optional)
+     * @param  \Swagger\Client\Model\CreateFolder $body Folder parameters (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createFolderAsync($body = null)
+    public function createFolderAsync($body)
     {
         return $this->createFolderAsyncWithHttpInfo($body)
             ->then(
@@ -504,12 +512,12 @@ class FolderApi
      *
      * Create Folder
      *
-     * @param  \Swagger\Client\Model\Folder $body Folder (optional)
+     * @param  \Swagger\Client\Model\CreateFolder $body Folder parameters (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createFolderAsyncWithHttpInfo($body = null)
+    public function createFolderAsyncWithHttpInfo($body)
     {
         $returnType = '\Swagger\Client\Model\Folder';
         $request = $this->createFolderRequest($body);
@@ -554,13 +562,19 @@ class FolderApi
     /**
      * Create request for operation 'createFolder'
      *
-     * @param  \Swagger\Client\Model\Folder $body Folder (optional)
+     * @param  \Swagger\Client\Model\CreateFolder $body Folder parameters (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createFolderRequest($body = null)
+    protected function createFolderRequest($body)
     {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling createFolder'
+            );
+        }
 
         $resourcePath = '/folders';
         $formParams = [];
@@ -734,6 +748,14 @@ class FolderApi
                     $e->setResponseObject($data);
                     break;
                 case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\Error',
@@ -1497,17 +1519,19 @@ class FolderApi
      *
      * @param  string $folder_id Id of folder (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \Swagger\Client\Model\Space[]
+     * @return \Swagger\Client\Model\Folder[]
      */
-    public function folderChildren($folder_id, $fields = null, $page = null, $per_page = null, $sorts = null)
+    public function folderChildren($folder_id, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null)
     {
-        list($response) = $this->folderChildrenWithHttpInfo($folder_id, $fields, $page, $per_page, $sorts);
+        list($response) = $this->folderChildrenWithHttpInfo($folder_id, $fields, $page, $per_page, $limit, $offset, $sorts);
         return $response;
     }
 
@@ -1518,18 +1542,20 @@ class FolderApi
      *
      * @param  string $folder_id Id of folder (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \Swagger\Client\Model\Space[], HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\Folder[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function folderChildrenWithHttpInfo($folder_id, $fields = null, $page = null, $per_page = null, $sorts = null)
+    public function folderChildrenWithHttpInfo($folder_id, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null)
     {
-        $returnType = '\Swagger\Client\Model\Space[]';
-        $request = $this->folderChildrenRequest($folder_id, $fields, $page, $per_page, $sorts);
+        $returnType = '\Swagger\Client\Model\Folder[]';
+        $request = $this->folderChildrenRequest($folder_id, $fields, $page, $per_page, $limit, $offset, $sorts);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1580,7 +1606,7 @@ class FolderApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\Swagger\Client\Model\Space[]',
+                        '\Swagger\Client\Model\Folder[]',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1613,16 +1639,18 @@ class FolderApi
      *
      * @param  string $folder_id Id of folder (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function folderChildrenAsync($folder_id, $fields = null, $page = null, $per_page = null, $sorts = null)
+    public function folderChildrenAsync($folder_id, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null)
     {
-        return $this->folderChildrenAsyncWithHttpInfo($folder_id, $fields, $page, $per_page, $sorts)
+        return $this->folderChildrenAsyncWithHttpInfo($folder_id, $fields, $page, $per_page, $limit, $offset, $sorts)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1637,17 +1665,19 @@ class FolderApi
      *
      * @param  string $folder_id Id of folder (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function folderChildrenAsyncWithHttpInfo($folder_id, $fields = null, $page = null, $per_page = null, $sorts = null)
+    public function folderChildrenAsyncWithHttpInfo($folder_id, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null)
     {
-        $returnType = '\Swagger\Client\Model\Space[]';
-        $request = $this->folderChildrenRequest($folder_id, $fields, $page, $per_page, $sorts);
+        $returnType = '\Swagger\Client\Model\Folder[]';
+        $request = $this->folderChildrenRequest($folder_id, $fields, $page, $per_page, $limit, $offset, $sorts);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1691,14 +1721,16 @@ class FolderApi
      *
      * @param  string $folder_id Id of folder (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function folderChildrenRequest($folder_id, $fields = null, $page = null, $per_page = null, $sorts = null)
+    protected function folderChildrenRequest($folder_id, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null)
     {
         // verify the required parameter 'folder_id' is set
         if ($folder_id === null || (is_array($folder_id) && count($folder_id) === 0)) {
@@ -1725,6 +1757,14 @@ class FolderApi
         // query params
         if ($per_page !== null) {
             $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+        // query params
+        if ($offset !== null) {
+            $queryParams['offset'] = ObjectSerializer::toQueryValue($offset);
         }
         // query params
         if ($sorts !== null) {
@@ -2976,24 +3016,25 @@ class FolderApi
      * Search Folders
      *
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
      * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
      * @param  string $name Match Space title. (optional)
-     * @param  int $id Match Space id (optional)
+     * @param  string $id Match Space id (optional)
      * @param  string $parent_id Filter on a children of a particular folder. (optional)
      * @param  string $creator_id Filter on folder created by a particular user. (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  bool $is_shared_root Match is shared root (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\Folder[]
      */
-    public function searchFolders($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $name = null, $id = null, $parent_id = null, $creator_id = null, $filter_or = null)
+    public function searchFolders($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $name = null, $id = null, $parent_id = null, $creator_id = null, $filter_or = null, $is_shared_root = null)
     {
-        list($response) = $this->searchFoldersWithHttpInfo($fields, $page, $per_page, $limit, $offset, $sorts, $name, $id, $parent_id, $creator_id, $filter_or);
+        list($response) = $this->searchFoldersWithHttpInfo($fields, $page, $per_page, $limit, $offset, $sorts, $name, $id, $parent_id, $creator_id, $filter_or, $is_shared_root);
         return $response;
     }
 
@@ -3003,25 +3044,26 @@ class FolderApi
      * Search Folders
      *
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
      * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
      * @param  string $name Match Space title. (optional)
-     * @param  int $id Match Space id (optional)
+     * @param  string $id Match Space id (optional)
      * @param  string $parent_id Filter on a children of a particular folder. (optional)
      * @param  string $creator_id Filter on folder created by a particular user. (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  bool $is_shared_root Match is shared root (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\Folder[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchFoldersWithHttpInfo($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $name = null, $id = null, $parent_id = null, $creator_id = null, $filter_or = null)
+    public function searchFoldersWithHttpInfo($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $name = null, $id = null, $parent_id = null, $creator_id = null, $filter_or = null, $is_shared_root = null)
     {
         $returnType = '\Swagger\Client\Model\Folder[]';
-        $request = $this->searchFoldersRequest($fields, $page, $per_page, $limit, $offset, $sorts, $name, $id, $parent_id, $creator_id, $filter_or);
+        $request = $this->searchFoldersRequest($fields, $page, $per_page, $limit, $offset, $sorts, $name, $id, $parent_id, $creator_id, $filter_or, $is_shared_root);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3104,23 +3146,24 @@ class FolderApi
      * Search Folders
      *
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
      * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
      * @param  string $name Match Space title. (optional)
-     * @param  int $id Match Space id (optional)
+     * @param  string $id Match Space id (optional)
      * @param  string $parent_id Filter on a children of a particular folder. (optional)
      * @param  string $creator_id Filter on folder created by a particular user. (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  bool $is_shared_root Match is shared root (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchFoldersAsync($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $name = null, $id = null, $parent_id = null, $creator_id = null, $filter_or = null)
+    public function searchFoldersAsync($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $name = null, $id = null, $parent_id = null, $creator_id = null, $filter_or = null, $is_shared_root = null)
     {
-        return $this->searchFoldersAsyncWithHttpInfo($fields, $page, $per_page, $limit, $offset, $sorts, $name, $id, $parent_id, $creator_id, $filter_or)
+        return $this->searchFoldersAsyncWithHttpInfo($fields, $page, $per_page, $limit, $offset, $sorts, $name, $id, $parent_id, $creator_id, $filter_or, $is_shared_root)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3134,24 +3177,25 @@ class FolderApi
      * Search Folders
      *
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
      * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
      * @param  string $name Match Space title. (optional)
-     * @param  int $id Match Space id (optional)
+     * @param  string $id Match Space id (optional)
      * @param  string $parent_id Filter on a children of a particular folder. (optional)
      * @param  string $creator_id Filter on folder created by a particular user. (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  bool $is_shared_root Match is shared root (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchFoldersAsyncWithHttpInfo($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $name = null, $id = null, $parent_id = null, $creator_id = null, $filter_or = null)
+    public function searchFoldersAsyncWithHttpInfo($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $name = null, $id = null, $parent_id = null, $creator_id = null, $filter_or = null, $is_shared_root = null)
     {
         $returnType = '\Swagger\Client\Model\Folder[]';
-        $request = $this->searchFoldersRequest($fields, $page, $per_page, $limit, $offset, $sorts, $name, $id, $parent_id, $creator_id, $filter_or);
+        $request = $this->searchFoldersRequest($fields, $page, $per_page, $limit, $offset, $sorts, $name, $id, $parent_id, $creator_id, $filter_or, $is_shared_root);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3194,21 +3238,22 @@ class FolderApi
      * Create request for operation 'searchFolders'
      *
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
      * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
      * @param  string $name Match Space title. (optional)
-     * @param  int $id Match Space id (optional)
+     * @param  string $id Match Space id (optional)
      * @param  string $parent_id Filter on a children of a particular folder. (optional)
      * @param  string $creator_id Filter on folder created by a particular user. (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  bool $is_shared_root Match is shared root (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function searchFoldersRequest($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $name = null, $id = null, $parent_id = null, $creator_id = null, $filter_or = null)
+    protected function searchFoldersRequest($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $name = null, $id = null, $parent_id = null, $creator_id = null, $filter_or = null, $is_shared_root = null)
     {
 
         $resourcePath = '/folders/search';
@@ -3261,6 +3306,10 @@ class FolderApi
         // query params
         if ($filter_or !== null) {
             $queryParams['filter_or'] = ObjectSerializer::toQueryValue($filter_or);
+        }
+        // query params
+        if ($is_shared_root !== null) {
+            $queryParams['is_shared_root'] = ObjectSerializer::toQueryValue($is_shared_root);
         }
 
 
@@ -3334,7 +3383,7 @@ class FolderApi
      * Update Folder
      *
      * @param  string $folder_id Id of folder (required)
-     * @param  \Swagger\Client\Model\Folder $body Folder (required)
+     * @param  \Swagger\Client\Model\UpdateFolder $body Folder parameters (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3352,7 +3401,7 @@ class FolderApi
      * Update Folder
      *
      * @param  string $folder_id Id of folder (required)
-     * @param  \Swagger\Client\Model\Folder $body Folder (required)
+     * @param  \Swagger\Client\Model\UpdateFolder $body Folder parameters (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -3441,6 +3490,14 @@ class FolderApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -3452,7 +3509,7 @@ class FolderApi
      * Update Folder
      *
      * @param  string $folder_id Id of folder (required)
-     * @param  \Swagger\Client\Model\Folder $body Folder (required)
+     * @param  \Swagger\Client\Model\UpdateFolder $body Folder parameters (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3473,7 +3530,7 @@ class FolderApi
      * Update Folder
      *
      * @param  string $folder_id Id of folder (required)
-     * @param  \Swagger\Client\Model\Folder $body Folder (required)
+     * @param  \Swagger\Client\Model\UpdateFolder $body Folder parameters (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -3524,7 +3581,7 @@ class FolderApi
      * Create request for operation 'updateFolder'
      *
      * @param  string $folder_id Id of folder (required)
-     * @param  \Swagger\Client\Model\Folder $body Folder (required)
+     * @param  \Swagger\Client\Model\UpdateFolder $body Folder parameters (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
