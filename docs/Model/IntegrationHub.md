@@ -3,7 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | ID of the hub. | [optional] 
+**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
+**id** | **string** | ID of the hub. | [optional] 
 **url** | **string** | URL of the hub. | [optional] 
 **label** | **string** | Label of the hub. | [optional] 
 **official** | **bool** | Whether this hub is a first-party integration hub operated by Looker. | [optional] 
@@ -13,7 +14,6 @@ Name | Type | Description | Notes
 **legal_agreement_signed** | **bool** | Whether the legal agreement message has been signed by the user. This only matters if legal_agreement_required is true. | [optional] 
 **legal_agreement_required** | **bool** | Whether the legal terms for the integration hub are required before use. | [optional] 
 **legal_agreement_text** | **string** | The legal agreement text for this integration hub. | [optional] 
-**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

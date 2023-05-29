@@ -1,6 +1,6 @@
 # Swagger\Client\ColorCollectionApi
 
-All URIs are relative to *https://example.looker.com:19999/api/3.1*
+All URIs are relative to *https://example.looker.com:443/api/4.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -245,7 +245,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\ColorCollection**](../Model/ColorCollection.md)| ColorCollection | [optional]
+ **body** | [**\Swagger\Client\Model\ColorCollection**](../Model/ColorCollection.md)| ColorCollection |
 
 ### Return type
 

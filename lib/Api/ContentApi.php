@@ -10,12 +10,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -92,7 +92,7 @@ class ContentApi
      *
      * Get All Content Metadata Accesses
      *
-     * @param  int $content_metadata_id Id of content metadata (required)
+     * @param  string $content_metadata_id Id of content metadata (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -110,7 +110,7 @@ class ContentApi
      *
      * Get All Content Metadata Accesses
      *
-     * @param  int $content_metadata_id Id of content metadata (required)
+     * @param  string $content_metadata_id Id of content metadata (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -202,7 +202,7 @@ class ContentApi
      *
      * Get All Content Metadata Accesses
      *
-     * @param  int $content_metadata_id Id of content metadata (required)
+     * @param  string $content_metadata_id Id of content metadata (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -223,7 +223,7 @@ class ContentApi
      *
      * Get All Content Metadata Accesses
      *
-     * @param  int $content_metadata_id Id of content metadata (required)
+     * @param  string $content_metadata_id Id of content metadata (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -274,7 +274,7 @@ class ContentApi
     /**
      * Create request for operation 'allContentMetadataAccesses'
      *
-     * @param  int $content_metadata_id Id of content metadata (required)
+     * @param  string $content_metadata_id Id of content metadata (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -375,7 +375,7 @@ class ContentApi
      *
      * Get All Content Metadatas
      *
-     * @param  int $parent_id Parent space of content. (required)
+     * @param  string $parent_id Parent space of content. (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -393,7 +393,7 @@ class ContentApi
      *
      * Get All Content Metadatas
      *
-     * @param  int $parent_id Parent space of content. (required)
+     * @param  string $parent_id Parent space of content. (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -485,7 +485,7 @@ class ContentApi
      *
      * Get All Content Metadatas
      *
-     * @param  int $parent_id Parent space of content. (required)
+     * @param  string $parent_id Parent space of content. (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -506,7 +506,7 @@ class ContentApi
      *
      * Get All Content Metadatas
      *
-     * @param  int $parent_id Parent space of content. (required)
+     * @param  string $parent_id Parent space of content. (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -557,7 +557,7 @@ class ContentApi
     /**
      * Create request for operation 'allContentMetadatas'
      *
-     * @param  int $parent_id Parent space of content. (required)
+     * @param  string $parent_id Parent space of content. (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -658,7 +658,7 @@ class ContentApi
      *
      * Get Favorite Content
      *
-     * @param  int $content_favorite_id Id of favorite content (required)
+     * @param  string $content_favorite_id Id of favorite content (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -676,7 +676,7 @@ class ContentApi
      *
      * Get Favorite Content
      *
-     * @param  int $content_favorite_id Id of favorite content (required)
+     * @param  string $content_favorite_id Id of favorite content (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -768,7 +768,7 @@ class ContentApi
      *
      * Get Favorite Content
      *
-     * @param  int $content_favorite_id Id of favorite content (required)
+     * @param  string $content_favorite_id Id of favorite content (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -789,7 +789,7 @@ class ContentApi
      *
      * Get Favorite Content
      *
-     * @param  int $content_favorite_id Id of favorite content (required)
+     * @param  string $content_favorite_id Id of favorite content (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -840,7 +840,7 @@ class ContentApi
     /**
      * Create request for operation 'contentFavorite'
      *
-     * @param  int $content_favorite_id Id of favorite content (required)
+     * @param  string $content_favorite_id Id of favorite content (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -945,7 +945,7 @@ class ContentApi
      *
      * Get Content Metadata
      *
-     * @param  int $content_metadata_id Id of content metadata (required)
+     * @param  string $content_metadata_id Id of content metadata (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -963,7 +963,7 @@ class ContentApi
      *
      * Get Content Metadata
      *
-     * @param  int $content_metadata_id Id of content metadata (required)
+     * @param  string $content_metadata_id Id of content metadata (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -1055,7 +1055,7 @@ class ContentApi
      *
      * Get Content Metadata
      *
-     * @param  int $content_metadata_id Id of content metadata (required)
+     * @param  string $content_metadata_id Id of content metadata (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -1076,7 +1076,7 @@ class ContentApi
      *
      * Get Content Metadata
      *
-     * @param  int $content_metadata_id Id of content metadata (required)
+     * @param  string $content_metadata_id Id of content metadata (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -1127,7 +1127,7 @@ class ContentApi
     /**
      * Create request for operation 'contentMetadata'
      *
-     * @param  int $content_metadata_id Id of content metadata (required)
+     * @param  string $content_metadata_id Id of content metadata (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -1173,6 +1173,356 @@ class ContentApi
         } else {
             $headers = $this->headerSelector->selectHeaders(
                 ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation contentThumbnail
+     *
+     * Get Content Thumbnail
+     *
+     * @param  string $type Either dashboard or look (required)
+     * @param  string $resource_id ID of the dashboard or look to render (required)
+     * @param  string $reload Whether or not to refresh the rendered image with the latest content (optional)
+     * @param  string $theme Light or dark background. Default is \&quot;light\&quot; (optional)
+     * @param  string $format A value of png produces a thumbnail in PNG format instead of SVG (default) (optional)
+     * @param  int $width The width of the image if format is supplied (optional)
+     * @param  int $height The height of the image if format is supplied (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function contentThumbnail($type, $resource_id, $reload = null, $theme = null, $format = null, $width = null, $height = null)
+    {
+        list($response) = $this->contentThumbnailWithHttpInfo($type, $resource_id, $reload, $theme, $format, $width, $height);
+        return $response;
+    }
+
+    /**
+     * Operation contentThumbnailWithHttpInfo
+     *
+     * Get Content Thumbnail
+     *
+     * @param  string $type Either dashboard or look (required)
+     * @param  string $resource_id ID of the dashboard or look to render (required)
+     * @param  string $reload Whether or not to refresh the rendered image with the latest content (optional)
+     * @param  string $theme Light or dark background. Default is \&quot;light\&quot; (optional)
+     * @param  string $format A value of png produces a thumbnail in PNG format instead of SVG (default) (optional)
+     * @param  int $width The width of the image if format is supplied (optional)
+     * @param  int $height The height of the image if format is supplied (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function contentThumbnailWithHttpInfo($type, $resource_id, $reload = null, $theme = null, $format = null, $width = null, $height = null)
+    {
+        $returnType = 'string';
+        $request = $this->contentThumbnailRequest($type, $resource_id, $reload, $theme, $format, $width, $height);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation contentThumbnailAsync
+     *
+     * Get Content Thumbnail
+     *
+     * @param  string $type Either dashboard or look (required)
+     * @param  string $resource_id ID of the dashboard or look to render (required)
+     * @param  string $reload Whether or not to refresh the rendered image with the latest content (optional)
+     * @param  string $theme Light or dark background. Default is \&quot;light\&quot; (optional)
+     * @param  string $format A value of png produces a thumbnail in PNG format instead of SVG (default) (optional)
+     * @param  int $width The width of the image if format is supplied (optional)
+     * @param  int $height The height of the image if format is supplied (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function contentThumbnailAsync($type, $resource_id, $reload = null, $theme = null, $format = null, $width = null, $height = null)
+    {
+        return $this->contentThumbnailAsyncWithHttpInfo($type, $resource_id, $reload, $theme, $format, $width, $height)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation contentThumbnailAsyncWithHttpInfo
+     *
+     * Get Content Thumbnail
+     *
+     * @param  string $type Either dashboard or look (required)
+     * @param  string $resource_id ID of the dashboard or look to render (required)
+     * @param  string $reload Whether or not to refresh the rendered image with the latest content (optional)
+     * @param  string $theme Light or dark background. Default is \&quot;light\&quot; (optional)
+     * @param  string $format A value of png produces a thumbnail in PNG format instead of SVG (default) (optional)
+     * @param  int $width The width of the image if format is supplied (optional)
+     * @param  int $height The height of the image if format is supplied (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function contentThumbnailAsyncWithHttpInfo($type, $resource_id, $reload = null, $theme = null, $format = null, $width = null, $height = null)
+    {
+        $returnType = 'string';
+        $request = $this->contentThumbnailRequest($type, $resource_id, $reload, $theme, $format, $width, $height);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'contentThumbnail'
+     *
+     * @param  string $type Either dashboard or look (required)
+     * @param  string $resource_id ID of the dashboard or look to render (required)
+     * @param  string $reload Whether or not to refresh the rendered image with the latest content (optional)
+     * @param  string $theme Light or dark background. Default is \&quot;light\&quot; (optional)
+     * @param  string $format A value of png produces a thumbnail in PNG format instead of SVG (default) (optional)
+     * @param  int $width The width of the image if format is supplied (optional)
+     * @param  int $height The height of the image if format is supplied (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function contentThumbnailRequest($type, $resource_id, $reload = null, $theme = null, $format = null, $width = null, $height = null)
+    {
+        // verify the required parameter 'type' is set
+        if ($type === null || (is_array($type) && count($type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $type when calling contentThumbnail'
+            );
+        }
+        // verify the required parameter 'resource_id' is set
+        if ($resource_id === null || (is_array($resource_id) && count($resource_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $resource_id when calling contentThumbnail'
+            );
+        }
+
+        $resourcePath = '/content_thumbnail/{type}/{resource_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($reload !== null) {
+            $queryParams['reload'] = ObjectSerializer::toQueryValue($reload);
+        }
+        // query params
+        if ($theme !== null) {
+            $queryParams['theme'] = ObjectSerializer::toQueryValue($theme);
+        }
+        // query params
+        if ($format !== null) {
+            $queryParams['format'] = ObjectSerializer::toQueryValue($format);
+        }
+        // query params
+        if ($width !== null) {
+            $queryParams['width'] = ObjectSerializer::toQueryValue($width);
+        }
+        // query params
+        if ($height !== null) {
+            $queryParams['height'] = ObjectSerializer::toQueryValue($height);
+        }
+
+        // path params
+        if ($type !== null) {
+            $resourcePath = str_replace(
+                '{' . 'type' . '}',
+                ObjectSerializer::toPathValue($type),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($resource_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'resource_id' . '}',
+                ObjectSerializer::toPathValue($resource_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['image/svg+xml', 'image/png']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['image/svg+xml', 'image/png'],
                 ['application/json']
             );
         }
@@ -1334,6 +1684,14 @@ class ContentApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1508,13 +1866,13 @@ class ContentApi
      *
      * Create Favorite Content
      *
-     * @param  \Swagger\Client\Model\ContentFavorite $body Favorite Content (optional)
+     * @param  \Swagger\Client\Model\ContentFavorite $body Favorite Content (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\ContentFavorite
      */
-    public function createContentFavorite($body = null)
+    public function createContentFavorite($body)
     {
         list($response) = $this->createContentFavoriteWithHttpInfo($body);
         return $response;
@@ -1525,13 +1883,13 @@ class ContentApi
      *
      * Create Favorite Content
      *
-     * @param  \Swagger\Client\Model\ContentFavorite $body Favorite Content (optional)
+     * @param  \Swagger\Client\Model\ContentFavorite $body Favorite Content (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\ContentFavorite, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createContentFavoriteWithHttpInfo($body = null)
+    public function createContentFavoriteWithHttpInfo($body)
     {
         $returnType = '\Swagger\Client\Model\ContentFavorite';
         $request = $this->createContentFavoriteRequest($body);
@@ -1622,6 +1980,14 @@ class ContentApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1632,12 +1998,12 @@ class ContentApi
      *
      * Create Favorite Content
      *
-     * @param  \Swagger\Client\Model\ContentFavorite $body Favorite Content (optional)
+     * @param  \Swagger\Client\Model\ContentFavorite $body Favorite Content (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createContentFavoriteAsync($body = null)
+    public function createContentFavoriteAsync($body)
     {
         return $this->createContentFavoriteAsyncWithHttpInfo($body)
             ->then(
@@ -1652,12 +2018,12 @@ class ContentApi
      *
      * Create Favorite Content
      *
-     * @param  \Swagger\Client\Model\ContentFavorite $body Favorite Content (optional)
+     * @param  \Swagger\Client\Model\ContentFavorite $body Favorite Content (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createContentFavoriteAsyncWithHttpInfo($body = null)
+    public function createContentFavoriteAsyncWithHttpInfo($body)
     {
         $returnType = '\Swagger\Client\Model\ContentFavorite';
         $request = $this->createContentFavoriteRequest($body);
@@ -1702,13 +2068,19 @@ class ContentApi
     /**
      * Create request for operation 'createContentFavorite'
      *
-     * @param  \Swagger\Client\Model\ContentFavorite $body Favorite Content (optional)
+     * @param  \Swagger\Client\Model\ContentFavorite $body Favorite Content (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createContentFavoriteRequest($body = null)
+    protected function createContentFavoriteRequest($body)
     {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling createContentFavorite'
+            );
+        }
 
         $resourcePath = '/content_favorite';
         $formParams = [];
@@ -1791,15 +2163,16 @@ class ContentApi
      *
      * Create Content Metadata Access
      *
-     * @param  \Swagger\Client\Model\ContentMetaGroupUser $body Content Metadata Access (optional)
+     * @param  \Swagger\Client\Model\ContentMetaGroupUser $body Content Metadata Access (required)
+     * @param  bool $send_boards_notification_email Optionally sends notification email when granting access to a board. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\ContentMetaGroupUser
      */
-    public function createContentMetadataAccess($body = null)
+    public function createContentMetadataAccess($body, $send_boards_notification_email = null)
     {
-        list($response) = $this->createContentMetadataAccessWithHttpInfo($body);
+        list($response) = $this->createContentMetadataAccessWithHttpInfo($body, $send_boards_notification_email);
         return $response;
     }
 
@@ -1808,16 +2181,17 @@ class ContentApi
      *
      * Create Content Metadata Access
      *
-     * @param  \Swagger\Client\Model\ContentMetaGroupUser $body Content Metadata Access (optional)
+     * @param  \Swagger\Client\Model\ContentMetaGroupUser $body Content Metadata Access (required)
+     * @param  bool $send_boards_notification_email Optionally sends notification email when granting access to a board. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\ContentMetaGroupUser, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createContentMetadataAccessWithHttpInfo($body = null)
+    public function createContentMetadataAccessWithHttpInfo($body, $send_boards_notification_email = null)
     {
         $returnType = '\Swagger\Client\Model\ContentMetaGroupUser';
-        $request = $this->createContentMetadataAccessRequest($body);
+        $request = $this->createContentMetadataAccessRequest($body, $send_boards_notification_email);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1905,6 +2279,14 @@ class ContentApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1915,14 +2297,15 @@ class ContentApi
      *
      * Create Content Metadata Access
      *
-     * @param  \Swagger\Client\Model\ContentMetaGroupUser $body Content Metadata Access (optional)
+     * @param  \Swagger\Client\Model\ContentMetaGroupUser $body Content Metadata Access (required)
+     * @param  bool $send_boards_notification_email Optionally sends notification email when granting access to a board. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createContentMetadataAccessAsync($body = null)
+    public function createContentMetadataAccessAsync($body, $send_boards_notification_email = null)
     {
-        return $this->createContentMetadataAccessAsyncWithHttpInfo($body)
+        return $this->createContentMetadataAccessAsyncWithHttpInfo($body, $send_boards_notification_email)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1935,15 +2318,16 @@ class ContentApi
      *
      * Create Content Metadata Access
      *
-     * @param  \Swagger\Client\Model\ContentMetaGroupUser $body Content Metadata Access (optional)
+     * @param  \Swagger\Client\Model\ContentMetaGroupUser $body Content Metadata Access (required)
+     * @param  bool $send_boards_notification_email Optionally sends notification email when granting access to a board. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createContentMetadataAccessAsyncWithHttpInfo($body = null)
+    public function createContentMetadataAccessAsyncWithHttpInfo($body, $send_boards_notification_email = null)
     {
         $returnType = '\Swagger\Client\Model\ContentMetaGroupUser';
-        $request = $this->createContentMetadataAccessRequest($body);
+        $request = $this->createContentMetadataAccessRequest($body, $send_boards_notification_email);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1985,13 +2369,20 @@ class ContentApi
     /**
      * Create request for operation 'createContentMetadataAccess'
      *
-     * @param  \Swagger\Client\Model\ContentMetaGroupUser $body Content Metadata Access (optional)
+     * @param  \Swagger\Client\Model\ContentMetaGroupUser $body Content Metadata Access (required)
+     * @param  bool $send_boards_notification_email Optionally sends notification email when granting access to a board. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createContentMetadataAccessRequest($body = null)
+    protected function createContentMetadataAccessRequest($body, $send_boards_notification_email = null)
     {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling createContentMetadataAccess'
+            );
+        }
 
         $resourcePath = '/content_metadata_access';
         $formParams = [];
@@ -2000,6 +2391,10 @@ class ContentApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        if ($send_boards_notification_email !== null) {
+            $queryParams['send_boards_notification_email'] = ObjectSerializer::toQueryValue($send_boards_notification_email);
+        }
 
 
         // body params
@@ -2074,7 +2469,7 @@ class ContentApi
      *
      * Delete Favorite Content
      *
-     * @param  int $content_favorite_id Id of favorite content (required)
+     * @param  string $content_favorite_id Id of favorite content (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2091,7 +2486,7 @@ class ContentApi
      *
      * Delete Favorite Content
      *
-     * @param  int $content_favorite_id Id of favorite content (required)
+     * @param  string $content_favorite_id Id of favorite content (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2172,6 +2567,14 @@ class ContentApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -2182,7 +2585,7 @@ class ContentApi
      *
      * Delete Favorite Content
      *
-     * @param  int $content_favorite_id Id of favorite content (required)
+     * @param  string $content_favorite_id Id of favorite content (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2202,7 +2605,7 @@ class ContentApi
      *
      * Delete Favorite Content
      *
-     * @param  int $content_favorite_id Id of favorite content (required)
+     * @param  string $content_favorite_id Id of favorite content (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2252,7 +2655,7 @@ class ContentApi
     /**
      * Create request for operation 'deleteContentFavorite'
      *
-     * @param  int $content_favorite_id Id of favorite content (required)
+     * @param  string $content_favorite_id Id of favorite content (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2352,7 +2755,7 @@ class ContentApi
      *
      * Delete Content Metadata Access
      *
-     * @param  int $content_metadata_access_id Id of content metadata access (required)
+     * @param  string $content_metadata_access_id Id of content metadata access (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2369,7 +2772,7 @@ class ContentApi
      *
      * Delete Content Metadata Access
      *
-     * @param  int $content_metadata_access_id Id of content metadata access (required)
+     * @param  string $content_metadata_access_id Id of content metadata access (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2450,6 +2853,14 @@ class ContentApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -2460,7 +2871,7 @@ class ContentApi
      *
      * Delete Content Metadata Access
      *
-     * @param  int $content_metadata_access_id Id of content metadata access (required)
+     * @param  string $content_metadata_access_id Id of content metadata access (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2480,7 +2891,7 @@ class ContentApi
      *
      * Delete Content Metadata Access
      *
-     * @param  int $content_metadata_access_id Id of content metadata access (required)
+     * @param  string $content_metadata_access_id Id of content metadata access (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2530,7 +2941,7 @@ class ContentApi
     /**
      * Create request for operation 'deleteContentMetadataAccess'
      *
-     * @param  int $content_metadata_access_id Id of content metadata access (required)
+     * @param  string $content_metadata_access_id Id of content metadata access (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2626,15 +3037,348 @@ class ContentApi
     }
 
     /**
+     * Operation searchContent
+     *
+     * Search Content
+     *
+     * @param  string $terms Search terms (required)
+     * @param  string $fields Requested fields. (optional)
+     * @param  string $types Content types requested (dashboard, look, lookml_dashboard). (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
+     * @param  int $page Requested page. (optional)
+     * @param  int $per_page Results per page. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\ContentSearch[]
+     */
+    public function searchContent($terms, $fields = null, $types = null, $limit = null, $offset = null, $page = null, $per_page = null)
+    {
+        list($response) = $this->searchContentWithHttpInfo($terms, $fields, $types, $limit, $offset, $page, $per_page);
+        return $response;
+    }
+
+    /**
+     * Operation searchContentWithHttpInfo
+     *
+     * Search Content
+     *
+     * @param  string $terms Search terms (required)
+     * @param  string $fields Requested fields. (optional)
+     * @param  string $types Content types requested (dashboard, look, lookml_dashboard). (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
+     * @param  int $page Requested page. (optional)
+     * @param  int $per_page Results per page. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\ContentSearch[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function searchContentWithHttpInfo($terms, $fields = null, $types = null, $limit = null, $offset = null, $page = null, $per_page = null)
+    {
+        $returnType = '\Swagger\Client\Model\ContentSearch[]';
+        $request = $this->searchContentRequest($terms, $fields, $types, $limit, $offset, $page, $per_page);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ContentSearch[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation searchContentAsync
+     *
+     * Search Content
+     *
+     * @param  string $terms Search terms (required)
+     * @param  string $fields Requested fields. (optional)
+     * @param  string $types Content types requested (dashboard, look, lookml_dashboard). (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
+     * @param  int $page Requested page. (optional)
+     * @param  int $per_page Results per page. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchContentAsync($terms, $fields = null, $types = null, $limit = null, $offset = null, $page = null, $per_page = null)
+    {
+        return $this->searchContentAsyncWithHttpInfo($terms, $fields, $types, $limit, $offset, $page, $per_page)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation searchContentAsyncWithHttpInfo
+     *
+     * Search Content
+     *
+     * @param  string $terms Search terms (required)
+     * @param  string $fields Requested fields. (optional)
+     * @param  string $types Content types requested (dashboard, look, lookml_dashboard). (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
+     * @param  int $page Requested page. (optional)
+     * @param  int $per_page Results per page. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchContentAsyncWithHttpInfo($terms, $fields = null, $types = null, $limit = null, $offset = null, $page = null, $per_page = null)
+    {
+        $returnType = '\Swagger\Client\Model\ContentSearch[]';
+        $request = $this->searchContentRequest($terms, $fields, $types, $limit, $offset, $page, $per_page);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'searchContent'
+     *
+     * @param  string $terms Search terms (required)
+     * @param  string $fields Requested fields. (optional)
+     * @param  string $types Content types requested (dashboard, look, lookml_dashboard). (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
+     * @param  int $page Requested page. (optional)
+     * @param  int $per_page Results per page. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function searchContentRequest($terms, $fields = null, $types = null, $limit = null, $offset = null, $page = null, $per_page = null)
+    {
+        // verify the required parameter 'terms' is set
+        if ($terms === null || (is_array($terms) && count($terms) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $terms when calling searchContent'
+            );
+        }
+
+        $resourcePath = '/content/{terms}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($fields !== null) {
+            $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
+        }
+        // query params
+        if ($types !== null) {
+            $queryParams['types'] = ObjectSerializer::toQueryValue($types);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+        // query params
+        if ($offset !== null) {
+            $queryParams['offset'] = ObjectSerializer::toQueryValue($offset);
+        }
+        // query params
+        if ($page !== null) {
+            $queryParams['page'] = ObjectSerializer::toQueryValue($page);
+        }
+        // query params
+        if ($per_page !== null) {
+            $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+        }
+
+        // path params
+        if ($terms !== null) {
+            $resourcePath = str_replace(
+                '{' . 'terms' . '}',
+                ObjectSerializer::toPathValue($terms),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation searchContentFavorites
      *
      * Search Favorite Contents
      *
-     * @param  int $id Match content favorite id(s) (optional)
-     * @param  int $user_id Match user id(s) (optional)
-     * @param  int $content_metadata_id Match content metadata id(s) (optional)
-     * @param  int $dashboard_id Match dashboard id(s) (optional)
-     * @param  int $look_id Match look id(s) (optional)
+     * @param  string $id Match content favorite id(s) (optional)
+     * @param  string $user_id Match user id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $content_metadata_id Match content metadata id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $dashboard_id Match dashboard id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $look_id Match look id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $board_id Match board id(s).To create a list of multiple ids, use commas as separators (optional)
      * @param  int $limit Number of results to return. (used with offset) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit) (optional)
      * @param  string $sorts Fields to sort by. (optional)
@@ -2645,9 +3389,9 @@ class ContentApi
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\ContentFavorite[]
      */
-    public function searchContentFavorites($id = null, $user_id = null, $content_metadata_id = null, $dashboard_id = null, $look_id = null, $limit = null, $offset = null, $sorts = null, $fields = null, $filter_or = null)
+    public function searchContentFavorites($id = null, $user_id = null, $content_metadata_id = null, $dashboard_id = null, $look_id = null, $board_id = null, $limit = null, $offset = null, $sorts = null, $fields = null, $filter_or = null)
     {
-        list($response) = $this->searchContentFavoritesWithHttpInfo($id, $user_id, $content_metadata_id, $dashboard_id, $look_id, $limit, $offset, $sorts, $fields, $filter_or);
+        list($response) = $this->searchContentFavoritesWithHttpInfo($id, $user_id, $content_metadata_id, $dashboard_id, $look_id, $board_id, $limit, $offset, $sorts, $fields, $filter_or);
         return $response;
     }
 
@@ -2656,11 +3400,12 @@ class ContentApi
      *
      * Search Favorite Contents
      *
-     * @param  int $id Match content favorite id(s) (optional)
-     * @param  int $user_id Match user id(s) (optional)
-     * @param  int $content_metadata_id Match content metadata id(s) (optional)
-     * @param  int $dashboard_id Match dashboard id(s) (optional)
-     * @param  int $look_id Match look id(s) (optional)
+     * @param  string $id Match content favorite id(s) (optional)
+     * @param  string $user_id Match user id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $content_metadata_id Match content metadata id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $dashboard_id Match dashboard id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $look_id Match look id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $board_id Match board id(s).To create a list of multiple ids, use commas as separators (optional)
      * @param  int $limit Number of results to return. (used with offset) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit) (optional)
      * @param  string $sorts Fields to sort by. (optional)
@@ -2671,10 +3416,10 @@ class ContentApi
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\ContentFavorite[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchContentFavoritesWithHttpInfo($id = null, $user_id = null, $content_metadata_id = null, $dashboard_id = null, $look_id = null, $limit = null, $offset = null, $sorts = null, $fields = null, $filter_or = null)
+    public function searchContentFavoritesWithHttpInfo($id = null, $user_id = null, $content_metadata_id = null, $dashboard_id = null, $look_id = null, $board_id = null, $limit = null, $offset = null, $sorts = null, $fields = null, $filter_or = null)
     {
         $returnType = '\Swagger\Client\Model\ContentFavorite[]';
-        $request = $this->searchContentFavoritesRequest($id, $user_id, $content_metadata_id, $dashboard_id, $look_id, $limit, $offset, $sorts, $fields, $filter_or);
+        $request = $this->searchContentFavoritesRequest($id, $user_id, $content_metadata_id, $dashboard_id, $look_id, $board_id, $limit, $offset, $sorts, $fields, $filter_or);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2756,11 +3501,12 @@ class ContentApi
      *
      * Search Favorite Contents
      *
-     * @param  int $id Match content favorite id(s) (optional)
-     * @param  int $user_id Match user id(s) (optional)
-     * @param  int $content_metadata_id Match content metadata id(s) (optional)
-     * @param  int $dashboard_id Match dashboard id(s) (optional)
-     * @param  int $look_id Match look id(s) (optional)
+     * @param  string $id Match content favorite id(s) (optional)
+     * @param  string $user_id Match user id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $content_metadata_id Match content metadata id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $dashboard_id Match dashboard id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $look_id Match look id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $board_id Match board id(s).To create a list of multiple ids, use commas as separators (optional)
      * @param  int $limit Number of results to return. (used with offset) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit) (optional)
      * @param  string $sorts Fields to sort by. (optional)
@@ -2770,9 +3516,9 @@ class ContentApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchContentFavoritesAsync($id = null, $user_id = null, $content_metadata_id = null, $dashboard_id = null, $look_id = null, $limit = null, $offset = null, $sorts = null, $fields = null, $filter_or = null)
+    public function searchContentFavoritesAsync($id = null, $user_id = null, $content_metadata_id = null, $dashboard_id = null, $look_id = null, $board_id = null, $limit = null, $offset = null, $sorts = null, $fields = null, $filter_or = null)
     {
-        return $this->searchContentFavoritesAsyncWithHttpInfo($id, $user_id, $content_metadata_id, $dashboard_id, $look_id, $limit, $offset, $sorts, $fields, $filter_or)
+        return $this->searchContentFavoritesAsyncWithHttpInfo($id, $user_id, $content_metadata_id, $dashboard_id, $look_id, $board_id, $limit, $offset, $sorts, $fields, $filter_or)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2785,11 +3531,12 @@ class ContentApi
      *
      * Search Favorite Contents
      *
-     * @param  int $id Match content favorite id(s) (optional)
-     * @param  int $user_id Match user id(s) (optional)
-     * @param  int $content_metadata_id Match content metadata id(s) (optional)
-     * @param  int $dashboard_id Match dashboard id(s) (optional)
-     * @param  int $look_id Match look id(s) (optional)
+     * @param  string $id Match content favorite id(s) (optional)
+     * @param  string $user_id Match user id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $content_metadata_id Match content metadata id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $dashboard_id Match dashboard id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $look_id Match look id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $board_id Match board id(s).To create a list of multiple ids, use commas as separators (optional)
      * @param  int $limit Number of results to return. (used with offset) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit) (optional)
      * @param  string $sorts Fields to sort by. (optional)
@@ -2799,10 +3546,10 @@ class ContentApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchContentFavoritesAsyncWithHttpInfo($id = null, $user_id = null, $content_metadata_id = null, $dashboard_id = null, $look_id = null, $limit = null, $offset = null, $sorts = null, $fields = null, $filter_or = null)
+    public function searchContentFavoritesAsyncWithHttpInfo($id = null, $user_id = null, $content_metadata_id = null, $dashboard_id = null, $look_id = null, $board_id = null, $limit = null, $offset = null, $sorts = null, $fields = null, $filter_or = null)
     {
         $returnType = '\Swagger\Client\Model\ContentFavorite[]';
-        $request = $this->searchContentFavoritesRequest($id, $user_id, $content_metadata_id, $dashboard_id, $look_id, $limit, $offset, $sorts, $fields, $filter_or);
+        $request = $this->searchContentFavoritesRequest($id, $user_id, $content_metadata_id, $dashboard_id, $look_id, $board_id, $limit, $offset, $sorts, $fields, $filter_or);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -2844,11 +3591,12 @@ class ContentApi
     /**
      * Create request for operation 'searchContentFavorites'
      *
-     * @param  int $id Match content favorite id(s) (optional)
-     * @param  int $user_id Match user id(s) (optional)
-     * @param  int $content_metadata_id Match content metadata id(s) (optional)
-     * @param  int $dashboard_id Match dashboard id(s) (optional)
-     * @param  int $look_id Match look id(s) (optional)
+     * @param  string $id Match content favorite id(s) (optional)
+     * @param  string $user_id Match user id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $content_metadata_id Match content metadata id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $dashboard_id Match dashboard id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $look_id Match look id(s).To create a list of multiple ids, use commas as separators (optional)
+     * @param  string $board_id Match board id(s).To create a list of multiple ids, use commas as separators (optional)
      * @param  int $limit Number of results to return. (used with offset) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit) (optional)
      * @param  string $sorts Fields to sort by. (optional)
@@ -2858,7 +3606,7 @@ class ContentApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function searchContentFavoritesRequest($id = null, $user_id = null, $content_metadata_id = null, $dashboard_id = null, $look_id = null, $limit = null, $offset = null, $sorts = null, $fields = null, $filter_or = null)
+    protected function searchContentFavoritesRequest($id = null, $user_id = null, $content_metadata_id = null, $dashboard_id = null, $look_id = null, $board_id = null, $limit = null, $offset = null, $sorts = null, $fields = null, $filter_or = null)
     {
 
         $resourcePath = '/content_favorite/search';
@@ -2887,6 +3635,10 @@ class ContentApi
         // query params
         if ($look_id !== null) {
             $queryParams['look_id'] = ObjectSerializer::toQueryValue($look_id);
+        }
+        // query params
+        if ($board_id !== null) {
+            $queryParams['board_id'] = ObjectSerializer::toQueryValue($board_id);
         }
         // query params
         if ($limit !== null) {
@@ -2979,14 +3731,14 @@ class ContentApi
      *
      * Search Content Views
      *
-     * @param  int $view_count Match view count (optional)
-     * @param  int $group_id Match Group Id (optional)
+     * @param  string $view_count Match view count (optional)
+     * @param  string $group_id Match Group Id (optional)
      * @param  string $look_id Match look_id (optional)
      * @param  string $dashboard_id Match dashboard_id (optional)
-     * @param  int $content_metadata_id Match content metadata id (optional)
-     * @param  string $start_of_week_date Match start of week date (optional)
+     * @param  string $content_metadata_id Match content metadata id (optional)
+     * @param  string $start_of_week_date Match start of week date (format is \&quot;YYYY-MM-DD\&quot;) (optional)
      * @param  bool $all_time True if only all time view records should be returned (optional)
-     * @param  int $user_id Match user id (optional)
+     * @param  string $user_id Match user id (optional)
      * @param  string $fields Requested fields (optional)
      * @param  int $limit Number of results to return. Use with &#x60;offset&#x60; to manage pagination of results (optional)
      * @param  int $offset Number of results to skip before returning data (optional)
@@ -3008,14 +3760,14 @@ class ContentApi
      *
      * Search Content Views
      *
-     * @param  int $view_count Match view count (optional)
-     * @param  int $group_id Match Group Id (optional)
+     * @param  string $view_count Match view count (optional)
+     * @param  string $group_id Match Group Id (optional)
      * @param  string $look_id Match look_id (optional)
      * @param  string $dashboard_id Match dashboard_id (optional)
-     * @param  int $content_metadata_id Match content metadata id (optional)
-     * @param  string $start_of_week_date Match start of week date (optional)
+     * @param  string $content_metadata_id Match content metadata id (optional)
+     * @param  string $start_of_week_date Match start of week date (format is \&quot;YYYY-MM-DD\&quot;) (optional)
      * @param  bool $all_time True if only all time view records should be returned (optional)
-     * @param  int $user_id Match user id (optional)
+     * @param  string $user_id Match user id (optional)
      * @param  string $fields Requested fields (optional)
      * @param  int $limit Number of results to return. Use with &#x60;offset&#x60; to manage pagination of results (optional)
      * @param  int $offset Number of results to skip before returning data (optional)
@@ -3111,14 +3863,14 @@ class ContentApi
      *
      * Search Content Views
      *
-     * @param  int $view_count Match view count (optional)
-     * @param  int $group_id Match Group Id (optional)
+     * @param  string $view_count Match view count (optional)
+     * @param  string $group_id Match Group Id (optional)
      * @param  string $look_id Match look_id (optional)
      * @param  string $dashboard_id Match dashboard_id (optional)
-     * @param  int $content_metadata_id Match content metadata id (optional)
-     * @param  string $start_of_week_date Match start of week date (optional)
+     * @param  string $content_metadata_id Match content metadata id (optional)
+     * @param  string $start_of_week_date Match start of week date (format is \&quot;YYYY-MM-DD\&quot;) (optional)
      * @param  bool $all_time True if only all time view records should be returned (optional)
-     * @param  int $user_id Match user id (optional)
+     * @param  string $user_id Match user id (optional)
      * @param  string $fields Requested fields (optional)
      * @param  int $limit Number of results to return. Use with &#x60;offset&#x60; to manage pagination of results (optional)
      * @param  int $offset Number of results to skip before returning data (optional)
@@ -3143,14 +3895,14 @@ class ContentApi
      *
      * Search Content Views
      *
-     * @param  int $view_count Match view count (optional)
-     * @param  int $group_id Match Group Id (optional)
+     * @param  string $view_count Match view count (optional)
+     * @param  string $group_id Match Group Id (optional)
      * @param  string $look_id Match look_id (optional)
      * @param  string $dashboard_id Match dashboard_id (optional)
-     * @param  int $content_metadata_id Match content metadata id (optional)
-     * @param  string $start_of_week_date Match start of week date (optional)
+     * @param  string $content_metadata_id Match content metadata id (optional)
+     * @param  string $start_of_week_date Match start of week date (format is \&quot;YYYY-MM-DD\&quot;) (optional)
      * @param  bool $all_time True if only all time view records should be returned (optional)
-     * @param  int $user_id Match user id (optional)
+     * @param  string $user_id Match user id (optional)
      * @param  string $fields Requested fields (optional)
      * @param  int $limit Number of results to return. Use with &#x60;offset&#x60; to manage pagination of results (optional)
      * @param  int $offset Number of results to skip before returning data (optional)
@@ -3205,14 +3957,14 @@ class ContentApi
     /**
      * Create request for operation 'searchContentViews'
      *
-     * @param  int $view_count Match view count (optional)
-     * @param  int $group_id Match Group Id (optional)
+     * @param  string $view_count Match view count (optional)
+     * @param  string $group_id Match Group Id (optional)
      * @param  string $look_id Match look_id (optional)
      * @param  string $dashboard_id Match dashboard_id (optional)
-     * @param  int $content_metadata_id Match content metadata id (optional)
-     * @param  string $start_of_week_date Match start of week date (optional)
+     * @param  string $content_metadata_id Match content metadata id (optional)
+     * @param  string $start_of_week_date Match start of week date (format is \&quot;YYYY-MM-DD\&quot;) (optional)
      * @param  bool $all_time True if only all time view records should be returned (optional)
-     * @param  int $user_id Match user id (optional)
+     * @param  string $user_id Match user id (optional)
      * @param  string $fields Requested fields (optional)
      * @param  int $limit Number of results to return. Use with &#x60;offset&#x60; to manage pagination of results (optional)
      * @param  int $offset Number of results to skip before returning data (optional)
@@ -3355,7 +4107,7 @@ class ContentApi
      *
      * Update Content Metadata
      *
-     * @param  int $content_metadata_id Id of content metadata (required)
+     * @param  string $content_metadata_id Id of content metadata (required)
      * @param  \Swagger\Client\Model\ContentMeta $body Content Metadata (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -3373,7 +4125,7 @@ class ContentApi
      *
      * Update Content Metadata
      *
-     * @param  int $content_metadata_id Id of content metadata (required)
+     * @param  string $content_metadata_id Id of content metadata (required)
      * @param  \Swagger\Client\Model\ContentMeta $body Content Metadata (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -3463,6 +4215,14 @@ class ContentApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -3473,7 +4233,7 @@ class ContentApi
      *
      * Update Content Metadata
      *
-     * @param  int $content_metadata_id Id of content metadata (required)
+     * @param  string $content_metadata_id Id of content metadata (required)
      * @param  \Swagger\Client\Model\ContentMeta $body Content Metadata (required)
      *
      * @throws \InvalidArgumentException
@@ -3494,7 +4254,7 @@ class ContentApi
      *
      * Update Content Metadata
      *
-     * @param  int $content_metadata_id Id of content metadata (required)
+     * @param  string $content_metadata_id Id of content metadata (required)
      * @param  \Swagger\Client\Model\ContentMeta $body Content Metadata (required)
      *
      * @throws \InvalidArgumentException
@@ -3545,7 +4305,7 @@ class ContentApi
     /**
      * Create request for operation 'updateContentMetadata'
      *
-     * @param  int $content_metadata_id Id of content metadata (required)
+     * @param  string $content_metadata_id Id of content metadata (required)
      * @param  \Swagger\Client\Model\ContentMeta $body Content Metadata (required)
      *
      * @throws \InvalidArgumentException
@@ -3655,7 +4415,7 @@ class ContentApi
      *
      * Update Content Metadata Access
      *
-     * @param  int $content_metadata_access_id Id of content metadata access (required)
+     * @param  string $content_metadata_access_id Id of content metadata access (required)
      * @param  \Swagger\Client\Model\ContentMetaGroupUser $body Content Metadata Access (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -3673,7 +4433,7 @@ class ContentApi
      *
      * Update Content Metadata Access
      *
-     * @param  int $content_metadata_access_id Id of content metadata access (required)
+     * @param  string $content_metadata_access_id Id of content metadata access (required)
      * @param  \Swagger\Client\Model\ContentMetaGroupUser $body Content Metadata Access (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -3763,6 +4523,14 @@ class ContentApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -3773,7 +4541,7 @@ class ContentApi
      *
      * Update Content Metadata Access
      *
-     * @param  int $content_metadata_access_id Id of content metadata access (required)
+     * @param  string $content_metadata_access_id Id of content metadata access (required)
      * @param  \Swagger\Client\Model\ContentMetaGroupUser $body Content Metadata Access (required)
      *
      * @throws \InvalidArgumentException
@@ -3794,7 +4562,7 @@ class ContentApi
      *
      * Update Content Metadata Access
      *
-     * @param  int $content_metadata_access_id Id of content metadata access (required)
+     * @param  string $content_metadata_access_id Id of content metadata access (required)
      * @param  \Swagger\Client\Model\ContentMetaGroupUser $body Content Metadata Access (required)
      *
      * @throws \InvalidArgumentException
@@ -3845,7 +4613,7 @@ class ContentApi
     /**
      * Create request for operation 'updateContentMetadataAccess'
      *
-     * @param  int $content_metadata_access_id Id of content metadata access (required)
+     * @param  string $content_metadata_access_id Id of content metadata access (required)
      * @param  \Swagger\Client\Model\ContentMetaGroupUser $body Content Metadata Access (required)
      *
      * @throws \InvalidArgumentException
@@ -3944,6 +4712,312 @@ class ContentApi
         $query = \GuzzleHttp\Psr7\build_query($queryParams);
         return new Request(
             'PUT',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation vectorThumbnail
+     *
+     * Get Vector Thumbnail
+     *
+     * @param  string $type Either dashboard or look (required)
+     * @param  string $resource_id ID of the dashboard or look to render (required)
+     * @param  string $reload Whether or not to refresh the rendered image with the latest content (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return string
+     */
+    public function vectorThumbnail($type, $resource_id, $reload = null)
+    {
+        list($response) = $this->vectorThumbnailWithHttpInfo($type, $resource_id, $reload);
+        return $response;
+    }
+
+    /**
+     * Operation vectorThumbnailWithHttpInfo
+     *
+     * Get Vector Thumbnail
+     *
+     * @param  string $type Either dashboard or look (required)
+     * @param  string $resource_id ID of the dashboard or look to render (required)
+     * @param  string $reload Whether or not to refresh the rendered image with the latest content (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function vectorThumbnailWithHttpInfo($type, $resource_id, $reload = null)
+    {
+        $returnType = 'string';
+        $request = $this->vectorThumbnailRequest($type, $resource_id, $reload);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        'string',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation vectorThumbnailAsync
+     *
+     * Get Vector Thumbnail
+     *
+     * @param  string $type Either dashboard or look (required)
+     * @param  string $resource_id ID of the dashboard or look to render (required)
+     * @param  string $reload Whether or not to refresh the rendered image with the latest content (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function vectorThumbnailAsync($type, $resource_id, $reload = null)
+    {
+        return $this->vectorThumbnailAsyncWithHttpInfo($type, $resource_id, $reload)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation vectorThumbnailAsyncWithHttpInfo
+     *
+     * Get Vector Thumbnail
+     *
+     * @param  string $type Either dashboard or look (required)
+     * @param  string $resource_id ID of the dashboard or look to render (required)
+     * @param  string $reload Whether or not to refresh the rendered image with the latest content (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function vectorThumbnailAsyncWithHttpInfo($type, $resource_id, $reload = null)
+    {
+        $returnType = 'string';
+        $request = $this->vectorThumbnailRequest($type, $resource_id, $reload);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'vectorThumbnail'
+     *
+     * @param  string $type Either dashboard or look (required)
+     * @param  string $resource_id ID of the dashboard or look to render (required)
+     * @param  string $reload Whether or not to refresh the rendered image with the latest content (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function vectorThumbnailRequest($type, $resource_id, $reload = null)
+    {
+        // verify the required parameter 'type' is set
+        if ($type === null || (is_array($type) && count($type) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $type when calling vectorThumbnail'
+            );
+        }
+        // verify the required parameter 'resource_id' is set
+        if ($resource_id === null || (is_array($resource_id) && count($resource_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $resource_id when calling vectorThumbnail'
+            );
+        }
+
+        $resourcePath = '/vector_thumbnail/{type}/{resource_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($reload !== null) {
+            $queryParams['reload'] = ObjectSerializer::toQueryValue($reload);
+        }
+
+        // path params
+        if ($type !== null) {
+            $resourcePath = str_replace(
+                '{' . 'type' . '}',
+                ObjectSerializer::toPathValue($type),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($resource_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'resource_id' . '}',
+                ObjectSerializer::toPathValue($resource_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['image/svg+xml']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['image/svg+xml'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
             $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
             $headers,
             $httpBody

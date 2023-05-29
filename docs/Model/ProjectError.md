@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **model_id** | **string** | The model associated with this error | [optional] 
 **explore** | **string** | The explore associated with this error | [optional] 
 **help_url** | **string** | A link to Looker documentation about this error | [optional] 
-**params** | **map[string,string]** | Error parameters | [optional] 
+**params** | **object** | Error parameters | [optional] 
 **sanitized_message** | **string** | A version of the error message that does not contain potentially sensitive information. Suitable for situations in which messages are stored or sent to consumers outside of Looker, such as external logs. Sanitized messages will display \&quot;(?)\&quot; where sensitive information would appear in the corresponding non-sanitized message | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

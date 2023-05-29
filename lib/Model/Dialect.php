@@ -11,12 +11,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -60,7 +60,7 @@ class Dialect implements ModelInterface, ArrayAccess
         'name' => 'string',
         'label' => 'string',
         'supports_cost_estimate' => 'bool',
-        'supports_upload_tables' => 'bool',
+        'cost_estimate_style' => 'string',
         'persistent_table_indexes' => 'string',
         'persistent_table_sortkeys' => 'string',
         'persistent_table_distkey' => 'string',
@@ -68,7 +68,9 @@ class Dialect implements ModelInterface, ArrayAccess
         'automatically_run_sql_runner_snippets' => 'bool',
         'connection_tests' => 'string[]',
         'supports_inducer' => 'bool',
-        'can' => 'map[string,bool]'
+        'supports_multiple_databases' => 'bool',
+        'supports_persistent_derived_tables' => 'bool',
+        'has_ssl_support' => 'bool'
     ];
 
     /**
@@ -80,7 +82,7 @@ class Dialect implements ModelInterface, ArrayAccess
         'name' => null,
         'label' => null,
         'supports_cost_estimate' => null,
-        'supports_upload_tables' => null,
+        'cost_estimate_style' => null,
         'persistent_table_indexes' => null,
         'persistent_table_sortkeys' => null,
         'persistent_table_distkey' => null,
@@ -88,7 +90,9 @@ class Dialect implements ModelInterface, ArrayAccess
         'automatically_run_sql_runner_snippets' => null,
         'connection_tests' => null,
         'supports_inducer' => null,
-        'can' => null
+        'supports_multiple_databases' => null,
+        'supports_persistent_derived_tables' => null,
+        'has_ssl_support' => null
     ];
 
     /**
@@ -121,7 +125,7 @@ class Dialect implements ModelInterface, ArrayAccess
         'name' => 'name',
         'label' => 'label',
         'supports_cost_estimate' => 'supports_cost_estimate',
-        'supports_upload_tables' => 'supports_upload_tables',
+        'cost_estimate_style' => 'cost_estimate_style',
         'persistent_table_indexes' => 'persistent_table_indexes',
         'persistent_table_sortkeys' => 'persistent_table_sortkeys',
         'persistent_table_distkey' => 'persistent_table_distkey',
@@ -129,7 +133,9 @@ class Dialect implements ModelInterface, ArrayAccess
         'automatically_run_sql_runner_snippets' => 'automatically_run_sql_runner_snippets',
         'connection_tests' => 'connection_tests',
         'supports_inducer' => 'supports_inducer',
-        'can' => 'can'
+        'supports_multiple_databases' => 'supports_multiple_databases',
+        'supports_persistent_derived_tables' => 'supports_persistent_derived_tables',
+        'has_ssl_support' => 'has_ssl_support'
     ];
 
     /**
@@ -141,7 +147,7 @@ class Dialect implements ModelInterface, ArrayAccess
         'name' => 'setName',
         'label' => 'setLabel',
         'supports_cost_estimate' => 'setSupportsCostEstimate',
-        'supports_upload_tables' => 'setSupportsUploadTables',
+        'cost_estimate_style' => 'setCostEstimateStyle',
         'persistent_table_indexes' => 'setPersistentTableIndexes',
         'persistent_table_sortkeys' => 'setPersistentTableSortkeys',
         'persistent_table_distkey' => 'setPersistentTableDistkey',
@@ -149,7 +155,9 @@ class Dialect implements ModelInterface, ArrayAccess
         'automatically_run_sql_runner_snippets' => 'setAutomaticallyRunSqlRunnerSnippets',
         'connection_tests' => 'setConnectionTests',
         'supports_inducer' => 'setSupportsInducer',
-        'can' => 'setCan'
+        'supports_multiple_databases' => 'setSupportsMultipleDatabases',
+        'supports_persistent_derived_tables' => 'setSupportsPersistentDerivedTables',
+        'has_ssl_support' => 'setHasSslSupport'
     ];
 
     /**
@@ -161,7 +169,7 @@ class Dialect implements ModelInterface, ArrayAccess
         'name' => 'getName',
         'label' => 'getLabel',
         'supports_cost_estimate' => 'getSupportsCostEstimate',
-        'supports_upload_tables' => 'getSupportsUploadTables',
+        'cost_estimate_style' => 'getCostEstimateStyle',
         'persistent_table_indexes' => 'getPersistentTableIndexes',
         'persistent_table_sortkeys' => 'getPersistentTableSortkeys',
         'persistent_table_distkey' => 'getPersistentTableDistkey',
@@ -169,7 +177,9 @@ class Dialect implements ModelInterface, ArrayAccess
         'automatically_run_sql_runner_snippets' => 'getAutomaticallyRunSqlRunnerSnippets',
         'connection_tests' => 'getConnectionTests',
         'supports_inducer' => 'getSupportsInducer',
-        'can' => 'getCan'
+        'supports_multiple_databases' => 'getSupportsMultipleDatabases',
+        'supports_persistent_derived_tables' => 'getSupportsPersistentDerivedTables',
+        'has_ssl_support' => 'getHasSslSupport'
     ];
 
     /**
@@ -235,7 +245,7 @@ class Dialect implements ModelInterface, ArrayAccess
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['label'] = isset($data['label']) ? $data['label'] : null;
         $this->container['supports_cost_estimate'] = isset($data['supports_cost_estimate']) ? $data['supports_cost_estimate'] : null;
-        $this->container['supports_upload_tables'] = isset($data['supports_upload_tables']) ? $data['supports_upload_tables'] : null;
+        $this->container['cost_estimate_style'] = isset($data['cost_estimate_style']) ? $data['cost_estimate_style'] : null;
         $this->container['persistent_table_indexes'] = isset($data['persistent_table_indexes']) ? $data['persistent_table_indexes'] : null;
         $this->container['persistent_table_sortkeys'] = isset($data['persistent_table_sortkeys']) ? $data['persistent_table_sortkeys'] : null;
         $this->container['persistent_table_distkey'] = isset($data['persistent_table_distkey']) ? $data['persistent_table_distkey'] : null;
@@ -243,7 +253,9 @@ class Dialect implements ModelInterface, ArrayAccess
         $this->container['automatically_run_sql_runner_snippets'] = isset($data['automatically_run_sql_runner_snippets']) ? $data['automatically_run_sql_runner_snippets'] : null;
         $this->container['connection_tests'] = isset($data['connection_tests']) ? $data['connection_tests'] : null;
         $this->container['supports_inducer'] = isset($data['supports_inducer']) ? $data['supports_inducer'] : null;
-        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
+        $this->container['supports_multiple_databases'] = isset($data['supports_multiple_databases']) ? $data['supports_multiple_databases'] : null;
+        $this->container['supports_persistent_derived_tables'] = isset($data['supports_persistent_derived_tables']) ? $data['supports_persistent_derived_tables'] : null;
+        $this->container['has_ssl_support'] = isset($data['has_ssl_support']) ? $data['has_ssl_support'] : null;
     }
 
     /**
@@ -343,25 +355,25 @@ class Dialect implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets supports_upload_tables
+     * Gets cost_estimate_style
      *
-     * @return bool
+     * @return string
      */
-    public function getSupportsUploadTables()
+    public function getCostEstimateStyle()
     {
-        return $this->container['supports_upload_tables'];
+        return $this->container['cost_estimate_style'];
     }
 
     /**
-     * Sets supports_upload_tables
+     * Sets cost_estimate_style
      *
-     * @param bool $supports_upload_tables Whether the dialect supports uploading tables
+     * @param string $cost_estimate_style How the dialect handles cost estimation
      *
      * @return $this
      */
-    public function setSupportsUploadTables($supports_upload_tables)
+    public function setCostEstimateStyle($cost_estimate_style)
     {
-        $this->container['supports_upload_tables'] = $supports_upload_tables;
+        $this->container['cost_estimate_style'] = $cost_estimate_style;
 
         return $this;
     }
@@ -535,25 +547,73 @@ class Dialect implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets can
+     * Gets supports_multiple_databases
      *
-     * @return map[string,bool]
+     * @return bool
      */
-    public function getCan()
+    public function getSupportsMultipleDatabases()
     {
-        return $this->container['can'];
+        return $this->container['supports_multiple_databases'];
     }
 
     /**
-     * Sets can
+     * Sets supports_multiple_databases
      *
-     * @param map[string,bool] $can Operations the current user is able to perform on this object
+     * @param bool $supports_multiple_databases Can multiple databases be accessed from a connection using this dialect
      *
      * @return $this
      */
-    public function setCan($can)
+    public function setSupportsMultipleDatabases($supports_multiple_databases)
     {
-        $this->container['can'] = $can;
+        $this->container['supports_multiple_databases'] = $supports_multiple_databases;
+
+        return $this;
+    }
+
+    /**
+     * Gets supports_persistent_derived_tables
+     *
+     * @return bool
+     */
+    public function getSupportsPersistentDerivedTables()
+    {
+        return $this->container['supports_persistent_derived_tables'];
+    }
+
+    /**
+     * Sets supports_persistent_derived_tables
+     *
+     * @param bool $supports_persistent_derived_tables Whether the dialect supports allowing Looker to build persistent derived tables
+     *
+     * @return $this
+     */
+    public function setSupportsPersistentDerivedTables($supports_persistent_derived_tables)
+    {
+        $this->container['supports_persistent_derived_tables'] = $supports_persistent_derived_tables;
+
+        return $this;
+    }
+
+    /**
+     * Gets has_ssl_support
+     *
+     * @return bool
+     */
+    public function getHasSslSupport()
+    {
+        return $this->container['has_ssl_support'];
+    }
+
+    /**
+     * Sets has_ssl_support
+     *
+     * @param bool $has_ssl_support Does the database have client SSL support settable through the JDBC string explicitly?
+     *
+     * @return $this
+     */
+    public function setHasSslSupport($has_ssl_support)
+    {
+        $this->container['has_ssl_support'] = $has_ssl_support;
 
         return $this;
     }

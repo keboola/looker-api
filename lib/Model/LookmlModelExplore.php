@@ -11,12 +11,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -61,8 +61,12 @@ class LookmlModelExplore implements ModelInterface, ArrayAccess
         'name' => 'string',
         'description' => 'string',
         'label' => 'string',
+        'title' => 'string',
         'scopes' => 'string[]',
         'can_total' => 'bool',
+        'can_develop' => 'bool',
+        'can_see_lookml' => 'bool',
+        'lookml_link' => 'string',
         'can_save' => 'bool',
         'can_explain' => 'bool',
         'can_pivot_in_db' => 'bool',
@@ -90,7 +94,8 @@ class LookmlModelExplore implements ModelInterface, ArrayAccess
         'fields' => '\Swagger\Client\Model\LookmlModelExploreFieldset',
         'joins' => '\Swagger\Client\Model\LookmlModelExploreJoins[]',
         'group_label' => 'string',
-        'supported_measure_types' => '\Swagger\Client\Model\LookmlModelExploreSupportedMeasureType[]'
+        'supported_measure_types' => '\Swagger\Client\Model\LookmlModelExploreSupportedMeasureType[]',
+        'always_join' => 'string[]'
     ];
 
     /**
@@ -103,8 +108,12 @@ class LookmlModelExplore implements ModelInterface, ArrayAccess
         'name' => null,
         'description' => null,
         'label' => null,
+        'title' => null,
         'scopes' => null,
         'can_total' => null,
+        'can_develop' => null,
+        'can_see_lookml' => null,
+        'lookml_link' => null,
         'can_save' => null,
         'can_explain' => null,
         'can_pivot_in_db' => null,
@@ -132,7 +141,8 @@ class LookmlModelExplore implements ModelInterface, ArrayAccess
         'fields' => null,
         'joins' => null,
         'group_label' => null,
-        'supported_measure_types' => null
+        'supported_measure_types' => null,
+        'always_join' => null
     ];
 
     /**
@@ -166,8 +176,12 @@ class LookmlModelExplore implements ModelInterface, ArrayAccess
         'name' => 'name',
         'description' => 'description',
         'label' => 'label',
+        'title' => 'title',
         'scopes' => 'scopes',
         'can_total' => 'can_total',
+        'can_develop' => 'can_develop',
+        'can_see_lookml' => 'can_see_lookml',
+        'lookml_link' => 'lookml_link',
         'can_save' => 'can_save',
         'can_explain' => 'can_explain',
         'can_pivot_in_db' => 'can_pivot_in_db',
@@ -195,7 +209,8 @@ class LookmlModelExplore implements ModelInterface, ArrayAccess
         'fields' => 'fields',
         'joins' => 'joins',
         'group_label' => 'group_label',
-        'supported_measure_types' => 'supported_measure_types'
+        'supported_measure_types' => 'supported_measure_types',
+        'always_join' => 'always_join'
     ];
 
     /**
@@ -208,8 +223,12 @@ class LookmlModelExplore implements ModelInterface, ArrayAccess
         'name' => 'setName',
         'description' => 'setDescription',
         'label' => 'setLabel',
+        'title' => 'setTitle',
         'scopes' => 'setScopes',
         'can_total' => 'setCanTotal',
+        'can_develop' => 'setCanDevelop',
+        'can_see_lookml' => 'setCanSeeLookml',
+        'lookml_link' => 'setLookmlLink',
         'can_save' => 'setCanSave',
         'can_explain' => 'setCanExplain',
         'can_pivot_in_db' => 'setCanPivotInDb',
@@ -237,7 +256,8 @@ class LookmlModelExplore implements ModelInterface, ArrayAccess
         'fields' => 'setFields',
         'joins' => 'setJoins',
         'group_label' => 'setGroupLabel',
-        'supported_measure_types' => 'setSupportedMeasureTypes'
+        'supported_measure_types' => 'setSupportedMeasureTypes',
+        'always_join' => 'setAlwaysJoin'
     ];
 
     /**
@@ -250,8 +270,12 @@ class LookmlModelExplore implements ModelInterface, ArrayAccess
         'name' => 'getName',
         'description' => 'getDescription',
         'label' => 'getLabel',
+        'title' => 'getTitle',
         'scopes' => 'getScopes',
         'can_total' => 'getCanTotal',
+        'can_develop' => 'getCanDevelop',
+        'can_see_lookml' => 'getCanSeeLookml',
+        'lookml_link' => 'getLookmlLink',
         'can_save' => 'getCanSave',
         'can_explain' => 'getCanExplain',
         'can_pivot_in_db' => 'getCanPivotInDb',
@@ -279,7 +303,8 @@ class LookmlModelExplore implements ModelInterface, ArrayAccess
         'fields' => 'getFields',
         'joins' => 'getJoins',
         'group_label' => 'getGroupLabel',
-        'supported_measure_types' => 'getSupportedMeasureTypes'
+        'supported_measure_types' => 'getSupportedMeasureTypes',
+        'always_join' => 'getAlwaysJoin'
     ];
 
     /**
@@ -346,8 +371,12 @@ class LookmlModelExplore implements ModelInterface, ArrayAccess
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['description'] = isset($data['description']) ? $data['description'] : null;
         $this->container['label'] = isset($data['label']) ? $data['label'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
         $this->container['scopes'] = isset($data['scopes']) ? $data['scopes'] : null;
         $this->container['can_total'] = isset($data['can_total']) ? $data['can_total'] : null;
+        $this->container['can_develop'] = isset($data['can_develop']) ? $data['can_develop'] : null;
+        $this->container['can_see_lookml'] = isset($data['can_see_lookml']) ? $data['can_see_lookml'] : null;
+        $this->container['lookml_link'] = isset($data['lookml_link']) ? $data['lookml_link'] : null;
         $this->container['can_save'] = isset($data['can_save']) ? $data['can_save'] : null;
         $this->container['can_explain'] = isset($data['can_explain']) ? $data['can_explain'] : null;
         $this->container['can_pivot_in_db'] = isset($data['can_pivot_in_db']) ? $data['can_pivot_in_db'] : null;
@@ -376,6 +405,7 @@ class LookmlModelExplore implements ModelInterface, ArrayAccess
         $this->container['joins'] = isset($data['joins']) ? $data['joins'] : null;
         $this->container['group_label'] = isset($data['group_label']) ? $data['group_label'] : null;
         $this->container['supported_measure_types'] = isset($data['supported_measure_types']) ? $data['supported_measure_types'] : null;
+        $this->container['always_join'] = isset($data['always_join']) ? $data['always_join'] : null;
     }
 
     /**
@@ -415,7 +445,7 @@ class LookmlModelExplore implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param string $id Fully qualified name model plus explore name
+     * @param string $id Fully qualified explore name (model name plus explore name)
      *
      * @return $this
      */
@@ -499,6 +529,30 @@ class LookmlModelExplore implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string $title Explore title
+     *
+     * @return $this
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
      * Gets scopes
      *
      * @return string[]
@@ -542,6 +596,78 @@ class LookmlModelExplore implements ModelInterface, ArrayAccess
     public function setCanTotal($can_total)
     {
         $this->container['can_total'] = $can_total;
+
+        return $this;
+    }
+
+    /**
+     * Gets can_develop
+     *
+     * @return bool
+     */
+    public function getCanDevelop()
+    {
+        return $this->container['can_develop'];
+    }
+
+    /**
+     * Sets can_develop
+     *
+     * @param bool $can_develop Can Develop LookML
+     *
+     * @return $this
+     */
+    public function setCanDevelop($can_develop)
+    {
+        $this->container['can_develop'] = $can_develop;
+
+        return $this;
+    }
+
+    /**
+     * Gets can_see_lookml
+     *
+     * @return bool
+     */
+    public function getCanSeeLookml()
+    {
+        return $this->container['can_see_lookml'];
+    }
+
+    /**
+     * Sets can_see_lookml
+     *
+     * @param bool $can_see_lookml Can See LookML
+     *
+     * @return $this
+     */
+    public function setCanSeeLookml($can_see_lookml)
+    {
+        $this->container['can_see_lookml'] = $can_see_lookml;
+
+        return $this;
+    }
+
+    /**
+     * Gets lookml_link
+     *
+     * @return string
+     */
+    public function getLookmlLink()
+    {
+        return $this->container['lookml_link'];
+    }
+
+    /**
+     * Sets lookml_link
+     *
+     * @param string $lookml_link A URL linking to the definition of this explore in the LookML IDE.
+     *
+     * @return $this
+     */
+    public function setLookmlLink($lookml_link)
+    {
+        $this->container['lookml_link'] = $lookml_link;
 
         return $this;
     }
@@ -1207,13 +1333,37 @@ class LookmlModelExplore implements ModelInterface, ArrayAccess
     /**
      * Sets supported_measure_types
      *
-     * @param \Swagger\Client\Model\LookmlModelExploreSupportedMeasureType[] $supported_measure_types An array of items describing which custom measure types are supported for creating a custom measure 'baed_on' each possible dimension type.
+     * @param \Swagger\Client\Model\LookmlModelExploreSupportedMeasureType[] $supported_measure_types An array of items describing which custom measure types are supported for creating a custom measure 'based_on' each possible dimension type.
      *
      * @return $this
      */
     public function setSupportedMeasureTypes($supported_measure_types)
     {
         $this->container['supported_measure_types'] = $supported_measure_types;
+
+        return $this;
+    }
+
+    /**
+     * Gets always_join
+     *
+     * @return string[]
+     */
+    public function getAlwaysJoin()
+    {
+        return $this->container['always_join'];
+    }
+
+    /**
+     * Sets always_join
+     *
+     * @param string[] $always_join An array of joins that will always be included in the SQL for this explore, even if the user has not selected a field from the joined view.
+     *
+     * @return $this
+     */
+    public function setAlwaysJoin($always_join)
+    {
+        $this->container['always_join'] = $always_join;
 
         return $this;
     }

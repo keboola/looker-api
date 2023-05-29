@@ -1,6 +1,6 @@
 # Swagger\Client\FolderApi
 
-All URIs are relative to *https://example.looker.com:19999/api/3.1*
+All URIs are relative to *https://example.looker.com:443/api/4.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 Get All Folders
 
-### Get information about all folders.
+### Get information about all folders.  In API 3.x, this will not return empty personal folders, unless they belong to the calling user, or if they contain soft-deleted content.  In API 4.0+, all personal folders will be returned.
 
 ### Example
 ```php
@@ -84,7 +84,7 @@ $apiInstance = new Swagger\Client\Api\FolderApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \Swagger\Client\Model\Folder(); // \Swagger\Client\Model\Folder | Folder
+$body = new \Swagger\Client\Model\CreateFolder(); // \Swagger\Client\Model\CreateFolder | Folder parameters
 
 try {
     $result = $apiInstance->createFolder($body);
@@ -99,7 +99,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\Folder**](../Model/Folder.md)| Folder | [optional]
+ **body** | [**\Swagger\Client\Model\CreateFolder**](../Model/CreateFolder.md)| Folder parameters |
 
 ### Return type
 
@@ -268,7 +268,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **folderChildren**
-> \Swagger\Client\Model\Space[] folderChildren($folder_id, $fields, $page, $per_page, $sorts)
+> \Swagger\Client\Model\Folder[] folderChildren($folder_id, $fields, $page, $per_page, $limit, $offset, $sorts)
 
 Get Folder Children
 
@@ -286,12 +286,14 @@ $apiInstance = new Swagger\Client\Api\FolderApi(
 );
 $folder_id = "folder_id_example"; // string | Id of folder
 $fields = "fields_example"; // string | Requested fields.
-$page = 789; // int | Requested page.
-$per_page = 789; // int | Results per page.
+$page = 789; // int | DEPRECATED. Use limit and offset instead. Return only page N of paginated results
+$per_page = 789; // int | DEPRECATED. Use limit and offset instead. Return N rows of data per page
+$limit = 789; // int | Number of results to return. (used with offset and takes priority over page and per_page)
+$offset = 789; // int | Number of results to skip before returning any. (used with limit and takes priority over page and per_page)
 $sorts = "sorts_example"; // string | Fields to sort by.
 
 try {
-    $result = $apiInstance->folderChildren($folder_id, $fields, $page, $per_page, $sorts);
+    $result = $apiInstance->folderChildren($folder_id, $fields, $page, $per_page, $limit, $offset, $sorts);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FolderApi->folderChildren: ', $e->getMessage(), PHP_EOL;
@@ -305,13 +307,15 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **folder_id** | **string**| Id of folder |
  **fields** | **string**| Requested fields. | [optional]
- **page** | **int**| Requested page. | [optional]
- **per_page** | **int**| Results per page. | [optional]
+ **page** | **int**| DEPRECATED. Use limit and offset instead. Return only page N of paginated results | [optional]
+ **per_page** | **int**| DEPRECATED. Use limit and offset instead. Return N rows of data per page | [optional]
+ **limit** | **int**| Number of results to return. (used with offset and takes priority over page and per_page) | [optional]
+ **offset** | **int**| Number of results to skip before returning any. (used with limit and takes priority over page and per_page) | [optional]
  **sorts** | **string**| Fields to sort by. | [optional]
 
 ### Return type
 
-[**\Swagger\Client\Model\Space[]**](../Model/Space.md)
+[**\Swagger\Client\Model\Folder[]**](../Model/Folder.md)
 
 ### Authorization
 
@@ -435,7 +439,7 @@ No authorization required
 
 Get Folder Looks
 
-### Get the looks in a folder
+### Get all looks in a folder. In API 3.x, this will return all looks in a folder, including looks in the trash. In API 4.0+, all looks in a folder will be returned, excluding looks in the trash.
 
 ### Example
 ```php
@@ -533,7 +537,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **searchFolders**
-> \Swagger\Client\Model\Folder[] searchFolders($fields, $page, $per_page, $limit, $offset, $sorts, $name, $id, $parent_id, $creator_id, $filter_or)
+> \Swagger\Client\Model\Folder[] searchFolders($fields, $page, $per_page, $limit, $offset, $sorts, $name, $id, $parent_id, $creator_id, $filter_or, $is_shared_root)
 
 Search Folders
 
@@ -550,19 +554,20 @@ $apiInstance = new Swagger\Client\Api\FolderApi(
     new GuzzleHttp\Client()
 );
 $fields = "fields_example"; // string | Requested fields.
-$page = 789; // int | Requested page.
-$per_page = 789; // int | Results per page.
+$page = 789; // int | DEPRECATED. Use limit and offset instead. Return only page N of paginated results
+$per_page = 789; // int | DEPRECATED. Use limit and offset instead. Return N rows of data per page
 $limit = 789; // int | Number of results to return. (used with offset and takes priority over page and per_page)
 $offset = 789; // int | Number of results to skip before returning any. (used with limit and takes priority over page and per_page)
 $sorts = "sorts_example"; // string | Fields to sort by.
 $name = "name_example"; // string | Match Space title.
-$id = 789; // int | Match Space id
+$id = "id_example"; // string | Match Space id
 $parent_id = "parent_id_example"; // string | Filter on a children of a particular folder.
 $creator_id = "creator_id_example"; // string | Filter on folder created by a particular user.
 $filter_or = true; // bool | Combine given search criteria in a boolean OR expression
+$is_shared_root = true; // bool | Match is shared root
 
 try {
-    $result = $apiInstance->searchFolders($fields, $page, $per_page, $limit, $offset, $sorts, $name, $id, $parent_id, $creator_id, $filter_or);
+    $result = $apiInstance->searchFolders($fields, $page, $per_page, $limit, $offset, $sorts, $name, $id, $parent_id, $creator_id, $filter_or, $is_shared_root);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FolderApi->searchFolders: ', $e->getMessage(), PHP_EOL;
@@ -575,16 +580,17 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **fields** | **string**| Requested fields. | [optional]
- **page** | **int**| Requested page. | [optional]
- **per_page** | **int**| Results per page. | [optional]
+ **page** | **int**| DEPRECATED. Use limit and offset instead. Return only page N of paginated results | [optional]
+ **per_page** | **int**| DEPRECATED. Use limit and offset instead. Return N rows of data per page | [optional]
  **limit** | **int**| Number of results to return. (used with offset and takes priority over page and per_page) | [optional]
  **offset** | **int**| Number of results to skip before returning any. (used with limit and takes priority over page and per_page) | [optional]
  **sorts** | **string**| Fields to sort by. | [optional]
  **name** | **string**| Match Space title. | [optional]
- **id** | **int**| Match Space id | [optional]
+ **id** | **string**| Match Space id | [optional]
  **parent_id** | **string**| Filter on a children of a particular folder. | [optional]
  **creator_id** | **string**| Filter on folder created by a particular user. | [optional]
  **filter_or** | **bool**| Combine given search criteria in a boolean OR expression | [optional]
+ **is_shared_root** | **bool**| Match is shared root | [optional]
 
 ### Return type
 
@@ -619,7 +625,7 @@ $apiInstance = new Swagger\Client\Api\FolderApi(
     new GuzzleHttp\Client()
 );
 $folder_id = "folder_id_example"; // string | Id of folder
-$body = new \Swagger\Client\Model\Folder(); // \Swagger\Client\Model\Folder | Folder
+$body = new \Swagger\Client\Model\UpdateFolder(); // \Swagger\Client\Model\UpdateFolder | Folder parameters
 
 try {
     $result = $apiInstance->updateFolder($folder_id, $body);
@@ -635,7 +641,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **folder_id** | **string**| Id of folder |
- **body** | [**\Swagger\Client\Model\Folder**](../Model/Folder.md)| Folder |
+ **body** | [**\Swagger\Client\Model\UpdateFolder**](../Model/UpdateFolder.md)| Folder parameters |
 
 ### Return type
 

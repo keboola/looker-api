@@ -11,12 +11,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -57,14 +57,16 @@ class Look implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'content_metadata_id' => 'int',
-        'id' => 'int',
+        'can' => 'map[string,bool]',
+        'content_metadata_id' => 'string',
+        'id' => 'string',
         'title' => 'string',
-        'content_favorite_id' => 'int',
+        'user_id' => 'string',
+        'content_favorite_id' => 'string',
         'created_at' => '\DateTime',
         'deleted' => 'bool',
         'deleted_at' => '\DateTime',
-        'deleter_id' => 'int',
+        'deleter_id' => 'string',
         'description' => 'string',
         'embed_url' => 'string',
         'excel_file_url' => 'string',
@@ -73,21 +75,18 @@ class Look implements ModelInterface, ArrayAccess
         'image_embed_url' => 'string',
         'is_run_on_load' => 'bool',
         'last_accessed_at' => '\DateTime',
-        'last_updater_id' => 'int',
+        'last_updater_id' => 'string',
         'last_viewed_at' => '\DateTime',
         'model' => '\Swagger\Client\Model\LookModel',
         'public' => 'bool',
         'public_slug' => 'string',
         'public_url' => 'string',
-        'query_id' => 'int',
+        'query_id' => 'string',
         'short_url' => 'string',
-        'space' => '\Swagger\Client\Model\SpaceBase',
-        'space_id' => 'string',
+        'folder' => '\Swagger\Client\Model\FolderBase',
+        'folder_id' => 'string',
         'updated_at' => '\DateTime',
-        'user' => '\Swagger\Client\Model\UserIdOnly',
-        'user_id' => 'int',
-        'view_count' => 'int',
-        'can' => 'map[string,bool]'
+        'view_count' => 'int'
     ];
 
     /**
@@ -96,14 +95,16 @@ class Look implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'content_metadata_id' => 'int64',
-        'id' => 'int64',
+        'can' => null,
+        'content_metadata_id' => null,
+        'id' => null,
         'title' => null,
-        'content_favorite_id' => 'int64',
+        'user_id' => null,
+        'content_favorite_id' => null,
         'created_at' => 'date-time',
         'deleted' => null,
         'deleted_at' => 'date-time',
-        'deleter_id' => 'int64',
+        'deleter_id' => null,
         'description' => null,
         'embed_url' => null,
         'excel_file_url' => null,
@@ -112,21 +113,18 @@ class Look implements ModelInterface, ArrayAccess
         'image_embed_url' => null,
         'is_run_on_load' => null,
         'last_accessed_at' => 'date-time',
-        'last_updater_id' => 'int64',
+        'last_updater_id' => null,
         'last_viewed_at' => 'date-time',
         'model' => null,
         'public' => null,
         'public_slug' => null,
         'public_url' => null,
-        'query_id' => 'int64',
+        'query_id' => null,
         'short_url' => null,
-        'space' => null,
-        'space_id' => null,
+        'folder' => null,
+        'folder_id' => null,
         'updated_at' => 'date-time',
-        'user' => null,
-        'user_id' => 'int64',
-        'view_count' => 'int64',
-        'can' => null
+        'view_count' => 'int64'
     ];
 
     /**
@@ -156,9 +154,11 @@ class Look implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'can' => 'can',
         'content_metadata_id' => 'content_metadata_id',
         'id' => 'id',
         'title' => 'title',
+        'user_id' => 'user_id',
         'content_favorite_id' => 'content_favorite_id',
         'created_at' => 'created_at',
         'deleted' => 'deleted',
@@ -180,13 +180,10 @@ class Look implements ModelInterface, ArrayAccess
         'public_url' => 'public_url',
         'query_id' => 'query_id',
         'short_url' => 'short_url',
-        'space' => 'space',
-        'space_id' => 'space_id',
+        'folder' => 'folder',
+        'folder_id' => 'folder_id',
         'updated_at' => 'updated_at',
-        'user' => 'user',
-        'user_id' => 'user_id',
-        'view_count' => 'view_count',
-        'can' => 'can'
+        'view_count' => 'view_count'
     ];
 
     /**
@@ -195,9 +192,11 @@ class Look implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'can' => 'setCan',
         'content_metadata_id' => 'setContentMetadataId',
         'id' => 'setId',
         'title' => 'setTitle',
+        'user_id' => 'setUserId',
         'content_favorite_id' => 'setContentFavoriteId',
         'created_at' => 'setCreatedAt',
         'deleted' => 'setDeleted',
@@ -219,13 +218,10 @@ class Look implements ModelInterface, ArrayAccess
         'public_url' => 'setPublicUrl',
         'query_id' => 'setQueryId',
         'short_url' => 'setShortUrl',
-        'space' => 'setSpace',
-        'space_id' => 'setSpaceId',
+        'folder' => 'setFolder',
+        'folder_id' => 'setFolderId',
         'updated_at' => 'setUpdatedAt',
-        'user' => 'setUser',
-        'user_id' => 'setUserId',
-        'view_count' => 'setViewCount',
-        'can' => 'setCan'
+        'view_count' => 'setViewCount'
     ];
 
     /**
@@ -234,9 +230,11 @@ class Look implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'can' => 'getCan',
         'content_metadata_id' => 'getContentMetadataId',
         'id' => 'getId',
         'title' => 'getTitle',
+        'user_id' => 'getUserId',
         'content_favorite_id' => 'getContentFavoriteId',
         'created_at' => 'getCreatedAt',
         'deleted' => 'getDeleted',
@@ -258,13 +256,10 @@ class Look implements ModelInterface, ArrayAccess
         'public_url' => 'getPublicUrl',
         'query_id' => 'getQueryId',
         'short_url' => 'getShortUrl',
-        'space' => 'getSpace',
-        'space_id' => 'getSpaceId',
+        'folder' => 'getFolder',
+        'folder_id' => 'getFolderId',
         'updated_at' => 'getUpdatedAt',
-        'user' => 'getUser',
-        'user_id' => 'getUserId',
-        'view_count' => 'getViewCount',
-        'can' => 'getCan'
+        'view_count' => 'getViewCount'
     ];
 
     /**
@@ -327,9 +322,11 @@ class Look implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
         $this->container['content_metadata_id'] = isset($data['content_metadata_id']) ? $data['content_metadata_id'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
+        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
         $this->container['content_favorite_id'] = isset($data['content_favorite_id']) ? $data['content_favorite_id'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
         $this->container['deleted'] = isset($data['deleted']) ? $data['deleted'] : null;
@@ -351,13 +348,10 @@ class Look implements ModelInterface, ArrayAccess
         $this->container['public_url'] = isset($data['public_url']) ? $data['public_url'] : null;
         $this->container['query_id'] = isset($data['query_id']) ? $data['query_id'] : null;
         $this->container['short_url'] = isset($data['short_url']) ? $data['short_url'] : null;
-        $this->container['space'] = isset($data['space']) ? $data['space'] : null;
-        $this->container['space_id'] = isset($data['space_id']) ? $data['space_id'] : null;
+        $this->container['folder'] = isset($data['folder']) ? $data['folder'] : null;
+        $this->container['folder_id'] = isset($data['folder_id']) ? $data['folder_id'] : null;
         $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
-        $this->container['user'] = isset($data['user']) ? $data['user'] : null;
-        $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
         $this->container['view_count'] = isset($data['view_count']) ? $data['view_count'] : null;
-        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
     }
 
     /**
@@ -385,9 +379,33 @@ class Look implements ModelInterface, ArrayAccess
 
 
     /**
+     * Gets can
+     *
+     * @return map[string,bool]
+     */
+    public function getCan()
+    {
+        return $this->container['can'];
+    }
+
+    /**
+     * Sets can
+     *
+     * @param map[string,bool] $can Operations the current user is able to perform on this object
+     *
+     * @return $this
+     */
+    public function setCan($can)
+    {
+        $this->container['can'] = $can;
+
+        return $this;
+    }
+
+    /**
      * Gets content_metadata_id
      *
-     * @return int
+     * @return string
      */
     public function getContentMetadataId()
     {
@@ -397,7 +415,7 @@ class Look implements ModelInterface, ArrayAccess
     /**
      * Sets content_metadata_id
      *
-     * @param int $content_metadata_id Id of content metadata
+     * @param string $content_metadata_id Id of content metadata
      *
      * @return $this
      */
@@ -411,7 +429,7 @@ class Look implements ModelInterface, ArrayAccess
     /**
      * Gets id
      *
-     * @return int
+     * @return string
      */
     public function getId()
     {
@@ -421,7 +439,7 @@ class Look implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id Unique Id
+     * @param string $id Unique Id
      *
      * @return $this
      */
@@ -457,9 +475,33 @@ class Look implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets user_id
+     *
+     * @return string
+     */
+    public function getUserId()
+    {
+        return $this->container['user_id'];
+    }
+
+    /**
+     * Sets user_id
+     *
+     * @param string $user_id User Id
+     *
+     * @return $this
+     */
+    public function setUserId($user_id)
+    {
+        $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
      * Gets content_favorite_id
      *
-     * @return int
+     * @return string
      */
     public function getContentFavoriteId()
     {
@@ -469,7 +511,7 @@ class Look implements ModelInterface, ArrayAccess
     /**
      * Sets content_favorite_id
      *
-     * @param int $content_favorite_id Content Favorite Id
+     * @param string $content_favorite_id Content Favorite Id
      *
      * @return $this
      */
@@ -555,7 +597,7 @@ class Look implements ModelInterface, ArrayAccess
     /**
      * Gets deleter_id
      *
-     * @return int
+     * @return string
      */
     public function getDeleterId()
     {
@@ -565,7 +607,7 @@ class Look implements ModelInterface, ArrayAccess
     /**
      * Sets deleter_id
      *
-     * @param int $deleter_id Id of User that deleted the look.
+     * @param string $deleter_id Id of User that deleted the look.
      *
      * @return $this
      */
@@ -771,7 +813,7 @@ class Look implements ModelInterface, ArrayAccess
     /**
      * Gets last_updater_id
      *
-     * @return int
+     * @return string
      */
     public function getLastUpdaterId()
     {
@@ -781,7 +823,7 @@ class Look implements ModelInterface, ArrayAccess
     /**
      * Sets last_updater_id
      *
-     * @param int $last_updater_id Id of User that last updated the look.
+     * @param string $last_updater_id Id of User that last updated the look.
      *
      * @return $this
      */
@@ -915,7 +957,7 @@ class Look implements ModelInterface, ArrayAccess
     /**
      * Gets query_id
      *
-     * @return int
+     * @return string
      */
     public function getQueryId()
     {
@@ -925,7 +967,7 @@ class Look implements ModelInterface, ArrayAccess
     /**
      * Sets query_id
      *
-     * @param int $query_id Query Id
+     * @param string $query_id Query Id
      *
      * @return $this
      */
@@ -961,49 +1003,49 @@ class Look implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets space
+     * Gets folder
      *
-     * @return \Swagger\Client\Model\SpaceBase
+     * @return \Swagger\Client\Model\FolderBase
      */
-    public function getSpace()
+    public function getFolder()
     {
-        return $this->container['space'];
+        return $this->container['folder'];
     }
 
     /**
-     * Sets space
+     * Sets folder
      *
-     * @param \Swagger\Client\Model\SpaceBase $space Space of this Look
+     * @param \Swagger\Client\Model\FolderBase $folder Folder of this Look
      *
      * @return $this
      */
-    public function setSpace($space)
+    public function setFolder($folder)
     {
-        $this->container['space'] = $space;
+        $this->container['folder'] = $folder;
 
         return $this;
     }
 
     /**
-     * Gets space_id
+     * Gets folder_id
      *
      * @return string
      */
-    public function getSpaceId()
+    public function getFolderId()
     {
-        return $this->container['space_id'];
+        return $this->container['folder_id'];
     }
 
     /**
-     * Sets space_id
+     * Sets folder_id
      *
-     * @param string $space_id Space Id
+     * @param string $folder_id Folder Id
      *
      * @return $this
      */
-    public function setSpaceId($space_id)
+    public function setFolderId($folder_id)
     {
-        $this->container['space_id'] = $space_id;
+        $this->container['folder_id'] = $folder_id;
 
         return $this;
     }
@@ -1033,54 +1075,6 @@ class Look implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets user
-     *
-     * @return \Swagger\Client\Model\UserIdOnly
-     */
-    public function getUser()
-    {
-        return $this->container['user'];
-    }
-
-    /**
-     * Sets user
-     *
-     * @param \Swagger\Client\Model\UserIdOnly $user User
-     *
-     * @return $this
-     */
-    public function setUser($user)
-    {
-        $this->container['user'] = $user;
-
-        return $this;
-    }
-
-    /**
-     * Gets user_id
-     *
-     * @return int
-     */
-    public function getUserId()
-    {
-        return $this->container['user_id'];
-    }
-
-    /**
-     * Sets user_id
-     *
-     * @param int $user_id User Id
-     *
-     * @return $this
-     */
-    public function setUserId($user_id)
-    {
-        $this->container['user_id'] = $user_id;
-
-        return $this;
-    }
-
-    /**
      * Gets view_count
      *
      * @return int
@@ -1100,30 +1094,6 @@ class Look implements ModelInterface, ArrayAccess
     public function setViewCount($view_count)
     {
         $this->container['view_count'] = $view_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets can
-     *
-     * @return map[string,bool]
-     */
-    public function getCan()
-    {
-        return $this->container['can'];
-    }
-
-    /**
-     * Sets can
-     *
-     * @param map[string,bool] $can Operations the current user is able to perform on this object
-     *
-     * @return $this
-     */
-    public function setCan($can)
-    {
-        $this->container['can'] = $can;
 
         return $this;
     }

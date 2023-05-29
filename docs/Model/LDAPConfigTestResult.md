@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **trace** | **string** | A more detailed trace of incremental results during auth tests | [optional] 
 **user** | [**\Swagger\Client\Model\LDAPUser**](LDAPUser.md) | User details from LDAP server for auth tests | [optional] 
 **url** | **string** | Link to ldap config | [optional] 
-**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

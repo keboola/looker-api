@@ -11,12 +11,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -57,13 +57,14 @@ class OIDCConfig implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
+        'can' => 'map[string,bool]',
         'alternate_email_login_allowed' => 'bool',
         'audience' => 'string',
         'auth_requires_role' => 'bool',
         'authorization_endpoint' => 'string',
-        'default_new_user_group_ids' => 'int[]',
+        'default_new_user_group_ids' => 'string[]',
         'default_new_user_groups' => '\Swagger\Client\Model\Group[]',
-        'default_new_user_role_ids' => 'int[]',
+        'default_new_user_role_ids' => 'string[]',
         'default_new_user_roles' => '\Swagger\Client\Model\Role[]',
         'enabled' => 'bool',
         'groups' => '\Swagger\Client\Model\OIDCGroupRead[]',
@@ -72,7 +73,7 @@ class OIDCConfig implements ModelInterface, ArrayAccess
         'identifier' => 'string',
         'issuer' => 'string',
         'modified_at' => '\DateTime',
-        'modified_by' => 'int',
+        'modified_by' => 'string',
         'new_user_migration_types' => 'string',
         'scopes' => 'string[]',
         'secret' => 'string',
@@ -85,8 +86,10 @@ class OIDCConfig implements ModelInterface, ArrayAccess
         'user_attributes' => '\Swagger\Client\Model\OIDCUserAttributeRead[]',
         'user_attributes_with_ids' => '\Swagger\Client\Model\OIDCUserAttributeWrite[]',
         'userinfo_endpoint' => 'string',
-        'url' => 'string',
-        'can' => 'map[string,bool]'
+        'allow_normal_group_membership' => 'bool',
+        'allow_roles_from_normal_groups' => 'bool',
+        'allow_direct_roles' => 'bool',
+        'url' => 'string'
     ];
 
     /**
@@ -95,13 +98,14 @@ class OIDCConfig implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
+        'can' => null,
         'alternate_email_login_allowed' => null,
         'audience' => null,
         'auth_requires_role' => null,
-        'authorization_endpoint' => 'uri',
-        'default_new_user_group_ids' => 'int64',
+        'authorization_endpoint' => 'uri-reference',
+        'default_new_user_group_ids' => null,
         'default_new_user_groups' => null,
-        'default_new_user_role_ids' => 'int64',
+        'default_new_user_role_ids' => null,
         'default_new_user_roles' => null,
         'enabled' => null,
         'groups' => null,
@@ -110,7 +114,7 @@ class OIDCConfig implements ModelInterface, ArrayAccess
         'identifier' => null,
         'issuer' => null,
         'modified_at' => 'date-time',
-        'modified_by' => 'int64',
+        'modified_by' => null,
         'new_user_migration_types' => null,
         'scopes' => null,
         'secret' => null,
@@ -122,9 +126,11 @@ class OIDCConfig implements ModelInterface, ArrayAccess
         'user_attribute_map_last_name' => null,
         'user_attributes' => null,
         'user_attributes_with_ids' => null,
-        'userinfo_endpoint' => 'uri',
-        'url' => 'uri',
-        'can' => null
+        'userinfo_endpoint' => 'uri-reference',
+        'allow_normal_group_membership' => null,
+        'allow_roles_from_normal_groups' => null,
+        'allow_direct_roles' => null,
+        'url' => 'uri-reference'
     ];
 
     /**
@@ -154,6 +160,7 @@ class OIDCConfig implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'can' => 'can',
         'alternate_email_login_allowed' => 'alternate_email_login_allowed',
         'audience' => 'audience',
         'auth_requires_role' => 'auth_requires_role',
@@ -182,8 +189,10 @@ class OIDCConfig implements ModelInterface, ArrayAccess
         'user_attributes' => 'user_attributes',
         'user_attributes_with_ids' => 'user_attributes_with_ids',
         'userinfo_endpoint' => 'userinfo_endpoint',
-        'url' => 'url',
-        'can' => 'can'
+        'allow_normal_group_membership' => 'allow_normal_group_membership',
+        'allow_roles_from_normal_groups' => 'allow_roles_from_normal_groups',
+        'allow_direct_roles' => 'allow_direct_roles',
+        'url' => 'url'
     ];
 
     /**
@@ -192,6 +201,7 @@ class OIDCConfig implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'can' => 'setCan',
         'alternate_email_login_allowed' => 'setAlternateEmailLoginAllowed',
         'audience' => 'setAudience',
         'auth_requires_role' => 'setAuthRequiresRole',
@@ -220,8 +230,10 @@ class OIDCConfig implements ModelInterface, ArrayAccess
         'user_attributes' => 'setUserAttributes',
         'user_attributes_with_ids' => 'setUserAttributesWithIds',
         'userinfo_endpoint' => 'setUserinfoEndpoint',
-        'url' => 'setUrl',
-        'can' => 'setCan'
+        'allow_normal_group_membership' => 'setAllowNormalGroupMembership',
+        'allow_roles_from_normal_groups' => 'setAllowRolesFromNormalGroups',
+        'allow_direct_roles' => 'setAllowDirectRoles',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -230,6 +242,7 @@ class OIDCConfig implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'can' => 'getCan',
         'alternate_email_login_allowed' => 'getAlternateEmailLoginAllowed',
         'audience' => 'getAudience',
         'auth_requires_role' => 'getAuthRequiresRole',
@@ -258,8 +271,10 @@ class OIDCConfig implements ModelInterface, ArrayAccess
         'user_attributes' => 'getUserAttributes',
         'user_attributes_with_ids' => 'getUserAttributesWithIds',
         'userinfo_endpoint' => 'getUserinfoEndpoint',
-        'url' => 'getUrl',
-        'can' => 'getCan'
+        'allow_normal_group_membership' => 'getAllowNormalGroupMembership',
+        'allow_roles_from_normal_groups' => 'getAllowRolesFromNormalGroups',
+        'allow_direct_roles' => 'getAllowDirectRoles',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -322,6 +337,7 @@ class OIDCConfig implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
         $this->container['alternate_email_login_allowed'] = isset($data['alternate_email_login_allowed']) ? $data['alternate_email_login_allowed'] : null;
         $this->container['audience'] = isset($data['audience']) ? $data['audience'] : null;
         $this->container['auth_requires_role'] = isset($data['auth_requires_role']) ? $data['auth_requires_role'] : null;
@@ -350,8 +366,10 @@ class OIDCConfig implements ModelInterface, ArrayAccess
         $this->container['user_attributes'] = isset($data['user_attributes']) ? $data['user_attributes'] : null;
         $this->container['user_attributes_with_ids'] = isset($data['user_attributes_with_ids']) ? $data['user_attributes_with_ids'] : null;
         $this->container['userinfo_endpoint'] = isset($data['userinfo_endpoint']) ? $data['userinfo_endpoint'] : null;
+        $this->container['allow_normal_group_membership'] = isset($data['allow_normal_group_membership']) ? $data['allow_normal_group_membership'] : null;
+        $this->container['allow_roles_from_normal_groups'] = isset($data['allow_roles_from_normal_groups']) ? $data['allow_roles_from_normal_groups'] : null;
+        $this->container['allow_direct_roles'] = isset($data['allow_direct_roles']) ? $data['allow_direct_roles'] : null;
         $this->container['url'] = isset($data['url']) ? $data['url'] : null;
-        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
     }
 
     /**
@@ -377,6 +395,30 @@ class OIDCConfig implements ModelInterface, ArrayAccess
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets can
+     *
+     * @return map[string,bool]
+     */
+    public function getCan()
+    {
+        return $this->container['can'];
+    }
+
+    /**
+     * Sets can
+     *
+     * @param map[string,bool] $can Operations the current user is able to perform on this object
+     *
+     * @return $this
+     */
+    public function setCan($can)
+    {
+        $this->container['can'] = $can;
+
+        return $this;
+    }
 
     /**
      * Gets alternate_email_login_allowed
@@ -477,7 +519,7 @@ class OIDCConfig implements ModelInterface, ArrayAccess
     /**
      * Gets default_new_user_group_ids
      *
-     * @return int[]
+     * @return string[]
      */
     public function getDefaultNewUserGroupIds()
     {
@@ -487,7 +529,7 @@ class OIDCConfig implements ModelInterface, ArrayAccess
     /**
      * Sets default_new_user_group_ids
      *
-     * @param int[] $default_new_user_group_ids (Write-Only) Array of ids of groups that will be applied to new users the first time they login via OIDC
+     * @param string[] $default_new_user_group_ids (Write-Only) Array of ids of groups that will be applied to new users the first time they login via OIDC
      *
      * @return $this
      */
@@ -525,7 +567,7 @@ class OIDCConfig implements ModelInterface, ArrayAccess
     /**
      * Gets default_new_user_role_ids
      *
-     * @return int[]
+     * @return string[]
      */
     public function getDefaultNewUserRoleIds()
     {
@@ -535,7 +577,7 @@ class OIDCConfig implements ModelInterface, ArrayAccess
     /**
      * Sets default_new_user_role_ids
      *
-     * @param int[] $default_new_user_role_ids (Write-Only) Array of ids of roles that will be applied to new users the first time they login via OIDC
+     * @param string[] $default_new_user_role_ids (Write-Only) Array of ids of roles that will be applied to new users the first time they login via OIDC
      *
      * @return $this
      */
@@ -741,7 +783,7 @@ class OIDCConfig implements ModelInterface, ArrayAccess
     /**
      * Gets modified_by
      *
-     * @return int
+     * @return string
      */
     public function getModifiedBy()
     {
@@ -751,7 +793,7 @@ class OIDCConfig implements ModelInterface, ArrayAccess
     /**
      * Sets modified_by
      *
-     * @param int $modified_by User id of user who last modified this config
+     * @param string $modified_by User id of user who last modified this config
      *
      * @return $this
      */
@@ -1051,6 +1093,78 @@ class OIDCConfig implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets allow_normal_group_membership
+     *
+     * @return bool
+     */
+    public function getAllowNormalGroupMembership()
+    {
+        return $this->container['allow_normal_group_membership'];
+    }
+
+    /**
+     * Sets allow_normal_group_membership
+     *
+     * @param bool $allow_normal_group_membership Allow OIDC auth'd users to be members of non-reflected Looker groups. If 'false', user will be removed from non-reflected groups on login.
+     *
+     * @return $this
+     */
+    public function setAllowNormalGroupMembership($allow_normal_group_membership)
+    {
+        $this->container['allow_normal_group_membership'] = $allow_normal_group_membership;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_roles_from_normal_groups
+     *
+     * @return bool
+     */
+    public function getAllowRolesFromNormalGroups()
+    {
+        return $this->container['allow_roles_from_normal_groups'];
+    }
+
+    /**
+     * Sets allow_roles_from_normal_groups
+     *
+     * @param bool $allow_roles_from_normal_groups OIDC auth'd users will inherit roles from non-reflected Looker groups.
+     *
+     * @return $this
+     */
+    public function setAllowRolesFromNormalGroups($allow_roles_from_normal_groups)
+    {
+        $this->container['allow_roles_from_normal_groups'] = $allow_roles_from_normal_groups;
+
+        return $this;
+    }
+
+    /**
+     * Gets allow_direct_roles
+     *
+     * @return bool
+     */
+    public function getAllowDirectRoles()
+    {
+        return $this->container['allow_direct_roles'];
+    }
+
+    /**
+     * Sets allow_direct_roles
+     *
+     * @param bool $allow_direct_roles Allows roles to be directly assigned to OIDC auth'd users.
+     *
+     * @return $this
+     */
+    public function setAllowDirectRoles($allow_direct_roles)
+    {
+        $this->container['allow_direct_roles'] = $allow_direct_roles;
+
+        return $this;
+    }
+
+    /**
      * Gets url
      *
      * @return string
@@ -1070,30 +1184,6 @@ class OIDCConfig implements ModelInterface, ArrayAccess
     public function setUrl($url)
     {
         $this->container['url'] = $url;
-
-        return $this;
-    }
-
-    /**
-     * Gets can
-     *
-     * @return map[string,bool]
-     */
-    public function getCan()
-    {
-        return $this->container['can'];
-    }
-
-    /**
-     * Sets can
-     *
-     * @param map[string,bool] $can Operations the current user is able to perform on this object
-     *
-     * @return $this
-     */
-    public function setCan($can)
-    {
-        $this->container['can'] = $can;
 
         return $this;
     }

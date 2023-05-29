@@ -3,7 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **int** | Unique Id | [optional] 
+**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
+**id** | **string** | Unique Id | [optional] 
 **user** | [**\Swagger\Client\Model\UserPublic**](UserPublic.md) | User who initiated the query | [optional] 
 **query** | [**\Swagger\Client\Model\Query**](Query.md) | Query that was run | [optional] 
 **sql_query** | [**\Swagger\Client\Model\SqlQuery**](SqlQuery.md) | SQL Query that was run | [optional] 
@@ -23,7 +24,6 @@ Name | Type | Description | Notes
 **status** | **string** | Status description | [optional] 
 **runtime** | **double** | Number of seconds elapsed running the Query | [optional] 
 **sql** | **string** | SQL text of the query as run | [optional] 
-**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

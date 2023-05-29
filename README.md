@@ -1,31 +1,31 @@
 # SwaggerClient-php
+API 4.0 is the current release of the Looker API. API 3.1 is deprecated. 
 ### Authorization 
-The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization) 
-### Client SDKs 
-The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks) 
-### Try It Out! 
-The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses. 
-Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations. 
-### Versioning 
-Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning) 
-### In This Release 
-This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release. 
-The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release. 
-### Examples of new things added in API 3.1 (compared to API 3.0): 
-* [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config) 
-### Deprecated in API 3.0 
-The following functions and properties have been deprecated in API 3.0. 
-They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1: 
-* Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead. 
-### Semantic changes in API 3.1: 
-* [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group. 
- If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page. 
+API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests. 
+For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization). 
+ ### API Explorer 
+The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs. 
+For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer). 
+ ### Looker Language SDKs 
+The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed. 
+For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks). 
+ ### API Versioning 
+Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. 
+For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning). 
+ ### In This Release 
+API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1. 
+One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more. 
+See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0. 
+The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0. 
+ ### API and SDK Support Policies 
+Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
 
 This PHP package is automatically generated by the [Swagger Codegen](https://github.com/swagger-api/swagger-codegen) project:
 
-- API version: 3.1.0
+- API version: 4.0.23.6
 - Build package: io.swagger.codegen.languages.PhpClientCodegen
-For more information, please visit [https://looker.com](https://looker.com)
+For more information, please visit [https://help.looker.com](https://help.looker.com)
 
 ## Requirements
 
@@ -77,19 +77,19 @@ Please follow the [installation procedure](#installation--usage) and then run th
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
 
-$apiInstance = new Swagger\Client\Api\ApiAuthApi(
+$apiInstance = new Swagger\Client\Api\AlertApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$client_id = "client_id_example"; // string | client_id part of API3 Key.
-$client_secret = "client_secret_example"; // string | client_secret part of API3 Key.
+$limit = 789; // int | (Optional) Number of results to return (used with `offset`).
+$offset = 789; // int | (Optional) Number of results to skip before returning any (used with `limit`).
 
 try {
-    $result = $apiInstance->login($client_id, $client_secret);
+    $result = $apiInstance->alertNotifications($limit, $offset);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ApiAuthApi->login: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AlertApi->alertNotifications: ', $e->getMessage(), PHP_EOL;
 }
 
 ?>
@@ -97,39 +97,98 @@ try {
 
 ## Documentation for API Endpoints
 
-All URIs are relative to *https://example.looker.com:19999/api/3.1*
+All URIs are relative to *https://example.looker.com:443/api/4.0*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AlertApi* | [**alertNotifications**](docs/Api/AlertApi.md#alertnotifications) | **GET** /alert_notifications | Alert Notifications
+*AlertApi* | [**createAlert**](docs/Api/AlertApi.md#createalert) | **POST** /alerts | Create an alert
+*AlertApi* | [**deleteAlert**](docs/Api/AlertApi.md#deletealert) | **DELETE** /alerts/{alert_id} | Delete an alert
+*AlertApi* | [**enqueueAlert**](docs/Api/AlertApi.md#enqueuealert) | **POST** /alerts/{alert_id}/enqueue | Enqueue an alert
+*AlertApi* | [**followAlert**](docs/Api/AlertApi.md#followalert) | **POST** /alerts/{alert_id}/follow | Follow an alert
+*AlertApi* | [**getAlert**](docs/Api/AlertApi.md#getalert) | **GET** /alerts/{alert_id} | Get an alert
+*AlertApi* | [**readAlertNotification**](docs/Api/AlertApi.md#readalertnotification) | **PATCH** /alert_notifications/{alert_notification_id} | Read a Notification
+*AlertApi* | [**searchAlerts**](docs/Api/AlertApi.md#searchalerts) | **GET** /alerts/search | Search Alerts
+*AlertApi* | [**unfollowAlert**](docs/Api/AlertApi.md#unfollowalert) | **DELETE** /alerts/{alert_id}/follow | Unfollow an alert
+*AlertApi* | [**updateAlert**](docs/Api/AlertApi.md#updatealert) | **PUT** /alerts/{alert_id} | Update an alert
+*AlertApi* | [**updateAlertField**](docs/Api/AlertApi.md#updatealertfield) | **PATCH** /alerts/{alert_id} | Update select fields on an alert
 *ApiAuthApi* | [**login**](docs/Api/ApiAuthApi.md#login) | **POST** /login | Login
 *ApiAuthApi* | [**loginUser**](docs/Api/ApiAuthApi.md#loginuser) | **POST** /login/{user_id} | Login user
 *ApiAuthApi* | [**logout**](docs/Api/ApiAuthApi.md#logout) | **DELETE** /logout | Logout
+*ArtifactApi* | [**artifact**](docs/Api/ArtifactApi.md#artifact) | **GET** /artifact/{namespace} | Get one or more artifacts
+*ArtifactApi* | [**artifactNamespaces**](docs/Api/ArtifactApi.md#artifactnamespaces) | **GET** /artifact/namespaces | Get namespaces and counts
+*ArtifactApi* | [**artifactUsage**](docs/Api/ArtifactApi.md#artifactusage) | **GET** /artifact/usage | Artifact store usage
+*ArtifactApi* | [**artifactValue**](docs/Api/ArtifactApi.md#artifactvalue) | **GET** /artifact/{namespace}/value | Get an artifact value
+*ArtifactApi* | [**deleteArtifact**](docs/Api/ArtifactApi.md#deleteartifact) | **DELETE** /artifact/{namespace} | Delete one or more artifacts
+*ArtifactApi* | [**purgeArtifacts**](docs/Api/ArtifactApi.md#purgeartifacts) | **DELETE** /artifact/{namespace}/purge | Purge artifacts
+*ArtifactApi* | [**searchArtifacts**](docs/Api/ArtifactApi.md#searchartifacts) | **GET** /artifact/{namespace}/search | Search artifacts
+*ArtifactApi* | [**updateArtifacts**](docs/Api/ArtifactApi.md#updateartifacts) | **PUT** /artifacts/{namespace} | Create or update artifacts
+*AuthApi* | [**acquireEmbedCookielessSession**](docs/Api/AuthApi.md#acquireembedcookielesssession) | **POST** /embed/cookieless_session/acquire | Create Acquire cookieless embed session
+*AuthApi* | [**activateAppUser**](docs/Api/AuthApi.md#activateappuser) | **POST** /oauth_client_apps/{client_guid}/users/{user_id} | Activate OAuth App User
+*AuthApi* | [**addSupportAccessAllowlistEntries**](docs/Api/AuthApi.md#addsupportaccessallowlistentries) | **POST** /support_access/allowlist | Add Support Access Allowlist Users
+*AuthApi* | [**allOauthClientApps**](docs/Api/AuthApi.md#alloauthclientapps) | **GET** /oauth_client_apps | Get All OAuth Client Apps
 *AuthApi* | [**allUserLoginLockouts**](docs/Api/AuthApi.md#alluserloginlockouts) | **GET** /user_login_lockouts | Get All User Login Lockouts
+*AuthApi* | [**createEmbedSecret**](docs/Api/AuthApi.md#createembedsecret) | **POST** /embed_config/secrets | Create Embed Secret
+*AuthApi* | [**createEmbedUrlAsMe**](docs/Api/AuthApi.md#createembedurlasme) | **POST** /embed/token_url/me | Create Embed URL
 *AuthApi* | [**createOidcTestConfig**](docs/Api/AuthApi.md#createoidctestconfig) | **POST** /oidc_test_configs | Create OIDC Test Configuration
 *AuthApi* | [**createSamlTestConfig**](docs/Api/AuthApi.md#createsamltestconfig) | **POST** /saml_test_configs | Create SAML Test Configuration
+*AuthApi* | [**createSsoEmbedUrl**](docs/Api/AuthApi.md#createssoembedurl) | **POST** /embed/sso_url | Create SSO Embed Url
+*AuthApi* | [**deactivateAppUser**](docs/Api/AuthApi.md#deactivateappuser) | **DELETE** /oauth_client_apps/{client_guid}/users/{user_id} | Deactivate OAuth App User
+*AuthApi* | [**deleteEmbedCookielessSession**](docs/Api/AuthApi.md#deleteembedcookielesssession) | **DELETE** /embed/cookieless_session/{session_reference_token} | Delete cookieless embed session
+*AuthApi* | [**deleteEmbedSecret**](docs/Api/AuthApi.md#deleteembedsecret) | **DELETE** /embed_config/secrets/{embed_secret_id} | Delete Embed Secret
+*AuthApi* | [**deleteOauthClientApp**](docs/Api/AuthApi.md#deleteoauthclientapp) | **DELETE** /oauth_client_apps/{client_guid} | Delete OAuth Client App
 *AuthApi* | [**deleteOidcTestConfig**](docs/Api/AuthApi.md#deleteoidctestconfig) | **DELETE** /oidc_test_configs/{test_slug} | Delete OIDC Test Configuration
 *AuthApi* | [**deleteSamlTestConfig**](docs/Api/AuthApi.md#deletesamltestconfig) | **DELETE** /saml_test_configs/{test_slug} | Delete SAML Test Configuration
+*AuthApi* | [**deleteSupportAccessAllowlistEntry**](docs/Api/AuthApi.md#deletesupportaccessallowlistentry) | **DELETE** /support_access/allowlist/{entry_id} | Delete Support Access Allowlist Entry
 *AuthApi* | [**deleteUserLoginLockout**](docs/Api/AuthApi.md#deleteuserloginlockout) | **DELETE** /user_login_lockout/{key} | Delete User Login Lockout
+*AuthApi* | [**deregisterMobileDevice**](docs/Api/AuthApi.md#deregistermobiledevice) | **DELETE** /mobile/device/{device_id} | Deregister Mobile Device
+*AuthApi* | [**disableSupportAccess**](docs/Api/AuthApi.md#disablesupportaccess) | **PUT** /support_access/disable | Disable Support Access
+*AuthApi* | [**enableSupportAccess**](docs/Api/AuthApi.md#enablesupportaccess) | **PUT** /support_access/enable | Enable Support Access
 *AuthApi* | [**fetchAndParseSamlIdpMetadata**](docs/Api/AuthApi.md#fetchandparsesamlidpmetadata) | **POST** /fetch_and_parse_saml_idp_metadata | Parse SAML IdP Url
 *AuthApi* | [**forcePasswordResetAtNextLoginForAllUsers**](docs/Api/AuthApi.md#forcepasswordresetatnextloginforallusers) | **PUT** /password_config/force_password_reset_at_next_login_for_all_users | Force password reset
+*AuthApi* | [**generateTokensForCookielessSession**](docs/Api/AuthApi.md#generatetokensforcookielesssession) | **PUT** /embed/cookieless_session/generate_tokens | Generate tokens for cookieless embed session
+*AuthApi* | [**getSupportAccessAllowlistEntries**](docs/Api/AuthApi.md#getsupportaccessallowlistentries) | **GET** /support_access/allowlist | Get Support Access Allowlist Users
+*AuthApi* | [**invalidateTokens**](docs/Api/AuthApi.md#invalidatetokens) | **DELETE** /oauth_client_apps/{client_guid}/tokens | Invalidate Tokens
 *AuthApi* | [**ldapConfig**](docs/Api/AuthApi.md#ldapconfig) | **GET** /ldap_config | Get LDAP Configuration
+*AuthApi* | [**oauthClientApp**](docs/Api/AuthApi.md#oauthclientapp) | **GET** /oauth_client_apps/{client_guid} | Get OAuth Client App
 *AuthApi* | [**oidcConfig**](docs/Api/AuthApi.md#oidcconfig) | **GET** /oidc_config | Get OIDC Configuration
 *AuthApi* | [**oidcTestConfig**](docs/Api/AuthApi.md#oidctestconfig) | **GET** /oidc_test_configs/{test_slug} | Get OIDC Test Configuration
 *AuthApi* | [**parseSamlIdpMetadata**](docs/Api/AuthApi.md#parsesamlidpmetadata) | **POST** /parse_saml_idp_metadata | Parse SAML IdP XML
 *AuthApi* | [**passwordConfig**](docs/Api/AuthApi.md#passwordconfig) | **GET** /password_config | Get Password Config
+*AuthApi* | [**registerMobileDevice**](docs/Api/AuthApi.md#registermobiledevice) | **POST** /mobile/device | Register Mobile Device
+*AuthApi* | [**registerOauthClientApp**](docs/Api/AuthApi.md#registeroauthclientapp) | **POST** /oauth_client_apps/{client_guid} | Register OAuth App
 *AuthApi* | [**samlConfig**](docs/Api/AuthApi.md#samlconfig) | **GET** /saml_config | Get SAML Configuration
 *AuthApi* | [**samlTestConfig**](docs/Api/AuthApi.md#samltestconfig) | **GET** /saml_test_configs/{test_slug} | Get SAML Test Configuration
 *AuthApi* | [**searchUserLoginLockouts**](docs/Api/AuthApi.md#searchuserloginlockouts) | **GET** /user_login_lockouts/search | Search User Login Lockouts
 *AuthApi* | [**sessionConfig**](docs/Api/AuthApi.md#sessionconfig) | **GET** /session_config | Get Session Config
+*AuthApi* | [**supportAccessStatus**](docs/Api/AuthApi.md#supportaccessstatus) | **GET** /support_access/status | Support Access Status
 *AuthApi* | [**testLdapConfigAuth**](docs/Api/AuthApi.md#testldapconfigauth) | **PUT** /ldap_config/test_auth | Test LDAP Auth
 *AuthApi* | [**testLdapConfigConnection**](docs/Api/AuthApi.md#testldapconfigconnection) | **PUT** /ldap_config/test_connection | Test LDAP Connection
 *AuthApi* | [**testLdapConfigUserAuth**](docs/Api/AuthApi.md#testldapconfiguserauth) | **PUT** /ldap_config/test_user_auth | Test LDAP User Auth
 *AuthApi* | [**testLdapConfigUserInfo**](docs/Api/AuthApi.md#testldapconfiguserinfo) | **PUT** /ldap_config/test_user_info | Test LDAP User Info
 *AuthApi* | [**updateLdapConfig**](docs/Api/AuthApi.md#updateldapconfig) | **PATCH** /ldap_config | Update LDAP Configuration
+*AuthApi* | [**updateMobileDeviceRegistration**](docs/Api/AuthApi.md#updatemobiledeviceregistration) | **PATCH** /mobile/device/{device_id} | Update Mobile Device Registration
+*AuthApi* | [**updateOauthClientApp**](docs/Api/AuthApi.md#updateoauthclientapp) | **PATCH** /oauth_client_apps/{client_guid} | Update OAuth App
 *AuthApi* | [**updateOidcConfig**](docs/Api/AuthApi.md#updateoidcconfig) | **PATCH** /oidc_config | Update OIDC Configuration
 *AuthApi* | [**updatePasswordConfig**](docs/Api/AuthApi.md#updatepasswordconfig) | **PATCH** /password_config | Update Password Config
 *AuthApi* | [**updateSamlConfig**](docs/Api/AuthApi.md#updatesamlconfig) | **PATCH** /saml_config | Update SAML Configuration
 *AuthApi* | [**updateSessionConfig**](docs/Api/AuthApi.md#updatesessionconfig) | **PATCH** /session_config | Update Session Config
+*BoardApi* | [**allBoardItems**](docs/Api/BoardApi.md#allboarditems) | **GET** /board_items | Get All Board Items
+*BoardApi* | [**allBoardSections**](docs/Api/BoardApi.md#allboardsections) | **GET** /board_sections | Get All Board sections
+*BoardApi* | [**allBoards**](docs/Api/BoardApi.md#allboards) | **GET** /boards | Get All Boards
+*BoardApi* | [**board**](docs/Api/BoardApi.md#board) | **GET** /boards/{board_id} | Get Board
+*BoardApi* | [**boardItem**](docs/Api/BoardApi.md#boarditem) | **GET** /board_items/{board_item_id} | Get Board Item
+*BoardApi* | [**boardSection**](docs/Api/BoardApi.md#boardsection) | **GET** /board_sections/{board_section_id} | Get Board section
+*BoardApi* | [**createBoard**](docs/Api/BoardApi.md#createboard) | **POST** /boards | Create Board
+*BoardApi* | [**createBoardItem**](docs/Api/BoardApi.md#createboarditem) | **POST** /board_items | Create Board Item
+*BoardApi* | [**createBoardSection**](docs/Api/BoardApi.md#createboardsection) | **POST** /board_sections | Create Board section
+*BoardApi* | [**deleteBoard**](docs/Api/BoardApi.md#deleteboard) | **DELETE** /boards/{board_id} | Delete Board
+*BoardApi* | [**deleteBoardItem**](docs/Api/BoardApi.md#deleteboarditem) | **DELETE** /board_items/{board_item_id} | Delete Board Item
+*BoardApi* | [**deleteBoardSection**](docs/Api/BoardApi.md#deleteboardsection) | **DELETE** /board_sections/{board_section_id} | Delete Board section
+*BoardApi* | [**searchBoards**](docs/Api/BoardApi.md#searchboards) | **GET** /boards/search | Search Boards
+*BoardApi* | [**updateBoard**](docs/Api/BoardApi.md#updateboard) | **PATCH** /boards/{board_id} | Update Board
+*BoardApi* | [**updateBoardItem**](docs/Api/BoardApi.md#updateboarditem) | **PATCH** /board_items/{board_item_id} | Update Board Item
+*BoardApi* | [**updateBoardSection**](docs/Api/BoardApi.md#updateboardsection) | **PATCH** /board_sections/{board_section_id} | Update Board section
 *ColorCollectionApi* | [**allColorCollections**](docs/Api/ColorCollectionApi.md#allcolorcollections) | **GET** /color_collections | Get all Color Collections
 *ColorCollectionApi* | [**colorCollection**](docs/Api/ColorCollectionApi.md#colorcollection) | **GET** /color_collections/{collection_id} | Get Color Collection by ID
 *ColorCollectionApi* | [**colorCollectionsCustom**](docs/Api/ColorCollectionApi.md#colorcollectionscustom) | **GET** /color_collections/custom | Get all Custom Color Collections
@@ -142,11 +201,24 @@ Class | Method | HTTP request | Description
 *ConfigApi* | [**allLegacyFeatures**](docs/Api/ConfigApi.md#alllegacyfeatures) | **GET** /legacy_features | Get All Legacy Features
 *ConfigApi* | [**allLocales**](docs/Api/ConfigApi.md#alllocales) | **GET** /locales | Get All Locales
 *ConfigApi* | [**allTimezones**](docs/Api/ConfigApi.md#alltimezones) | **GET** /timezones | Get All Timezones
-*ConfigApi* | [**backupConfiguration**](docs/Api/ConfigApi.md#backupconfiguration) | **GET** /backup_configuration | Get Backup Configuration
+*ConfigApi* | [**apiSpec**](docs/Api/ConfigApi.md#apispec) | **GET** /api_spec/{api_version}/{specification} | Get an API specification
+*ConfigApi* | [**cloudStorageConfiguration**](docs/Api/ConfigApi.md#cloudstorageconfiguration) | **GET** /cloud_storage | Get Cloud Storage
+*ConfigApi* | [**createDigestEmailSend**](docs/Api/ConfigApi.md#createdigestemailsend) | **POST** /digest_email_send | Deliver digest email contents
+*ConfigApi* | [**customWelcomeEmail**](docs/Api/ConfigApi.md#customwelcomeemail) | **GET** /custom_welcome_email | Get Custom Welcome Email
+*ConfigApi* | [**digestEmailsEnabled**](docs/Api/ConfigApi.md#digestemailsenabled) | **GET** /digest_emails_enabled | Get Digest_emails
+*ConfigApi* | [**getSetting**](docs/Api/ConfigApi.md#getsetting) | **GET** /setting | Get Setting
 *ConfigApi* | [**internalHelpResources**](docs/Api/ConfigApi.md#internalhelpresources) | **GET** /internal_help_resources_enabled | Get Internal Help Resources
 *ConfigApi* | [**internalHelpResourcesContent**](docs/Api/ConfigApi.md#internalhelpresourcescontent) | **GET** /internal_help_resources_content | Get Internal Help Resources Content
 *ConfigApi* | [**legacyFeature**](docs/Api/ConfigApi.md#legacyfeature) | **GET** /legacy_features/{legacy_feature_id} | Get Legacy Feature
-*ConfigApi* | [**updateBackupConfiguration**](docs/Api/ConfigApi.md#updatebackupconfiguration) | **PATCH** /backup_configuration | Update Backup Configuration
+*ConfigApi* | [**mobileSettings**](docs/Api/ConfigApi.md#mobilesettings) | **GET** /mobile/settings | Get Mobile_Settings
+*ConfigApi* | [**publicEgressIpAddresses**](docs/Api/ConfigApi.md#publicegressipaddresses) | **GET** /public_egress_ip_addresses | Public Egress IP Addresses
+*ConfigApi* | [**setSetting**](docs/Api/ConfigApi.md#setsetting) | **PATCH** /setting | Set Setting
+*ConfigApi* | [**setSmtpSettings**](docs/Api/ConfigApi.md#setsmtpsettings) | **POST** /smtp_settings | Set SMTP Setting
+*ConfigApi* | [**smtpStatus**](docs/Api/ConfigApi.md#smtpstatus) | **GET** /smtp_status | Get SMTP Status
+*ConfigApi* | [**updateCloudStorageConfiguration**](docs/Api/ConfigApi.md#updatecloudstorageconfiguration) | **PATCH** /cloud_storage | Update Cloud Storage
+*ConfigApi* | [**updateCustomWelcomeEmail**](docs/Api/ConfigApi.md#updatecustomwelcomeemail) | **PATCH** /custom_welcome_email | Update Custom Welcome Email Content
+*ConfigApi* | [**updateCustomWelcomeEmailTest**](docs/Api/ConfigApi.md#updatecustomwelcomeemailtest) | **PUT** /custom_welcome_email_test | Send a test welcome email to the currently logged in user with the supplied content
+*ConfigApi* | [**updateDigestEmailsEnabled**](docs/Api/ConfigApi.md#updatedigestemailsenabled) | **PATCH** /digest_emails_enabled | Update Digest_emails
 *ConfigApi* | [**updateInternalHelpResources**](docs/Api/ConfigApi.md#updateinternalhelpresources) | **PATCH** /internal_help_resources | Update internal help resources configuration
 *ConfigApi* | [**updateInternalHelpResourcesContent**](docs/Api/ConfigApi.md#updateinternalhelpresourcescontent) | **PATCH** /internal_help_resources_content | Update internal help resources content
 *ConfigApi* | [**updateLegacyFeature**](docs/Api/ConfigApi.md#updatelegacyfeature) | **PATCH** /legacy_features/{legacy_feature_id} | Update Legacy Feature
@@ -155,32 +227,54 @@ Class | Method | HTTP request | Description
 *ConfigApi* | [**whitelabelConfiguration**](docs/Api/ConfigApi.md#whitelabelconfiguration) | **GET** /whitelabel_configuration | Get Whitelabel configuration
 *ConnectionApi* | [**allConnections**](docs/Api/ConnectionApi.md#allconnections) | **GET** /connections | Get All Connections
 *ConnectionApi* | [**allDialectInfos**](docs/Api/ConnectionApi.md#alldialectinfos) | **GET** /dialect_info | Get All Dialect Infos
+*ConnectionApi* | [**allExternalOauthApplications**](docs/Api/ConnectionApi.md#allexternaloauthapplications) | **GET** /external_oauth_applications | Get All External OAuth Applications
+*ConnectionApi* | [**allSshServers**](docs/Api/ConnectionApi.md#allsshservers) | **GET** /ssh_servers | Get All SSH Servers
+*ConnectionApi* | [**allSshTunnels**](docs/Api/ConnectionApi.md#allsshtunnels) | **GET** /ssh_tunnels | Get All SSH Tunnels
 *ConnectionApi* | [**connection**](docs/Api/ConnectionApi.md#connection) | **GET** /connections/{connection_name} | Get Connection
 *ConnectionApi* | [**createConnection**](docs/Api/ConnectionApi.md#createconnection) | **POST** /connections | Create Connection
+*ConnectionApi* | [**createExternalOauthApplication**](docs/Api/ConnectionApi.md#createexternaloauthapplication) | **POST** /external_oauth_applications | Create External OAuth Application
+*ConnectionApi* | [**createOauthApplicationUserState**](docs/Api/ConnectionApi.md#createoauthapplicationuserstate) | **POST** /external_oauth_applications/user_state | Create Create OAuth user state.
+*ConnectionApi* | [**createSshServer**](docs/Api/ConnectionApi.md#createsshserver) | **POST** /ssh_servers | Create SSH Server
+*ConnectionApi* | [**createSshTunnel**](docs/Api/ConnectionApi.md#createsshtunnel) | **POST** /ssh_tunnels | Create SSH Tunnel
 *ConnectionApi* | [**deleteConnection**](docs/Api/ConnectionApi.md#deleteconnection) | **DELETE** /connections/{connection_name} | Delete Connection
 *ConnectionApi* | [**deleteConnectionOverride**](docs/Api/ConnectionApi.md#deleteconnectionoverride) | **DELETE** /connections/{connection_name}/connection_override/{override_context} | Delete Connection Override
+*ConnectionApi* | [**deleteSshServer**](docs/Api/ConnectionApi.md#deletesshserver) | **DELETE** /ssh_server/{ssh_server_id} | Delete SSH Server
+*ConnectionApi* | [**deleteSshTunnel**](docs/Api/ConnectionApi.md#deletesshtunnel) | **DELETE** /ssh_tunnel/{ssh_tunnel_id} | Delete SSH Tunnel
+*ConnectionApi* | [**sshPublicKey**](docs/Api/ConnectionApi.md#sshpublickey) | **GET** /ssh_public_key | Get SSH Public Key
+*ConnectionApi* | [**sshServer**](docs/Api/ConnectionApi.md#sshserver) | **GET** /ssh_server/{ssh_server_id} | Get SSH Server
+*ConnectionApi* | [**sshTunnel**](docs/Api/ConnectionApi.md#sshtunnel) | **GET** /ssh_tunnel/{ssh_tunnel_id} | Get SSH Tunnel
 *ConnectionApi* | [**testConnection**](docs/Api/ConnectionApi.md#testconnection) | **PUT** /connections/{connection_name}/test | Test Connection
 *ConnectionApi* | [**testConnectionConfig**](docs/Api/ConnectionApi.md#testconnectionconfig) | **PUT** /connections/test | Test Connection Configuration
+*ConnectionApi* | [**testSshServer**](docs/Api/ConnectionApi.md#testsshserver) | **GET** /ssh_server/{ssh_server_id}/test | Test SSH Server
+*ConnectionApi* | [**testSshTunnel**](docs/Api/ConnectionApi.md#testsshtunnel) | **GET** /ssh_tunnel/{ssh_tunnel_id}/test | Test SSH Tunnel
 *ConnectionApi* | [**updateConnection**](docs/Api/ConnectionApi.md#updateconnection) | **PATCH** /connections/{connection_name} | Update Connection
+*ConnectionApi* | [**updateSshServer**](docs/Api/ConnectionApi.md#updatesshserver) | **PATCH** /ssh_server/{ssh_server_id} | Update SSH Server
+*ConnectionApi* | [**updateSshTunnel**](docs/Api/ConnectionApi.md#updatesshtunnel) | **PATCH** /ssh_tunnel/{ssh_tunnel_id} | Update SSH Tunnel
 *ContentApi* | [**allContentMetadataAccesses**](docs/Api/ContentApi.md#allcontentmetadataaccesses) | **GET** /content_metadata_access | Get All Content Metadata Accesses
 *ContentApi* | [**allContentMetadatas**](docs/Api/ContentApi.md#allcontentmetadatas) | **GET** /content_metadata | Get All Content Metadatas
 *ContentApi* | [**contentFavorite**](docs/Api/ContentApi.md#contentfavorite) | **GET** /content_favorite/{content_favorite_id} | Get Favorite Content
 *ContentApi* | [**contentMetadata**](docs/Api/ContentApi.md#contentmetadata) | **GET** /content_metadata/{content_metadata_id} | Get Content Metadata
+*ContentApi* | [**contentThumbnail**](docs/Api/ContentApi.md#contentthumbnail) | **GET** /content_thumbnail/{type}/{resource_id} | Get Content Thumbnail
 *ContentApi* | [**contentValidation**](docs/Api/ContentApi.md#contentvalidation) | **GET** /content_validation | Validate Content
 *ContentApi* | [**createContentFavorite**](docs/Api/ContentApi.md#createcontentfavorite) | **POST** /content_favorite | Create Favorite Content
 *ContentApi* | [**createContentMetadataAccess**](docs/Api/ContentApi.md#createcontentmetadataaccess) | **POST** /content_metadata_access | Create Content Metadata Access
 *ContentApi* | [**deleteContentFavorite**](docs/Api/ContentApi.md#deletecontentfavorite) | **DELETE** /content_favorite/{content_favorite_id} | Delete Favorite Content
 *ContentApi* | [**deleteContentMetadataAccess**](docs/Api/ContentApi.md#deletecontentmetadataaccess) | **DELETE** /content_metadata_access/{content_metadata_access_id} | Delete Content Metadata Access
+*ContentApi* | [**searchContent**](docs/Api/ContentApi.md#searchcontent) | **GET** /content/{terms} | Search Content
 *ContentApi* | [**searchContentFavorites**](docs/Api/ContentApi.md#searchcontentfavorites) | **GET** /content_favorite/search | Search Favorite Contents
 *ContentApi* | [**searchContentViews**](docs/Api/ContentApi.md#searchcontentviews) | **GET** /content_view/search | Search Content Views
 *ContentApi* | [**updateContentMetadata**](docs/Api/ContentApi.md#updatecontentmetadata) | **PATCH** /content_metadata/{content_metadata_id} | Update Content Metadata
 *ContentApi* | [**updateContentMetadataAccess**](docs/Api/ContentApi.md#updatecontentmetadataaccess) | **PUT** /content_metadata_access/{content_metadata_access_id} | Update Content Metadata Access
+*ContentApi* | [**vectorThumbnail**](docs/Api/ContentApi.md#vectorthumbnail) | **GET** /vector_thumbnail/{type}/{resource_id} | Get Vector Thumbnail
 *DashboardApi* | [**allDashboards**](docs/Api/DashboardApi.md#alldashboards) | **GET** /dashboards | Get All Dashboards
+*DashboardApi* | [**copyDashboard**](docs/Api/DashboardApi.md#copydashboard) | **POST** /dashboards/{dashboard_id}/copy | Copy Dashboard
 *DashboardApi* | [**createDashboard**](docs/Api/DashboardApi.md#createdashboard) | **POST** /dashboards | Create Dashboard
 *DashboardApi* | [**createDashboardElement**](docs/Api/DashboardApi.md#createdashboardelement) | **POST** /dashboard_elements | Create DashboardElement
 *DashboardApi* | [**createDashboardFilter**](docs/Api/DashboardApi.md#createdashboardfilter) | **POST** /dashboard_filters | Create Dashboard Filter
+*DashboardApi* | [**createDashboardFromLookml**](docs/Api/DashboardApi.md#createdashboardfromlookml) | **POST** /dashboards/from_lookml | Create Dashboard from LookML
 *DashboardApi* | [**createDashboardLayout**](docs/Api/DashboardApi.md#createdashboardlayout) | **POST** /dashboard_layouts | Create DashboardLayout
 *DashboardApi* | [**dashboard**](docs/Api/DashboardApi.md#dashboard) | **GET** /dashboards/{dashboard_id} | Get Dashboard
+*DashboardApi* | [**dashboardAggregateTableLookml**](docs/Api/DashboardApi.md#dashboardaggregatetablelookml) | **GET** /dashboards/aggregate_table_lookml/{dashboard_id} | Get Aggregate Table LookML for a dashboard
 *DashboardApi* | [**dashboardDashboardElements**](docs/Api/DashboardApi.md#dashboarddashboardelements) | **GET** /dashboards/{dashboard_id}/dashboard_elements | Get All DashboardElements
 *DashboardApi* | [**dashboardDashboardFilters**](docs/Api/DashboardApi.md#dashboarddashboardfilters) | **GET** /dashboards/{dashboard_id}/dashboard_filters | Get All Dashboard Filters
 *DashboardApi* | [**dashboardDashboardLayouts**](docs/Api/DashboardApi.md#dashboarddashboardlayouts) | **GET** /dashboards/{dashboard_id}/dashboard_layouts | Get All DashboardLayouts
@@ -189,11 +283,14 @@ Class | Method | HTTP request | Description
 *DashboardApi* | [**dashboardLayout**](docs/Api/DashboardApi.md#dashboardlayout) | **GET** /dashboard_layouts/{dashboard_layout_id} | Get DashboardLayout
 *DashboardApi* | [**dashboardLayoutComponent**](docs/Api/DashboardApi.md#dashboardlayoutcomponent) | **GET** /dashboard_layout_components/{dashboard_layout_component_id} | Get DashboardLayoutComponent
 *DashboardApi* | [**dashboardLayoutDashboardLayoutComponents**](docs/Api/DashboardApi.md#dashboardlayoutdashboardlayoutcomponents) | **GET** /dashboard_layouts/{dashboard_layout_id}/dashboard_layout_components | Get All DashboardLayoutComponents
+*DashboardApi* | [**dashboardLookml**](docs/Api/DashboardApi.md#dashboardlookml) | **GET** /dashboards/lookml/{dashboard_id} | Get lookml of a UDD
 *DashboardApi* | [**deleteDashboard**](docs/Api/DashboardApi.md#deletedashboard) | **DELETE** /dashboards/{dashboard_id} | Delete Dashboard
 *DashboardApi* | [**deleteDashboardElement**](docs/Api/DashboardApi.md#deletedashboardelement) | **DELETE** /dashboard_elements/{dashboard_element_id} | Delete DashboardElement
 *DashboardApi* | [**deleteDashboardFilter**](docs/Api/DashboardApi.md#deletedashboardfilter) | **DELETE** /dashboard_filters/{dashboard_filter_id} | Delete Dashboard Filter
 *DashboardApi* | [**deleteDashboardLayout**](docs/Api/DashboardApi.md#deletedashboardlayout) | **DELETE** /dashboard_layouts/{dashboard_layout_id} | Delete DashboardLayout
+*DashboardApi* | [**importDashboardFromLookml**](docs/Api/DashboardApi.md#importdashboardfromlookml) | **POST** /dashboards/lookml | Import Dashboard from LookML
 *DashboardApi* | [**importLookmlDashboard**](docs/Api/DashboardApi.md#importlookmldashboard) | **POST** /dashboards/{lookml_dashboard_id}/import/{space_id} | Import LookML Dashboard
+*DashboardApi* | [**moveDashboard**](docs/Api/DashboardApi.md#movedashboard) | **PATCH** /dashboards/{dashboard_id}/move | Move Dashboard
 *DashboardApi* | [**searchDashboardElements**](docs/Api/DashboardApi.md#searchdashboardelements) | **GET** /dashboard_elements/search | Search Dashboard Elements
 *DashboardApi* | [**searchDashboards**](docs/Api/DashboardApi.md#searchdashboards) | **GET** /dashboards/search | Search Dashboards
 *DashboardApi* | [**syncLookmlDashboard**](docs/Api/DashboardApi.md#synclookmldashboard) | **PATCH** /dashboards/{lookml_dashboard_id}/sync | Sync LookML Dashboard
@@ -207,6 +304,11 @@ Class | Method | HTTP request | Description
 *DatagroupApi* | [**allDatagroups**](docs/Api/DatagroupApi.md#alldatagroups) | **GET** /datagroups | Get All Datagroups
 *DatagroupApi* | [**datagroup**](docs/Api/DatagroupApi.md#datagroup) | **GET** /datagroups/{datagroup_id} | Get Datagroup
 *DatagroupApi* | [**updateDatagroup**](docs/Api/DatagroupApi.md#updatedatagroup) | **PATCH** /datagroups/{datagroup_id} | Update Datagroup
+*DerivedTableApi* | [**checkPdtBuild**](docs/Api/DerivedTableApi.md#checkpdtbuild) | **GET** /derived_table/{materialization_id}/status | Check status of a PDT materialization
+*DerivedTableApi* | [**graphDerivedTablesForModel**](docs/Api/DerivedTableApi.md#graphderivedtablesformodel) | **GET** /derived_table/graph/model/{model} | Get Derived Table graph for model
+*DerivedTableApi* | [**graphDerivedTablesForView**](docs/Api/DerivedTableApi.md#graphderivedtablesforview) | **GET** /derived_table/graph/view/{view} | Get subgraph of derived table and dependencies
+*DerivedTableApi* | [**startPdtBuild**](docs/Api/DerivedTableApi.md#startpdtbuild) | **GET** /derived_table/{model_name}/{view_name}/start | Start a PDT materialization
+*DerivedTableApi* | [**stopPdtBuild**](docs/Api/DerivedTableApi.md#stoppdtbuild) | **GET** /derived_table/{materialization_id}/stop | Stop a PDT materialization
 *FolderApi* | [**allFolders**](docs/Api/FolderApi.md#allfolders) | **GET** /folders | Get All Folders
 *FolderApi* | [**createFolder**](docs/Api/FolderApi.md#createfolder) | **POST** /folders | Create Folder
 *FolderApi* | [**deleteFolder**](docs/Api/FolderApi.md#deletefolder) | **DELETE** /folders/{folder_id} | Delete Folder
@@ -230,24 +332,12 @@ Class | Method | HTTP request | Description
 *GroupApi* | [**deleteGroupUser**](docs/Api/GroupApi.md#deletegroupuser) | **DELETE** /groups/{group_id}/users/{user_id} | Remove a User from Group
 *GroupApi* | [**deleteUserAttributeGroupValue**](docs/Api/GroupApi.md#deleteuserattributegroupvalue) | **DELETE** /groups/{group_id}/attribute_values/{user_attribute_id} | Delete User Attribute Group Value
 *GroupApi* | [**group**](docs/Api/GroupApi.md#group) | **GET** /groups/{group_id} | Get Group
+*GroupApi* | [**searchGroups**](docs/Api/GroupApi.md#searchgroups) | **GET** /groups/search | Search Groups
+*GroupApi* | [**searchGroupsWithHierarchy**](docs/Api/GroupApi.md#searchgroupswithhierarchy) | **GET** /groups/search/with_hierarchy | Search Groups with Hierarchy
+*GroupApi* | [**searchGroupsWithRoles**](docs/Api/GroupApi.md#searchgroupswithroles) | **GET** /groups/search/with_roles | Search Groups with Roles
 *GroupApi* | [**updateGroup**](docs/Api/GroupApi.md#updategroup) | **PATCH** /groups/{group_id} | Update Group
 *GroupApi* | [**updateUserAttributeGroupValue**](docs/Api/GroupApi.md#updateuserattributegroupvalue) | **PATCH** /groups/{group_id}/attribute_values/{user_attribute_id} | Set User Attribute Group Value
-*HomepageApi* | [**allHomepageItems**](docs/Api/HomepageApi.md#allhomepageitems) | **GET** /homepage_items | Get All Homepage Items
-*HomepageApi* | [**allHomepageSections**](docs/Api/HomepageApi.md#allhomepagesections) | **GET** /homepage_sections | Get All Homepage sections
-*HomepageApi* | [**allHomepages**](docs/Api/HomepageApi.md#allhomepages) | **GET** /homepages | Get All Homepages
-*HomepageApi* | [**createHomepage**](docs/Api/HomepageApi.md#createhomepage) | **POST** /homepages | Create Homepage
-*HomepageApi* | [**createHomepageItem**](docs/Api/HomepageApi.md#createhomepageitem) | **POST** /homepage_items | Create Homepage Item
-*HomepageApi* | [**createHomepageSection**](docs/Api/HomepageApi.md#createhomepagesection) | **POST** /homepage_sections | Create Homepage section
-*HomepageApi* | [**deleteHomepage**](docs/Api/HomepageApi.md#deletehomepage) | **DELETE** /homepages/{homepage_id} | Delete Homepage
-*HomepageApi* | [**deleteHomepageItem**](docs/Api/HomepageApi.md#deletehomepageitem) | **DELETE** /homepage_items/{homepage_item_id} | Delete Homepage Item
-*HomepageApi* | [**deleteHomepageSection**](docs/Api/HomepageApi.md#deletehomepagesection) | **DELETE** /homepage_sections/{homepage_section_id} | Delete Homepage section
-*HomepageApi* | [**homepage**](docs/Api/HomepageApi.md#homepage) | **GET** /homepages/{homepage_id} | Get Homepage
-*HomepageApi* | [**homepageItem**](docs/Api/HomepageApi.md#homepageitem) | **GET** /homepage_items/{homepage_item_id} | Get Homepage Item
-*HomepageApi* | [**homepageSection**](docs/Api/HomepageApi.md#homepagesection) | **GET** /homepage_sections/{homepage_section_id} | Get Homepage section
-*HomepageApi* | [**searchHomepages**](docs/Api/HomepageApi.md#searchhomepages) | **GET** /homepages/search | Search Homepages
-*HomepageApi* | [**updateHomepage**](docs/Api/HomepageApi.md#updatehomepage) | **PATCH** /homepages/{homepage_id} | Update Homepage
-*HomepageApi* | [**updateHomepageItem**](docs/Api/HomepageApi.md#updatehomepageitem) | **PATCH** /homepage_items/{homepage_item_id} | Update Homepage Item
-*HomepageApi* | [**updateHomepageSection**](docs/Api/HomepageApi.md#updatehomepagesection) | **PATCH** /homepage_sections/{homepage_section_id} | Update Homepage section
+*HomepageApi* | [**allPrimaryHomepageSections**](docs/Api/HomepageApi.md#allprimaryhomepagesections) | **GET** /primary_homepage_sections | Get All Primary homepage sections
 *IntegrationApi* | [**acceptIntegrationHubLegalAgreement**](docs/Api/IntegrationApi.md#acceptintegrationhublegalagreement) | **POST** /integration_hubs/{integration_hub_id}/accept_legal_agreement | Accept Integration Hub Legal Agreement
 *IntegrationApi* | [**allIntegrationHubs**](docs/Api/IntegrationApi.md#allintegrationhubs) | **GET** /integration_hubs | Get All Integration Hubs
 *IntegrationApi* | [**allIntegrations**](docs/Api/IntegrationApi.md#allintegrations) | **GET** /integrations | Get All Integrations
@@ -260,9 +350,11 @@ Class | Method | HTTP request | Description
 *IntegrationApi* | [**updateIntegration**](docs/Api/IntegrationApi.md#updateintegration) | **PATCH** /integrations/{integration_id} | Update Integration
 *IntegrationApi* | [**updateIntegrationHub**](docs/Api/IntegrationApi.md#updateintegrationhub) | **PATCH** /integration_hubs/{integration_hub_id} | Update Integration Hub
 *LookApi* | [**allLooks**](docs/Api/LookApi.md#alllooks) | **GET** /looks | Get All Looks
+*LookApi* | [**copyLook**](docs/Api/LookApi.md#copylook) | **POST** /looks/{look_id}/copy | Copy Look
 *LookApi* | [**createLook**](docs/Api/LookApi.md#createlook) | **POST** /looks | Create Look
 *LookApi* | [**deleteLook**](docs/Api/LookApi.md#deletelook) | **DELETE** /looks/{look_id} | Delete Look
 *LookApi* | [**look**](docs/Api/LookApi.md#look) | **GET** /looks/{look_id} | Get Look
+*LookApi* | [**moveLook**](docs/Api/LookApi.md#movelook) | **PATCH** /looks/{look_id}/move | Move Look
 *LookApi* | [**runLook**](docs/Api/LookApi.md#runlook) | **GET** /looks/{look_id}/run/{result_format} | Run Look
 *LookApi* | [**searchLooks**](docs/Api/LookApi.md#searchlooks) | **GET** /looks/search | Search Looks
 *LookApi* | [**updateLook**](docs/Api/LookApi.md#updatelook) | **PATCH** /looks/{look_id} | Update Look
@@ -272,6 +364,15 @@ Class | Method | HTTP request | Description
 *LookmlModelApi* | [**lookmlModel**](docs/Api/LookmlModelApi.md#lookmlmodel) | **GET** /lookml_models/{lookml_model_name} | Get LookML Model
 *LookmlModelApi* | [**lookmlModelExplore**](docs/Api/LookmlModelApi.md#lookmlmodelexplore) | **GET** /lookml_models/{lookml_model_name}/explores/{explore_name} | Get LookML Model Explore
 *LookmlModelApi* | [**updateLookmlModel**](docs/Api/LookmlModelApi.md#updatelookmlmodel) | **PATCH** /lookml_models/{lookml_model_name} | Update LookML Model
+*MetadataApi* | [**connectionColumns**](docs/Api/MetadataApi.md#connectioncolumns) | **GET** /connections/{connection_name}/columns | Get columns for a connection
+*MetadataApi* | [**connectionCostEstimate**](docs/Api/MetadataApi.md#connectioncostestimate) | **POST** /connections/{connection_name}/cost_estimate | Estimate costs for a connection
+*MetadataApi* | [**connectionDatabases**](docs/Api/MetadataApi.md#connectiondatabases) | **GET** /connections/{connection_name}/databases | List accessible databases to this connection
+*MetadataApi* | [**connectionFeatures**](docs/Api/MetadataApi.md#connectionfeatures) | **GET** /connections/{connection_name}/features | Metadata features supported by this connection
+*MetadataApi* | [**connectionSchemas**](docs/Api/MetadataApi.md#connectionschemas) | **GET** /connections/{connection_name}/schemas | Get schemas for a connection
+*MetadataApi* | [**connectionSearchColumns**](docs/Api/MetadataApi.md#connectionsearchcolumns) | **GET** /connections/{connection_name}/search_columns | Search a connection for columns
+*MetadataApi* | [**connectionTables**](docs/Api/MetadataApi.md#connectiontables) | **GET** /connections/{connection_name}/tables | Get tables for a connection
+*MetadataApi* | [**getModel**](docs/Api/MetadataApi.md#getmodel) | **GET** /models/{model_name} | Get a single model
+*MetadataApi* | [**modelFieldnameSuggestions**](docs/Api/MetadataApi.md#modelfieldnamesuggestions) | **GET** /models/{model_name}/views/{view_name}/fields/{field_name}/suggestions | Model field name suggestions
 *ProjectApi* | [**allGitBranches**](docs/Api/ProjectApi.md#allgitbranches) | **GET** /projects/{project_id}/git_branches | Get All Git Branches
 *ProjectApi* | [**allGitConnectionTests**](docs/Api/ProjectApi.md#allgitconnectiontests) | **GET** /projects/{project_id}/git_connection_tests | Get All Git Connection Tests
 *ProjectApi* | [**allLookmlTests**](docs/Api/ProjectApi.md#alllookmltests) | **GET** /projects/{project_id}/lookml_tests | Get All LookML Tests
@@ -282,11 +383,13 @@ Class | Method | HTTP request | Description
 *ProjectApi* | [**createProject**](docs/Api/ProjectApi.md#createproject) | **POST** /projects | Create Project
 *ProjectApi* | [**deleteGitBranch**](docs/Api/ProjectApi.md#deletegitbranch) | **DELETE** /projects/{project_id}/git_branch/{branch_name} | Delete a Git Branch
 *ProjectApi* | [**deleteRepositoryCredential**](docs/Api/ProjectApi.md#deleterepositorycredential) | **DELETE** /projects/{root_project_id}/credential/{credential_id} | Delete Repository Credential
+*ProjectApi* | [**deployRefToProduction**](docs/Api/ProjectApi.md#deployreftoproduction) | **POST** /projects/{project_id}/deploy_ref_to_production | Deploy Remote Branch or Ref to Production
 *ProjectApi* | [**deployToProduction**](docs/Api/ProjectApi.md#deploytoproduction) | **POST** /projects/{project_id}/deploy_to_production | Deploy To Production
 *ProjectApi* | [**findGitBranch**](docs/Api/ProjectApi.md#findgitbranch) | **GET** /projects/{project_id}/git_branch/{branch_name} | Find a Git Branch
 *ProjectApi* | [**getAllRepositoryCredentials**](docs/Api/ProjectApi.md#getallrepositorycredentials) | **GET** /projects/{root_project_id}/credentials | Get All Repository Credentials
 *ProjectApi* | [**gitBranch**](docs/Api/ProjectApi.md#gitbranch) | **GET** /projects/{project_id}/git_branch | Get Active Git Branch
 *ProjectApi* | [**gitDeployKey**](docs/Api/ProjectApi.md#gitdeploykey) | **GET** /projects/{project_id}/git/deploy_key | Git Deploy Key
+*ProjectApi* | [**lockAll**](docs/Api/ProjectApi.md#lockall) | **POST** /projects/{project_id}/manifest/lock_all | Lock All
 *ProjectApi* | [**manifest**](docs/Api/ProjectApi.md#manifest) | **GET** /projects/{project_id}/manifest | Get Manifest
 *ProjectApi* | [**project**](docs/Api/ProjectApi.md#project) | **GET** /projects/{project_id} | Get Project
 *ProjectApi* | [**projectFile**](docs/Api/ProjectApi.md#projectfile) | **GET** /projects/{project_id}/files/file | Get Project File
@@ -296,6 +399,7 @@ Class | Method | HTTP request | Description
 *ProjectApi* | [**resetProjectToRemote**](docs/Api/ProjectApi.md#resetprojecttoremote) | **POST** /projects/{project_id}/reset_to_remote | Reset To Remote
 *ProjectApi* | [**runGitConnectionTest**](docs/Api/ProjectApi.md#rungitconnectiontest) | **GET** /projects/{project_id}/git_connection_tests/{test_id} | Run Git Connection Test
 *ProjectApi* | [**runLookmlTest**](docs/Api/ProjectApi.md#runlookmltest) | **GET** /projects/{project_id}/lookml_tests/run | Run LookML Test
+*ProjectApi* | [**tagRef**](docs/Api/ProjectApi.md#tagref) | **POST** /projects/{project_id}/tag | Tag Ref
 *ProjectApi* | [**updateGitBranch**](docs/Api/ProjectApi.md#updategitbranch) | **PUT** /projects/{project_id}/git_branch | Update Project Git Branch
 *ProjectApi* | [**updateProject**](docs/Api/ProjectApi.md#updateproject) | **PATCH** /projects/{project_id} | Update Project
 *ProjectApi* | [**updateRepositoryCredential**](docs/Api/ProjectApi.md#updaterepositorycredential) | **PUT** /projects/{root_project_id}/credential/{credential_id} | Create Repository Credential
@@ -317,9 +421,9 @@ Class | Method | HTTP request | Description
 *QueryApi* | [**runSqlQuery**](docs/Api/QueryApi.md#runsqlquery) | **POST** /sql_queries/{slug}/run/{result_format} | Run SQL Runner Query
 *QueryApi* | [**runUrlEncodedQuery**](docs/Api/QueryApi.md#runurlencodedquery) | **GET** /queries/models/{model_name}/views/{view_name}/run/{result_format} | Run Url Encoded Query
 *QueryApi* | [**sqlQuery**](docs/Api/QueryApi.md#sqlquery) | **GET** /sql_queries/{slug} | Get SQL Runner Query
+*RenderTaskApi* | [**createDashboardElementRenderTask**](docs/Api/RenderTaskApi.md#createdashboardelementrendertask) | **POST** /render_tasks/dashboard_elements/{dashboard_element_id}/{result_format} | Create Dashboard Element Render Task
 *RenderTaskApi* | [**createDashboardRenderTask**](docs/Api/RenderTaskApi.md#createdashboardrendertask) | **POST** /render_tasks/dashboards/{dashboard_id}/{result_format} | Create Dashboard Render Task
 *RenderTaskApi* | [**createLookRenderTask**](docs/Api/RenderTaskApi.md#createlookrendertask) | **POST** /render_tasks/looks/{look_id}/{result_format} | Create Look Render Task
-*RenderTaskApi* | [**createLookmlDashboardRenderTask**](docs/Api/RenderTaskApi.md#createlookmldashboardrendertask) | **POST** /render_tasks/lookml_dashboards/{dashboard_id}/{result_format} | Create Lookml Dashboard Render Task
 *RenderTaskApi* | [**createQueryRenderTask**](docs/Api/RenderTaskApi.md#createqueryrendertask) | **POST** /render_tasks/queries/{query_id}/{result_format} | Create Query Render Task
 *RenderTaskApi* | [**renderTask**](docs/Api/RenderTaskApi.md#rendertask) | **GET** /render_tasks/{render_task_id} | Get Render Task
 *RenderTaskApi* | [**renderTaskResults**](docs/Api/RenderTaskApi.md#rendertaskresults) | **GET** /render_tasks/{render_task_id}/results | Render Task Results
@@ -338,6 +442,10 @@ Class | Method | HTTP request | Description
 *RoleApi* | [**role**](docs/Api/RoleApi.md#role) | **GET** /roles/{role_id} | Get Role
 *RoleApi* | [**roleGroups**](docs/Api/RoleApi.md#rolegroups) | **GET** /roles/{role_id}/groups | Get Role Groups
 *RoleApi* | [**roleUsers**](docs/Api/RoleApi.md#roleusers) | **GET** /roles/{role_id}/users | Get Role Users
+*RoleApi* | [**searchModelSets**](docs/Api/RoleApi.md#searchmodelsets) | **GET** /model_sets/search | Search Model Sets
+*RoleApi* | [**searchPermissionSets**](docs/Api/RoleApi.md#searchpermissionsets) | **GET** /permission_sets/search | Search Permission Sets
+*RoleApi* | [**searchRoles**](docs/Api/RoleApi.md#searchroles) | **GET** /roles/search | Search Roles
+*RoleApi* | [**searchRolesWithUserCount**](docs/Api/RoleApi.md#searchroleswithusercount) | **GET** /roles/search/with_user_count | Search Roles with User Count
 *RoleApi* | [**setRoleGroups**](docs/Api/RoleApi.md#setrolegroups) | **PUT** /roles/{role_id}/groups | Update Role Groups
 *RoleApi* | [**setRoleUsers**](docs/Api/RoleApi.md#setroleusers) | **PUT** /roles/{role_id}/users | Update Role Users
 *RoleApi* | [**updateModelSet**](docs/Api/RoleApi.md#updatemodelset) | **PATCH** /model_sets/{model_set_id} | Update Model Set
@@ -348,25 +456,14 @@ Class | Method | HTTP request | Description
 *ScheduledPlanApi* | [**deleteScheduledPlan**](docs/Api/ScheduledPlanApi.md#deletescheduledplan) | **DELETE** /scheduled_plans/{scheduled_plan_id} | Delete Scheduled Plan
 *ScheduledPlanApi* | [**scheduledPlan**](docs/Api/ScheduledPlanApi.md#scheduledplan) | **GET** /scheduled_plans/{scheduled_plan_id} | Get Scheduled Plan
 *ScheduledPlanApi* | [**scheduledPlanRunOnce**](docs/Api/ScheduledPlanApi.md#scheduledplanrunonce) | **POST** /scheduled_plans/run_once | Run Scheduled Plan Once
+*ScheduledPlanApi* | [**scheduledPlanRunOnceById**](docs/Api/ScheduledPlanApi.md#scheduledplanrunoncebyid) | **POST** /scheduled_plans/{scheduled_plan_id}/run_once | Run Scheduled Plan Once by Id
 *ScheduledPlanApi* | [**scheduledPlansForDashboard**](docs/Api/ScheduledPlanApi.md#scheduledplansfordashboard) | **GET** /scheduled_plans/dashboard/{dashboard_id} | Scheduled Plans for Dashboard
 *ScheduledPlanApi* | [**scheduledPlansForLook**](docs/Api/ScheduledPlanApi.md#scheduledplansforlook) | **GET** /scheduled_plans/look/{look_id} | Scheduled Plans for Look
 *ScheduledPlanApi* | [**scheduledPlansForLookmlDashboard**](docs/Api/ScheduledPlanApi.md#scheduledplansforlookmldashboard) | **GET** /scheduled_plans/lookml_dashboard/{lookml_dashboard_id} | Scheduled Plans for LookML Dashboard
 *ScheduledPlanApi* | [**scheduledPlansForSpace**](docs/Api/ScheduledPlanApi.md#scheduledplansforspace) | **GET** /scheduled_plans/space/{space_id} | Scheduled Plans for Space
 *ScheduledPlanApi* | [**updateScheduledPlan**](docs/Api/ScheduledPlanApi.md#updatescheduledplan) | **PATCH** /scheduled_plans/{scheduled_plan_id} | Update Scheduled Plan
-*SessionApi* | [**session**](docs/Api/SessionApi.md#session) | **GET** /session | Get Session
-*SessionApi* | [**updateSession**](docs/Api/SessionApi.md#updatesession) | **PATCH** /session | Update Session
-*SpaceApi* | [**allSpaces**](docs/Api/SpaceApi.md#allspaces) | **GET** /spaces | Get All Spaces
-*SpaceApi* | [**createSpace**](docs/Api/SpaceApi.md#createspace) | **POST** /spaces | Create Space
-*SpaceApi* | [**deleteSpace**](docs/Api/SpaceApi.md#deletespace) | **DELETE** /spaces/{space_id} | Delete Space
-*SpaceApi* | [**searchSpaces**](docs/Api/SpaceApi.md#searchspaces) | **GET** /spaces/search | Search Spaces
-*SpaceApi* | [**space**](docs/Api/SpaceApi.md#space) | **GET** /spaces/{space_id} | Get Space
-*SpaceApi* | [**spaceAncestors**](docs/Api/SpaceApi.md#spaceancestors) | **GET** /spaces/{space_id}/ancestors | Get Space Ancestors
-*SpaceApi* | [**spaceChildren**](docs/Api/SpaceApi.md#spacechildren) | **GET** /spaces/{space_id}/children | Get Space Children
-*SpaceApi* | [**spaceChildrenSearch**](docs/Api/SpaceApi.md#spacechildrensearch) | **GET** /spaces/{space_id}/children/search | Search Space Children
-*SpaceApi* | [**spaceDashboards**](docs/Api/SpaceApi.md#spacedashboards) | **GET** /spaces/{space_id}/dashboards | Get Space Dashboards
-*SpaceApi* | [**spaceLooks**](docs/Api/SpaceApi.md#spacelooks) | **GET** /spaces/{space_id}/looks | Get Space Looks
-*SpaceApi* | [**spaceParent**](docs/Api/SpaceApi.md#spaceparent) | **GET** /spaces/{space_id}/parent | Get Space Parent
-*SpaceApi* | [**updateSpace**](docs/Api/SpaceApi.md#updatespace) | **PATCH** /spaces/{space_id} | Update Space
+*SessionApi* | [**session**](docs/Api/SessionApi.md#session) | **GET** /session | Get Auth
+*SessionApi* | [**updateSession**](docs/Api/SessionApi.md#updatesession) | **PATCH** /session | Update Auth
 *ThemeApi* | [**activeThemes**](docs/Api/ThemeApi.md#activethemes) | **GET** /themes/active | Get Active Themes
 *ThemeApi* | [**allThemes**](docs/Api/ThemeApi.md#allthemes) | **GET** /themes | Get All Themes
 *ThemeApi* | [**createTheme**](docs/Api/ThemeApi.md#createtheme) | **POST** /themes | Create Theme
@@ -378,18 +475,19 @@ Class | Method | HTTP request | Description
 *ThemeApi* | [**themeOrDefault**](docs/Api/ThemeApi.md#themeordefault) | **GET** /themes/theme_or_default | Get Theme or Default
 *ThemeApi* | [**updateTheme**](docs/Api/ThemeApi.md#updatetheme) | **PATCH** /themes/{theme_id} | Update Theme
 *ThemeApi* | [**validateTheme**](docs/Api/ThemeApi.md#validatetheme) | **POST** /themes/validate | Validate Theme
-*UserApi* | [**allUserCredentialsApi3s**](docs/Api/UserApi.md#allusercredentialsapi3s) | **GET** /users/{user_id}/credentials_api3 | Get All API 3 Credentials
+*UserApi* | [**allUserCredentialsApi3s**](docs/Api/UserApi.md#allusercredentialsapi3s) | **GET** /users/{user_id}/credentials_api3 | Get All API Credentials
 *UserApi* | [**allUserCredentialsEmbeds**](docs/Api/UserApi.md#allusercredentialsembeds) | **GET** /users/{user_id}/credentials_embed | Get All Embedding Credentials
 *UserApi* | [**allUserSessions**](docs/Api/UserApi.md#allusersessions) | **GET** /users/{user_id}/sessions | Get All Web Login Sessions
 *UserApi* | [**allUsers**](docs/Api/UserApi.md#allusers) | **GET** /users | Get All Users
+*UserApi* | [**createEmbedUser**](docs/Api/UserApi.md#createembeduser) | **POST** /users/embed_user | Create an embed user from an external user ID
 *UserApi* | [**createUser**](docs/Api/UserApi.md#createuser) | **POST** /users | Create User
-*UserApi* | [**createUserCredentialsApi3**](docs/Api/UserApi.md#createusercredentialsapi3) | **POST** /users/{user_id}/credentials_api3 | Create API 3 Credential
+*UserApi* | [**createUserCredentialsApi3**](docs/Api/UserApi.md#createusercredentialsapi3) | **POST** /users/{user_id}/credentials_api3 | Create API Credential
 *UserApi* | [**createUserCredentialsEmail**](docs/Api/UserApi.md#createusercredentialsemail) | **POST** /users/{user_id}/credentials_email | Create Email/Password Credential
 *UserApi* | [**createUserCredentialsEmailPasswordReset**](docs/Api/UserApi.md#createusercredentialsemailpasswordreset) | **POST** /users/{user_id}/credentials_email/password_reset | Create Password Reset Token
 *UserApi* | [**createUserCredentialsTotp**](docs/Api/UserApi.md#createusercredentialstotp) | **POST** /users/{user_id}/credentials_totp | Create Two-Factor Credential
 *UserApi* | [**deleteUser**](docs/Api/UserApi.md#deleteuser) | **DELETE** /users/{user_id} | Delete User
 *UserApi* | [**deleteUserAttributeUserValue**](docs/Api/UserApi.md#deleteuserattributeuservalue) | **DELETE** /users/{user_id}/attribute_values/{user_attribute_id} | Delete User Attribute User Value
-*UserApi* | [**deleteUserCredentialsApi3**](docs/Api/UserApi.md#deleteusercredentialsapi3) | **DELETE** /users/{user_id}/credentials_api3/{credentials_api3_id} | Delete API 3 Credential
+*UserApi* | [**deleteUserCredentialsApi3**](docs/Api/UserApi.md#deleteusercredentialsapi3) | **DELETE** /users/{user_id}/credentials_api3/{credentials_api3_id} | Delete API Credential
 *UserApi* | [**deleteUserCredentialsEmail**](docs/Api/UserApi.md#deleteusercredentialsemail) | **DELETE** /users/{user_id}/credentials_email | Delete Email/Password Credential
 *UserApi* | [**deleteUserCredentialsEmbed**](docs/Api/UserApi.md#deleteusercredentialsembed) | **DELETE** /users/{user_id}/credentials_embed/{credentials_embed_id} | Delete Embedding Credential
 *UserApi* | [**deleteUserCredentialsGoogle**](docs/Api/UserApi.md#deleteusercredentialsgoogle) | **DELETE** /users/{user_id}/credentials_google | Delete Google Auth Credential
@@ -400,15 +498,17 @@ Class | Method | HTTP request | Description
 *UserApi* | [**deleteUserCredentialsTotp**](docs/Api/UserApi.md#deleteusercredentialstotp) | **DELETE** /users/{user_id}/credentials_totp | Delete Two-Factor Credential
 *UserApi* | [**deleteUserSession**](docs/Api/UserApi.md#deleteusersession) | **DELETE** /users/{user_id}/sessions/{session_id} | Delete Web Login Session
 *UserApi* | [**me**](docs/Api/UserApi.md#me) | **GET** /user | Get Current User
+*UserApi* | [**searchCredentialsEmail**](docs/Api/UserApi.md#searchcredentialsemail) | **GET** /credentials_email/search | Search CredentialsEmail
 *UserApi* | [**searchUsers**](docs/Api/UserApi.md#searchusers) | **GET** /users/search | Search Users
 *UserApi* | [**searchUsersNames**](docs/Api/UserApi.md#searchusersnames) | **GET** /users/search/names/{pattern} | Search User Names
+*UserApi* | [**sendUserCredentialsEmailPasswordReset**](docs/Api/UserApi.md#sendusercredentialsemailpasswordreset) | **POST** /users/{user_id}/credentials_email/send_password_reset | Send Password Reset Token
 *UserApi* | [**setUserAttributeUserValue**](docs/Api/UserApi.md#setuserattributeuservalue) | **PATCH** /users/{user_id}/attribute_values/{user_attribute_id} | Set User Attribute User Value
 *UserApi* | [**setUserRoles**](docs/Api/UserApi.md#setuserroles) | **PUT** /users/{user_id}/roles | Set User Roles
 *UserApi* | [**updateUser**](docs/Api/UserApi.md#updateuser) | **PATCH** /users/{user_id} | Update User
 *UserApi* | [**updateUserCredentialsEmail**](docs/Api/UserApi.md#updateusercredentialsemail) | **PATCH** /users/{user_id}/credentials_email | Update Email/Password Credential
 *UserApi* | [**user**](docs/Api/UserApi.md#user) | **GET** /users/{user_id} | Get User by Id
 *UserApi* | [**userAttributeUserValues**](docs/Api/UserApi.md#userattributeuservalues) | **GET** /users/{user_id}/attribute_values | Get User Attribute Values
-*UserApi* | [**userCredentialsApi3**](docs/Api/UserApi.md#usercredentialsapi3) | **GET** /users/{user_id}/credentials_api3/{credentials_api3_id} | Get API 3 Credential
+*UserApi* | [**userCredentialsApi3**](docs/Api/UserApi.md#usercredentialsapi3) | **GET** /users/{user_id}/credentials_api3/{credentials_api3_id} | Get API Credential
 *UserApi* | [**userCredentialsEmail**](docs/Api/UserApi.md#usercredentialsemail) | **GET** /users/{user_id}/credentials_email | Get Email/Password Credential
 *UserApi* | [**userCredentialsEmbed**](docs/Api/UserApi.md#usercredentialsembed) | **GET** /users/{user_id}/credentials_embed/{credentials_embed_id} | Get Embedding Credential
 *UserApi* | [**userCredentialsGoogle**](docs/Api/UserApi.md#usercredentialsgoogle) | **GET** /users/{user_id}/credentials_google | Get Google Auth Credential
@@ -420,6 +520,7 @@ Class | Method | HTTP request | Description
 *UserApi* | [**userForCredential**](docs/Api/UserApi.md#userforcredential) | **GET** /users/credential/{credential_type}/{credential_id} | Get User by Credential Id
 *UserApi* | [**userRoles**](docs/Api/UserApi.md#userroles) | **GET** /users/{user_id}/roles | Get User Roles
 *UserApi* | [**userSession**](docs/Api/UserApi.md#usersession) | **GET** /users/{user_id}/sessions/{session_id} | Get Web Login Session
+*UserApi* | [**wipeoutUserEmails**](docs/Api/UserApi.md#wipeoutuseremails) | **POST** /users/{user_id}/update_emails | Wipeout User Emails
 *UserAttributeApi* | [**allUserAttributeGroupValues**](docs/Api/UserAttributeApi.md#alluserattributegroupvalues) | **GET** /user_attributes/{user_attribute_id}/group_values | Get User Attribute Group Values
 *UserAttributeApi* | [**allUserAttributes**](docs/Api/UserAttributeApi.md#alluserattributes) | **GET** /user_attributes | Get All User Attributes
 *UserAttributeApi* | [**createUserAttribute**](docs/Api/UserAttributeApi.md#createuserattribute) | **POST** /user_attributes | Create User Attribute
@@ -434,29 +535,59 @@ Class | Method | HTTP request | Description
 ## Documentation For Models
 
  - [AccessToken](docs/Model/AccessToken.md)
+ - [Alert](docs/Model/Alert.md)
+ - [AlertAppliedDashboardFilter](docs/Model/AlertAppliedDashboardFilter.md)
+ - [AlertConditionState](docs/Model/AlertConditionState.md)
+ - [AlertDestination](docs/Model/AlertDestination.md)
+ - [AlertField](docs/Model/AlertField.md)
+ - [AlertFieldFilter](docs/Model/AlertFieldFilter.md)
+ - [AlertNotifications](docs/Model/AlertNotifications.md)
+ - [AlertPatch](docs/Model/AlertPatch.md)
  - [ApiSession](docs/Model/ApiSession.md)
  - [ApiVersion](docs/Model/ApiVersion.md)
  - [ApiVersionElement](docs/Model/ApiVersionElement.md)
+ - [Artifact](docs/Model/Artifact.md)
+ - [ArtifactNamespace](docs/Model/ArtifactNamespace.md)
+ - [ArtifactUsage](docs/Model/ArtifactUsage.md)
  - [BackupConfiguration](docs/Model/BackupConfiguration.md)
+ - [Board](docs/Model/Board.md)
+ - [BoardItem](docs/Model/BoardItem.md)
+ - [BoardSection](docs/Model/BoardSection.md)
  - [ColorCollection](docs/Model/ColorCollection.md)
  - [ColorStop](docs/Model/ColorStop.md)
+ - [ColumnSearch](docs/Model/ColumnSearch.md)
+ - [ConnectionFeatures](docs/Model/ConnectionFeatures.md)
  - [ContentFavorite](docs/Model/ContentFavorite.md)
  - [ContentMeta](docs/Model/ContentMeta.md)
  - [ContentMetaGroupUser](docs/Model/ContentMetaGroupUser.md)
+ - [ContentSearch](docs/Model/ContentSearch.md)
  - [ContentValidation](docs/Model/ContentValidation.md)
+ - [ContentValidationAlert](docs/Model/ContentValidationAlert.md)
  - [ContentValidationDashboard](docs/Model/ContentValidationDashboard.md)
  - [ContentValidationDashboardElement](docs/Model/ContentValidationDashboardElement.md)
  - [ContentValidationDashboardFilter](docs/Model/ContentValidationDashboardFilter.md)
+ - [ContentValidationError](docs/Model/ContentValidationError.md)
+ - [ContentValidationFolder](docs/Model/ContentValidationFolder.md)
  - [ContentValidationLook](docs/Model/ContentValidationLook.md)
- - [ContentValidationSpace](docs/Model/ContentValidationSpace.md)
+ - [ContentValidationLookMLDashboard](docs/Model/ContentValidationLookMLDashboard.md)
+ - [ContentValidationLookMLDashboardElement](docs/Model/ContentValidationLookMLDashboardElement.md)
+ - [ContentValidationScheduledPlan](docs/Model/ContentValidationScheduledPlan.md)
  - [ContentValidatorError](docs/Model/ContentValidatorError.md)
  - [ContentView](docs/Model/ContentView.md)
  - [ContinuousPalette](docs/Model/ContinuousPalette.md)
+ - [CostEstimate](docs/Model/CostEstimate.md)
+ - [CreateCostEstimate](docs/Model/CreateCostEstimate.md)
+ - [CreateCredentialsApi3](docs/Model/CreateCredentialsApi3.md)
  - [CreateDashboardFilter](docs/Model/CreateDashboardFilter.md)
  - [CreateDashboardRenderTask](docs/Model/CreateDashboardRenderTask.md)
+ - [CreateEmbedUserRequest](docs/Model/CreateEmbedUserRequest.md)
+ - [CreateFolder](docs/Model/CreateFolder.md)
+ - [CreateOAuthApplicationUserStateRequest](docs/Model/CreateOAuthApplicationUserStateRequest.md)
+ - [CreateOAuthApplicationUserStateResponse](docs/Model/CreateOAuthApplicationUserStateResponse.md)
  - [CreateQueryTask](docs/Model/CreateQueryTask.md)
  - [CredentialsApi3](docs/Model/CredentialsApi3.md)
  - [CredentialsEmail](docs/Model/CredentialsEmail.md)
+ - [CredentialsEmailSearch](docs/Model/CredentialsEmailSearch.md)
  - [CredentialsEmbed](docs/Model/CredentialsEmbed.md)
  - [CredentialsGoogle](docs/Model/CredentialsGoogle.md)
  - [CredentialsLDAP](docs/Model/CredentialsLDAP.md)
@@ -464,16 +595,20 @@ Class | Method | HTTP request | Description
  - [CredentialsOIDC](docs/Model/CredentialsOIDC.md)
  - [CredentialsSaml](docs/Model/CredentialsSaml.md)
  - [CredentialsTotp](docs/Model/CredentialsTotp.md)
+ - [CustomWelcomeEmail](docs/Model/CustomWelcomeEmail.md)
  - [DBConnection](docs/Model/DBConnection.md)
  - [DBConnectionBase](docs/Model/DBConnectionBase.md)
  - [DBConnectionOverride](docs/Model/DBConnectionOverride.md)
  - [DBConnectionTestResult](docs/Model/DBConnectionTestResult.md)
  - [Dashboard](docs/Model/Dashboard.md)
+ - [DashboardAggregateTableLookml](docs/Model/DashboardAggregateTableLookml.md)
+ - [DashboardAppearance](docs/Model/DashboardAppearance.md)
  - [DashboardBase](docs/Model/DashboardBase.md)
  - [DashboardElement](docs/Model/DashboardElement.md)
  - [DashboardFilter](docs/Model/DashboardFilter.md)
  - [DashboardLayout](docs/Model/DashboardLayout.md)
  - [DashboardLayoutComponent](docs/Model/DashboardLayoutComponent.md)
+ - [DashboardLookml](docs/Model/DashboardLookml.md)
  - [DataActionForm](docs/Model/DataActionForm.md)
  - [DataActionFormField](docs/Model/DataActionFormField.md)
  - [DataActionFormSelectOption](docs/Model/DataActionFormSelectOption.md)
@@ -481,20 +616,36 @@ Class | Method | HTTP request | Description
  - [DataActionResponse](docs/Model/DataActionResponse.md)
  - [DataActionUserState](docs/Model/DataActionUserState.md)
  - [Datagroup](docs/Model/Datagroup.md)
+ - [DelegateOauthTest](docs/Model/DelegateOauthTest.md)
+ - [DependencyGraph](docs/Model/DependencyGraph.md)
  - [Dialect](docs/Model/Dialect.md)
  - [DialectInfo](docs/Model/DialectInfo.md)
  - [DialectInfoOptions](docs/Model/DialectInfoOptions.md)
+ - [DigestEmailSend](docs/Model/DigestEmailSend.md)
+ - [DigestEmails](docs/Model/DigestEmails.md)
  - [DiscretePalette](docs/Model/DiscretePalette.md)
+ - [EgressIpAddresses](docs/Model/EgressIpAddresses.md)
+ - [EmbedCookielessSessionAcquire](docs/Model/EmbedCookielessSessionAcquire.md)
+ - [EmbedCookielessSessionAcquireResponse](docs/Model/EmbedCookielessSessionAcquireResponse.md)
+ - [EmbedCookielessSessionGenerateTokens](docs/Model/EmbedCookielessSessionGenerateTokens.md)
+ - [EmbedCookielessSessionGenerateTokensResponse](docs/Model/EmbedCookielessSessionGenerateTokensResponse.md)
+ - [EmbedParams](docs/Model/EmbedParams.md)
+ - [EmbedSecret](docs/Model/EmbedSecret.md)
+ - [EmbedSsoParams](docs/Model/EmbedSsoParams.md)
+ - [EmbedUrlResponse](docs/Model/EmbedUrlResponse.md)
  - [Error](docs/Model/Error.md)
+ - [ExternalOauthApplication](docs/Model/ExternalOauthApplication.md)
  - [Folder](docs/Model/Folder.md)
+ - [FolderBase](docs/Model/FolderBase.md)
  - [GitBranch](docs/Model/GitBranch.md)
  - [GitConnectionTest](docs/Model/GitConnectionTest.md)
  - [GitConnectionTestResult](docs/Model/GitConnectionTestResult.md)
  - [GitStatus](docs/Model/GitStatus.md)
  - [Group](docs/Model/Group.md)
+ - [GroupHierarchy](docs/Model/GroupHierarchy.md)
  - [GroupIdForGroupInclusion](docs/Model/GroupIdForGroupInclusion.md)
  - [GroupIdForGroupUserInclusion](docs/Model/GroupIdForGroupUserInclusion.md)
- - [Homepage](docs/Model/Homepage.md)
+ - [GroupSearch](docs/Model/GroupSearch.md)
  - [HomepageItem](docs/Model/HomepageItem.md)
  - [HomepageSection](docs/Model/HomepageSection.md)
  - [ImportedProject](docs/Model/ImportedProject.md)
@@ -531,6 +682,7 @@ Class | Method | HTTP request | Description
  - [LookmlModelExploreField](docs/Model/LookmlModelExploreField.md)
  - [LookmlModelExploreFieldEnumeration](docs/Model/LookmlModelExploreFieldEnumeration.md)
  - [LookmlModelExploreFieldMapLayer](docs/Model/LookmlModelExploreFieldMapLayer.md)
+ - [LookmlModelExploreFieldMeasureFilters](docs/Model/LookmlModelExploreFieldMeasureFilters.md)
  - [LookmlModelExploreFieldSqlCase](docs/Model/LookmlModelExploreFieldSqlCase.md)
  - [LookmlModelExploreFieldTimeInterval](docs/Model/LookmlModelExploreFieldTimeInterval.md)
  - [LookmlModelExploreFieldset](docs/Model/LookmlModelExploreFieldset.md)
@@ -541,9 +693,17 @@ Class | Method | HTTP request | Description
  - [LookmlTest](docs/Model/LookmlTest.md)
  - [LookmlTestResult](docs/Model/LookmlTestResult.md)
  - [Manifest](docs/Model/Manifest.md)
+ - [MaterializePDT](docs/Model/MaterializePDT.md)
  - [MergeFields](docs/Model/MergeFields.md)
  - [MergeQuery](docs/Model/MergeQuery.md)
  - [MergeQuerySourceQuery](docs/Model/MergeQuerySourceQuery.md)
+ - [MobileFeatureFlags](docs/Model/MobileFeatureFlags.md)
+ - [MobilePayload](docs/Model/MobilePayload.md)
+ - [MobileSettings](docs/Model/MobileSettings.md)
+ - [MobileToken](docs/Model/MobileToken.md)
+ - [Model](docs/Model/Model.md)
+ - [ModelFieldSuggestions](docs/Model/ModelFieldSuggestions.md)
+ - [ModelNamedValueFormats](docs/Model/ModelNamedValueFormats.md)
  - [ModelSet](docs/Model/ModelSet.md)
  - [ModelsNotValidated](docs/Model/ModelsNotValidated.md)
  - [OIDCConfig](docs/Model/OIDCConfig.md)
@@ -551,9 +711,11 @@ Class | Method | HTTP request | Description
  - [OIDCGroupWrite](docs/Model/OIDCGroupWrite.md)
  - [OIDCUserAttributeRead](docs/Model/OIDCUserAttributeRead.md)
  - [OIDCUserAttributeWrite](docs/Model/OIDCUserAttributeWrite.md)
+ - [OauthClientApp](docs/Model/OauthClientApp.md)
  - [PasswordConfig](docs/Model/PasswordConfig.md)
  - [Permission](docs/Model/Permission.md)
  - [PermissionSet](docs/Model/PermissionSet.md)
+ - [PrivatelabelConfiguration](docs/Model/PrivatelabelConfiguration.md)
  - [Project](docs/Model/Project.md)
  - [ProjectError](docs/Model/ProjectError.md)
  - [ProjectFile](docs/Model/ProjectFile.md)
@@ -568,6 +730,7 @@ Class | Method | HTTP request | Description
  - [ResultMakerFilterablesListen](docs/Model/ResultMakerFilterablesListen.md)
  - [ResultMakerWithIdVisConfigAndDynamicFields](docs/Model/ResultMakerWithIdVisConfigAndDynamicFields.md)
  - [Role](docs/Model/Role.md)
+ - [RoleSearch](docs/Model/RoleSearch.md)
  - [RunningQueries](docs/Model/RunningQueries.md)
  - [SamlConfig](docs/Model/SamlConfig.md)
  - [SamlGroupRead](docs/Model/SamlGroupRead.md)
@@ -577,27 +740,45 @@ Class | Method | HTTP request | Description
  - [SamlUserAttributeWrite](docs/Model/SamlUserAttributeWrite.md)
  - [ScheduledPlan](docs/Model/ScheduledPlan.md)
  - [ScheduledPlanDestination](docs/Model/ScheduledPlanDestination.md)
+ - [Schema](docs/Model/Schema.md)
+ - [SchemaColumn](docs/Model/SchemaColumn.md)
+ - [SchemaColumns](docs/Model/SchemaColumns.md)
+ - [SchemaTable](docs/Model/SchemaTable.md)
+ - [SchemaTables](docs/Model/SchemaTables.md)
  - [Session](docs/Model/Session.md)
  - [SessionConfig](docs/Model/SessionConfig.md)
+ - [Setting](docs/Model/Setting.md)
+ - [SmtpNodeStatus](docs/Model/SmtpNodeStatus.md)
+ - [SmtpSettings](docs/Model/SmtpSettings.md)
+ - [SmtpStatus](docs/Model/SmtpStatus.md)
  - [Snippet](docs/Model/Snippet.md)
- - [Space](docs/Model/Space.md)
- - [SpaceBase](docs/Model/SpaceBase.md)
  - [SqlQuery](docs/Model/SqlQuery.md)
  - [SqlQueryCreate](docs/Model/SqlQueryCreate.md)
+ - [SshPublicKey](docs/Model/SshPublicKey.md)
+ - [SshServer](docs/Model/SshServer.md)
+ - [SshTunnel](docs/Model/SshTunnel.md)
+ - [SupportAccessAddEntries](docs/Model/SupportAccessAddEntries.md)
+ - [SupportAccessAllowlistEntry](docs/Model/SupportAccessAllowlistEntry.md)
+ - [SupportAccessEnable](docs/Model/SupportAccessEnable.md)
+ - [SupportAccessStatus](docs/Model/SupportAccessStatus.md)
  - [Theme](docs/Model/Theme.md)
  - [ThemeSettings](docs/Model/ThemeSettings.md)
  - [Timezone](docs/Model/Timezone.md)
+ - [UpdateArtifact](docs/Model/UpdateArtifact.md)
+ - [UpdateFolder](docs/Model/UpdateFolder.md)
  - [User](docs/Model/User.md)
  - [UserAttribute](docs/Model/UserAttribute.md)
  - [UserAttributeGroupValue](docs/Model/UserAttributeGroupValue.md)
  - [UserAttributeWithValue](docs/Model/UserAttributeWithValue.md)
- - [UserIdOnly](docs/Model/UserIdOnly.md)
+ - [UserEmailOnly](docs/Model/UserEmailOnly.md)
  - [UserLoginLockout](docs/Model/UserLoginLockout.md)
  - [UserPublic](docs/Model/UserPublic.md)
  - [ValidationError](docs/Model/ValidationError.md)
  - [ValidationErrorDetail](docs/Model/ValidationErrorDetail.md)
+ - [WelcomeEmailTest](docs/Model/WelcomeEmailTest.md)
  - [WhitelabelConfiguration](docs/Model/WhitelabelConfiguration.md)
  - [Workspace](docs/Model/Workspace.md)
+ - [WriteScheduledPlan](docs/Model/WriteScheduledPlan.md)
 
 
 ## Documentation For Authorization
@@ -607,6 +788,6 @@ Class | Method | HTTP request | Description
 
 ## Author
 
-support@looker.com
+
 
 

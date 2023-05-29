@@ -10,12 +10,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -92,14 +92,14 @@ class GroupApi
      *
      * Add a Group to Group
      *
-     * @param  int $group_id Id of group (required)
-     * @param  \Swagger\Client\Model\GroupIdForGroupInclusion $body Group id to add (optional)
+     * @param  string $group_id Id of group (required)
+     * @param  \Swagger\Client\Model\GroupIdForGroupInclusion $body Group id to add (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\Group
      */
-    public function addGroupGroup($group_id, $body = null)
+    public function addGroupGroup($group_id, $body)
     {
         list($response) = $this->addGroupGroupWithHttpInfo($group_id, $body);
         return $response;
@@ -110,14 +110,14 @@ class GroupApi
      *
      * Add a Group to Group
      *
-     * @param  int $group_id Id of group (required)
-     * @param  \Swagger\Client\Model\GroupIdForGroupInclusion $body Group id to add (optional)
+     * @param  string $group_id Id of group (required)
+     * @param  \Swagger\Client\Model\GroupIdForGroupInclusion $body Group id to add (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\Group, HTTP status code, HTTP response headers (array of strings)
      */
-    public function addGroupGroupWithHttpInfo($group_id, $body = null)
+    public function addGroupGroupWithHttpInfo($group_id, $body)
     {
         $returnType = '\Swagger\Client\Model\Group';
         $request = $this->addGroupGroupRequest($group_id, $body);
@@ -210,13 +210,13 @@ class GroupApi
      *
      * Add a Group to Group
      *
-     * @param  int $group_id Id of group (required)
-     * @param  \Swagger\Client\Model\GroupIdForGroupInclusion $body Group id to add (optional)
+     * @param  string $group_id Id of group (required)
+     * @param  \Swagger\Client\Model\GroupIdForGroupInclusion $body Group id to add (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addGroupGroupAsync($group_id, $body = null)
+    public function addGroupGroupAsync($group_id, $body)
     {
         return $this->addGroupGroupAsyncWithHttpInfo($group_id, $body)
             ->then(
@@ -231,13 +231,13 @@ class GroupApi
      *
      * Add a Group to Group
      *
-     * @param  int $group_id Id of group (required)
-     * @param  \Swagger\Client\Model\GroupIdForGroupInclusion $body Group id to add (optional)
+     * @param  string $group_id Id of group (required)
+     * @param  \Swagger\Client\Model\GroupIdForGroupInclusion $body Group id to add (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addGroupGroupAsyncWithHttpInfo($group_id, $body = null)
+    public function addGroupGroupAsyncWithHttpInfo($group_id, $body)
     {
         $returnType = '\Swagger\Client\Model\Group';
         $request = $this->addGroupGroupRequest($group_id, $body);
@@ -282,18 +282,24 @@ class GroupApi
     /**
      * Create request for operation 'addGroupGroup'
      *
-     * @param  int $group_id Id of group (required)
-     * @param  \Swagger\Client\Model\GroupIdForGroupInclusion $body Group id to add (optional)
+     * @param  string $group_id Id of group (required)
+     * @param  \Swagger\Client\Model\GroupIdForGroupInclusion $body Group id to add (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function addGroupGroupRequest($group_id, $body = null)
+    protected function addGroupGroupRequest($group_id, $body)
     {
         // verify the required parameter 'group_id' is set
         if ($group_id === null || (is_array($group_id) && count($group_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $group_id when calling addGroupGroup'
+            );
+        }
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling addGroupGroup'
             );
         }
 
@@ -386,14 +392,14 @@ class GroupApi
      *
      * Add a User to Group
      *
-     * @param  int $group_id Id of group (required)
-     * @param  \Swagger\Client\Model\GroupIdForGroupUserInclusion $body User id to add (optional)
+     * @param  string $group_id Id of group (required)
+     * @param  \Swagger\Client\Model\GroupIdForGroupUserInclusion $body User id to add (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\User
      */
-    public function addGroupUser($group_id, $body = null)
+    public function addGroupUser($group_id, $body)
     {
         list($response) = $this->addGroupUserWithHttpInfo($group_id, $body);
         return $response;
@@ -404,14 +410,14 @@ class GroupApi
      *
      * Add a User to Group
      *
-     * @param  int $group_id Id of group (required)
-     * @param  \Swagger\Client\Model\GroupIdForGroupUserInclusion $body User id to add (optional)
+     * @param  string $group_id Id of group (required)
+     * @param  \Swagger\Client\Model\GroupIdForGroupUserInclusion $body User id to add (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\User, HTTP status code, HTTP response headers (array of strings)
      */
-    public function addGroupUserWithHttpInfo($group_id, $body = null)
+    public function addGroupUserWithHttpInfo($group_id, $body)
     {
         $returnType = '\Swagger\Client\Model\User';
         $request = $this->addGroupUserRequest($group_id, $body);
@@ -504,13 +510,13 @@ class GroupApi
      *
      * Add a User to Group
      *
-     * @param  int $group_id Id of group (required)
-     * @param  \Swagger\Client\Model\GroupIdForGroupUserInclusion $body User id to add (optional)
+     * @param  string $group_id Id of group (required)
+     * @param  \Swagger\Client\Model\GroupIdForGroupUserInclusion $body User id to add (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addGroupUserAsync($group_id, $body = null)
+    public function addGroupUserAsync($group_id, $body)
     {
         return $this->addGroupUserAsyncWithHttpInfo($group_id, $body)
             ->then(
@@ -525,13 +531,13 @@ class GroupApi
      *
      * Add a User to Group
      *
-     * @param  int $group_id Id of group (required)
-     * @param  \Swagger\Client\Model\GroupIdForGroupUserInclusion $body User id to add (optional)
+     * @param  string $group_id Id of group (required)
+     * @param  \Swagger\Client\Model\GroupIdForGroupUserInclusion $body User id to add (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function addGroupUserAsyncWithHttpInfo($group_id, $body = null)
+    public function addGroupUserAsyncWithHttpInfo($group_id, $body)
     {
         $returnType = '\Swagger\Client\Model\User';
         $request = $this->addGroupUserRequest($group_id, $body);
@@ -576,18 +582,24 @@ class GroupApi
     /**
      * Create request for operation 'addGroupUser'
      *
-     * @param  int $group_id Id of group (required)
-     * @param  \Swagger\Client\Model\GroupIdForGroupUserInclusion $body User id to add (optional)
+     * @param  string $group_id Id of group (required)
+     * @param  \Swagger\Client\Model\GroupIdForGroupUserInclusion $body User id to add (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function addGroupUserRequest($group_id, $body = null)
+    protected function addGroupUserRequest($group_id, $body)
     {
         // verify the required parameter 'group_id' is set
         if ($group_id === null || (is_array($group_id) && count($group_id) === 0)) {
             throw new \InvalidArgumentException(
                 'Missing the required parameter $group_id when calling addGroupUser'
+            );
+        }
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling addGroupUser'
             );
         }
 
@@ -680,7 +692,7 @@ class GroupApi
      *
      * Get All Groups in Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -698,7 +710,7 @@ class GroupApi
      *
      * Get All Groups in Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -790,7 +802,7 @@ class GroupApi
      *
      * Get All Groups in Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -811,7 +823,7 @@ class GroupApi
      *
      * Get All Groups in Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -862,7 +874,7 @@ class GroupApi
     /**
      * Create request for operation 'allGroupGroups'
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -967,19 +979,21 @@ class GroupApi
      *
      * Get All Users in Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\User[]
      */
-    public function allGroupUsers($group_id, $fields = null, $page = null, $per_page = null, $sorts = null)
+    public function allGroupUsers($group_id, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null)
     {
-        list($response) = $this->allGroupUsersWithHttpInfo($group_id, $fields, $page, $per_page, $sorts);
+        list($response) = $this->allGroupUsersWithHttpInfo($group_id, $fields, $page, $per_page, $limit, $offset, $sorts);
         return $response;
     }
 
@@ -988,20 +1002,22 @@ class GroupApi
      *
      * Get All Users in Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\User[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function allGroupUsersWithHttpInfo($group_id, $fields = null, $page = null, $per_page = null, $sorts = null)
+    public function allGroupUsersWithHttpInfo($group_id, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null)
     {
         $returnType = '\Swagger\Client\Model\User[]';
-        $request = $this->allGroupUsersRequest($group_id, $fields, $page, $per_page, $sorts);
+        $request = $this->allGroupUsersRequest($group_id, $fields, $page, $per_page, $limit, $offset, $sorts);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1083,18 +1099,20 @@ class GroupApi
      *
      * Get All Users in Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function allGroupUsersAsync($group_id, $fields = null, $page = null, $per_page = null, $sorts = null)
+    public function allGroupUsersAsync($group_id, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null)
     {
-        return $this->allGroupUsersAsyncWithHttpInfo($group_id, $fields, $page, $per_page, $sorts)
+        return $this->allGroupUsersAsyncWithHttpInfo($group_id, $fields, $page, $per_page, $limit, $offset, $sorts)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1107,19 +1125,21 @@ class GroupApi
      *
      * Get All Users in Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function allGroupUsersAsyncWithHttpInfo($group_id, $fields = null, $page = null, $per_page = null, $sorts = null)
+    public function allGroupUsersAsyncWithHttpInfo($group_id, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null)
     {
         $returnType = '\Swagger\Client\Model\User[]';
-        $request = $this->allGroupUsersRequest($group_id, $fields, $page, $per_page, $sorts);
+        $request = $this->allGroupUsersRequest($group_id, $fields, $page, $per_page, $limit, $offset, $sorts);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1161,16 +1181,18 @@ class GroupApi
     /**
      * Create request for operation 'allGroupUsers'
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function allGroupUsersRequest($group_id, $fields = null, $page = null, $per_page = null, $sorts = null)
+    protected function allGroupUsersRequest($group_id, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null)
     {
         // verify the required parameter 'group_id' is set
         if ($group_id === null || (is_array($group_id) && count($group_id) === 0)) {
@@ -1197,6 +1219,14 @@ class GroupApi
         // query params
         if ($per_page !== null) {
             $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+        // query params
+        if ($offset !== null) {
+            $queryParams['offset'] = ObjectSerializer::toQueryValue($offset);
         }
         // query params
         if ($sorts !== null) {
@@ -1282,20 +1312,22 @@ class GroupApi
      * Get All Groups
      *
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
-     * @param  int[] $ids Optional of ids to get specific groups. (optional)
-     * @param  int $content_metadata_id Id of content metadata to which groups must have access. (optional)
+     * @param  string[] $ids Optional of ids to get specific groups. (optional)
+     * @param  string $content_metadata_id Id of content metadata to which groups must have access. (optional)
      * @param  bool $can_add_to_content_metadata Select only groups that either can/cannot be given access to content. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\Group[]
      */
-    public function allGroups($fields = null, $page = null, $per_page = null, $sorts = null, $ids = null, $content_metadata_id = null, $can_add_to_content_metadata = null)
+    public function allGroups($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $ids = null, $content_metadata_id = null, $can_add_to_content_metadata = null)
     {
-        list($response) = $this->allGroupsWithHttpInfo($fields, $page, $per_page, $sorts, $ids, $content_metadata_id, $can_add_to_content_metadata);
+        list($response) = $this->allGroupsWithHttpInfo($fields, $page, $per_page, $limit, $offset, $sorts, $ids, $content_metadata_id, $can_add_to_content_metadata);
         return $response;
     }
 
@@ -1305,21 +1337,23 @@ class GroupApi
      * Get All Groups
      *
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
-     * @param  int[] $ids Optional of ids to get specific groups. (optional)
-     * @param  int $content_metadata_id Id of content metadata to which groups must have access. (optional)
+     * @param  string[] $ids Optional of ids to get specific groups. (optional)
+     * @param  string $content_metadata_id Id of content metadata to which groups must have access. (optional)
      * @param  bool $can_add_to_content_metadata Select only groups that either can/cannot be given access to content. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\Group[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function allGroupsWithHttpInfo($fields = null, $page = null, $per_page = null, $sorts = null, $ids = null, $content_metadata_id = null, $can_add_to_content_metadata = null)
+    public function allGroupsWithHttpInfo($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $ids = null, $content_metadata_id = null, $can_add_to_content_metadata = null)
     {
         $returnType = '\Swagger\Client\Model\Group[]';
-        $request = $this->allGroupsRequest($fields, $page, $per_page, $sorts, $ids, $content_metadata_id, $can_add_to_content_metadata);
+        $request = $this->allGroupsRequest($fields, $page, $per_page, $limit, $offset, $sorts, $ids, $content_metadata_id, $can_add_to_content_metadata);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1402,19 +1436,21 @@ class GroupApi
      * Get All Groups
      *
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
-     * @param  int[] $ids Optional of ids to get specific groups. (optional)
-     * @param  int $content_metadata_id Id of content metadata to which groups must have access. (optional)
+     * @param  string[] $ids Optional of ids to get specific groups. (optional)
+     * @param  string $content_metadata_id Id of content metadata to which groups must have access. (optional)
      * @param  bool $can_add_to_content_metadata Select only groups that either can/cannot be given access to content. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function allGroupsAsync($fields = null, $page = null, $per_page = null, $sorts = null, $ids = null, $content_metadata_id = null, $can_add_to_content_metadata = null)
+    public function allGroupsAsync($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $ids = null, $content_metadata_id = null, $can_add_to_content_metadata = null)
     {
-        return $this->allGroupsAsyncWithHttpInfo($fields, $page, $per_page, $sorts, $ids, $content_metadata_id, $can_add_to_content_metadata)
+        return $this->allGroupsAsyncWithHttpInfo($fields, $page, $per_page, $limit, $offset, $sorts, $ids, $content_metadata_id, $can_add_to_content_metadata)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1428,20 +1464,22 @@ class GroupApi
      * Get All Groups
      *
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
-     * @param  int[] $ids Optional of ids to get specific groups. (optional)
-     * @param  int $content_metadata_id Id of content metadata to which groups must have access. (optional)
+     * @param  string[] $ids Optional of ids to get specific groups. (optional)
+     * @param  string $content_metadata_id Id of content metadata to which groups must have access. (optional)
      * @param  bool $can_add_to_content_metadata Select only groups that either can/cannot be given access to content. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function allGroupsAsyncWithHttpInfo($fields = null, $page = null, $per_page = null, $sorts = null, $ids = null, $content_metadata_id = null, $can_add_to_content_metadata = null)
+    public function allGroupsAsyncWithHttpInfo($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $ids = null, $content_metadata_id = null, $can_add_to_content_metadata = null)
     {
         $returnType = '\Swagger\Client\Model\Group[]';
-        $request = $this->allGroupsRequest($fields, $page, $per_page, $sorts, $ids, $content_metadata_id, $can_add_to_content_metadata);
+        $request = $this->allGroupsRequest($fields, $page, $per_page, $limit, $offset, $sorts, $ids, $content_metadata_id, $can_add_to_content_metadata);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1484,17 +1522,19 @@ class GroupApi
      * Create request for operation 'allGroups'
      *
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
+     * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
+     * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
      * @param  string $sorts Fields to sort by. (optional)
-     * @param  int[] $ids Optional of ids to get specific groups. (optional)
-     * @param  int $content_metadata_id Id of content metadata to which groups must have access. (optional)
+     * @param  string[] $ids Optional of ids to get specific groups. (optional)
+     * @param  string $content_metadata_id Id of content metadata to which groups must have access. (optional)
      * @param  bool $can_add_to_content_metadata Select only groups that either can/cannot be given access to content. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function allGroupsRequest($fields = null, $page = null, $per_page = null, $sorts = null, $ids = null, $content_metadata_id = null, $can_add_to_content_metadata = null)
+    protected function allGroupsRequest($fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $ids = null, $content_metadata_id = null, $can_add_to_content_metadata = null)
     {
 
         $resourcePath = '/groups';
@@ -1515,6 +1555,14 @@ class GroupApi
         // query params
         if ($per_page !== null) {
             $queryParams['per_page'] = ObjectSerializer::toQueryValue($per_page);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+        // query params
+        if ($offset !== null) {
+            $queryParams['offset'] = ObjectSerializer::toQueryValue($offset);
         }
         // query params
         if ($sorts !== null) {
@@ -1606,14 +1654,14 @@ class GroupApi
      *
      * Create Group
      *
-     * @param  \Swagger\Client\Model\Group $body Group (optional)
+     * @param  \Swagger\Client\Model\Group $body Group (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\Group
      */
-    public function createGroup($body = null, $fields = null)
+    public function createGroup($body, $fields = null)
     {
         list($response) = $this->createGroupWithHttpInfo($body, $fields);
         return $response;
@@ -1624,14 +1672,14 @@ class GroupApi
      *
      * Create Group
      *
-     * @param  \Swagger\Client\Model\Group $body Group (optional)
+     * @param  \Swagger\Client\Model\Group $body Group (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\Group, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createGroupWithHttpInfo($body = null, $fields = null)
+    public function createGroupWithHttpInfo($body, $fields = null)
     {
         $returnType = '\Swagger\Client\Model\Group';
         $request = $this->createGroupRequest($body, $fields);
@@ -1722,6 +1770,14 @@ class GroupApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1732,13 +1788,13 @@ class GroupApi
      *
      * Create Group
      *
-     * @param  \Swagger\Client\Model\Group $body Group (optional)
+     * @param  \Swagger\Client\Model\Group $body Group (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createGroupAsync($body = null, $fields = null)
+    public function createGroupAsync($body, $fields = null)
     {
         return $this->createGroupAsyncWithHttpInfo($body, $fields)
             ->then(
@@ -1753,13 +1809,13 @@ class GroupApi
      *
      * Create Group
      *
-     * @param  \Swagger\Client\Model\Group $body Group (optional)
+     * @param  \Swagger\Client\Model\Group $body Group (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createGroupAsyncWithHttpInfo($body = null, $fields = null)
+    public function createGroupAsyncWithHttpInfo($body, $fields = null)
     {
         $returnType = '\Swagger\Client\Model\Group';
         $request = $this->createGroupRequest($body, $fields);
@@ -1804,14 +1860,20 @@ class GroupApi
     /**
      * Create request for operation 'createGroup'
      *
-     * @param  \Swagger\Client\Model\Group $body Group (optional)
+     * @param  \Swagger\Client\Model\Group $body Group (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createGroupRequest($body = null, $fields = null)
+    protected function createGroupRequest($body, $fields = null)
     {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling createGroup'
+            );
+        }
 
         $resourcePath = '/groups';
         $formParams = [];
@@ -1898,7 +1960,7 @@ class GroupApi
      *
      * Delete Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -1915,7 +1977,7 @@ class GroupApi
      *
      * Delete Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2004,6 +2066,14 @@ class GroupApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -2014,7 +2084,7 @@ class GroupApi
      *
      * Delete Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2034,7 +2104,7 @@ class GroupApi
      *
      * Delete Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2084,7 +2154,7 @@ class GroupApi
     /**
      * Create request for operation 'deleteGroup'
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2184,8 +2254,8 @@ class GroupApi
      *
      * Deletes a Group from Group
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $deleting_group_id Id of group to delete (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $deleting_group_id Id of group to delete (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2201,8 +2271,8 @@ class GroupApi
      *
      * Deletes a Group from Group
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $deleting_group_id Id of group to delete (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $deleting_group_id Id of group to delete (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2279,8 +2349,8 @@ class GroupApi
      *
      * Deletes a Group from Group
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $deleting_group_id Id of group to delete (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $deleting_group_id Id of group to delete (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2300,8 +2370,8 @@ class GroupApi
      *
      * Deletes a Group from Group
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $deleting_group_id Id of group to delete (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $deleting_group_id Id of group to delete (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2337,8 +2407,8 @@ class GroupApi
     /**
      * Create request for operation 'deleteGroupFromGroup'
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $deleting_group_id Id of group to delete (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $deleting_group_id Id of group to delete (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2452,8 +2522,8 @@ class GroupApi
      *
      * Remove a User from Group
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $user_id Id of user to remove from group (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $user_id Id of user to remove from group (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2469,8 +2539,8 @@ class GroupApi
      *
      * Remove a User from Group
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $user_id Id of user to remove from group (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $user_id Id of user to remove from group (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2547,8 +2617,8 @@ class GroupApi
      *
      * Remove a User from Group
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $user_id Id of user to remove from group (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $user_id Id of user to remove from group (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2568,8 +2638,8 @@ class GroupApi
      *
      * Remove a User from Group
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $user_id Id of user to remove from group (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $user_id Id of user to remove from group (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2605,8 +2675,8 @@ class GroupApi
     /**
      * Create request for operation 'deleteGroupUser'
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $user_id Id of user to remove from group (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $user_id Id of user to remove from group (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2720,8 +2790,8 @@ class GroupApi
      *
      * Delete User Attribute Group Value
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2737,8 +2807,8 @@ class GroupApi
      *
      * Delete User Attribute Group Value
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -2807,8 +2877,8 @@ class GroupApi
      *
      * Delete User Attribute Group Value
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2828,8 +2898,8 @@ class GroupApi
      *
      * Delete User Attribute Group Value
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -2865,8 +2935,8 @@ class GroupApi
     /**
      * Create request for operation 'deleteUserAttributeGroupValue'
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
@@ -2980,7 +3050,7 @@ class GroupApi
      *
      * Get Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -2998,7 +3068,7 @@ class GroupApi
      *
      * Get Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -3090,7 +3160,7 @@ class GroupApi
      *
      * Get Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -3111,7 +3181,7 @@ class GroupApi
      *
      * Get Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -3162,7 +3232,7 @@ class GroupApi
     /**
      * Create request for operation 'group'
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -3263,11 +3333,1058 @@ class GroupApi
     }
 
     /**
+     * Operation searchGroups
+     *
+     * Search Groups
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  string $id Match group id. (optional)
+     * @param  string $name Match group name. (optional)
+     * @param  string $external_group_id Match group external_group_id. (optional)
+     * @param  bool $externally_managed Match group externally_managed. (optional)
+     * @param  bool $externally_orphaned Match group externally_orphaned. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\Group[]
+     */
+    public function searchGroups($fields = null, $limit = null, $offset = null, $sorts = null, $filter_or = null, $id = null, $name = null, $external_group_id = null, $externally_managed = null, $externally_orphaned = null)
+    {
+        list($response) = $this->searchGroupsWithHttpInfo($fields, $limit, $offset, $sorts, $filter_or, $id, $name, $external_group_id, $externally_managed, $externally_orphaned);
+        return $response;
+    }
+
+    /**
+     * Operation searchGroupsWithHttpInfo
+     *
+     * Search Groups
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  string $id Match group id. (optional)
+     * @param  string $name Match group name. (optional)
+     * @param  string $external_group_id Match group external_group_id. (optional)
+     * @param  bool $externally_managed Match group externally_managed. (optional)
+     * @param  bool $externally_orphaned Match group externally_orphaned. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\Group[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function searchGroupsWithHttpInfo($fields = null, $limit = null, $offset = null, $sorts = null, $filter_or = null, $id = null, $name = null, $external_group_id = null, $externally_managed = null, $externally_orphaned = null)
+    {
+        $returnType = '\Swagger\Client\Model\Group[]';
+        $request = $this->searchGroupsRequest($fields, $limit, $offset, $sorts, $filter_or, $id, $name, $external_group_id, $externally_managed, $externally_orphaned);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Group[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation searchGroupsAsync
+     *
+     * Search Groups
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  string $id Match group id. (optional)
+     * @param  string $name Match group name. (optional)
+     * @param  string $external_group_id Match group external_group_id. (optional)
+     * @param  bool $externally_managed Match group externally_managed. (optional)
+     * @param  bool $externally_orphaned Match group externally_orphaned. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchGroupsAsync($fields = null, $limit = null, $offset = null, $sorts = null, $filter_or = null, $id = null, $name = null, $external_group_id = null, $externally_managed = null, $externally_orphaned = null)
+    {
+        return $this->searchGroupsAsyncWithHttpInfo($fields, $limit, $offset, $sorts, $filter_or, $id, $name, $external_group_id, $externally_managed, $externally_orphaned)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation searchGroupsAsyncWithHttpInfo
+     *
+     * Search Groups
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  string $id Match group id. (optional)
+     * @param  string $name Match group name. (optional)
+     * @param  string $external_group_id Match group external_group_id. (optional)
+     * @param  bool $externally_managed Match group externally_managed. (optional)
+     * @param  bool $externally_orphaned Match group externally_orphaned. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchGroupsAsyncWithHttpInfo($fields = null, $limit = null, $offset = null, $sorts = null, $filter_or = null, $id = null, $name = null, $external_group_id = null, $externally_managed = null, $externally_orphaned = null)
+    {
+        $returnType = '\Swagger\Client\Model\Group[]';
+        $request = $this->searchGroupsRequest($fields, $limit, $offset, $sorts, $filter_or, $id, $name, $external_group_id, $externally_managed, $externally_orphaned);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'searchGroups'
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  string $id Match group id. (optional)
+     * @param  string $name Match group name. (optional)
+     * @param  string $external_group_id Match group external_group_id. (optional)
+     * @param  bool $externally_managed Match group externally_managed. (optional)
+     * @param  bool $externally_orphaned Match group externally_orphaned. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function searchGroupsRequest($fields = null, $limit = null, $offset = null, $sorts = null, $filter_or = null, $id = null, $name = null, $external_group_id = null, $externally_managed = null, $externally_orphaned = null)
+    {
+
+        $resourcePath = '/groups/search';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($fields !== null) {
+            $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+        // query params
+        if ($offset !== null) {
+            $queryParams['offset'] = ObjectSerializer::toQueryValue($offset);
+        }
+        // query params
+        if ($sorts !== null) {
+            $queryParams['sorts'] = ObjectSerializer::toQueryValue($sorts);
+        }
+        // query params
+        if ($filter_or !== null) {
+            $queryParams['filter_or'] = ObjectSerializer::toQueryValue($filter_or);
+        }
+        // query params
+        if ($id !== null) {
+            $queryParams['id'] = ObjectSerializer::toQueryValue($id);
+        }
+        // query params
+        if ($name !== null) {
+            $queryParams['name'] = ObjectSerializer::toQueryValue($name);
+        }
+        // query params
+        if ($external_group_id !== null) {
+            $queryParams['external_group_id'] = ObjectSerializer::toQueryValue($external_group_id);
+        }
+        // query params
+        if ($externally_managed !== null) {
+            $queryParams['externally_managed'] = ObjectSerializer::toQueryValue($externally_managed);
+        }
+        // query params
+        if ($externally_orphaned !== null) {
+            $queryParams['externally_orphaned'] = ObjectSerializer::toQueryValue($externally_orphaned);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation searchGroupsWithHierarchy
+     *
+     * Search Groups with Hierarchy
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  string $id Match group id. (optional)
+     * @param  string $name Match group name. (optional)
+     * @param  string $external_group_id Match group external_group_id. (optional)
+     * @param  bool $externally_managed Match group externally_managed. (optional)
+     * @param  bool $externally_orphaned Match group externally_orphaned. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\GroupHierarchy[]
+     */
+    public function searchGroupsWithHierarchy($fields = null, $limit = null, $offset = null, $sorts = null, $filter_or = null, $id = null, $name = null, $external_group_id = null, $externally_managed = null, $externally_orphaned = null)
+    {
+        list($response) = $this->searchGroupsWithHierarchyWithHttpInfo($fields, $limit, $offset, $sorts, $filter_or, $id, $name, $external_group_id, $externally_managed, $externally_orphaned);
+        return $response;
+    }
+
+    /**
+     * Operation searchGroupsWithHierarchyWithHttpInfo
+     *
+     * Search Groups with Hierarchy
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  string $id Match group id. (optional)
+     * @param  string $name Match group name. (optional)
+     * @param  string $external_group_id Match group external_group_id. (optional)
+     * @param  bool $externally_managed Match group externally_managed. (optional)
+     * @param  bool $externally_orphaned Match group externally_orphaned. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\GroupHierarchy[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function searchGroupsWithHierarchyWithHttpInfo($fields = null, $limit = null, $offset = null, $sorts = null, $filter_or = null, $id = null, $name = null, $external_group_id = null, $externally_managed = null, $externally_orphaned = null)
+    {
+        $returnType = '\Swagger\Client\Model\GroupHierarchy[]';
+        $request = $this->searchGroupsWithHierarchyRequest($fields, $limit, $offset, $sorts, $filter_or, $id, $name, $external_group_id, $externally_managed, $externally_orphaned);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\GroupHierarchy[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation searchGroupsWithHierarchyAsync
+     *
+     * Search Groups with Hierarchy
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  string $id Match group id. (optional)
+     * @param  string $name Match group name. (optional)
+     * @param  string $external_group_id Match group external_group_id. (optional)
+     * @param  bool $externally_managed Match group externally_managed. (optional)
+     * @param  bool $externally_orphaned Match group externally_orphaned. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchGroupsWithHierarchyAsync($fields = null, $limit = null, $offset = null, $sorts = null, $filter_or = null, $id = null, $name = null, $external_group_id = null, $externally_managed = null, $externally_orphaned = null)
+    {
+        return $this->searchGroupsWithHierarchyAsyncWithHttpInfo($fields, $limit, $offset, $sorts, $filter_or, $id, $name, $external_group_id, $externally_managed, $externally_orphaned)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation searchGroupsWithHierarchyAsyncWithHttpInfo
+     *
+     * Search Groups with Hierarchy
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  string $id Match group id. (optional)
+     * @param  string $name Match group name. (optional)
+     * @param  string $external_group_id Match group external_group_id. (optional)
+     * @param  bool $externally_managed Match group externally_managed. (optional)
+     * @param  bool $externally_orphaned Match group externally_orphaned. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchGroupsWithHierarchyAsyncWithHttpInfo($fields = null, $limit = null, $offset = null, $sorts = null, $filter_or = null, $id = null, $name = null, $external_group_id = null, $externally_managed = null, $externally_orphaned = null)
+    {
+        $returnType = '\Swagger\Client\Model\GroupHierarchy[]';
+        $request = $this->searchGroupsWithHierarchyRequest($fields, $limit, $offset, $sorts, $filter_or, $id, $name, $external_group_id, $externally_managed, $externally_orphaned);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'searchGroupsWithHierarchy'
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  string $id Match group id. (optional)
+     * @param  string $name Match group name. (optional)
+     * @param  string $external_group_id Match group external_group_id. (optional)
+     * @param  bool $externally_managed Match group externally_managed. (optional)
+     * @param  bool $externally_orphaned Match group externally_orphaned. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function searchGroupsWithHierarchyRequest($fields = null, $limit = null, $offset = null, $sorts = null, $filter_or = null, $id = null, $name = null, $external_group_id = null, $externally_managed = null, $externally_orphaned = null)
+    {
+
+        $resourcePath = '/groups/search/with_hierarchy';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($fields !== null) {
+            $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+        // query params
+        if ($offset !== null) {
+            $queryParams['offset'] = ObjectSerializer::toQueryValue($offset);
+        }
+        // query params
+        if ($sorts !== null) {
+            $queryParams['sorts'] = ObjectSerializer::toQueryValue($sorts);
+        }
+        // query params
+        if ($filter_or !== null) {
+            $queryParams['filter_or'] = ObjectSerializer::toQueryValue($filter_or);
+        }
+        // query params
+        if ($id !== null) {
+            $queryParams['id'] = ObjectSerializer::toQueryValue($id);
+        }
+        // query params
+        if ($name !== null) {
+            $queryParams['name'] = ObjectSerializer::toQueryValue($name);
+        }
+        // query params
+        if ($external_group_id !== null) {
+            $queryParams['external_group_id'] = ObjectSerializer::toQueryValue($external_group_id);
+        }
+        // query params
+        if ($externally_managed !== null) {
+            $queryParams['externally_managed'] = ObjectSerializer::toQueryValue($externally_managed);
+        }
+        // query params
+        if ($externally_orphaned !== null) {
+            $queryParams['externally_orphaned'] = ObjectSerializer::toQueryValue($externally_orphaned);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation searchGroupsWithRoles
+     *
+     * Search Groups with Roles
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  string $id Match group id. (optional)
+     * @param  string $name Match group name. (optional)
+     * @param  string $external_group_id Match group external_group_id. (optional)
+     * @param  bool $externally_managed Match group externally_managed. (optional)
+     * @param  bool $externally_orphaned Match group externally_orphaned. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\GroupSearch[]
+     */
+    public function searchGroupsWithRoles($fields = null, $limit = null, $offset = null, $sorts = null, $filter_or = null, $id = null, $name = null, $external_group_id = null, $externally_managed = null, $externally_orphaned = null)
+    {
+        list($response) = $this->searchGroupsWithRolesWithHttpInfo($fields, $limit, $offset, $sorts, $filter_or, $id, $name, $external_group_id, $externally_managed, $externally_orphaned);
+        return $response;
+    }
+
+    /**
+     * Operation searchGroupsWithRolesWithHttpInfo
+     *
+     * Search Groups with Roles
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  string $id Match group id. (optional)
+     * @param  string $name Match group name. (optional)
+     * @param  string $external_group_id Match group external_group_id. (optional)
+     * @param  bool $externally_managed Match group externally_managed. (optional)
+     * @param  bool $externally_orphaned Match group externally_orphaned. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\GroupSearch[], HTTP status code, HTTP response headers (array of strings)
+     */
+    public function searchGroupsWithRolesWithHttpInfo($fields = null, $limit = null, $offset = null, $sorts = null, $filter_or = null, $id = null, $name = null, $external_group_id = null, $externally_managed = null, $externally_orphaned = null)
+    {
+        $returnType = '\Swagger\Client\Model\GroupSearch[]';
+        $request = $this->searchGroupsWithRolesRequest($fields, $limit, $offset, $sorts, $filter_or, $id, $name, $external_group_id, $externally_managed, $externally_orphaned);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\GroupSearch[]',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation searchGroupsWithRolesAsync
+     *
+     * Search Groups with Roles
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  string $id Match group id. (optional)
+     * @param  string $name Match group name. (optional)
+     * @param  string $external_group_id Match group external_group_id. (optional)
+     * @param  bool $externally_managed Match group externally_managed. (optional)
+     * @param  bool $externally_orphaned Match group externally_orphaned. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchGroupsWithRolesAsync($fields = null, $limit = null, $offset = null, $sorts = null, $filter_or = null, $id = null, $name = null, $external_group_id = null, $externally_managed = null, $externally_orphaned = null)
+    {
+        return $this->searchGroupsWithRolesAsyncWithHttpInfo($fields, $limit, $offset, $sorts, $filter_or, $id, $name, $external_group_id, $externally_managed, $externally_orphaned)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation searchGroupsWithRolesAsyncWithHttpInfo
+     *
+     * Search Groups with Roles
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  string $id Match group id. (optional)
+     * @param  string $name Match group name. (optional)
+     * @param  string $external_group_id Match group external_group_id. (optional)
+     * @param  bool $externally_managed Match group externally_managed. (optional)
+     * @param  bool $externally_orphaned Match group externally_orphaned. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function searchGroupsWithRolesAsyncWithHttpInfo($fields = null, $limit = null, $offset = null, $sorts = null, $filter_or = null, $id = null, $name = null, $external_group_id = null, $externally_managed = null, $externally_orphaned = null)
+    {
+        $returnType = '\Swagger\Client\Model\GroupSearch[]';
+        $request = $this->searchGroupsWithRolesRequest($fields, $limit, $offset, $sorts, $filter_or, $id, $name, $external_group_id, $externally_managed, $externally_orphaned);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'searchGroupsWithRoles'
+     *
+     * @param  string $fields Requested fields. (optional)
+     * @param  int $limit Number of results to return (used with &#x60;offset&#x60;). (optional)
+     * @param  int $offset Number of results to skip before returning any (used with &#x60;limit&#x60;). (optional)
+     * @param  string $sorts Fields to sort by. (optional)
+     * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
+     * @param  string $id Match group id. (optional)
+     * @param  string $name Match group name. (optional)
+     * @param  string $external_group_id Match group external_group_id. (optional)
+     * @param  bool $externally_managed Match group externally_managed. (optional)
+     * @param  bool $externally_orphaned Match group externally_orphaned. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function searchGroupsWithRolesRequest($fields = null, $limit = null, $offset = null, $sorts = null, $filter_or = null, $id = null, $name = null, $external_group_id = null, $externally_managed = null, $externally_orphaned = null)
+    {
+
+        $resourcePath = '/groups/search/with_roles';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($fields !== null) {
+            $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
+        }
+        // query params
+        if ($limit !== null) {
+            $queryParams['limit'] = ObjectSerializer::toQueryValue($limit);
+        }
+        // query params
+        if ($offset !== null) {
+            $queryParams['offset'] = ObjectSerializer::toQueryValue($offset);
+        }
+        // query params
+        if ($sorts !== null) {
+            $queryParams['sorts'] = ObjectSerializer::toQueryValue($sorts);
+        }
+        // query params
+        if ($filter_or !== null) {
+            $queryParams['filter_or'] = ObjectSerializer::toQueryValue($filter_or);
+        }
+        // query params
+        if ($id !== null) {
+            $queryParams['id'] = ObjectSerializer::toQueryValue($id);
+        }
+        // query params
+        if ($name !== null) {
+            $queryParams['name'] = ObjectSerializer::toQueryValue($name);
+        }
+        // query params
+        if ($external_group_id !== null) {
+            $queryParams['external_group_id'] = ObjectSerializer::toQueryValue($external_group_id);
+        }
+        // query params
+        if ($externally_managed !== null) {
+            $queryParams['externally_managed'] = ObjectSerializer::toQueryValue($externally_managed);
+        }
+        // query params
+        if ($externally_orphaned !== null) {
+            $queryParams['externally_orphaned'] = ObjectSerializer::toQueryValue($externally_orphaned);
+        }
+
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation updateGroup
      *
      * Update Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  \Swagger\Client\Model\Group $body Group (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -3286,7 +4403,7 @@ class GroupApi
      *
      * Update Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  \Swagger\Client\Model\Group $body Group (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -3377,6 +4494,14 @@ class GroupApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -3387,7 +4512,7 @@ class GroupApi
      *
      * Update Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  \Swagger\Client\Model\Group $body Group (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -3409,7 +4534,7 @@ class GroupApi
      *
      * Update Group
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  \Swagger\Client\Model\Group $body Group (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -3461,7 +4586,7 @@ class GroupApi
     /**
      * Create request for operation 'updateGroup'
      *
-     * @param  int $group_id Id of group (required)
+     * @param  string $group_id Id of group (required)
      * @param  \Swagger\Client\Model\Group $body Group (required)
      * @param  string $fields Requested fields. (optional)
      *
@@ -3576,8 +4701,8 @@ class GroupApi
      *
      * Set User Attribute Group Value
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttributeGroupValue $body New value for group. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -3595,8 +4720,8 @@ class GroupApi
      *
      * Set User Attribute Group Value
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttributeGroupValue $body New value for group. (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -3678,6 +4803,14 @@ class GroupApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -3688,8 +4821,8 @@ class GroupApi
      *
      * Set User Attribute Group Value
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttributeGroupValue $body New value for group. (required)
      *
      * @throws \InvalidArgumentException
@@ -3710,8 +4843,8 @@ class GroupApi
      *
      * Set User Attribute Group Value
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttributeGroupValue $body New value for group. (required)
      *
      * @throws \InvalidArgumentException
@@ -3762,8 +4895,8 @@ class GroupApi
     /**
      * Create request for operation 'updateUserAttributeGroupValue'
      *
-     * @param  int $group_id Id of group (required)
-     * @param  int $user_attribute_id Id of user attribute (required)
+     * @param  string $group_id Id of group (required)
+     * @param  string $user_attribute_id Id of user attribute (required)
      * @param  \Swagger\Client\Model\UserAttributeGroupValue $body New value for group. (required)
      *
      * @throws \InvalidArgumentException

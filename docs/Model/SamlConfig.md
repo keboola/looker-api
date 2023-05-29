@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
 **enabled** | **bool** | Enable/Disable Saml authentication for the server | [optional] 
 **idp_cert** | **string** | Identity Provider Certificate (provided by IdP) | [optional] 
 **idp_url** | **string** | Identity Provider Url (provided by IdP) | [optional] 
@@ -19,8 +20,8 @@ Name | Type | Description | Notes
 **modified_by** | **string** | User id of user who last modified this config | [optional] 
 **default_new_user_roles** | [**\Swagger\Client\Model\Role[]**](Role.md) | (Read-only) Roles that will be applied to new users the first time they login via Saml | [optional] 
 **default_new_user_groups** | [**\Swagger\Client\Model\Group[]**](Group.md) | (Read-only) Groups that will be applied to new users the first time they login via Saml | [optional] 
-**default_new_user_role_ids** | **int[]** | (Write-Only) Array of ids of roles that will be applied to new users the first time they login via Saml | [optional] 
-**default_new_user_group_ids** | **int[]** | (Write-Only) Array of ids of groups that will be applied to new users the first time they login via Saml | [optional] 
+**default_new_user_role_ids** | **string[]** | (Write-Only) Array of ids of roles that will be applied to new users the first time they login via Saml | [optional] 
+**default_new_user_group_ids** | **string[]** | (Write-Only) Array of ids of groups that will be applied to new users the first time they login via Saml | [optional] 
 **set_roles_from_groups** | **bool** | Set user roles in Looker based on groups from Saml | [optional] 
 **groups_attribute** | **string** | Name of user record attributes used to indicate groups. Used when &#39;groups_finder_type&#39; is set to &#39;grouped_attribute_values&#39; | [optional] 
 **groups** | [**\Swagger\Client\Model\SamlGroupRead[]**](SamlGroupRead.md) | (Read-only) Array of mappings between Saml Groups and Looker Roles | [optional] 
@@ -31,8 +32,10 @@ Name | Type | Description | Notes
 **groups_finder_type** | **string** | Identifier for a strategy for how Looker will find groups in the SAML response. One of [&#39;grouped_attribute_values&#39;, &#39;individual_attributes&#39;] | [optional] 
 **groups_member_value** | **string** | Value for group attribute used to indicate membership. Used when &#39;groups_finder_type&#39; is set to &#39;individual_attributes&#39; | [optional] 
 **bypass_login_page** | **bool** | Bypass the login page when user authentication is required. Redirect to IdP immediately instead. | [optional] 
+**allow_normal_group_membership** | **bool** | Allow SAML auth&#39;d users to be members of non-reflected Looker groups. If &#39;false&#39;, user will be removed from non-reflected groups on login. | [optional] 
+**allow_roles_from_normal_groups** | **bool** | SAML auth&#39;d users will inherit roles from non-reflected Looker groups. | [optional] 
+**allow_direct_roles** | **bool** | Allows roles to be directly assigned to SAML auth&#39;d users. | [optional] 
 **url** | **string** | Link to get this item | [optional] 
-**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

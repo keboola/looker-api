@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
 **body_text** | **string** | Text tile body text | [optional] 
 **body_text_as_html** | **string** | Text tile body text as Html | [optional] 
 **dashboard_id** | **string** | Id of Dashboard | [optional] 
@@ -17,18 +18,21 @@ Name | Type | Description | Notes
 **note_text** | **string** | Note Text | [optional] 
 **note_text_as_html** | **string** | Note Text as Html | [optional] 
 **query** | [**\Swagger\Client\Model\Query**](Query.md) | Query | [optional] 
-**query_id** | **int** | Id Of Query | [optional] 
+**query_id** | **string** | Id Of Query | [optional] 
 **refresh_interval** | **string** | Refresh Interval | [optional] 
 **refresh_interval_to_i** | **int** | Refresh Interval as integer | [optional] 
 **result_maker** | [**\Swagger\Client\Model\ResultMakerWithIdVisConfigAndDynamicFields**](ResultMakerWithIdVisConfigAndDynamicFields.md) | Data about the result maker. | [optional] 
-**result_maker_id** | **int** | ID of the ResultMakerLookup entry. | [optional] 
+**result_maker_id** | **string** | ID of the ResultMakerLookup entry. | [optional] 
 **subtitle_text** | **string** | Text tile subtitle text | [optional] 
 **title** | **string** | Title of dashboard element | [optional] 
 **title_hidden** | **bool** | Whether title is hidden | [optional] 
 **title_text** | **string** | Text tile title | [optional] 
 **type** | **string** | Type | [optional] 
 **alert_count** | **int** | Count of Alerts associated to a dashboard element | [optional] 
-**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
+**rich_content_json** | **string** | JSON with all the properties required for rich editor and buttons elements | [optional] 
+**title_text_as_html** | **string** | Text tile title text as Html | [optional] 
+**subtitle_text_as_html** | **string** | Text tile subtitle text as Html | [optional] 
+**extension_id** | **string** | Extension ID | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

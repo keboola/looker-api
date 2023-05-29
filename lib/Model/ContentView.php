@@ -11,12 +11,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -57,17 +57,18 @@ class ContentView implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
-        'look_id' => 'int',
-        'dashboard_id' => 'int',
-        'content_metadata_id' => 'int',
-        'user_id' => 'int',
-        'group_id' => 'int',
+        'can' => 'map[string,bool]',
+        'id' => 'string',
+        'look_id' => 'string',
+        'dashboard_id' => 'string',
+        'title' => 'string',
+        'content_metadata_id' => 'string',
+        'user_id' => 'string',
+        'group_id' => 'string',
         'view_count' => 'int',
         'favorite_count' => 'int',
         'last_viewed_at' => 'string',
-        'start_of_week_date' => 'string',
-        'can' => 'map[string,bool]'
+        'start_of_week_date' => 'string'
     ];
 
     /**
@@ -76,17 +77,18 @@ class ContentView implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => 'int64',
-        'look_id' => 'int64',
-        'dashboard_id' => 'int64',
-        'content_metadata_id' => 'int64',
-        'user_id' => 'int64',
-        'group_id' => 'int64',
+        'can' => null,
+        'id' => null,
+        'look_id' => null,
+        'dashboard_id' => null,
+        'title' => null,
+        'content_metadata_id' => null,
+        'user_id' => null,
+        'group_id' => null,
         'view_count' => 'int64',
         'favorite_count' => 'int64',
         'last_viewed_at' => null,
-        'start_of_week_date' => null,
-        'can' => null
+        'start_of_week_date' => null
     ];
 
     /**
@@ -116,17 +118,18 @@ class ContentView implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'can' => 'can',
         'id' => 'id',
         'look_id' => 'look_id',
         'dashboard_id' => 'dashboard_id',
+        'title' => 'title',
         'content_metadata_id' => 'content_metadata_id',
         'user_id' => 'user_id',
         'group_id' => 'group_id',
         'view_count' => 'view_count',
         'favorite_count' => 'favorite_count',
         'last_viewed_at' => 'last_viewed_at',
-        'start_of_week_date' => 'start_of_week_date',
-        'can' => 'can'
+        'start_of_week_date' => 'start_of_week_date'
     ];
 
     /**
@@ -135,17 +138,18 @@ class ContentView implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'can' => 'setCan',
         'id' => 'setId',
         'look_id' => 'setLookId',
         'dashboard_id' => 'setDashboardId',
+        'title' => 'setTitle',
         'content_metadata_id' => 'setContentMetadataId',
         'user_id' => 'setUserId',
         'group_id' => 'setGroupId',
         'view_count' => 'setViewCount',
         'favorite_count' => 'setFavoriteCount',
         'last_viewed_at' => 'setLastViewedAt',
-        'start_of_week_date' => 'setStartOfWeekDate',
-        'can' => 'setCan'
+        'start_of_week_date' => 'setStartOfWeekDate'
     ];
 
     /**
@@ -154,17 +158,18 @@ class ContentView implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'can' => 'getCan',
         'id' => 'getId',
         'look_id' => 'getLookId',
         'dashboard_id' => 'getDashboardId',
+        'title' => 'getTitle',
         'content_metadata_id' => 'getContentMetadataId',
         'user_id' => 'getUserId',
         'group_id' => 'getGroupId',
         'view_count' => 'getViewCount',
         'favorite_count' => 'getFavoriteCount',
         'last_viewed_at' => 'getLastViewedAt',
-        'start_of_week_date' => 'getStartOfWeekDate',
-        'can' => 'getCan'
+        'start_of_week_date' => 'getStartOfWeekDate'
     ];
 
     /**
@@ -227,9 +232,11 @@ class ContentView implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['look_id'] = isset($data['look_id']) ? $data['look_id'] : null;
         $this->container['dashboard_id'] = isset($data['dashboard_id']) ? $data['dashboard_id'] : null;
+        $this->container['title'] = isset($data['title']) ? $data['title'] : null;
         $this->container['content_metadata_id'] = isset($data['content_metadata_id']) ? $data['content_metadata_id'] : null;
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
         $this->container['group_id'] = isset($data['group_id']) ? $data['group_id'] : null;
@@ -237,7 +244,6 @@ class ContentView implements ModelInterface, ArrayAccess
         $this->container['favorite_count'] = isset($data['favorite_count']) ? $data['favorite_count'] : null;
         $this->container['last_viewed_at'] = isset($data['last_viewed_at']) ? $data['last_viewed_at'] : null;
         $this->container['start_of_week_date'] = isset($data['start_of_week_date']) ? $data['start_of_week_date'] : null;
-        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
     }
 
     /**
@@ -265,9 +271,33 @@ class ContentView implements ModelInterface, ArrayAccess
 
 
     /**
+     * Gets can
+     *
+     * @return map[string,bool]
+     */
+    public function getCan()
+    {
+        return $this->container['can'];
+    }
+
+    /**
+     * Sets can
+     *
+     * @param map[string,bool] $can Operations the current user is able to perform on this object
+     *
+     * @return $this
+     */
+    public function setCan($can)
+    {
+        $this->container['can'] = $can;
+
+        return $this;
+    }
+
+    /**
      * Gets id
      *
-     * @return int
+     * @return string
      */
     public function getId()
     {
@@ -277,7 +307,7 @@ class ContentView implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id Unique Id
+     * @param string $id Unique Id
      *
      * @return $this
      */
@@ -291,7 +321,7 @@ class ContentView implements ModelInterface, ArrayAccess
     /**
      * Gets look_id
      *
-     * @return int
+     * @return string
      */
     public function getLookId()
     {
@@ -301,7 +331,7 @@ class ContentView implements ModelInterface, ArrayAccess
     /**
      * Sets look_id
      *
-     * @param int $look_id Id of viewed Look
+     * @param string $look_id Id of viewed Look
      *
      * @return $this
      */
@@ -315,7 +345,7 @@ class ContentView implements ModelInterface, ArrayAccess
     /**
      * Gets dashboard_id
      *
-     * @return int
+     * @return string
      */
     public function getDashboardId()
     {
@@ -325,7 +355,7 @@ class ContentView implements ModelInterface, ArrayAccess
     /**
      * Sets dashboard_id
      *
-     * @param int $dashboard_id Id of the viewed Dashboard
+     * @param string $dashboard_id Id of the viewed Dashboard
      *
      * @return $this
      */
@@ -337,9 +367,33 @@ class ContentView implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets title
+     *
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->container['title'];
+    }
+
+    /**
+     * Sets title
+     *
+     * @param string $title Name or title of underlying content
+     *
+     * @return $this
+     */
+    public function setTitle($title)
+    {
+        $this->container['title'] = $title;
+
+        return $this;
+    }
+
+    /**
      * Gets content_metadata_id
      *
-     * @return int
+     * @return string
      */
     public function getContentMetadataId()
     {
@@ -349,7 +403,7 @@ class ContentView implements ModelInterface, ArrayAccess
     /**
      * Sets content_metadata_id
      *
-     * @param int $content_metadata_id Content metadata id of the Look or Dashboard
+     * @param string $content_metadata_id Content metadata id of the Look or Dashboard
      *
      * @return $this
      */
@@ -363,7 +417,7 @@ class ContentView implements ModelInterface, ArrayAccess
     /**
      * Gets user_id
      *
-     * @return int
+     * @return string
      */
     public function getUserId()
     {
@@ -373,7 +427,7 @@ class ContentView implements ModelInterface, ArrayAccess
     /**
      * Sets user_id
      *
-     * @param int $user_id Id of user content was viewed by
+     * @param string $user_id Id of user content was viewed by
      *
      * @return $this
      */
@@ -387,7 +441,7 @@ class ContentView implements ModelInterface, ArrayAccess
     /**
      * Gets group_id
      *
-     * @return int
+     * @return string
      */
     public function getGroupId()
     {
@@ -397,7 +451,7 @@ class ContentView implements ModelInterface, ArrayAccess
     /**
      * Sets group_id
      *
-     * @param int $group_id Id of group content was viewed by
+     * @param string $group_id Id of group content was viewed by
      *
      * @return $this
      */
@@ -500,30 +554,6 @@ class ContentView implements ModelInterface, ArrayAccess
     public function setStartOfWeekDate($start_of_week_date)
     {
         $this->container['start_of_week_date'] = $start_of_week_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets can
-     *
-     * @return map[string,bool]
-     */
-    public function getCan()
-    {
-        return $this->container['can'];
-    }
-
-    /**
-     * Sets can
-     *
-     * @param map[string,bool] $can Operations the current user is able to perform on this object
-     *
-     * @return $this
-     */
-    public function setCan($can)
-    {
-        $this->container['can'] = $can;
 
         return $this;
     }

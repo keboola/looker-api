@@ -10,12 +10,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -459,6 +459,14 @@ class QueryApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -635,14 +643,14 @@ class QueryApi
      *
      * Create Query
      *
-     * @param  \Swagger\Client\Model\Query $body Query (optional)
+     * @param  \Swagger\Client\Model\Query $body Query (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\Query
      */
-    public function createQuery($body = null, $fields = null)
+    public function createQuery($body, $fields = null)
     {
         list($response) = $this->createQueryWithHttpInfo($body, $fields);
         return $response;
@@ -653,14 +661,14 @@ class QueryApi
      *
      * Create Query
      *
-     * @param  \Swagger\Client\Model\Query $body Query (optional)
+     * @param  \Swagger\Client\Model\Query $body Query (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\Query, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createQueryWithHttpInfo($body = null, $fields = null)
+    public function createQueryWithHttpInfo($body, $fields = null)
     {
         $returnType = '\Swagger\Client\Model\Query';
         $request = $this->createQueryRequest($body, $fields);
@@ -751,6 +759,14 @@ class QueryApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -761,13 +777,13 @@ class QueryApi
      *
      * Create Query
      *
-     * @param  \Swagger\Client\Model\Query $body Query (optional)
+     * @param  \Swagger\Client\Model\Query $body Query (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createQueryAsync($body = null, $fields = null)
+    public function createQueryAsync($body, $fields = null)
     {
         return $this->createQueryAsyncWithHttpInfo($body, $fields)
             ->then(
@@ -782,13 +798,13 @@ class QueryApi
      *
      * Create Query
      *
-     * @param  \Swagger\Client\Model\Query $body Query (optional)
+     * @param  \Swagger\Client\Model\Query $body Query (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createQueryAsyncWithHttpInfo($body = null, $fields = null)
+    public function createQueryAsyncWithHttpInfo($body, $fields = null)
     {
         $returnType = '\Swagger\Client\Model\Query';
         $request = $this->createQueryRequest($body, $fields);
@@ -833,14 +849,20 @@ class QueryApi
     /**
      * Create request for operation 'createQuery'
      *
-     * @param  \Swagger\Client\Model\Query $body Query (optional)
+     * @param  \Swagger\Client\Model\Query $body Query (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createQueryRequest($body = null, $fields = null)
+    protected function createQueryRequest($body, $fields = null)
     {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling createQuery'
+            );
+        }
 
         $resourcePath = '/queries';
         $formParams = [];
@@ -932,23 +954,23 @@ class QueryApi
      * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
      * @param  bool $apply_vis Apply visualization options to results. (optional)
      * @param  bool $cache Get results from cache if available. (optional)
-     * @param  int $image_width Render width for image formats. (optional)
-     * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
      * @param  bool $server_table_calcs Perform table calculations on query results (optional)
+     * @param  int $image_width DEPRECATED. Render width for image formats. Note that this parameter is always ignored by this method. (optional)
+     * @param  int $image_height DEPRECATED. Render height for image formats. Note that this parameter is always ignored by this method. (optional)
      * @param  string $fields Requested fields (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\QueryTask
      */
-    public function createQueryTask($body, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null, $fields = null)
+    public function createQueryTask($body, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null, $image_width = null, $image_height = null, $fields = null)
     {
-        list($response) = $this->createQueryTaskWithHttpInfo($body, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs, $fields);
+        list($response) = $this->createQueryTaskWithHttpInfo($body, $limit, $apply_formatting, $apply_vis, $cache, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs, $image_width, $image_height, $fields);
         return $response;
     }
 
@@ -962,24 +984,24 @@ class QueryApi
      * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
      * @param  bool $apply_vis Apply visualization options to results. (optional)
      * @param  bool $cache Get results from cache if available. (optional)
-     * @param  int $image_width Render width for image formats. (optional)
-     * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
      * @param  bool $server_table_calcs Perform table calculations on query results (optional)
+     * @param  int $image_width DEPRECATED. Render width for image formats. Note that this parameter is always ignored by this method. (optional)
+     * @param  int $image_height DEPRECATED. Render height for image formats. Note that this parameter is always ignored by this method. (optional)
      * @param  string $fields Requested fields (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\QueryTask, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createQueryTaskWithHttpInfo($body, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null, $fields = null)
+    public function createQueryTaskWithHttpInfo($body, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null, $image_width = null, $image_height = null, $fields = null)
     {
         $returnType = '\Swagger\Client\Model\QueryTask';
-        $request = $this->createQueryTaskRequest($body, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs, $fields);
+        $request = $this->createQueryTaskRequest($body, $limit, $apply_formatting, $apply_vis, $cache, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs, $image_width, $image_height, $fields);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1067,6 +1089,14 @@ class QueryApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1082,22 +1112,22 @@ class QueryApi
      * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
      * @param  bool $apply_vis Apply visualization options to results. (optional)
      * @param  bool $cache Get results from cache if available. (optional)
-     * @param  int $image_width Render width for image formats. (optional)
-     * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
      * @param  bool $server_table_calcs Perform table calculations on query results (optional)
+     * @param  int $image_width DEPRECATED. Render width for image formats. Note that this parameter is always ignored by this method. (optional)
+     * @param  int $image_height DEPRECATED. Render height for image formats. Note that this parameter is always ignored by this method. (optional)
      * @param  string $fields Requested fields (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createQueryTaskAsync($body, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null, $fields = null)
+    public function createQueryTaskAsync($body, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null, $image_width = null, $image_height = null, $fields = null)
     {
-        return $this->createQueryTaskAsyncWithHttpInfo($body, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs, $fields)
+        return $this->createQueryTaskAsyncWithHttpInfo($body, $limit, $apply_formatting, $apply_vis, $cache, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs, $image_width, $image_height, $fields)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1115,23 +1145,23 @@ class QueryApi
      * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
      * @param  bool $apply_vis Apply visualization options to results. (optional)
      * @param  bool $cache Get results from cache if available. (optional)
-     * @param  int $image_width Render width for image formats. (optional)
-     * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
      * @param  bool $server_table_calcs Perform table calculations on query results (optional)
+     * @param  int $image_width DEPRECATED. Render width for image formats. Note that this parameter is always ignored by this method. (optional)
+     * @param  int $image_height DEPRECATED. Render height for image formats. Note that this parameter is always ignored by this method. (optional)
      * @param  string $fields Requested fields (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createQueryTaskAsyncWithHttpInfo($body, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null, $fields = null)
+    public function createQueryTaskAsyncWithHttpInfo($body, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null, $image_width = null, $image_height = null, $fields = null)
     {
         $returnType = '\Swagger\Client\Model\QueryTask';
-        $request = $this->createQueryTaskRequest($body, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs, $fields);
+        $request = $this->createQueryTaskRequest($body, $limit, $apply_formatting, $apply_vis, $cache, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs, $image_width, $image_height, $fields);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1178,20 +1208,20 @@ class QueryApi
      * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
      * @param  bool $apply_vis Apply visualization options to results. (optional)
      * @param  bool $cache Get results from cache if available. (optional)
-     * @param  int $image_width Render width for image formats. (optional)
-     * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
      * @param  bool $server_table_calcs Perform table calculations on query results (optional)
+     * @param  int $image_width DEPRECATED. Render width for image formats. Note that this parameter is always ignored by this method. (optional)
+     * @param  int $image_height DEPRECATED. Render height for image formats. Note that this parameter is always ignored by this method. (optional)
      * @param  string $fields Requested fields (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createQueryTaskRequest($body, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null, $fields = null)
+    protected function createQueryTaskRequest($body, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null, $image_width = null, $image_height = null, $fields = null)
     {
         // verify the required parameter 'body' is set
         if ($body === null || (is_array($body) && count($body) === 0)) {
@@ -1224,14 +1254,6 @@ class QueryApi
             $queryParams['cache'] = ObjectSerializer::toQueryValue($cache);
         }
         // query params
-        if ($image_width !== null) {
-            $queryParams['image_width'] = ObjectSerializer::toQueryValue($image_width);
-        }
-        // query params
-        if ($image_height !== null) {
-            $queryParams['image_height'] = ObjectSerializer::toQueryValue($image_height);
-        }
-        // query params
         if ($generate_drill_links !== null) {
             $queryParams['generate_drill_links'] = ObjectSerializer::toQueryValue($generate_drill_links);
         }
@@ -1254,6 +1276,14 @@ class QueryApi
         // query params
         if ($server_table_calcs !== null) {
             $queryParams['server_table_calcs'] = ObjectSerializer::toQueryValue($server_table_calcs);
+        }
+        // query params
+        if ($image_width !== null) {
+            $queryParams['image_width'] = ObjectSerializer::toQueryValue($image_width);
+        }
+        // query params
+        if ($image_height !== null) {
+            $queryParams['image_height'] = ObjectSerializer::toQueryValue($image_height);
         }
         // query params
         if ($fields !== null) {
@@ -1443,6 +1473,14 @@ class QueryApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2195,7 +2233,7 @@ class QueryApi
      *
      * Get Query
      *
-     * @param  int $query_id Id of query (required)
+     * @param  string $query_id Id of query (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -2213,7 +2251,7 @@ class QueryApi
      *
      * Get Query
      *
-     * @param  int $query_id Id of query (required)
+     * @param  string $query_id Id of query (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -2305,7 +2343,7 @@ class QueryApi
      *
      * Get Query
      *
-     * @param  int $query_id Id of query (required)
+     * @param  string $query_id Id of query (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -2326,7 +2364,7 @@ class QueryApi
      *
      * Get Query
      *
-     * @param  int $query_id Id of query (required)
+     * @param  string $query_id Id of query (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -2377,7 +2415,7 @@ class QueryApi
     /**
      * Create request for operation 'query'
      *
-     * @param  int $query_id Id of query (required)
+     * @param  string $query_id Id of query (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
@@ -3060,7 +3098,7 @@ class QueryApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return map[string,string]
+     * @return object
      */
     public function queryTaskMultiResults($query_task_ids)
     {
@@ -3077,11 +3115,11 @@ class QueryApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of map[string,string], HTTP status code, HTTP response headers (array of strings)
+     * @return array of object, HTTP status code, HTTP response headers (array of strings)
      */
     public function queryTaskMultiResultsWithHttpInfo($query_task_ids)
     {
-        $returnType = 'map[string,string]';
+        $returnType = 'object';
         $request = $this->queryTaskMultiResultsRequest($query_task_ids);
 
         try {
@@ -3133,7 +3171,7 @@ class QueryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'map[string,string]',
+                        'object',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3191,7 +3229,7 @@ class QueryApi
      */
     public function queryTaskMultiResultsAsyncWithHttpInfo($query_task_ids)
     {
-        $returnType = 'map[string,string]';
+        $returnType = 'object';
         $request = $this->queryTaskMultiResultsRequest($query_task_ids);
 
         return $this->client
@@ -3337,7 +3375,7 @@ class QueryApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return map[string,string]
+     * @return string
      */
     public function queryTaskResults($query_task_id)
     {
@@ -3354,11 +3392,11 @@ class QueryApi
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of map[string,string], HTTP status code, HTTP response headers (array of strings)
+     * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
     public function queryTaskResultsWithHttpInfo($query_task_id)
     {
-        $returnType = 'map[string,string]';
+        $returnType = 'string';
         $request = $this->queryTaskResultsRequest($query_task_id);
 
         try {
@@ -3410,7 +3448,7 @@ class QueryApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        'map[string,string]',
+                        'string',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -3476,7 +3514,7 @@ class QueryApi
      */
     public function queryTaskResultsAsyncWithHttpInfo($query_task_id)
     {
-        $returnType = 'map[string,string]';
+        $returnType = 'string';
         $request = $this->queryTaskResultsRequest($query_task_id);
 
         return $this->client
@@ -3628,7 +3666,7 @@ class QueryApi
      * @param  int $image_width Render width for image formats. (optional)
      * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
@@ -3658,7 +3696,7 @@ class QueryApi
      * @param  int $image_width Render width for image formats. (optional)
      * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
@@ -3743,6 +3781,22 @@ class QueryApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -3762,7 +3816,7 @@ class QueryApi
      * @param  int $image_width Render width for image formats. (optional)
      * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
@@ -3795,7 +3849,7 @@ class QueryApi
      * @param  int $image_width Render width for image formats. (optional)
      * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
@@ -3858,7 +3912,7 @@ class QueryApi
      * @param  int $image_width Render width for image formats. (optional)
      * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
@@ -3955,11 +4009,11 @@ class QueryApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['text', 'application/json', 'image/png', 'image/jpg']
+                ['text', 'application/json', 'image/png', 'image/jpeg']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['text', 'application/json', 'image/png', 'image/jpg'],
+                ['text', 'application/json', 'image/png', 'image/jpeg'],
                 ['application/json']
             );
         }
@@ -4019,7 +4073,7 @@ class QueryApi
      *
      * Run Query
      *
-     * @param  int $query_id Id of query (required)
+     * @param  string $query_id Id of query (required)
      * @param  string $result_format Format of result (required)
      * @param  int $limit Row limit (may override the limit in the saved query). (optional)
      * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
@@ -4028,19 +4082,20 @@ class QueryApi
      * @param  int $image_width Render width for image formats. (optional)
      * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
      * @param  bool $server_table_calcs Perform table calculations on query results (optional)
+     * @param  string $source Specifies the source of this call. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return string
      */
-    public function runQuery($query_id, $result_format, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null)
+    public function runQuery($query_id, $result_format, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null, $source = null)
     {
-        list($response) = $this->runQueryWithHttpInfo($query_id, $result_format, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs);
+        list($response) = $this->runQueryWithHttpInfo($query_id, $result_format, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs, $source);
         return $response;
     }
 
@@ -4049,7 +4104,7 @@ class QueryApi
      *
      * Run Query
      *
-     * @param  int $query_id Id of query (required)
+     * @param  string $query_id Id of query (required)
      * @param  string $result_format Format of result (required)
      * @param  int $limit Row limit (may override the limit in the saved query). (optional)
      * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
@@ -4058,20 +4113,21 @@ class QueryApi
      * @param  int $image_width Render width for image formats. (optional)
      * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
      * @param  bool $server_table_calcs Perform table calculations on query results (optional)
+     * @param  string $source Specifies the source of this call. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of string, HTTP status code, HTTP response headers (array of strings)
      */
-    public function runQueryWithHttpInfo($query_id, $result_format, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null)
+    public function runQueryWithHttpInfo($query_id, $result_format, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null, $source = null)
     {
         $returnType = 'string';
-        $request = $this->runQueryRequest($query_id, $result_format, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs);
+        $request = $this->runQueryRequest($query_id, $result_format, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs, $source);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4151,6 +4207,14 @@ class QueryApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -4161,7 +4225,7 @@ class QueryApi
      *
      * Run Query
      *
-     * @param  int $query_id Id of query (required)
+     * @param  string $query_id Id of query (required)
      * @param  string $result_format Format of result (required)
      * @param  int $limit Row limit (may override the limit in the saved query). (optional)
      * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
@@ -4170,18 +4234,19 @@ class QueryApi
      * @param  int $image_width Render width for image formats. (optional)
      * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
      * @param  bool $server_table_calcs Perform table calculations on query results (optional)
+     * @param  string $source Specifies the source of this call. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function runQueryAsync($query_id, $result_format, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null)
+    public function runQueryAsync($query_id, $result_format, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null, $source = null)
     {
-        return $this->runQueryAsyncWithHttpInfo($query_id, $result_format, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs)
+        return $this->runQueryAsyncWithHttpInfo($query_id, $result_format, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs, $source)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4194,7 +4259,7 @@ class QueryApi
      *
      * Run Query
      *
-     * @param  int $query_id Id of query (required)
+     * @param  string $query_id Id of query (required)
      * @param  string $result_format Format of result (required)
      * @param  int $limit Row limit (may override the limit in the saved query). (optional)
      * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
@@ -4203,19 +4268,20 @@ class QueryApi
      * @param  int $image_width Render width for image formats. (optional)
      * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
      * @param  bool $server_table_calcs Perform table calculations on query results (optional)
+     * @param  string $source Specifies the source of this call. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function runQueryAsyncWithHttpInfo($query_id, $result_format, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null)
+    public function runQueryAsyncWithHttpInfo($query_id, $result_format, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null, $source = null)
     {
         $returnType = 'string';
-        $request = $this->runQueryRequest($query_id, $result_format, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs);
+        $request = $this->runQueryRequest($query_id, $result_format, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs, $source);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4257,7 +4323,7 @@ class QueryApi
     /**
      * Create request for operation 'runQuery'
      *
-     * @param  int $query_id Id of query (required)
+     * @param  string $query_id Id of query (required)
      * @param  string $result_format Format of result (required)
      * @param  int $limit Row limit (may override the limit in the saved query). (optional)
      * @param  bool $apply_formatting Apply model-specified formatting to each result. (optional)
@@ -4266,16 +4332,17 @@ class QueryApi
      * @param  int $image_width Render width for image formats. (optional)
      * @param  int $image_height Render height for image formats. (optional)
      * @param  bool $generate_drill_links Generate drill links (only applicable to &#39;json_detail&#39; format. (optional)
-     * @param  bool $force_production Force use of production models even if the user is in development mode. (optional)
+     * @param  bool $force_production Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. (optional)
      * @param  bool $cache_only Retrieve any results from cache even if the results have expired. (optional)
      * @param  string $path_prefix Prefix to use for drill links (url encoded). (optional)
      * @param  bool $rebuild_pdts Rebuild PDTS used in query. (optional)
      * @param  bool $server_table_calcs Perform table calculations on query results (optional)
+     * @param  string $source Specifies the source of this call. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function runQueryRequest($query_id, $result_format, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null)
+    protected function runQueryRequest($query_id, $result_format, $limit = null, $apply_formatting = null, $apply_vis = null, $cache = null, $image_width = null, $image_height = null, $generate_drill_links = null, $force_production = null, $cache_only = null, $path_prefix = null, $rebuild_pdts = null, $server_table_calcs = null, $source = null)
     {
         // verify the required parameter 'query_id' is set
         if ($query_id === null || (is_array($query_id) && count($query_id) === 0)) {
@@ -4345,6 +4412,10 @@ class QueryApi
         if ($server_table_calcs !== null) {
             $queryParams['server_table_calcs'] = ObjectSerializer::toQueryValue($server_table_calcs);
         }
+        // query params
+        if ($source !== null) {
+            $queryParams['source'] = ObjectSerializer::toQueryValue($source);
+        }
 
         // path params
         if ($query_id !== null) {
@@ -4368,11 +4439,11 @@ class QueryApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['text', 'application/json', 'image/png', 'image/jpg']
+                ['text', 'application/json', 'image/png', 'image/jpeg']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['text', 'application/json', 'image/png', 'image/jpg'],
+                ['text', 'application/json', 'image/png', 'image/jpeg'],
                 ['application/json']
             );
         }
@@ -4433,7 +4504,7 @@ class QueryApi
      * Run SQL Runner Query
      *
      * @param  string $slug slug of query (required)
-     * @param  string $result_format Format of result, options are: [\&quot;json\&quot;, \&quot;json_detail\&quot;, \&quot;json_fe\&quot;, \&quot;csv\&quot;, \&quot;html\&quot;, \&quot;md\&quot;, \&quot;txt\&quot;, \&quot;xlsx\&quot;, \&quot;gsxml\&quot;] (required)
+     * @param  string $result_format Format of result, options are: [\&quot;inline_json\&quot;, \&quot;json\&quot;, \&quot;json_detail\&quot;, \&quot;json_fe\&quot;, \&quot;csv\&quot;, \&quot;html\&quot;, \&quot;md\&quot;, \&quot;txt\&quot;, \&quot;xlsx\&quot;, \&quot;gsxml\&quot;, \&quot;json_label\&quot;] (required)
      * @param  string $download Defaults to false. If set to true, the HTTP response will have content-disposition and other headers set to make the HTTP response behave as a downloadable attachment instead of as inline content. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -4452,7 +4523,7 @@ class QueryApi
      * Run SQL Runner Query
      *
      * @param  string $slug slug of query (required)
-     * @param  string $result_format Format of result, options are: [\&quot;json\&quot;, \&quot;json_detail\&quot;, \&quot;json_fe\&quot;, \&quot;csv\&quot;, \&quot;html\&quot;, \&quot;md\&quot;, \&quot;txt\&quot;, \&quot;xlsx\&quot;, \&quot;gsxml\&quot;] (required)
+     * @param  string $result_format Format of result, options are: [\&quot;inline_json\&quot;, \&quot;json\&quot;, \&quot;json_detail\&quot;, \&quot;json_fe\&quot;, \&quot;csv\&quot;, \&quot;html\&quot;, \&quot;md\&quot;, \&quot;txt\&quot;, \&quot;xlsx\&quot;, \&quot;gsxml\&quot;, \&quot;json_label\&quot;] (required)
      * @param  string $download Defaults to false. If set to true, the HTTP response will have content-disposition and other headers set to make the HTTP response behave as a downloadable attachment instead of as inline content. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -4542,6 +4613,14 @@ class QueryApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -4553,7 +4632,7 @@ class QueryApi
      * Run SQL Runner Query
      *
      * @param  string $slug slug of query (required)
-     * @param  string $result_format Format of result, options are: [\&quot;json\&quot;, \&quot;json_detail\&quot;, \&quot;json_fe\&quot;, \&quot;csv\&quot;, \&quot;html\&quot;, \&quot;md\&quot;, \&quot;txt\&quot;, \&quot;xlsx\&quot;, \&quot;gsxml\&quot;] (required)
+     * @param  string $result_format Format of result, options are: [\&quot;inline_json\&quot;, \&quot;json\&quot;, \&quot;json_detail\&quot;, \&quot;json_fe\&quot;, \&quot;csv\&quot;, \&quot;html\&quot;, \&quot;md\&quot;, \&quot;txt\&quot;, \&quot;xlsx\&quot;, \&quot;gsxml\&quot;, \&quot;json_label\&quot;] (required)
      * @param  string $download Defaults to false. If set to true, the HTTP response will have content-disposition and other headers set to make the HTTP response behave as a downloadable attachment instead of as inline content. (optional)
      *
      * @throws \InvalidArgumentException
@@ -4575,7 +4654,7 @@ class QueryApi
      * Run SQL Runner Query
      *
      * @param  string $slug slug of query (required)
-     * @param  string $result_format Format of result, options are: [\&quot;json\&quot;, \&quot;json_detail\&quot;, \&quot;json_fe\&quot;, \&quot;csv\&quot;, \&quot;html\&quot;, \&quot;md\&quot;, \&quot;txt\&quot;, \&quot;xlsx\&quot;, \&quot;gsxml\&quot;] (required)
+     * @param  string $result_format Format of result, options are: [\&quot;inline_json\&quot;, \&quot;json\&quot;, \&quot;json_detail\&quot;, \&quot;json_fe\&quot;, \&quot;csv\&quot;, \&quot;html\&quot;, \&quot;md\&quot;, \&quot;txt\&quot;, \&quot;xlsx\&quot;, \&quot;gsxml\&quot;, \&quot;json_label\&quot;] (required)
      * @param  string $download Defaults to false. If set to true, the HTTP response will have content-disposition and other headers set to make the HTTP response behave as a downloadable attachment instead of as inline content. (optional)
      *
      * @throws \InvalidArgumentException
@@ -4627,7 +4706,7 @@ class QueryApi
      * Create request for operation 'runSqlQuery'
      *
      * @param  string $slug slug of query (required)
-     * @param  string $result_format Format of result, options are: [\&quot;json\&quot;, \&quot;json_detail\&quot;, \&quot;json_fe\&quot;, \&quot;csv\&quot;, \&quot;html\&quot;, \&quot;md\&quot;, \&quot;txt\&quot;, \&quot;xlsx\&quot;, \&quot;gsxml\&quot;] (required)
+     * @param  string $result_format Format of result, options are: [\&quot;inline_json\&quot;, \&quot;json\&quot;, \&quot;json_detail\&quot;, \&quot;json_fe\&quot;, \&quot;csv\&quot;, \&quot;html\&quot;, \&quot;md\&quot;, \&quot;txt\&quot;, \&quot;xlsx\&quot;, \&quot;gsxml\&quot;, \&quot;json_label\&quot;] (required)
      * @param  string $download Defaults to false. If set to true, the HTTP response will have content-disposition and other headers set to make the HTTP response behave as a downloadable attachment instead of as inline content. (optional)
      *
      * @throws \InvalidArgumentException
@@ -4682,11 +4761,11 @@ class QueryApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['text', 'application/json', 'image/png', 'image/jpg']
+                ['text', 'application/json', 'image/png', 'image/jpeg']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['text', 'application/json', 'image/png', 'image/jpg'],
+                ['text', 'application/json', 'image/png', 'image/jpeg'],
                 ['application/json']
             );
         }
@@ -4856,6 +4935,14 @@ class QueryApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -5006,11 +5093,11 @@ class QueryApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                ['text', 'application/json', 'image/png', 'image/jpg']
+                ['text', 'application/json', 'image/png', 'image/jpeg']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                ['text', 'application/json', 'image/png', 'image/jpg'],
+                ['text', 'application/json', 'image/png', 'image/jpeg'],
                 ['application/json']
             );
         }

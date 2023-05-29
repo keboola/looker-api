@@ -1,6 +1,6 @@
 # Swagger\Client\QueryApi
 
-All URIs are relative to *https://example.looker.com:19999/api/3.1*
+All URIs are relative to *https://example.looker.com:443/api/4.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -152,7 +152,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\Query**](../Model/Query.md)| Query | [optional]
+ **body** | [**\Swagger\Client\Model\Query**](../Model/Query.md)| Query |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -171,11 +171,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createQueryTask**
-> \Swagger\Client\Model\QueryTask createQueryTask($body, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs, $fields)
+> \Swagger\Client\Model\QueryTask createQueryTask($body, $limit, $apply_formatting, $apply_vis, $cache, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs, $image_width, $image_height, $fields)
 
 Run Query Async
 
-### Run a saved query asynchronously.  Runs a previously created query asynchronously. Returns a Query Task ID which can be used to fetch the results from the Query Tasks results endpoint.
+### Create an async query task  Creates a query task (job) to run a previously created query asynchronously. Returns a Query Task ID.  Use [query_task(query_task_id)](#!/Query/query_task) to check the execution status of the query task. After the query task status reaches \"Complete\", use [query_task_results(query_task_id)](#!/Query/query_task_results) to fetch the results of the query.
 
 ### Example
 ```php
@@ -192,18 +192,18 @@ $limit = 789; // int | Row limit (may override the limit in the saved query).
 $apply_formatting = true; // bool | Apply model-specified formatting to each result.
 $apply_vis = true; // bool | Apply visualization options to results.
 $cache = true; // bool | Get results from cache if available.
-$image_width = 789; // int | Render width for image formats.
-$image_height = 789; // int | Render height for image formats.
 $generate_drill_links = true; // bool | Generate drill links (only applicable to 'json_detail' format.
-$force_production = true; // bool | Force use of production models even if the user is in development mode.
+$force_production = true; // bool | Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used.
 $cache_only = true; // bool | Retrieve any results from cache even if the results have expired.
 $path_prefix = "path_prefix_example"; // string | Prefix to use for drill links (url encoded).
 $rebuild_pdts = true; // bool | Rebuild PDTS used in query.
 $server_table_calcs = true; // bool | Perform table calculations on query results
+$image_width = 789; // int | DEPRECATED. Render width for image formats. Note that this parameter is always ignored by this method.
+$image_height = 789; // int | DEPRECATED. Render height for image formats. Note that this parameter is always ignored by this method.
 $fields = "fields_example"; // string | Requested fields
 
 try {
-    $result = $apiInstance->createQueryTask($body, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs, $fields);
+    $result = $apiInstance->createQueryTask($body, $limit, $apply_formatting, $apply_vis, $cache, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs, $image_width, $image_height, $fields);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QueryApi->createQueryTask: ', $e->getMessage(), PHP_EOL;
@@ -220,14 +220,14 @@ Name | Type | Description  | Notes
  **apply_formatting** | **bool**| Apply model-specified formatting to each result. | [optional]
  **apply_vis** | **bool**| Apply visualization options to results. | [optional]
  **cache** | **bool**| Get results from cache if available. | [optional]
- **image_width** | **int**| Render width for image formats. | [optional]
- **image_height** | **int**| Render height for image formats. | [optional]
  **generate_drill_links** | **bool**| Generate drill links (only applicable to &#39;json_detail&#39; format. | [optional]
- **force_production** | **bool**| Force use of production models even if the user is in development mode. | [optional]
+ **force_production** | **bool**| Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. | [optional]
  **cache_only** | **bool**| Retrieve any results from cache even if the results have expired. | [optional]
  **path_prefix** | **string**| Prefix to use for drill links (url encoded). | [optional]
  **rebuild_pdts** | **bool**| Rebuild PDTS used in query. | [optional]
  **server_table_calcs** | **bool**| Perform table calculations on query results | [optional]
+ **image_width** | **int**| DEPRECATED. Render width for image formats. Note that this parameter is always ignored by this method. | [optional]
+ **image_height** | **int**| DEPRECATED. Render height for image formats. Note that this parameter is always ignored by this method. | [optional]
  **fields** | **string**| Requested fields | [optional]
 
 ### Return type
@@ -250,7 +250,7 @@ No authorization required
 
 Create SQL Runner Query
 
-Create a SQL Runner query.
+### Create a SQL Runner Query  Either the `connection_name` or `model_name` parameter MUST be provided.
 
 ### Example
 ```php
@@ -411,7 +411,7 @@ $apiInstance = new Swagger\Client\Api\QueryApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$query_id = 789; // int | Id of query
+$query_id = "query_id_example"; // string | Id of query
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -427,7 +427,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **query_id** | **int**| Id of query |
+ **query_id** | **string**| Id of query |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -501,7 +501,7 @@ No authorization required
 
 Get Async Query Info
 
-Returns information about a Query Task.  Query Tasks are generated by running queries asynchronously. They are represented by a GUID returned from one of the async query endpoints.
+### Get Query Task details  Use this function to check the status of an async query task. After the status reaches \"Complete\", you can call [query_task_results(query_task_id)](#!/Query/query_task_results) to retrieve the results of the query.  Use [create_query_task()](#!/Query/create_query_task) to create an async query task.
 
 ### Example
 ```php
@@ -548,11 +548,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **queryTaskMultiResults**
-> map[string,string] queryTaskMultiResults($query_task_ids)
+> object queryTaskMultiResults($query_task_ids)
 
 Get Multiple Async Query Results
 
-Fetch the results of multiple async Query Tasks in one response.  For Query Tasks that are not completed, the response will include the execution status of the Query Task but will not include query results. Query Tasks whose results have expired will have a status of 'expired'. If the user making the API request does not have sufficient privileges to view a Query Task result, the result will have a status of 'missing'
+### Fetch results of multiple async queries  Returns the results of multiple async queries in one request.  For Query Tasks that are not completed, the response will include the execution status of the Query Task but will not include query results. Query Tasks whose results have expired will have a status of 'expired'. If the user making the API request does not have sufficient privileges to view a Query Task result, the result will have a status of 'missing'
 
 ### Example
 ```php
@@ -583,7 +583,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string,string]**
+**object**
 
 ### Authorization
 
@@ -597,11 +597,11 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **queryTaskResults**
-> map[string,string] queryTaskResults($query_task_id)
+> string queryTaskResults($query_task_id)
 
 Get Async Query Results
 
-Returns the results of an async Query Task if the query has completed.
+### Get Async Query Results  Returns the results of an async query task if the query has completed.  If the query task is still running or waiting to run, this function returns 204 No Content.  If the query task ID is invalid or the cached results of the query task have expired, this function returns 404 Not Found.  Use [query_task(query_task_id)](#!/Query/query_task) to check the execution status of the query task Call query_task_results only after the query task status reaches \"Complete\".  You can also use [query_task_multi_results()](#!/Query/query_task_multi_results) retrieve the results of multiple async query tasks at the same time.  #### SQL Error Handling: If the query fails due to a SQL db error, how this is communicated depends on the result_format you requested in `create_query_task()`.  For `json_detail` result_format: `query_task_results()` will respond with HTTP status '200 OK' and db SQL error info will be in the `errors` property of the response object. The 'data' property will be empty.  For all other result formats: `query_task_results()` will respond with HTTP status `400 Bad Request` and some db SQL error info will be in the message of the 400 error response, but not as detailed as expressed in `json_detail.errors`. These data formats can only carry row data, and error info is not row data.
 
 ### Example
 ```php
@@ -632,7 +632,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**map[string,string]**
+**string**
 
 ### Authorization
 
@@ -671,7 +671,7 @@ $cache = true; // bool | Get results from cache if available.
 $image_width = 789; // int | Render width for image formats.
 $image_height = 789; // int | Render height for image formats.
 $generate_drill_links = true; // bool | Generate drill links (only applicable to 'json_detail' format.
-$force_production = true; // bool | Force use of production models even if the user is in development mode.
+$force_production = true; // bool | Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used.
 $cache_only = true; // bool | Retrieve any results from cache even if the results have expired.
 $path_prefix = "path_prefix_example"; // string | Prefix to use for drill links (url encoded).
 $rebuild_pdts = true; // bool | Rebuild PDTS used in query.
@@ -699,7 +699,7 @@ Name | Type | Description  | Notes
  **image_width** | **int**| Render width for image formats. | [optional]
  **image_height** | **int**| Render height for image formats. | [optional]
  **generate_drill_links** | **bool**| Generate drill links (only applicable to &#39;json_detail&#39; format. | [optional]
- **force_production** | **bool**| Force use of production models even if the user is in development mode. | [optional]
+ **force_production** | **bool**| Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. | [optional]
  **cache_only** | **bool**| Retrieve any results from cache even if the results have expired. | [optional]
  **path_prefix** | **string**| Prefix to use for drill links (url encoded). | [optional]
  **rebuild_pdts** | **bool**| Rebuild PDTS used in query. | [optional]
@@ -716,12 +716,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: text, application/json, image/png, image/jpg
+ - **Accept**: text, application/json, image/png, image/jpeg
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **runQuery**
-> string runQuery($query_id, $result_format, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs)
+> string runQuery($query_id, $result_format, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs, $source)
 
 Run Query
 
@@ -737,7 +737,7 @@ $apiInstance = new Swagger\Client\Api\QueryApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$query_id = 789; // int | Id of query
+$query_id = "query_id_example"; // string | Id of query
 $result_format = "result_format_example"; // string | Format of result
 $limit = 789; // int | Row limit (may override the limit in the saved query).
 $apply_formatting = true; // bool | Apply model-specified formatting to each result.
@@ -746,14 +746,15 @@ $cache = true; // bool | Get results from cache if available.
 $image_width = 789; // int | Render width for image formats.
 $image_height = 789; // int | Render height for image formats.
 $generate_drill_links = true; // bool | Generate drill links (only applicable to 'json_detail' format.
-$force_production = true; // bool | Force use of production models even if the user is in development mode.
+$force_production = true; // bool | Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used.
 $cache_only = true; // bool | Retrieve any results from cache even if the results have expired.
 $path_prefix = "path_prefix_example"; // string | Prefix to use for drill links (url encoded).
 $rebuild_pdts = true; // bool | Rebuild PDTS used in query.
 $server_table_calcs = true; // bool | Perform table calculations on query results
+$source = "source_example"; // string | Specifies the source of this call.
 
 try {
-    $result = $apiInstance->runQuery($query_id, $result_format, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs);
+    $result = $apiInstance->runQuery($query_id, $result_format, $limit, $apply_formatting, $apply_vis, $cache, $image_width, $image_height, $generate_drill_links, $force_production, $cache_only, $path_prefix, $rebuild_pdts, $server_table_calcs, $source);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling QueryApi->runQuery: ', $e->getMessage(), PHP_EOL;
@@ -765,7 +766,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **query_id** | **int**| Id of query |
+ **query_id** | **string**| Id of query |
  **result_format** | **string**| Format of result |
  **limit** | **int**| Row limit (may override the limit in the saved query). | [optional]
  **apply_formatting** | **bool**| Apply model-specified formatting to each result. | [optional]
@@ -774,11 +775,12 @@ Name | Type | Description  | Notes
  **image_width** | **int**| Render width for image formats. | [optional]
  **image_height** | **int**| Render height for image formats. | [optional]
  **generate_drill_links** | **bool**| Generate drill links (only applicable to &#39;json_detail&#39; format. | [optional]
- **force_production** | **bool**| Force use of production models even if the user is in development mode. | [optional]
+ **force_production** | **bool**| Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. | [optional]
  **cache_only** | **bool**| Retrieve any results from cache even if the results have expired. | [optional]
  **path_prefix** | **string**| Prefix to use for drill links (url encoded). | [optional]
  **rebuild_pdts** | **bool**| Rebuild PDTS used in query. | [optional]
  **server_table_calcs** | **bool**| Perform table calculations on query results | [optional]
+ **source** | **string**| Specifies the source of this call. | [optional]
 
 ### Return type
 
@@ -791,7 +793,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: text, application/json, image/png, image/jpg
+ - **Accept**: text, application/json, image/png, image/jpeg
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -813,7 +815,7 @@ $apiInstance = new Swagger\Client\Api\QueryApi(
     new GuzzleHttp\Client()
 );
 $slug = "slug_example"; // string | slug of query
-$result_format = "result_format_example"; // string | Format of result, options are: [\"json\", \"json_detail\", \"json_fe\", \"csv\", \"html\", \"md\", \"txt\", \"xlsx\", \"gsxml\"]
+$result_format = "result_format_example"; // string | Format of result, options are: [\"inline_json\", \"json\", \"json_detail\", \"json_fe\", \"csv\", \"html\", \"md\", \"txt\", \"xlsx\", \"gsxml\", \"json_label\"]
 $download = "download_example"; // string | Defaults to false. If set to true, the HTTP response will have content-disposition and other headers set to make the HTTP response behave as a downloadable attachment instead of as inline content.
 
 try {
@@ -830,7 +832,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **slug** | **string**| slug of query |
- **result_format** | **string**| Format of result, options are: [\&quot;json\&quot;, \&quot;json_detail\&quot;, \&quot;json_fe\&quot;, \&quot;csv\&quot;, \&quot;html\&quot;, \&quot;md\&quot;, \&quot;txt\&quot;, \&quot;xlsx\&quot;, \&quot;gsxml\&quot;] |
+ **result_format** | **string**| Format of result, options are: [\&quot;inline_json\&quot;, \&quot;json\&quot;, \&quot;json_detail\&quot;, \&quot;json_fe\&quot;, \&quot;csv\&quot;, \&quot;html\&quot;, \&quot;md\&quot;, \&quot;txt\&quot;, \&quot;xlsx\&quot;, \&quot;gsxml\&quot;, \&quot;json_label\&quot;] |
  **download** | **string**| Defaults to false. If set to true, the HTTP response will have content-disposition and other headers set to make the HTTP response behave as a downloadable attachment instead of as inline content. | [optional]
 
 ### Return type
@@ -844,7 +846,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: text, application/json, image/png, image/jpg
+ - **Accept**: text, application/json, image/png, image/jpeg
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
@@ -853,7 +855,7 @@ No authorization required
 
 Run Url Encoded Query
 
-### Run an URL encoded query.  This requires the caller to encode the specifiers for the query into the URL query part using Looker-specific syntax as explained below.  Generally, you would want to use one of the methods that takes the parameters as json in the POST body for creating and/or running queries. This method exists for cases where one really needs to encode the parameters into the URL of a single 'GET' request. This matches the way that the Looker UI formats 'explore' URLs etc.  The parameters here are very similar to the json body formatting except that the filter syntax is tricky. Unfortunately, this format makes this method not currently callible via the 'Try it out!' button in this documentation page. But, this is callable  when creating URLs manually or when using the Looker SDK.  Here is an example inline query URL:  ``` https://looker.mycompany.com:19999/api/3.0/queries/models/thelook/views/inventory_items/run/json?fields=category.name,inventory_items.days_in_inventory_tier,products.count&f[category.name]=socks&sorts=products.count+desc+0&limit=500&query_timezone=America/Los_Angeles ```  When invoking this endpoint with the Ruby SDK, pass the query parameter parts as a hash. The hash to match the above would look like:  ```ruby query_params = {   :fields => \"category.name,inventory_items.days_in_inventory_tier,products.count\",   :\"f[category.name]\" => \"socks\",   :sorts => \"products.count desc 0\",   :limit => \"500\",   :query_timezone => \"America/Los_Angeles\" } response = ruby_sdk.run_url_encoded_query('thelook','inventory_items','json', query_params)  ```  Again, it is generally easier to use the variant of this method that passes the full query in the POST body. This method is available for cases where other alternatives won't fit the need.  Supported formats:  | result_format | Description | :-----------: | :--- | | json | Plain json | json_detail | Row data plus metadata describing the fields, pivots, table calcs, and other aspects of the query | csv | Comma separated values with a header | txt | Tab separated values with a header | html | Simple html | md | Simple markdown | xlsx | MS Excel spreadsheet | sql | Returns the generated SQL rather than running the query | png | A PNG image of the visualization of the query | jpg | A JPG image of the visualization of the query
+### Run an URL encoded query.  This requires the caller to encode the specifiers for the query into the URL query part using Looker-specific syntax as explained below.  Generally, you would want to use one of the methods that takes the parameters as json in the POST body for creating and/or running queries. This method exists for cases where one really needs to encode the parameters into the URL of a single 'GET' request. This matches the way that the Looker UI formats 'explore' URLs etc.  The parameters here are very similar to the json body formatting except that the filter syntax is tricky. Unfortunately, this format makes this method not currently callable via the 'Try it out!' button in this documentation page. But, this is callable when creating URLs manually or when using the Looker SDK.  Here is an example inline query URL:  ``` https://looker.mycompany.com:19999/api/3.0/queries/models/thelook/views/inventory_items/run/json?fields=category.name,inventory_items.days_in_inventory_tier,products.count&f[category.name]=socks&sorts=products.count+desc+0&limit=500&query_timezone=America/Los_Angeles ```  When invoking this endpoint with the Ruby SDK, pass the query parameter parts as a hash. The hash to match the above would look like:  ```ruby query_params = {   fields: \"category.name,inventory_items.days_in_inventory_tier,products.count\",   :\"f[category.name]\" => \"socks\",   sorts: \"products.count desc 0\",   limit: \"500\",   query_timezone: \"America/Los_Angeles\" } response = ruby_sdk.run_url_encoded_query('thelook','inventory_items','json', query_params)  ```  Again, it is generally easier to use the variant of this method that passes the full query in the POST body. This method is available for cases where other alternatives won't fit the need.  Supported formats:  | result_format | Description | :-----------: | :--- | | json | Plain json | json_detail | Row data plus metadata describing the fields, pivots, table calcs, and other aspects of the query | csv | Comma separated values with a header | txt | Tab separated values with a header | html | Simple html | md | Simple markdown | xlsx | MS Excel spreadsheet | sql | Returns the generated SQL rather than running the query | png | A PNG image of the visualization of the query | jpg | A JPG image of the visualization of the query
 
 ### Example
 ```php
@@ -897,7 +899,7 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: text, application/json, image/png, image/jpg
+ - **Accept**: text, application/json, image/png, image/jpeg
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

@@ -1,6 +1,6 @@
 # Swagger\Client\ContentApi
 
-All URIs are relative to *https://example.looker.com:19999/api/3.1*
+All URIs are relative to *https://example.looker.com:443/api/4.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -8,15 +8,18 @@ Method | HTTP request | Description
 [**allContentMetadatas**](ContentApi.md#allContentMetadatas) | **GET** /content_metadata | Get All Content Metadatas
 [**contentFavorite**](ContentApi.md#contentFavorite) | **GET** /content_favorite/{content_favorite_id} | Get Favorite Content
 [**contentMetadata**](ContentApi.md#contentMetadata) | **GET** /content_metadata/{content_metadata_id} | Get Content Metadata
+[**contentThumbnail**](ContentApi.md#contentThumbnail) | **GET** /content_thumbnail/{type}/{resource_id} | Get Content Thumbnail
 [**contentValidation**](ContentApi.md#contentValidation) | **GET** /content_validation | Validate Content
 [**createContentFavorite**](ContentApi.md#createContentFavorite) | **POST** /content_favorite | Create Favorite Content
 [**createContentMetadataAccess**](ContentApi.md#createContentMetadataAccess) | **POST** /content_metadata_access | Create Content Metadata Access
 [**deleteContentFavorite**](ContentApi.md#deleteContentFavorite) | **DELETE** /content_favorite/{content_favorite_id} | Delete Favorite Content
 [**deleteContentMetadataAccess**](ContentApi.md#deleteContentMetadataAccess) | **DELETE** /content_metadata_access/{content_metadata_access_id} | Delete Content Metadata Access
+[**searchContent**](ContentApi.md#searchContent) | **GET** /content/{terms} | Search Content
 [**searchContentFavorites**](ContentApi.md#searchContentFavorites) | **GET** /content_favorite/search | Search Favorite Contents
 [**searchContentViews**](ContentApi.md#searchContentViews) | **GET** /content_view/search | Search Content Views
 [**updateContentMetadata**](ContentApi.md#updateContentMetadata) | **PATCH** /content_metadata/{content_metadata_id} | Update Content Metadata
 [**updateContentMetadataAccess**](ContentApi.md#updateContentMetadataAccess) | **PUT** /content_metadata_access/{content_metadata_access_id} | Update Content Metadata Access
+[**vectorThumbnail**](ContentApi.md#vectorThumbnail) | **GET** /vector_thumbnail/{type}/{resource_id} | Get Vector Thumbnail
 
 
 # **allContentMetadataAccesses**
@@ -36,7 +39,7 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$content_metadata_id = 789; // int | Id of content metadata
+$content_metadata_id = "content_metadata_id_example"; // string | Id of content metadata
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -52,7 +55,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **content_metadata_id** | **int**| Id of content metadata |
+ **content_metadata_id** | **string**| Id of content metadata |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -87,7 +90,7 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$parent_id = 789; // int | Parent space of content.
+$parent_id = "parent_id_example"; // string | Parent space of content.
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -103,7 +106,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **parent_id** | **int**| Parent space of content. |
+ **parent_id** | **string**| Parent space of content. |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -138,7 +141,7 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$content_favorite_id = 789; // int | Id of favorite content
+$content_favorite_id = "content_favorite_id_example"; // string | Id of favorite content
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -154,7 +157,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **content_favorite_id** | **int**| Id of favorite content |
+ **content_favorite_id** | **string**| Id of favorite content |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -189,7 +192,7 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$content_metadata_id = 789; // int | Id of content metadata
+$content_metadata_id = "content_metadata_id_example"; // string | Id of content metadata
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -205,7 +208,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **content_metadata_id** | **int**| Id of content metadata |
+ **content_metadata_id** | **string**| Id of content metadata |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -223,12 +226,73 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **contentThumbnail**
+> string contentThumbnail($type, $resource_id, $reload, $theme, $format, $width, $height)
+
+Get Content Thumbnail
+
+### Get an image representing the contents of a dashboard or look.  The returned thumbnail is an abstract representation of the contents of a dashbord or look and does not reflect the actual data displayed in the respective visualizations.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\ContentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$type = "type_example"; // string | Either dashboard or look
+$resource_id = "resource_id_example"; // string | ID of the dashboard or look to render
+$reload = "reload_example"; // string | Whether or not to refresh the rendered image with the latest content
+$theme = "theme_example"; // string | Light or dark background. Default is \"light\"
+$format = "format_example"; // string | A value of png produces a thumbnail in PNG format instead of SVG (default)
+$width = 789; // int | The width of the image if format is supplied
+$height = 789; // int | The height of the image if format is supplied
+
+try {
+    $result = $apiInstance->contentThumbnail($type, $resource_id, $reload, $theme, $format, $width, $height);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContentApi->contentThumbnail: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **type** | **string**| Either dashboard or look |
+ **resource_id** | **string**| ID of the dashboard or look to render |
+ **reload** | **string**| Whether or not to refresh the rendered image with the latest content | [optional]
+ **theme** | **string**| Light or dark background. Default is \&quot;light\&quot; | [optional]
+ **format** | **string**| A value of png produces a thumbnail in PNG format instead of SVG (default) | [optional]
+ **width** | **int**| The width of the image if format is supplied | [optional]
+ **height** | **int**| The height of the image if format is supplied | [optional]
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: image/svg+xml, image/png
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **contentValidation**
 > \Swagger\Client\Model\ContentValidation contentValidation($fields)
 
 Validate Content
 
-### Validate All Content Requires Content Validation Labs Feature be enabled  Performs validation of all looks and dashboards Returns a list of errors found as well as metadata about the content validation run.
+### Validate All Content  Performs validation of all looks and dashboards Returns a list of errors found as well as metadata about the content validation run.
 
 ### Example
 ```php
@@ -304,7 +368,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\ContentFavorite**](../Model/ContentFavorite.md)| Favorite Content | [optional]
+ **body** | [**\Swagger\Client\Model\ContentFavorite**](../Model/ContentFavorite.md)| Favorite Content |
 
 ### Return type
 
@@ -322,7 +386,7 @@ No authorization required
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **createContentMetadataAccess**
-> \Swagger\Client\Model\ContentMetaGroupUser createContentMetadataAccess($body)
+> \Swagger\Client\Model\ContentMetaGroupUser createContentMetadataAccess($body, $send_boards_notification_email)
 
 Create Content Metadata Access
 
@@ -339,9 +403,10 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     new GuzzleHttp\Client()
 );
 $body = new \Swagger\Client\Model\ContentMetaGroupUser(); // \Swagger\Client\Model\ContentMetaGroupUser | Content Metadata Access
+$send_boards_notification_email = true; // bool | Optionally sends notification email when granting access to a board.
 
 try {
-    $result = $apiInstance->createContentMetadataAccess($body);
+    $result = $apiInstance->createContentMetadataAccess($body, $send_boards_notification_email);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->createContentMetadataAccess: ', $e->getMessage(), PHP_EOL;
@@ -353,7 +418,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\ContentMetaGroupUser**](../Model/ContentMetaGroupUser.md)| Content Metadata Access | [optional]
+ **body** | [**\Swagger\Client\Model\ContentMetaGroupUser**](../Model/ContentMetaGroupUser.md)| Content Metadata Access |
+ **send_boards_notification_email** | **bool**| Optionally sends notification email when granting access to a board. | [optional]
 
 ### Return type
 
@@ -387,7 +453,7 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$content_favorite_id = 789; // int | Id of favorite content
+$content_favorite_id = "content_favorite_id_example"; // string | Id of favorite content
 
 try {
     $result = $apiInstance->deleteContentFavorite($content_favorite_id);
@@ -402,7 +468,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **content_favorite_id** | **int**| Id of favorite content |
+ **content_favorite_id** | **string**| Id of favorite content |
 
 ### Return type
 
@@ -436,7 +502,7 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$content_metadata_access_id = 789; // int | Id of content metadata access
+$content_metadata_access_id = "content_metadata_access_id_example"; // string | Id of content metadata access
 
 try {
     $result = $apiInstance->deleteContentMetadataAccess($content_metadata_access_id);
@@ -451,7 +517,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **content_metadata_access_id** | **int**| Id of content metadata access |
+ **content_metadata_access_id** | **string**| Id of content metadata access |
 
 ### Return type
 
@@ -468,8 +534,69 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **searchContent**
+> \Swagger\Client\Model\ContentSearch[] searchContent($terms, $fields, $types, $limit, $offset, $page, $per_page)
+
+Search Content
+
+### Search across looks, dashboards, and lookml dashboards. The terms field will be matched against the title and description of the content and the closest results are returned. Content that has been frequently viewed and those pieces of content stored in public folders will be ranked more highly in the results.  This endpoint does not return a full description of these content types. For more specific information about each type please refer to the individual content specific API endpoints.  Get the **full details** of a specific dashboard (or lookml dashboard) by id with [dashboard()](#!/Dashboard/dashboard) Get the **full details** of a specific look by id with [look()](#!/Look/look)
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\ContentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$terms = "terms_example"; // string | Search terms
+$fields = "fields_example"; // string | Requested fields.
+$types = "types_example"; // string | Content types requested (dashboard, look, lookml_dashboard).
+$limit = 789; // int | Number of results to return. (used with offset and takes priority over page and per_page)
+$offset = 789; // int | Number of results to skip before returning any. (used with limit and takes priority over page and per_page)
+$page = 789; // int | Requested page.
+$per_page = 789; // int | Results per page.
+
+try {
+    $result = $apiInstance->searchContent($terms, $fields, $types, $limit, $offset, $page, $per_page);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContentApi->searchContent: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **terms** | **string**| Search terms |
+ **fields** | **string**| Requested fields. | [optional]
+ **types** | **string**| Content types requested (dashboard, look, lookml_dashboard). | [optional]
+ **limit** | **int**| Number of results to return. (used with offset and takes priority over page and per_page) | [optional]
+ **offset** | **int**| Number of results to skip before returning any. (used with limit and takes priority over page and per_page) | [optional]
+ **page** | **int**| Requested page. | [optional]
+ **per_page** | **int**| Results per page. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\ContentSearch[]**](../Model/ContentSearch.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **searchContentFavorites**
-> \Swagger\Client\Model\ContentFavorite[] searchContentFavorites($id, $user_id, $content_metadata_id, $dashboard_id, $look_id, $limit, $offset, $sorts, $fields, $filter_or)
+> \Swagger\Client\Model\ContentFavorite[] searchContentFavorites($id, $user_id, $content_metadata_id, $dashboard_id, $look_id, $board_id, $limit, $offset, $sorts, $fields, $filter_or)
 
 Search Favorite Contents
 
@@ -485,11 +612,12 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$id = 789; // int | Match content favorite id(s)
-$user_id = 789; // int | Match user id(s)
-$content_metadata_id = 789; // int | Match content metadata id(s)
-$dashboard_id = 789; // int | Match dashboard id(s)
-$look_id = 789; // int | Match look id(s)
+$id = "id_example"; // string | Match content favorite id(s)
+$user_id = "user_id_example"; // string | Match user id(s).To create a list of multiple ids, use commas as separators
+$content_metadata_id = "content_metadata_id_example"; // string | Match content metadata id(s).To create a list of multiple ids, use commas as separators
+$dashboard_id = "dashboard_id_example"; // string | Match dashboard id(s).To create a list of multiple ids, use commas as separators
+$look_id = "look_id_example"; // string | Match look id(s).To create a list of multiple ids, use commas as separators
+$board_id = "board_id_example"; // string | Match board id(s).To create a list of multiple ids, use commas as separators
 $limit = 789; // int | Number of results to return. (used with offset)
 $offset = 789; // int | Number of results to skip before returning any. (used with limit)
 $sorts = "sorts_example"; // string | Fields to sort by.
@@ -497,7 +625,7 @@ $fields = "fields_example"; // string | Requested fields.
 $filter_or = true; // bool | Combine given search criteria in a boolean OR expression
 
 try {
-    $result = $apiInstance->searchContentFavorites($id, $user_id, $content_metadata_id, $dashboard_id, $look_id, $limit, $offset, $sorts, $fields, $filter_or);
+    $result = $apiInstance->searchContentFavorites($id, $user_id, $content_metadata_id, $dashboard_id, $look_id, $board_id, $limit, $offset, $sorts, $fields, $filter_or);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContentApi->searchContentFavorites: ', $e->getMessage(), PHP_EOL;
@@ -509,11 +637,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**| Match content favorite id(s) | [optional]
- **user_id** | **int**| Match user id(s) | [optional]
- **content_metadata_id** | **int**| Match content metadata id(s) | [optional]
- **dashboard_id** | **int**| Match dashboard id(s) | [optional]
- **look_id** | **int**| Match look id(s) | [optional]
+ **id** | **string**| Match content favorite id(s) | [optional]
+ **user_id** | **string**| Match user id(s).To create a list of multiple ids, use commas as separators | [optional]
+ **content_metadata_id** | **string**| Match content metadata id(s).To create a list of multiple ids, use commas as separators | [optional]
+ **dashboard_id** | **string**| Match dashboard id(s).To create a list of multiple ids, use commas as separators | [optional]
+ **look_id** | **string**| Match look id(s).To create a list of multiple ids, use commas as separators | [optional]
+ **board_id** | **string**| Match board id(s).To create a list of multiple ids, use commas as separators | [optional]
  **limit** | **int**| Number of results to return. (used with offset) | [optional]
  **offset** | **int**| Number of results to skip before returning any. (used with limit) | [optional]
  **sorts** | **string**| Fields to sort by. | [optional]
@@ -552,14 +681,14 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$view_count = 789; // int | Match view count
-$group_id = 789; // int | Match Group Id
+$view_count = "view_count_example"; // string | Match view count
+$group_id = "group_id_example"; // string | Match Group Id
 $look_id = "look_id_example"; // string | Match look_id
 $dashboard_id = "dashboard_id_example"; // string | Match dashboard_id
-$content_metadata_id = 789; // int | Match content metadata id
-$start_of_week_date = "start_of_week_date_example"; // string | Match start of week date
+$content_metadata_id = "content_metadata_id_example"; // string | Match content metadata id
+$start_of_week_date = "start_of_week_date_example"; // string | Match start of week date (format is \"YYYY-MM-DD\")
 $all_time = true; // bool | True if only all time view records should be returned
-$user_id = 789; // int | Match user id
+$user_id = "user_id_example"; // string | Match user id
 $fields = "fields_example"; // string | Requested fields
 $limit = 789; // int | Number of results to return. Use with `offset` to manage pagination of results
 $offset = 789; // int | Number of results to skip before returning data
@@ -579,14 +708,14 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **view_count** | **int**| Match view count | [optional]
- **group_id** | **int**| Match Group Id | [optional]
+ **view_count** | **string**| Match view count | [optional]
+ **group_id** | **string**| Match Group Id | [optional]
  **look_id** | **string**| Match look_id | [optional]
  **dashboard_id** | **string**| Match dashboard_id | [optional]
- **content_metadata_id** | **int**| Match content metadata id | [optional]
- **start_of_week_date** | **string**| Match start of week date | [optional]
+ **content_metadata_id** | **string**| Match content metadata id | [optional]
+ **start_of_week_date** | **string**| Match start of week date (format is \&quot;YYYY-MM-DD\&quot;) | [optional]
  **all_time** | **bool**| True if only all time view records should be returned | [optional]
- **user_id** | **int**| Match user id | [optional]
+ **user_id** | **string**| Match user id | [optional]
  **fields** | **string**| Requested fields | [optional]
  **limit** | **int**| Number of results to return. Use with &#x60;offset&#x60; to manage pagination of results | [optional]
  **offset** | **int**| Number of results to skip before returning data | [optional]
@@ -625,7 +754,7 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$content_metadata_id = 789; // int | Id of content metadata
+$content_metadata_id = "content_metadata_id_example"; // string | Id of content metadata
 $body = new \Swagger\Client\Model\ContentMeta(); // \Swagger\Client\Model\ContentMeta | Content Metadata
 
 try {
@@ -641,7 +770,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **content_metadata_id** | **int**| Id of content metadata |
+ **content_metadata_id** | **string**| Id of content metadata |
  **body** | [**\Swagger\Client\Model\ContentMeta**](../Model/ContentMeta.md)| Content Metadata |
 
 ### Return type
@@ -676,7 +805,7 @@ $apiInstance = new Swagger\Client\Api\ContentApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$content_metadata_access_id = 789; // int | Id of content metadata access
+$content_metadata_access_id = "content_metadata_access_id_example"; // string | Id of content metadata access
 $body = new \Swagger\Client\Model\ContentMetaGroupUser(); // \Swagger\Client\Model\ContentMetaGroupUser | Content Metadata Access
 
 try {
@@ -692,7 +821,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **content_metadata_access_id** | **int**| Id of content metadata access |
+ **content_metadata_access_id** | **string**| Id of content metadata access |
  **body** | [**\Swagger\Client\Model\ContentMetaGroupUser**](../Model/ContentMetaGroupUser.md)| Content Metadata Access |
 
 ### Return type
@@ -707,6 +836,59 @@ No authorization required
 
  - **Content-Type**: application/json
  - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **vectorThumbnail**
+> string vectorThumbnail($type, $resource_id, $reload)
+
+Get Vector Thumbnail
+
+### Get a vector image representing the contents of a dashboard or look.  # DEPRECATED:  Use [content_thumbnail()](#!/Content/content_thumbnail)  The returned thumbnail is an abstract representation of the contents of a dashbord or look and does not reflect the actual data displayed in the respective visualizations.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\ContentApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$type = "type_example"; // string | Either dashboard or look
+$resource_id = "resource_id_example"; // string | ID of the dashboard or look to render
+$reload = "reload_example"; // string | Whether or not to refresh the rendered image with the latest content
+
+try {
+    $result = $apiInstance->vectorThumbnail($type, $resource_id, $reload);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContentApi->vectorThumbnail: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **type** | **string**| Either dashboard or look |
+ **resource_id** | **string**| ID of the dashboard or look to render |
+ **reload** | **string**| Whether or not to refresh the rendered image with the latest content | [optional]
+
+### Return type
+
+**string**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: image/svg+xml
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 

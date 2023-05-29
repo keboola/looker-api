@@ -10,12 +10,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -356,17 +356,336 @@ class DashboardApi
     }
 
     /**
-     * Operation createDashboard
+     * Operation copyDashboard
      *
-     * Create Dashboard
+     * Copy Dashboard
      *
-     * @param  \Swagger\Client\Model\Dashboard $body Dashboard (optional)
+     * @param  string $dashboard_id Dashboard id to copy. (required)
+     * @param  string $folder_id Folder id to copy to. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\Dashboard
      */
-    public function createDashboard($body = null)
+    public function copyDashboard($dashboard_id, $folder_id = null)
+    {
+        list($response) = $this->copyDashboardWithHttpInfo($dashboard_id, $folder_id);
+        return $response;
+    }
+
+    /**
+     * Operation copyDashboardWithHttpInfo
+     *
+     * Copy Dashboard
+     *
+     * @param  string $dashboard_id Dashboard id to copy. (required)
+     * @param  string $folder_id Folder id to copy to. (optional)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\Dashboard, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function copyDashboardWithHttpInfo($dashboard_id, $folder_id = null)
+    {
+        $returnType = '\Swagger\Client\Model\Dashboard';
+        $request = $this->copyDashboardRequest($dashboard_id, $folder_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Dashboard',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Dashboard',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation copyDashboardAsync
+     *
+     * Copy Dashboard
+     *
+     * @param  string $dashboard_id Dashboard id to copy. (required)
+     * @param  string $folder_id Folder id to copy to. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function copyDashboardAsync($dashboard_id, $folder_id = null)
+    {
+        return $this->copyDashboardAsyncWithHttpInfo($dashboard_id, $folder_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation copyDashboardAsyncWithHttpInfo
+     *
+     * Copy Dashboard
+     *
+     * @param  string $dashboard_id Dashboard id to copy. (required)
+     * @param  string $folder_id Folder id to copy to. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function copyDashboardAsyncWithHttpInfo($dashboard_id, $folder_id = null)
+    {
+        $returnType = '\Swagger\Client\Model\Dashboard';
+        $request = $this->copyDashboardRequest($dashboard_id, $folder_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'copyDashboard'
+     *
+     * @param  string $dashboard_id Dashboard id to copy. (required)
+     * @param  string $folder_id Folder id to copy to. (optional)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function copyDashboardRequest($dashboard_id, $folder_id = null)
+    {
+        // verify the required parameter 'dashboard_id' is set
+        if ($dashboard_id === null || (is_array($dashboard_id) && count($dashboard_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $dashboard_id when calling copyDashboard'
+            );
+        }
+
+        $resourcePath = '/dashboards/{dashboard_id}/copy';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($folder_id !== null) {
+            $queryParams['folder_id'] = ObjectSerializer::toQueryValue($folder_id);
+        }
+
+        // path params
+        if ($dashboard_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'dashboard_id' . '}',
+                ObjectSerializer::toPathValue($dashboard_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation createDashboard
+     *
+     * Create Dashboard
+     *
+     * @param  \Swagger\Client\Model\Dashboard $body Dashboard (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\Dashboard
+     */
+    public function createDashboard($body)
     {
         list($response) = $this->createDashboardWithHttpInfo($body);
         return $response;
@@ -377,13 +696,13 @@ class DashboardApi
      *
      * Create Dashboard
      *
-     * @param  \Swagger\Client\Model\Dashboard $body Dashboard (optional)
+     * @param  \Swagger\Client\Model\Dashboard $body Dashboard (required)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\Dashboard, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createDashboardWithHttpInfo($body = null)
+    public function createDashboardWithHttpInfo($body)
     {
         $returnType = '\Swagger\Client\Model\Dashboard';
         $request = $this->createDashboardRequest($body);
@@ -474,6 +793,14 @@ class DashboardApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -484,12 +811,12 @@ class DashboardApi
      *
      * Create Dashboard
      *
-     * @param  \Swagger\Client\Model\Dashboard $body Dashboard (optional)
+     * @param  \Swagger\Client\Model\Dashboard $body Dashboard (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createDashboardAsync($body = null)
+    public function createDashboardAsync($body)
     {
         return $this->createDashboardAsyncWithHttpInfo($body)
             ->then(
@@ -504,12 +831,12 @@ class DashboardApi
      *
      * Create Dashboard
      *
-     * @param  \Swagger\Client\Model\Dashboard $body Dashboard (optional)
+     * @param  \Swagger\Client\Model\Dashboard $body Dashboard (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createDashboardAsyncWithHttpInfo($body = null)
+    public function createDashboardAsyncWithHttpInfo($body)
     {
         $returnType = '\Swagger\Client\Model\Dashboard';
         $request = $this->createDashboardRequest($body);
@@ -554,13 +881,19 @@ class DashboardApi
     /**
      * Create request for operation 'createDashboard'
      *
-     * @param  \Swagger\Client\Model\Dashboard $body Dashboard (optional)
+     * @param  \Swagger\Client\Model\Dashboard $body Dashboard (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createDashboardRequest($body = null)
+    protected function createDashboardRequest($body)
     {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling createDashboard'
+            );
+        }
 
         $resourcePath = '/dashboards';
         $formParams = [];
@@ -643,16 +976,17 @@ class DashboardApi
      *
      * Create DashboardElement
      *
-     * @param  \Swagger\Client\Model\DashboardElement $body DashboardElement (optional)
+     * @param  \Swagger\Client\Model\DashboardElement $body DashboardElement (required)
      * @param  string $fields Requested fields. (optional)
+     * @param  bool $apply_filters Apply relevant filters on dashboard to this tile (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\DashboardElement
      */
-    public function createDashboardElement($body = null, $fields = null)
+    public function createDashboardElement($body, $fields = null, $apply_filters = null)
     {
-        list($response) = $this->createDashboardElementWithHttpInfo($body, $fields);
+        list($response) = $this->createDashboardElementWithHttpInfo($body, $fields, $apply_filters);
         return $response;
     }
 
@@ -661,17 +995,18 @@ class DashboardApi
      *
      * Create DashboardElement
      *
-     * @param  \Swagger\Client\Model\DashboardElement $body DashboardElement (optional)
+     * @param  \Swagger\Client\Model\DashboardElement $body DashboardElement (required)
      * @param  string $fields Requested fields. (optional)
+     * @param  bool $apply_filters Apply relevant filters on dashboard to this tile (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\DashboardElement, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createDashboardElementWithHttpInfo($body = null, $fields = null)
+    public function createDashboardElementWithHttpInfo($body, $fields = null, $apply_filters = null)
     {
         $returnType = '\Swagger\Client\Model\DashboardElement';
-        $request = $this->createDashboardElementRequest($body, $fields);
+        $request = $this->createDashboardElementRequest($body, $fields, $apply_filters);
 
         try {
             $options = $this->createHttpClientOption();
@@ -759,6 +1094,14 @@ class DashboardApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -769,15 +1112,16 @@ class DashboardApi
      *
      * Create DashboardElement
      *
-     * @param  \Swagger\Client\Model\DashboardElement $body DashboardElement (optional)
+     * @param  \Swagger\Client\Model\DashboardElement $body DashboardElement (required)
      * @param  string $fields Requested fields. (optional)
+     * @param  bool $apply_filters Apply relevant filters on dashboard to this tile (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createDashboardElementAsync($body = null, $fields = null)
+    public function createDashboardElementAsync($body, $fields = null, $apply_filters = null)
     {
-        return $this->createDashboardElementAsyncWithHttpInfo($body, $fields)
+        return $this->createDashboardElementAsyncWithHttpInfo($body, $fields, $apply_filters)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -790,16 +1134,17 @@ class DashboardApi
      *
      * Create DashboardElement
      *
-     * @param  \Swagger\Client\Model\DashboardElement $body DashboardElement (optional)
+     * @param  \Swagger\Client\Model\DashboardElement $body DashboardElement (required)
      * @param  string $fields Requested fields. (optional)
+     * @param  bool $apply_filters Apply relevant filters on dashboard to this tile (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createDashboardElementAsyncWithHttpInfo($body = null, $fields = null)
+    public function createDashboardElementAsyncWithHttpInfo($body, $fields = null, $apply_filters = null)
     {
         $returnType = '\Swagger\Client\Model\DashboardElement';
-        $request = $this->createDashboardElementRequest($body, $fields);
+        $request = $this->createDashboardElementRequest($body, $fields, $apply_filters);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -841,14 +1186,21 @@ class DashboardApi
     /**
      * Create request for operation 'createDashboardElement'
      *
-     * @param  \Swagger\Client\Model\DashboardElement $body DashboardElement (optional)
+     * @param  \Swagger\Client\Model\DashboardElement $body DashboardElement (required)
      * @param  string $fields Requested fields. (optional)
+     * @param  bool $apply_filters Apply relevant filters on dashboard to this tile (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createDashboardElementRequest($body = null, $fields = null)
+    protected function createDashboardElementRequest($body, $fields = null, $apply_filters = null)
     {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling createDashboardElement'
+            );
+        }
 
         $resourcePath = '/dashboard_elements';
         $formParams = [];
@@ -860,6 +1212,10 @@ class DashboardApi
         // query params
         if ($fields !== null) {
             $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
+        }
+        // query params
+        if ($apply_filters !== null) {
+            $queryParams['apply_filters'] = ObjectSerializer::toQueryValue($apply_filters);
         }
 
 
@@ -1051,6 +1407,14 @@ class DashboardApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1229,18 +1593,315 @@ class DashboardApi
     }
 
     /**
+     * Operation createDashboardFromLookml
+     *
+     * Create Dashboard from LookML
+     *
+     * @param  \Swagger\Client\Model\DashboardLookml $body DashboardLookML (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\Dashboard
+     */
+    public function createDashboardFromLookml($body)
+    {
+        list($response) = $this->createDashboardFromLookmlWithHttpInfo($body);
+        return $response;
+    }
+
+    /**
+     * Operation createDashboardFromLookmlWithHttpInfo
+     *
+     * Create Dashboard from LookML
+     *
+     * @param  \Swagger\Client\Model\DashboardLookml $body DashboardLookML (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\Dashboard, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function createDashboardFromLookmlWithHttpInfo($body)
+    {
+        $returnType = '\Swagger\Client\Model\Dashboard';
+        $request = $this->createDashboardFromLookmlRequest($body);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Dashboard',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation createDashboardFromLookmlAsync
+     *
+     * Create Dashboard from LookML
+     *
+     * @param  \Swagger\Client\Model\DashboardLookml $body DashboardLookML (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createDashboardFromLookmlAsync($body)
+    {
+        return $this->createDashboardFromLookmlAsyncWithHttpInfo($body)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation createDashboardFromLookmlAsyncWithHttpInfo
+     *
+     * Create Dashboard from LookML
+     *
+     * @param  \Swagger\Client\Model\DashboardLookml $body DashboardLookML (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function createDashboardFromLookmlAsyncWithHttpInfo($body)
+    {
+        $returnType = '\Swagger\Client\Model\Dashboard';
+        $request = $this->createDashboardFromLookmlRequest($body);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'createDashboardFromLookml'
+     *
+     * @param  \Swagger\Client\Model\DashboardLookml $body DashboardLookML (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function createDashboardFromLookmlRequest($body)
+    {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling createDashboardFromLookml'
+            );
+        }
+
+        $resourcePath = '/dashboards/from_lookml';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation createDashboardLayout
      *
      * Create DashboardLayout
      *
-     * @param  \Swagger\Client\Model\DashboardLayout $body DashboardLayout (optional)
+     * @param  \Swagger\Client\Model\DashboardLayout $body DashboardLayout (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\DashboardLayout
      */
-    public function createDashboardLayout($body = null, $fields = null)
+    public function createDashboardLayout($body, $fields = null)
     {
         list($response) = $this->createDashboardLayoutWithHttpInfo($body, $fields);
         return $response;
@@ -1251,14 +1912,14 @@ class DashboardApi
      *
      * Create DashboardLayout
      *
-     * @param  \Swagger\Client\Model\DashboardLayout $body DashboardLayout (optional)
+     * @param  \Swagger\Client\Model\DashboardLayout $body DashboardLayout (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\DashboardLayout, HTTP status code, HTTP response headers (array of strings)
      */
-    public function createDashboardLayoutWithHttpInfo($body = null, $fields = null)
+    public function createDashboardLayoutWithHttpInfo($body, $fields = null)
     {
         $returnType = '\Swagger\Client\Model\DashboardLayout';
         $request = $this->createDashboardLayoutRequest($body, $fields);
@@ -1349,6 +2010,14 @@ class DashboardApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1359,13 +2028,13 @@ class DashboardApi
      *
      * Create DashboardLayout
      *
-     * @param  \Swagger\Client\Model\DashboardLayout $body DashboardLayout (optional)
+     * @param  \Swagger\Client\Model\DashboardLayout $body DashboardLayout (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createDashboardLayoutAsync($body = null, $fields = null)
+    public function createDashboardLayoutAsync($body, $fields = null)
     {
         return $this->createDashboardLayoutAsyncWithHttpInfo($body, $fields)
             ->then(
@@ -1380,13 +2049,13 @@ class DashboardApi
      *
      * Create DashboardLayout
      *
-     * @param  \Swagger\Client\Model\DashboardLayout $body DashboardLayout (optional)
+     * @param  \Swagger\Client\Model\DashboardLayout $body DashboardLayout (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function createDashboardLayoutAsyncWithHttpInfo($body = null, $fields = null)
+    public function createDashboardLayoutAsyncWithHttpInfo($body, $fields = null)
     {
         $returnType = '\Swagger\Client\Model\DashboardLayout';
         $request = $this->createDashboardLayoutRequest($body, $fields);
@@ -1431,14 +2100,20 @@ class DashboardApi
     /**
      * Create request for operation 'createDashboardLayout'
      *
-     * @param  \Swagger\Client\Model\DashboardLayout $body DashboardLayout (optional)
+     * @param  \Swagger\Client\Model\DashboardLayout $body DashboardLayout (required)
      * @param  string $fields Requested fields. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function createDashboardLayoutRequest($body = null, $fields = null)
+    protected function createDashboardLayoutRequest($body, $fields = null)
     {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling createDashboardLayout'
+            );
+        }
 
         $resourcePath = '/dashboard_layouts';
         $formParams = [];
@@ -1733,6 +2408,284 @@ class DashboardApi
         if ($fields !== null) {
             $queryParams['fields'] = ObjectSerializer::toQueryValue($fields);
         }
+
+        // path params
+        if ($dashboard_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'dashboard_id' . '}',
+                ObjectSerializer::toPathValue($dashboard_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation dashboardAggregateTableLookml
+     *
+     * Get Aggregate Table LookML for a dashboard
+     *
+     * @param  string $dashboard_id Id of dashboard (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\DashboardAggregateTableLookml
+     */
+    public function dashboardAggregateTableLookml($dashboard_id)
+    {
+        list($response) = $this->dashboardAggregateTableLookmlWithHttpInfo($dashboard_id);
+        return $response;
+    }
+
+    /**
+     * Operation dashboardAggregateTableLookmlWithHttpInfo
+     *
+     * Get Aggregate Table LookML for a dashboard
+     *
+     * @param  string $dashboard_id Id of dashboard (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\DashboardAggregateTableLookml, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function dashboardAggregateTableLookmlWithHttpInfo($dashboard_id)
+    {
+        $returnType = '\Swagger\Client\Model\DashboardAggregateTableLookml';
+        $request = $this->dashboardAggregateTableLookmlRequest($dashboard_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\DashboardAggregateTableLookml',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation dashboardAggregateTableLookmlAsync
+     *
+     * Get Aggregate Table LookML for a dashboard
+     *
+     * @param  string $dashboard_id Id of dashboard (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function dashboardAggregateTableLookmlAsync($dashboard_id)
+    {
+        return $this->dashboardAggregateTableLookmlAsyncWithHttpInfo($dashboard_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation dashboardAggregateTableLookmlAsyncWithHttpInfo
+     *
+     * Get Aggregate Table LookML for a dashboard
+     *
+     * @param  string $dashboard_id Id of dashboard (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function dashboardAggregateTableLookmlAsyncWithHttpInfo($dashboard_id)
+    {
+        $returnType = '\Swagger\Client\Model\DashboardAggregateTableLookml';
+        $request = $this->dashboardAggregateTableLookmlRequest($dashboard_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'dashboardAggregateTableLookml'
+     *
+     * @param  string $dashboard_id Id of dashboard (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function dashboardAggregateTableLookmlRequest($dashboard_id)
+    {
+        // verify the required parameter 'dashboard_id' is set
+        if ($dashboard_id === null || (is_array($dashboard_id) && count($dashboard_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $dashboard_id when calling dashboardAggregateTableLookml'
+            );
+        }
+
+        $resourcePath = '/dashboards/aggregate_table_lookml/{dashboard_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
 
         // path params
         if ($dashboard_id !== null) {
@@ -4104,6 +5057,284 @@ class DashboardApi
     }
 
     /**
+     * Operation dashboardLookml
+     *
+     * Get lookml of a UDD
+     *
+     * @param  string $dashboard_id Id of dashboard (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\DashboardLookml
+     */
+    public function dashboardLookml($dashboard_id)
+    {
+        list($response) = $this->dashboardLookmlWithHttpInfo($dashboard_id);
+        return $response;
+    }
+
+    /**
+     * Operation dashboardLookmlWithHttpInfo
+     *
+     * Get lookml of a UDD
+     *
+     * @param  string $dashboard_id Id of dashboard (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\DashboardLookml, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function dashboardLookmlWithHttpInfo($dashboard_id)
+    {
+        $returnType = '\Swagger\Client\Model\DashboardLookml';
+        $request = $this->dashboardLookmlRequest($dashboard_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\DashboardLookml',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation dashboardLookmlAsync
+     *
+     * Get lookml of a UDD
+     *
+     * @param  string $dashboard_id Id of dashboard (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function dashboardLookmlAsync($dashboard_id)
+    {
+        return $this->dashboardLookmlAsyncWithHttpInfo($dashboard_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation dashboardLookmlAsyncWithHttpInfo
+     *
+     * Get lookml of a UDD
+     *
+     * @param  string $dashboard_id Id of dashboard (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function dashboardLookmlAsyncWithHttpInfo($dashboard_id)
+    {
+        $returnType = '\Swagger\Client\Model\DashboardLookml';
+        $request = $this->dashboardLookmlRequest($dashboard_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'dashboardLookml'
+     *
+     * @param  string $dashboard_id Id of dashboard (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function dashboardLookmlRequest($dashboard_id)
+    {
+        // verify the required parameter 'dashboard_id' is set
+        if ($dashboard_id === null || (is_array($dashboard_id) && count($dashboard_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $dashboard_id when calling dashboardLookml'
+            );
+        }
+
+        $resourcePath = '/dashboards/lookml/{dashboard_id}';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // path params
+        if ($dashboard_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'dashboard_id' . '}',
+                ObjectSerializer::toPathValue($dashboard_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'GET',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation deleteDashboard
      *
      * Delete Dashboard
@@ -4190,6 +5421,14 @@ class DashboardApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -4199,6 +5438,14 @@ class DashboardApi
                     $e->setResponseObject($data);
                     break;
                 case 405:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\Error',
@@ -4484,6 +5731,14 @@ class DashboardApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -4762,6 +6017,14 @@ class DashboardApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -5024,6 +6287,14 @@ class DashboardApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 404:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
@@ -5036,6 +6307,14 @@ class DashboardApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5216,6 +6495,303 @@ class DashboardApi
     }
 
     /**
+     * Operation importDashboardFromLookml
+     *
+     * Import Dashboard from LookML
+     *
+     * @param  \Swagger\Client\Model\DashboardLookml $body DashboardLookML (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\Dashboard
+     */
+    public function importDashboardFromLookml($body)
+    {
+        list($response) = $this->importDashboardFromLookmlWithHttpInfo($body);
+        return $response;
+    }
+
+    /**
+     * Operation importDashboardFromLookmlWithHttpInfo
+     *
+     * Import Dashboard from LookML
+     *
+     * @param  \Swagger\Client\Model\DashboardLookml $body DashboardLookML (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\Dashboard, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function importDashboardFromLookmlWithHttpInfo($body)
+    {
+        $returnType = '\Swagger\Client\Model\Dashboard';
+        $request = $this->importDashboardFromLookmlRequest($body);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Dashboard',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation importDashboardFromLookmlAsync
+     *
+     * Import Dashboard from LookML
+     *
+     * @param  \Swagger\Client\Model\DashboardLookml $body DashboardLookML (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function importDashboardFromLookmlAsync($body)
+    {
+        return $this->importDashboardFromLookmlAsyncWithHttpInfo($body)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation importDashboardFromLookmlAsyncWithHttpInfo
+     *
+     * Import Dashboard from LookML
+     *
+     * @param  \Swagger\Client\Model\DashboardLookml $body DashboardLookML (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function importDashboardFromLookmlAsyncWithHttpInfo($body)
+    {
+        $returnType = '\Swagger\Client\Model\Dashboard';
+        $request = $this->importDashboardFromLookmlRequest($body);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'importDashboardFromLookml'
+     *
+     * @param  \Swagger\Client\Model\DashboardLookml $body DashboardLookML (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function importDashboardFromLookmlRequest($body)
+    {
+        // verify the required parameter 'body' is set
+        if ($body === null || (is_array($body) && count($body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $body when calling importDashboardFromLookml'
+            );
+        }
+
+        $resourcePath = '/dashboards/lookml';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // body params
+        $_tempBody = null;
+        if (isset($body)) {
+            $_tempBody = $body;
+        }
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation importLookmlDashboard
      *
      * Import LookML Dashboard
@@ -5332,10 +6908,26 @@ class DashboardApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
                 case 422:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -5546,12 +7138,329 @@ class DashboardApi
     }
 
     /**
+     * Operation moveDashboard
+     *
+     * Move Dashboard
+     *
+     * @param  string $dashboard_id Dashboard id to move. (required)
+     * @param  string $folder_id Folder id to move to. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \Swagger\Client\Model\Dashboard
+     */
+    public function moveDashboard($dashboard_id, $folder_id)
+    {
+        list($response) = $this->moveDashboardWithHttpInfo($dashboard_id, $folder_id);
+        return $response;
+    }
+
+    /**
+     * Operation moveDashboardWithHttpInfo
+     *
+     * Move Dashboard
+     *
+     * @param  string $dashboard_id Dashboard id to move. (required)
+     * @param  string $folder_id Folder id to move to. (required)
+     *
+     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \Swagger\Client\Model\Dashboard, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function moveDashboardWithHttpInfo($dashboard_id, $folder_id)
+    {
+        $returnType = '\Swagger\Client\Model\Dashboard';
+        $request = $this->moveDashboardRequest($dashboard_id, $folder_id);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? $e->getResponse()->getBody()->getContents() : null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    $response->getBody()
+                );
+            }
+
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+                $content = $responseBody; //stream goes to serializer
+            } else {
+                $content = $responseBody->getContents();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Dashboard',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Dashboard',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 422:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation moveDashboardAsync
+     *
+     * Move Dashboard
+     *
+     * @param  string $dashboard_id Dashboard id to move. (required)
+     * @param  string $folder_id Folder id to move to. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function moveDashboardAsync($dashboard_id, $folder_id)
+    {
+        return $this->moveDashboardAsyncWithHttpInfo($dashboard_id, $folder_id)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation moveDashboardAsyncWithHttpInfo
+     *
+     * Move Dashboard
+     *
+     * @param  string $dashboard_id Dashboard id to move. (required)
+     * @param  string $folder_id Folder id to move to. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function moveDashboardAsyncWithHttpInfo($dashboard_id, $folder_id)
+    {
+        $returnType = '\Swagger\Client\Model\Dashboard';
+        $request = $this->moveDashboardRequest($dashboard_id, $folder_id);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    $responseBody = $response->getBody();
+                    if ($returnType === '\SplFileObject') {
+                        $content = $responseBody; //stream goes to serializer
+                    } else {
+                        $content = $responseBody->getContents();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'moveDashboard'
+     *
+     * @param  string $dashboard_id Dashboard id to move. (required)
+     * @param  string $folder_id Folder id to move to. (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    protected function moveDashboardRequest($dashboard_id, $folder_id)
+    {
+        // verify the required parameter 'dashboard_id' is set
+        if ($dashboard_id === null || (is_array($dashboard_id) && count($dashboard_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $dashboard_id when calling moveDashboard'
+            );
+        }
+        // verify the required parameter 'folder_id' is set
+        if ($folder_id === null || (is_array($folder_id) && count($folder_id) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $folder_id when calling moveDashboard'
+            );
+        }
+
+        $resourcePath = '/dashboards/{dashboard_id}/move';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        if ($folder_id !== null) {
+            $queryParams['folder_id'] = ObjectSerializer::toQueryValue($folder_id);
+        }
+
+        // path params
+        if ($dashboard_id !== null) {
+            $resourcePath = str_replace(
+                '{' . 'dashboard_id' . '}',
+                ObjectSerializer::toPathValue($dashboard_id),
+                $resourcePath
+            );
+        }
+
+        // body params
+        $_tempBody = null;
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            // $_tempBody is the method argument, if present
+            $httpBody = $_tempBody;
+            // \stdClass has no __toString(), so we should encode it manually
+            if ($httpBody instanceof \stdClass && $headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($httpBody);
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $multipartContents[] = [
+                        'name' => $formParamName,
+                        'contents' => $formParamValue
+                    ];
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = \GuzzleHttp\Psr7\build_query($formParams);
+            }
+        }
+
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = \GuzzleHttp\Psr7\build_query($queryParams);
+        return new Request(
+            'PATCH',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation searchDashboardElements
      *
      * Search Dashboard Elements
      *
-     * @param  int $dashboard_id Select elements that refer to a given dashboard id (optional)
-     * @param  int $look_id Select elements that refer to a given look id (optional)
+     * @param  string $dashboard_id Select elements that refer to a given dashboard id (optional)
+     * @param  string $look_id Select elements that refer to a given look id (optional)
      * @param  string $title Match the title of element (optional)
      * @param  bool $deleted Select soft-deleted dashboard elements (optional)
      * @param  string $fields Requested fields. (optional)
@@ -5573,8 +7482,8 @@ class DashboardApi
      *
      * Search Dashboard Elements
      *
-     * @param  int $dashboard_id Select elements that refer to a given dashboard id (optional)
-     * @param  int $look_id Select elements that refer to a given look id (optional)
+     * @param  string $dashboard_id Select elements that refer to a given dashboard id (optional)
+     * @param  string $look_id Select elements that refer to a given look id (optional)
      * @param  string $title Match the title of element (optional)
      * @param  bool $deleted Select soft-deleted dashboard elements (optional)
      * @param  string $fields Requested fields. (optional)
@@ -5670,8 +7579,8 @@ class DashboardApi
      *
      * Search Dashboard Elements
      *
-     * @param  int $dashboard_id Select elements that refer to a given dashboard id (optional)
-     * @param  int $look_id Select elements that refer to a given look id (optional)
+     * @param  string $dashboard_id Select elements that refer to a given dashboard id (optional)
+     * @param  string $look_id Select elements that refer to a given look id (optional)
      * @param  string $title Match the title of element (optional)
      * @param  bool $deleted Select soft-deleted dashboard elements (optional)
      * @param  string $fields Requested fields. (optional)
@@ -5696,8 +7605,8 @@ class DashboardApi
      *
      * Search Dashboard Elements
      *
-     * @param  int $dashboard_id Select elements that refer to a given dashboard id (optional)
-     * @param  int $look_id Select elements that refer to a given look id (optional)
+     * @param  string $dashboard_id Select elements that refer to a given dashboard id (optional)
+     * @param  string $look_id Select elements that refer to a given look id (optional)
      * @param  string $title Match the title of element (optional)
      * @param  bool $deleted Select soft-deleted dashboard elements (optional)
      * @param  string $fields Requested fields. (optional)
@@ -5752,8 +7661,8 @@ class DashboardApi
     /**
      * Create request for operation 'searchDashboardElements'
      *
-     * @param  int $dashboard_id Select elements that refer to a given dashboard id (optional)
-     * @param  int $look_id Select elements that refer to a given look id (optional)
+     * @param  string $dashboard_id Select elements that refer to a given dashboard id (optional)
+     * @param  string $look_id Select elements that refer to a given look id (optional)
      * @param  string $title Match the title of element (optional)
      * @param  bool $deleted Select soft-deleted dashboard elements (optional)
      * @param  string $fields Requested fields. (optional)
@@ -5872,31 +7781,33 @@ class DashboardApi
      *
      * Search Dashboards
      *
-     * @param  int $id Match dashboard id. (optional)
+     * @param  string $id Match dashboard id. (optional)
      * @param  string $slug Match dashboard slug. (optional)
      * @param  string $title Match Dashboard title. (optional)
      * @param  string $description Match Dashboard description. (optional)
-     * @param  int $content_favorite_id Filter on a content favorite id. (optional)
-     * @param  string $space_id Filter on a particular space. (optional)
+     * @param  string $content_favorite_id Filter on a content favorite id. (optional)
+     * @param  string $folder_id Filter on a particular space. (optional)
      * @param  string $deleted Filter on dashboards deleted status. (optional)
      * @param  string $user_id Filter on dashboards created by a particular user. (optional)
      * @param  string $view_count Filter on a particular value of view_count (optional)
-     * @param  int $content_metadata_id Filter on a content favorite id. (optional)
+     * @param  string $content_metadata_id Filter on a content favorite id. (optional)
+     * @param  bool $curate Exclude items that exist only in personal spaces other than the users (optional)
+     * @param  string $last_viewed_at Select dashboards based on when they were last viewed (optional)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
      * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
-     * @param  string $sorts One or more fields to sort by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :view_count, :favorite_count, :slug, :content_favorite_id, :content_metadata_id, :deleted, :deleted_at, :last_viewed_at] (optional)
+     * @param  string $sorts One or more fields to sort by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :folder_id, :description, :view_count, :favorite_count, :slug, :content_favorite_id, :content_metadata_id, :deleted, :deleted_at, :last_viewed_at, :last_accessed_at] (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \Swagger\Client\Model\Dashboard[]
      */
-    public function searchDashboards($id = null, $slug = null, $title = null, $description = null, $content_favorite_id = null, $space_id = null, $deleted = null, $user_id = null, $view_count = null, $content_metadata_id = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
+    public function searchDashboards($id = null, $slug = null, $title = null, $description = null, $content_favorite_id = null, $folder_id = null, $deleted = null, $user_id = null, $view_count = null, $content_metadata_id = null, $curate = null, $last_viewed_at = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
     {
-        list($response) = $this->searchDashboardsWithHttpInfo($id, $slug, $title, $description, $content_favorite_id, $space_id, $deleted, $user_id, $view_count, $content_metadata_id, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
+        list($response) = $this->searchDashboardsWithHttpInfo($id, $slug, $title, $description, $content_favorite_id, $folder_id, $deleted, $user_id, $view_count, $content_metadata_id, $curate, $last_viewed_at, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
         return $response;
     }
 
@@ -5905,32 +7816,34 @@ class DashboardApi
      *
      * Search Dashboards
      *
-     * @param  int $id Match dashboard id. (optional)
+     * @param  string $id Match dashboard id. (optional)
      * @param  string $slug Match dashboard slug. (optional)
      * @param  string $title Match Dashboard title. (optional)
      * @param  string $description Match Dashboard description. (optional)
-     * @param  int $content_favorite_id Filter on a content favorite id. (optional)
-     * @param  string $space_id Filter on a particular space. (optional)
+     * @param  string $content_favorite_id Filter on a content favorite id. (optional)
+     * @param  string $folder_id Filter on a particular space. (optional)
      * @param  string $deleted Filter on dashboards deleted status. (optional)
      * @param  string $user_id Filter on dashboards created by a particular user. (optional)
      * @param  string $view_count Filter on a particular value of view_count (optional)
-     * @param  int $content_metadata_id Filter on a content favorite id. (optional)
+     * @param  string $content_metadata_id Filter on a content favorite id. (optional)
+     * @param  bool $curate Exclude items that exist only in personal spaces other than the users (optional)
+     * @param  string $last_viewed_at Select dashboards based on when they were last viewed (optional)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
      * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
-     * @param  string $sorts One or more fields to sort by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :view_count, :favorite_count, :slug, :content_favorite_id, :content_metadata_id, :deleted, :deleted_at, :last_viewed_at] (optional)
+     * @param  string $sorts One or more fields to sort by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :folder_id, :description, :view_count, :favorite_count, :slug, :content_favorite_id, :content_metadata_id, :deleted, :deleted_at, :last_viewed_at, :last_accessed_at] (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \Swagger\Client\Model\Dashboard[], HTTP status code, HTTP response headers (array of strings)
      */
-    public function searchDashboardsWithHttpInfo($id = null, $slug = null, $title = null, $description = null, $content_favorite_id = null, $space_id = null, $deleted = null, $user_id = null, $view_count = null, $content_metadata_id = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
+    public function searchDashboardsWithHttpInfo($id = null, $slug = null, $title = null, $description = null, $content_favorite_id = null, $folder_id = null, $deleted = null, $user_id = null, $view_count = null, $content_metadata_id = null, $curate = null, $last_viewed_at = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
     {
         $returnType = '\Swagger\Client\Model\Dashboard[]';
-        $request = $this->searchDashboardsRequest($id, $slug, $title, $description, $content_favorite_id, $space_id, $deleted, $user_id, $view_count, $content_metadata_id, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
+        $request = $this->searchDashboardsRequest($id, $slug, $title, $description, $content_favorite_id, $folder_id, $deleted, $user_id, $view_count, $content_metadata_id, $curate, $last_viewed_at, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
 
         try {
             $options = $this->createHttpClientOption();
@@ -6012,30 +7925,32 @@ class DashboardApi
      *
      * Search Dashboards
      *
-     * @param  int $id Match dashboard id. (optional)
+     * @param  string $id Match dashboard id. (optional)
      * @param  string $slug Match dashboard slug. (optional)
      * @param  string $title Match Dashboard title. (optional)
      * @param  string $description Match Dashboard description. (optional)
-     * @param  int $content_favorite_id Filter on a content favorite id. (optional)
-     * @param  string $space_id Filter on a particular space. (optional)
+     * @param  string $content_favorite_id Filter on a content favorite id. (optional)
+     * @param  string $folder_id Filter on a particular space. (optional)
      * @param  string $deleted Filter on dashboards deleted status. (optional)
      * @param  string $user_id Filter on dashboards created by a particular user. (optional)
      * @param  string $view_count Filter on a particular value of view_count (optional)
-     * @param  int $content_metadata_id Filter on a content favorite id. (optional)
+     * @param  string $content_metadata_id Filter on a content favorite id. (optional)
+     * @param  bool $curate Exclude items that exist only in personal spaces other than the users (optional)
+     * @param  string $last_viewed_at Select dashboards based on when they were last viewed (optional)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
      * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
-     * @param  string $sorts One or more fields to sort by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :view_count, :favorite_count, :slug, :content_favorite_id, :content_metadata_id, :deleted, :deleted_at, :last_viewed_at] (optional)
+     * @param  string $sorts One or more fields to sort by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :folder_id, :description, :view_count, :favorite_count, :slug, :content_favorite_id, :content_metadata_id, :deleted, :deleted_at, :last_viewed_at, :last_accessed_at] (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchDashboardsAsync($id = null, $slug = null, $title = null, $description = null, $content_favorite_id = null, $space_id = null, $deleted = null, $user_id = null, $view_count = null, $content_metadata_id = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
+    public function searchDashboardsAsync($id = null, $slug = null, $title = null, $description = null, $content_favorite_id = null, $folder_id = null, $deleted = null, $user_id = null, $view_count = null, $content_metadata_id = null, $curate = null, $last_viewed_at = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
     {
-        return $this->searchDashboardsAsyncWithHttpInfo($id, $slug, $title, $description, $content_favorite_id, $space_id, $deleted, $user_id, $view_count, $content_metadata_id, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or)
+        return $this->searchDashboardsAsyncWithHttpInfo($id, $slug, $title, $description, $content_favorite_id, $folder_id, $deleted, $user_id, $view_count, $content_metadata_id, $curate, $last_viewed_at, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -6048,31 +7963,33 @@ class DashboardApi
      *
      * Search Dashboards
      *
-     * @param  int $id Match dashboard id. (optional)
+     * @param  string $id Match dashboard id. (optional)
      * @param  string $slug Match dashboard slug. (optional)
      * @param  string $title Match Dashboard title. (optional)
      * @param  string $description Match Dashboard description. (optional)
-     * @param  int $content_favorite_id Filter on a content favorite id. (optional)
-     * @param  string $space_id Filter on a particular space. (optional)
+     * @param  string $content_favorite_id Filter on a content favorite id. (optional)
+     * @param  string $folder_id Filter on a particular space. (optional)
      * @param  string $deleted Filter on dashboards deleted status. (optional)
      * @param  string $user_id Filter on dashboards created by a particular user. (optional)
      * @param  string $view_count Filter on a particular value of view_count (optional)
-     * @param  int $content_metadata_id Filter on a content favorite id. (optional)
+     * @param  string $content_metadata_id Filter on a content favorite id. (optional)
+     * @param  bool $curate Exclude items that exist only in personal spaces other than the users (optional)
+     * @param  string $last_viewed_at Select dashboards based on when they were last viewed (optional)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
      * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
-     * @param  string $sorts One or more fields to sort by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :view_count, :favorite_count, :slug, :content_favorite_id, :content_metadata_id, :deleted, :deleted_at, :last_viewed_at] (optional)
+     * @param  string $sorts One or more fields to sort by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :folder_id, :description, :view_count, :favorite_count, :slug, :content_favorite_id, :content_metadata_id, :deleted, :deleted_at, :last_viewed_at, :last_accessed_at] (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchDashboardsAsyncWithHttpInfo($id = null, $slug = null, $title = null, $description = null, $content_favorite_id = null, $space_id = null, $deleted = null, $user_id = null, $view_count = null, $content_metadata_id = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
+    public function searchDashboardsAsyncWithHttpInfo($id = null, $slug = null, $title = null, $description = null, $content_favorite_id = null, $folder_id = null, $deleted = null, $user_id = null, $view_count = null, $content_metadata_id = null, $curate = null, $last_viewed_at = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
     {
         $returnType = '\Swagger\Client\Model\Dashboard[]';
-        $request = $this->searchDashboardsRequest($id, $slug, $title, $description, $content_favorite_id, $space_id, $deleted, $user_id, $view_count, $content_metadata_id, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
+        $request = $this->searchDashboardsRequest($id, $slug, $title, $description, $content_favorite_id, $folder_id, $deleted, $user_id, $view_count, $content_metadata_id, $curate, $last_viewed_at, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -6114,28 +8031,30 @@ class DashboardApi
     /**
      * Create request for operation 'searchDashboards'
      *
-     * @param  int $id Match dashboard id. (optional)
+     * @param  string $id Match dashboard id. (optional)
      * @param  string $slug Match dashboard slug. (optional)
      * @param  string $title Match Dashboard title. (optional)
      * @param  string $description Match Dashboard description. (optional)
-     * @param  int $content_favorite_id Filter on a content favorite id. (optional)
-     * @param  string $space_id Filter on a particular space. (optional)
+     * @param  string $content_favorite_id Filter on a content favorite id. (optional)
+     * @param  string $folder_id Filter on a particular space. (optional)
      * @param  string $deleted Filter on dashboards deleted status. (optional)
      * @param  string $user_id Filter on dashboards created by a particular user. (optional)
      * @param  string $view_count Filter on a particular value of view_count (optional)
-     * @param  int $content_metadata_id Filter on a content favorite id. (optional)
+     * @param  string $content_metadata_id Filter on a content favorite id. (optional)
+     * @param  bool $curate Exclude items that exist only in personal spaces other than the users (optional)
+     * @param  string $last_viewed_at Select dashboards based on when they were last viewed (optional)
      * @param  string $fields Requested fields. (optional)
-     * @param  int $page Requested page. (optional)
-     * @param  int $per_page Results per page. (optional)
+     * @param  int $page DEPRECATED. Use limit and offset instead. Return only page N of paginated results (optional)
+     * @param  int $per_page DEPRECATED. Use limit and offset instead. Return N rows of data per page (optional)
      * @param  int $limit Number of results to return. (used with offset and takes priority over page and per_page) (optional)
      * @param  int $offset Number of results to skip before returning any. (used with limit and takes priority over page and per_page) (optional)
-     * @param  string $sorts One or more fields to sort by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :view_count, :favorite_count, :slug, :content_favorite_id, :content_metadata_id, :deleted, :deleted_at, :last_viewed_at] (optional)
+     * @param  string $sorts One or more fields to sort by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :folder_id, :description, :view_count, :favorite_count, :slug, :content_favorite_id, :content_metadata_id, :deleted, :deleted_at, :last_viewed_at, :last_accessed_at] (optional)
      * @param  bool $filter_or Combine given search criteria in a boolean OR expression (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function searchDashboardsRequest($id = null, $slug = null, $title = null, $description = null, $content_favorite_id = null, $space_id = null, $deleted = null, $user_id = null, $view_count = null, $content_metadata_id = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
+    protected function searchDashboardsRequest($id = null, $slug = null, $title = null, $description = null, $content_favorite_id = null, $folder_id = null, $deleted = null, $user_id = null, $view_count = null, $content_metadata_id = null, $curate = null, $last_viewed_at = null, $fields = null, $page = null, $per_page = null, $limit = null, $offset = null, $sorts = null, $filter_or = null)
     {
 
         $resourcePath = '/dashboards/search';
@@ -6166,8 +8085,8 @@ class DashboardApi
             $queryParams['content_favorite_id'] = ObjectSerializer::toQueryValue($content_favorite_id);
         }
         // query params
-        if ($space_id !== null) {
-            $queryParams['space_id'] = ObjectSerializer::toQueryValue($space_id);
+        if ($folder_id !== null) {
+            $queryParams['folder_id'] = ObjectSerializer::toQueryValue($folder_id);
         }
         // query params
         if ($deleted !== null) {
@@ -6184,6 +8103,14 @@ class DashboardApi
         // query params
         if ($content_metadata_id !== null) {
             $queryParams['content_metadata_id'] = ObjectSerializer::toQueryValue($content_metadata_id);
+        }
+        // query params
+        if ($curate !== null) {
+            $queryParams['curate'] = ObjectSerializer::toQueryValue($curate);
+        }
+        // query params
+        if ($last_viewed_at !== null) {
+            $queryParams['last_viewed_at'] = ObjectSerializer::toQueryValue($last_viewed_at);
         }
         // query params
         if ($fields !== null) {
@@ -6390,6 +8317,14 @@ class DashboardApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -6709,6 +8644,14 @@ class DashboardApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -7007,6 +8950,14 @@ class DashboardApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -7320,6 +9271,14 @@ class DashboardApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -7629,6 +9588,14 @@ class DashboardApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -7934,6 +9901,14 @@ class DashboardApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\Swagger\Client\Model\ValidationError',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\Swagger\Client\Model\Error',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

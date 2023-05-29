@@ -1,17 +1,17 @@
 # Swagger\Client\SessionApi
 
-All URIs are relative to *https://example.looker.com:19999/api/3.1*
+All URIs are relative to *https://example.looker.com:443/api/4.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**session**](SessionApi.md#session) | **GET** /session | Get Session
-[**updateSession**](SessionApi.md#updateSession) | **PATCH** /session | Update Session
+[**session**](SessionApi.md#session) | **GET** /session | Get Auth
+[**updateSession**](SessionApi.md#updateSession) | **PATCH** /session | Update Auth
 
 
 # **session**
 > \Swagger\Client\Model\ApiSession session()
 
-Get Session
+Get Auth
 
 ### Get API Session  Returns information about the current API session, such as which workspace is selected for the session.
 
@@ -56,7 +56,7 @@ No authorization required
 # **updateSession**
 > \Swagger\Client\Model\ApiSession updateSession($body)
 
-Update Session
+Update Auth
 
 ### Update API Session  #### API Session Workspace  You can use this endpoint to change the active workspace for the current API session.  Only one workspace can be active in a session. The active workspace can be changed any number of times in a session.  The default workspace for API sessions is the \"production\" workspace.  All Looker APIs that use projects or lookml models (such as running queries) will use the version of project and model files defined by this workspace for the lifetime of the current API session or until the session workspace is changed again.  An API session has the same lifetime as the access_token used to authenticate API requests. Each successful API login generates a new access_token and a new API session.  If your Looker API client application needs to work in a dev workspace across multiple API sessions, be sure to select the dev workspace after each login.
 
@@ -70,7 +70,7 @@ $apiInstance = new Swagger\Client\Api\SessionApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$body = new \Swagger\Client\Model\ApiSession(); // \Swagger\Client\Model\ApiSession | Session
+$body = new \Swagger\Client\Model\ApiSession(); // \Swagger\Client\Model\ApiSession | Auth
 
 try {
     $result = $apiInstance->updateSession($body);
@@ -85,7 +85,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\ApiSession**](../Model/ApiSession.md)| Session |
+ **body** | [**\Swagger\Client\Model\ApiSession**](../Model/ApiSession.md)| Auth |
 
 ### Return type
 

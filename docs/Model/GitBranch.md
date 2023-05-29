@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
 **name** | **string** | The short name on the local. Updating &#x60;name&#x60; results in &#x60;git checkout &lt;new_name&gt;&#x60; | [optional] 
 **remote** | **string** | The name of the remote | [optional] 
 **remote_name** | **string** | The short name on the remote | [optional] 
@@ -19,7 +20,6 @@ Name | Type | Description | Notes
 **commit_at** | **int** | UNIX timestamp at which this branch was last committed. | [optional] 
 **ref** | **string** | The resolved ref of this branch. Updating &#x60;ref&#x60; results in &#x60;git reset --hard &lt;new_ref&gt;&#x60;&#x60;. | [optional] 
 **remote_ref** | **string** | The resolved ref of this branch remote. | [optional] 
-**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

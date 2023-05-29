@@ -3,6 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
 **alternate_email_login_allowed** | **bool** | Allow alternate email-based login via &#39;/login/email&#39; for admins and for specified users with the &#39;login_special_email&#39; permission. This option is useful as a fallback during ldap setup, if ldap config problems occur later, or if you need to support some users who are not in your ldap directory. Looker email/password logins are always disabled for regular users when ldap is enabled. | [optional] 
 **auth_password** | **string** | (Write-Only)  Password for the LDAP account used to access the LDAP server | [optional] 
 **auth_requires_role** | **bool** | Users will not be allowed to login at all unless a role for them is found in LDAP if set to true | [optional] 
@@ -11,9 +12,9 @@ Name | Type | Description | Notes
 **connection_port** | **string** | LDAP host port | [optional] 
 **connection_tls** | **bool** | Use Transport Layer Security | [optional] 
 **connection_tls_no_verify** | **bool** | Do not verify peer when using TLS | [optional] 
-**default_new_user_group_ids** | **int[]** | (Write-Only)  Array of ids of groups that will be applied to new users the first time they login via LDAP | [optional] 
+**default_new_user_group_ids** | **string[]** | (Write-Only)  Array of ids of groups that will be applied to new users the first time they login via LDAP | [optional] 
 **default_new_user_groups** | [**\Swagger\Client\Model\Group[]**](Group.md) | (Read-only) Groups that will be applied to new users the first time they login via LDAP | [optional] 
-**default_new_user_role_ids** | **int[]** | (Write-Only)  Array of ids of roles that will be applied to new users the first time they login via LDAP | [optional] 
+**default_new_user_role_ids** | **string[]** | (Write-Only)  Array of ids of roles that will be applied to new users the first time they login via LDAP | [optional] 
 **default_new_user_roles** | [**\Swagger\Client\Model\Role[]**](Role.md) | (Read-only) Roles that will be applied to new users the first time they login via LDAP | [optional] 
 **enabled** | **bool** | Enable/Disable LDAP authentication for the server | [optional] 
 **force_no_page** | **bool** | Don&#39;t attempt to do LDAP search result paging (RFC 2696) even if the LDAP server claims to support it. | [optional] 
@@ -41,8 +42,10 @@ Name | Type | Description | Notes
 **user_custom_filter** | **string** | (Optional) Custom RFC-2254 filter clause for use in finding user during login. Combined via &#39;and&#39; with the other generated filter clauses. | [optional] 
 **user_id_attribute_names** | **string** | Name(s) of user record attributes used for matching user login id (comma separated list) | [optional] 
 **user_objectclass** | **string** | (Optional) Name of user record objectclass used for finding user during login id | [optional] 
+**allow_normal_group_membership** | **bool** | Allow LDAP auth&#39;d users to be members of non-reflected Looker groups. If &#39;false&#39;, user will be removed from non-reflected groups on login. | [optional] 
+**allow_roles_from_normal_groups** | **bool** | LDAP auth&#39;d users will be able to inherit roles from non-reflected Looker groups. | [optional] 
+**allow_direct_roles** | **bool** | Allows roles to be directly assigned to LDAP auth&#39;d users. | [optional] 
 **url** | **string** | Link to get this item | [optional] 
-**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

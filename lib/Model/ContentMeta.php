@@ -11,12 +11,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -57,17 +57,17 @@ class ContentMeta implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'id' => 'int',
+        'can' => 'map[string,bool]',
+        'id' => 'string',
         'name' => 'string',
-        'parent_id' => 'int',
-        'space_id' => 'string',
+        'parent_id' => 'string',
         'dashboard_id' => 'string',
-        'look_id' => 'int',
+        'look_id' => 'string',
+        'folder_id' => 'string',
         'content_type' => 'string',
         'inherits' => 'bool',
-        'inheriting_id' => 'int',
-        'slug' => 'string',
-        'can' => 'map[string,bool]'
+        'inheriting_id' => 'string',
+        'slug' => 'string'
     ];
 
     /**
@@ -76,17 +76,17 @@ class ContentMeta implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'id' => 'int64',
+        'can' => null,
+        'id' => null,
         'name' => null,
-        'parent_id' => 'int64',
-        'space_id' => null,
+        'parent_id' => null,
         'dashboard_id' => null,
-        'look_id' => 'int64',
+        'look_id' => null,
+        'folder_id' => null,
         'content_type' => null,
         'inherits' => null,
-        'inheriting_id' => 'int64',
-        'slug' => null,
-        'can' => null
+        'inheriting_id' => null,
+        'slug' => null
     ];
 
     /**
@@ -116,17 +116,17 @@ class ContentMeta implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'can' => 'can',
         'id' => 'id',
         'name' => 'name',
         'parent_id' => 'parent_id',
-        'space_id' => 'space_id',
         'dashboard_id' => 'dashboard_id',
         'look_id' => 'look_id',
+        'folder_id' => 'folder_id',
         'content_type' => 'content_type',
         'inherits' => 'inherits',
         'inheriting_id' => 'inheriting_id',
-        'slug' => 'slug',
-        'can' => 'can'
+        'slug' => 'slug'
     ];
 
     /**
@@ -135,17 +135,17 @@ class ContentMeta implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'can' => 'setCan',
         'id' => 'setId',
         'name' => 'setName',
         'parent_id' => 'setParentId',
-        'space_id' => 'setSpaceId',
         'dashboard_id' => 'setDashboardId',
         'look_id' => 'setLookId',
+        'folder_id' => 'setFolderId',
         'content_type' => 'setContentType',
         'inherits' => 'setInherits',
         'inheriting_id' => 'setInheritingId',
-        'slug' => 'setSlug',
-        'can' => 'setCan'
+        'slug' => 'setSlug'
     ];
 
     /**
@@ -154,17 +154,17 @@ class ContentMeta implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'can' => 'getCan',
         'id' => 'getId',
         'name' => 'getName',
         'parent_id' => 'getParentId',
-        'space_id' => 'getSpaceId',
         'dashboard_id' => 'getDashboardId',
         'look_id' => 'getLookId',
+        'folder_id' => 'getFolderId',
         'content_type' => 'getContentType',
         'inherits' => 'getInherits',
         'inheriting_id' => 'getInheritingId',
-        'slug' => 'getSlug',
-        'can' => 'getCan'
+        'slug' => 'getSlug'
     ];
 
     /**
@@ -227,17 +227,17 @@ class ContentMeta implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
         $this->container['id'] = isset($data['id']) ? $data['id'] : null;
         $this->container['name'] = isset($data['name']) ? $data['name'] : null;
         $this->container['parent_id'] = isset($data['parent_id']) ? $data['parent_id'] : null;
-        $this->container['space_id'] = isset($data['space_id']) ? $data['space_id'] : null;
         $this->container['dashboard_id'] = isset($data['dashboard_id']) ? $data['dashboard_id'] : null;
         $this->container['look_id'] = isset($data['look_id']) ? $data['look_id'] : null;
+        $this->container['folder_id'] = isset($data['folder_id']) ? $data['folder_id'] : null;
         $this->container['content_type'] = isset($data['content_type']) ? $data['content_type'] : null;
         $this->container['inherits'] = isset($data['inherits']) ? $data['inherits'] : null;
         $this->container['inheriting_id'] = isset($data['inheriting_id']) ? $data['inheriting_id'] : null;
         $this->container['slug'] = isset($data['slug']) ? $data['slug'] : null;
-        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
     }
 
     /**
@@ -265,9 +265,33 @@ class ContentMeta implements ModelInterface, ArrayAccess
 
 
     /**
+     * Gets can
+     *
+     * @return map[string,bool]
+     */
+    public function getCan()
+    {
+        return $this->container['can'];
+    }
+
+    /**
+     * Sets can
+     *
+     * @param map[string,bool] $can Operations the current user is able to perform on this object
+     *
+     * @return $this
+     */
+    public function setCan($can)
+    {
+        $this->container['can'] = $can;
+
+        return $this;
+    }
+
+    /**
      * Gets id
      *
-     * @return int
+     * @return string
      */
     public function getId()
     {
@@ -277,7 +301,7 @@ class ContentMeta implements ModelInterface, ArrayAccess
     /**
      * Sets id
      *
-     * @param int $id Unique Id
+     * @param string $id Unique Id
      *
      * @return $this
      */
@@ -315,7 +339,7 @@ class ContentMeta implements ModelInterface, ArrayAccess
     /**
      * Gets parent_id
      *
-     * @return int
+     * @return string
      */
     public function getParentId()
     {
@@ -325,37 +349,13 @@ class ContentMeta implements ModelInterface, ArrayAccess
     /**
      * Sets parent_id
      *
-     * @param int $parent_id Id of Parent Content
+     * @param string $parent_id Id of Parent Content
      *
      * @return $this
      */
     public function setParentId($parent_id)
     {
         $this->container['parent_id'] = $parent_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets space_id
-     *
-     * @return string
-     */
-    public function getSpaceId()
-    {
-        return $this->container['space_id'];
-    }
-
-    /**
-     * Sets space_id
-     *
-     * @param string $space_id Id of associated space when content_type is \"space\"
-     *
-     * @return $this
-     */
-    public function setSpaceId($space_id)
-    {
-        $this->container['space_id'] = $space_id;
 
         return $this;
     }
@@ -387,7 +387,7 @@ class ContentMeta implements ModelInterface, ArrayAccess
     /**
      * Gets look_id
      *
-     * @return int
+     * @return string
      */
     public function getLookId()
     {
@@ -397,13 +397,37 @@ class ContentMeta implements ModelInterface, ArrayAccess
     /**
      * Sets look_id
      *
-     * @param int $look_id Id of associated look when content_type is \"look\"
+     * @param string $look_id Id of associated look when content_type is \"look\"
      *
      * @return $this
      */
     public function setLookId($look_id)
     {
         $this->container['look_id'] = $look_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets folder_id
+     *
+     * @return string
+     */
+    public function getFolderId()
+    {
+        return $this->container['folder_id'];
+    }
+
+    /**
+     * Sets folder_id
+     *
+     * @param string $folder_id Id of associated folder when content_type is \"space\"
+     *
+     * @return $this
+     */
+    public function setFolderId($folder_id)
+    {
+        $this->container['folder_id'] = $folder_id;
 
         return $this;
     }
@@ -421,7 +445,7 @@ class ContentMeta implements ModelInterface, ArrayAccess
     /**
      * Sets content_type
      *
-     * @param string $content_type Content Type (\"dashboard\", \"look\", or \"space\")
+     * @param string $content_type Content Type (\"dashboard\", \"look\", or \"folder\")
      *
      * @return $this
      */
@@ -459,7 +483,7 @@ class ContentMeta implements ModelInterface, ArrayAccess
     /**
      * Gets inheriting_id
      *
-     * @return int
+     * @return string
      */
     public function getInheritingId()
     {
@@ -469,7 +493,7 @@ class ContentMeta implements ModelInterface, ArrayAccess
     /**
      * Sets inheriting_id
      *
-     * @param int $inheriting_id Id of Inherited Content
+     * @param string $inheriting_id Id of Inherited Content
      *
      * @return $this
      */
@@ -500,30 +524,6 @@ class ContentMeta implements ModelInterface, ArrayAccess
     public function setSlug($slug)
     {
         $this->container['slug'] = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Gets can
-     *
-     * @return map[string,bool]
-     */
-    public function getCan()
-    {
-        return $this->container['can'];
-    }
-
-    /**
-     * Sets can
-     *
-     * @param map[string,bool] $can Operations the current user is able to perform on this object
-     *
-     * @return $this
-     */
-    public function setCan($can)
-    {
-        $this->container['can'] = $can;
 
         return $this;
     }

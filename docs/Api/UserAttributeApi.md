@@ -1,6 +1,6 @@
 # Swagger\Client\UserAttributeApi
 
-All URIs are relative to *https://example.looker.com:19999/api/3.1*
+All URIs are relative to *https://example.looker.com:443/api/4.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -30,7 +30,7 @@ $apiInstance = new Swagger\Client\Api\UserAttributeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_attribute_id = 789; // int | Id of user attribute
+$user_attribute_id = "user_attribute_id_example"; // string | Id of user attribute
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -46,7 +46,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_attribute_id** | **int**| Id of user attribute |
+ **user_attribute_id** | **string**| Id of user attribute |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -148,7 +148,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\UserAttribute**](../Model/UserAttribute.md)| User Attribute | [optional]
+ **body** | [**\Swagger\Client\Model\UserAttribute**](../Model/UserAttribute.md)| User Attribute |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -183,7 +183,7 @@ $apiInstance = new Swagger\Client\Api\UserAttributeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_attribute_id = 789; // int | Id of user_attribute
+$user_attribute_id = "user_attribute_id_example"; // string | Id of user attribute
 
 try {
     $result = $apiInstance->deleteUserAttribute($user_attribute_id);
@@ -198,7 +198,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_attribute_id** | **int**| Id of user_attribute |
+ **user_attribute_id** | **string**| Id of user attribute |
 
 ### Return type
 
@@ -232,7 +232,7 @@ $apiInstance = new Swagger\Client\Api\UserAttributeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_attribute_id = 789; // int | Id of user attribute
+$user_attribute_id = "user_attribute_id_example"; // string | Id of user attribute
 $body = array(new \Swagger\Client\Model\UserAttributeGroupValue()); // \Swagger\Client\Model\UserAttributeGroupValue[] | Array of group values.
 
 try {
@@ -248,7 +248,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_attribute_id** | **int**| Id of user attribute |
+ **user_attribute_id** | **string**| Id of user attribute |
  **body** | [**\Swagger\Client\Model\UserAttributeGroupValue[]**](../Model/UserAttributeGroupValue.md)| Array of group values. |
 
 ### Return type
@@ -283,7 +283,7 @@ $apiInstance = new Swagger\Client\Api\UserAttributeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_attribute_id = 789; // int | Id of user attribute
+$user_attribute_id = "user_attribute_id_example"; // string | Id of user attribute
 $body = new \Swagger\Client\Model\UserAttribute(); // \Swagger\Client\Model\UserAttribute | User Attribute
 $fields = "fields_example"; // string | Requested fields.
 
@@ -300,7 +300,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_attribute_id** | **int**| Id of user attribute |
+ **user_attribute_id** | **string**| Id of user attribute |
  **body** | [**\Swagger\Client\Model\UserAttribute**](../Model/UserAttribute.md)| User Attribute |
  **fields** | **string**| Requested fields. | [optional]
 
@@ -336,7 +336,7 @@ $apiInstance = new Swagger\Client\Api\UserAttributeApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$user_attribute_id = 789; // int | Id of user attribute
+$user_attribute_id = "user_attribute_id_example"; // string | Id of user attribute
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -352,7 +352,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **user_attribute_id** | **int**| Id of user attribute |
+ **user_attribute_id** | **string**| Id of user attribute |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type

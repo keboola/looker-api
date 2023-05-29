@@ -1,13 +1,15 @@
 # Swagger\Client\LookApi
 
-All URIs are relative to *https://example.looker.com:19999/api/3.1*
+All URIs are relative to *https://example.looker.com:443/api/4.0*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**allLooks**](LookApi.md#allLooks) | **GET** /looks | Get All Looks
+[**copyLook**](LookApi.md#copyLook) | **POST** /looks/{look_id}/copy | Copy Look
 [**createLook**](LookApi.md#createLook) | **POST** /looks | Create Look
 [**deleteLook**](LookApi.md#deleteLook) | **DELETE** /looks/{look_id} | Delete Look
 [**look**](LookApi.md#look) | **GET** /looks/{look_id} | Get Look
+[**moveLook**](LookApi.md#moveLook) | **PATCH** /looks/{look_id}/move | Move Look
 [**runLook**](LookApi.md#runLook) | **GET** /looks/{look_id}/run/{result_format} | Run Look
 [**searchLooks**](LookApi.md#searchLooks) | **GET** /looks/search | Search Looks
 [**updateLook**](LookApi.md#updateLook) | **PATCH** /looks/{look_id} | Update Look
@@ -62,6 +64,57 @@ No authorization required
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **copyLook**
+> \Swagger\Client\Model\LookWithQuery copyLook($look_id, $folder_id)
+
+Copy Look
+
+### Copy an existing look  Creates a copy of an existing look, in a specified folder, and returns the copied look.  `look_id` and `folder_id` are required.  `look_id` and `folder_id` must already exist, and `folder_id` must be different from the current `folder_id` of the dashboard.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\LookApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$look_id = "look_id_example"; // string | Look id to copy.
+$folder_id = "folder_id_example"; // string | Folder id to copy to.
+
+try {
+    $result = $apiInstance->copyLook($look_id, $folder_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling LookApi->copyLook: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **look_id** | **string**| Look id to copy. |
+ **folder_id** | **string**| Folder id to copy to. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\LookWithQuery**](../Model/LookWithQuery.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **createLook**
 > \Swagger\Client\Model\LookWithQuery createLook($body, $fields)
 
@@ -95,7 +148,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **body** | [**\Swagger\Client\Model\LookWithQuery**](../Model/LookWithQuery.md)| Look | [optional]
+ **body** | [**\Swagger\Client\Model\LookWithQuery**](../Model/LookWithQuery.md)| Look |
  **fields** | **string**| Requested fields. | [optional]
 
 ### Return type
@@ -130,7 +183,7 @@ $apiInstance = new Swagger\Client\Api\LookApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$look_id = 789; // int | Id of look
+$look_id = "look_id_example"; // string | Id of look
 
 try {
     $result = $apiInstance->deleteLook($look_id);
@@ -145,7 +198,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **look_id** | **int**| Id of look |
+ **look_id** | **string**| Id of look |
 
 ### Return type
 
@@ -179,7 +232,7 @@ $apiInstance = new Swagger\Client\Api\LookApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$look_id = 789; // int | Id of look
+$look_id = "look_id_example"; // string | Id of look
 $fields = "fields_example"; // string | Requested fields.
 
 try {
@@ -195,8 +248,59 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **look_id** | **int**| Id of look |
+ **look_id** | **string**| Id of look |
  **fields** | **string**| Requested fields. | [optional]
+
+### Return type
+
+[**\Swagger\Client\Model\LookWithQuery**](../Model/LookWithQuery.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **moveLook**
+> \Swagger\Client\Model\LookWithQuery moveLook($look_id, $folder_id)
+
+Move Look
+
+### Move an existing look  Moves a look to a specified folder, and returns the moved look.  `look_id` and `folder_id` are required. `look_id` and `folder_id` must already exist, and `folder_id` must be different from the current `folder_id` of the dashboard.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$apiInstance = new Swagger\Client\Api\LookApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client()
+);
+$look_id = "look_id_example"; // string | Look id to move.
+$folder_id = "folder_id_example"; // string | Folder id to move to.
+
+try {
+    $result = $apiInstance->moveLook($look_id, $folder_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling LookApi->moveLook: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **look_id** | **string**| Look id to move. |
+ **folder_id** | **string**| Folder id to move to. |
 
 ### Return type
 
@@ -230,7 +334,7 @@ $apiInstance = new Swagger\Client\Api\LookApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$look_id = 789; // int | Id of look
+$look_id = "look_id_example"; // string | Id of look
 $result_format = "result_format_example"; // string | Format of result
 $limit = 789; // int | Row limit (may override the limit in the saved query).
 $apply_formatting = true; // bool | Apply model-specified formatting to each result.
@@ -239,7 +343,7 @@ $cache = true; // bool | Get results from cache if available.
 $image_width = 789; // int | Render width for image formats.
 $image_height = 789; // int | Render height for image formats.
 $generate_drill_links = true; // bool | Generate drill links (only applicable to 'json_detail' format.
-$force_production = true; // bool | Force use of production models even if the user is in development mode.
+$force_production = true; // bool | Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used.
 $cache_only = true; // bool | Retrieve any results from cache even if the results have expired.
 $path_prefix = "path_prefix_example"; // string | Prefix to use for drill links (url encoded).
 $rebuild_pdts = true; // bool | Rebuild PDTS used in query.
@@ -258,7 +362,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **look_id** | **int**| Id of look |
+ **look_id** | **string**| Id of look |
  **result_format** | **string**| Format of result |
  **limit** | **int**| Row limit (may override the limit in the saved query). | [optional]
  **apply_formatting** | **bool**| Apply model-specified formatting to each result. | [optional]
@@ -267,7 +371,7 @@ Name | Type | Description  | Notes
  **image_width** | **int**| Render width for image formats. | [optional]
  **image_height** | **int**| Render height for image formats. | [optional]
  **generate_drill_links** | **bool**| Generate drill links (only applicable to &#39;json_detail&#39; format. | [optional]
- **force_production** | **bool**| Force use of production models even if the user is in development mode. | [optional]
+ **force_production** | **bool**| Force use of production models even if the user is in development mode. Note that this flag being false does not guarantee development models will be used. | [optional]
  **cache_only** | **bool**| Retrieve any results from cache even if the results have expired. | [optional]
  **path_prefix** | **string**| Prefix to use for drill links (url encoded). | [optional]
  **rebuild_pdts** | **bool**| Rebuild PDTS used in query. | [optional]
@@ -284,12 +388,12 @@ No authorization required
 ### HTTP request headers
 
  - **Content-Type**: application/json
- - **Accept**: text, application/json, image/png, image/jpg
+ - **Accept**: text, application/json, image/png, image/jpeg
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **searchLooks**
-> \Swagger\Client\Model\Look[] searchLooks($title, $description, $content_favorite_id, $space_id, $user_id, $view_count, $deleted, $query_id, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or)
+> \Swagger\Client\Model\Look[] searchLooks($id, $title, $description, $content_favorite_id, $folder_id, $user_id, $view_count, $deleted, $query_id, $curate, $last_viewed_at, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or)
 
 Search Looks
 
@@ -305,24 +409,27 @@ $apiInstance = new Swagger\Client\Api\LookApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
+$id = "id_example"; // string | Match look id.
 $title = "title_example"; // string | Match Look title.
 $description = "description_example"; // string | Match Look description.
-$content_favorite_id = 789; // int | Select looks with a particular content favorite id
-$space_id = "space_id_example"; // string | Select looks in a particular space.
+$content_favorite_id = "content_favorite_id_example"; // string | Select looks with a particular content favorite id
+$folder_id = "folder_id_example"; // string | Select looks in a particular folder.
 $user_id = "user_id_example"; // string | Select looks created by a particular user.
 $view_count = "view_count_example"; // string | Select looks with particular view_count value
 $deleted = true; // bool | Select soft-deleted looks
-$query_id = 789; // int | Select looks that reference a particular query by query_id
+$query_id = "query_id_example"; // string | Select looks that reference a particular query by query_id
+$curate = true; // bool | Exclude items that exist only in personal spaces other than the users
+$last_viewed_at = "last_viewed_at_example"; // string | Select looks based on when they were last viewed
 $fields = "fields_example"; // string | Requested fields.
-$page = 789; // int | Requested page.
-$per_page = 789; // int | Results per page.
+$page = 789; // int | DEPRECATED. Use limit and offset instead. Return only page N of paginated results
+$per_page = 789; // int | DEPRECATED. Use limit and offset instead. Return N rows of data per page
 $limit = 789; // int | Number of results to return. (used with offset and takes priority over page and per_page)
 $offset = 789; // int | Number of results to skip before returning any. (used with limit and takes priority over page and per_page)
-$sorts = "sorts_example"; // string | One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :query_id]
+$sorts = "sorts_example"; // string | One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :folder_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :last_accessed_at, :query_id]
 $filter_or = true; // bool | Combine given search criteria in a boolean OR expression
 
 try {
-    $result = $apiInstance->searchLooks($title, $description, $content_favorite_id, $space_id, $user_id, $view_count, $deleted, $query_id, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
+    $result = $apiInstance->searchLooks($id, $title, $description, $content_favorite_id, $folder_id, $user_id, $view_count, $deleted, $query_id, $curate, $last_viewed_at, $fields, $page, $per_page, $limit, $offset, $sorts, $filter_or);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling LookApi->searchLooks: ', $e->getMessage(), PHP_EOL;
@@ -334,20 +441,23 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **id** | **string**| Match look id. | [optional]
  **title** | **string**| Match Look title. | [optional]
  **description** | **string**| Match Look description. | [optional]
- **content_favorite_id** | **int**| Select looks with a particular content favorite id | [optional]
- **space_id** | **string**| Select looks in a particular space. | [optional]
+ **content_favorite_id** | **string**| Select looks with a particular content favorite id | [optional]
+ **folder_id** | **string**| Select looks in a particular folder. | [optional]
  **user_id** | **string**| Select looks created by a particular user. | [optional]
  **view_count** | **string**| Select looks with particular view_count value | [optional]
  **deleted** | **bool**| Select soft-deleted looks | [optional]
- **query_id** | **int**| Select looks that reference a particular query by query_id | [optional]
+ **query_id** | **string**| Select looks that reference a particular query by query_id | [optional]
+ **curate** | **bool**| Exclude items that exist only in personal spaces other than the users | [optional]
+ **last_viewed_at** | **string**| Select looks based on when they were last viewed | [optional]
  **fields** | **string**| Requested fields. | [optional]
- **page** | **int**| Requested page. | [optional]
- **per_page** | **int**| Results per page. | [optional]
+ **page** | **int**| DEPRECATED. Use limit and offset instead. Return only page N of paginated results | [optional]
+ **per_page** | **int**| DEPRECATED. Use limit and offset instead. Return N rows of data per page | [optional]
  **limit** | **int**| Number of results to return. (used with offset and takes priority over page and per_page) | [optional]
  **offset** | **int**| Number of results to skip before returning any. (used with limit and takes priority over page and per_page) | [optional]
- **sorts** | **string**| One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :query_id] | [optional]
+ **sorts** | **string**| One or more fields to sort results by. Sortable fields: [:title, :user_id, :id, :created_at, :space_id, :folder_id, :description, :updated_at, :last_updater_id, :view_count, :favorite_count, :content_favorite_id, :deleted, :deleted_at, :last_viewed_at, :last_accessed_at, :query_id] | [optional]
  **filter_or** | **bool**| Combine given search criteria in a boolean OR expression | [optional]
 
 ### Return type
@@ -382,7 +492,7 @@ $apiInstance = new Swagger\Client\Api\LookApi(
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client()
 );
-$look_id = 789; // int | Id of look
+$look_id = "look_id_example"; // string | Id of look
 $body = new \Swagger\Client\Model\LookWithQuery(); // \Swagger\Client\Model\LookWithQuery | Look
 $fields = "fields_example"; // string | Requested fields.
 
@@ -399,7 +509,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **look_id** | **int**| Id of look |
+ **look_id** | **string**| Id of look |
  **body** | [**\Swagger\Client\Model\LookWithQuery**](../Model/LookWithQuery.md)| Look |
  **fields** | **string**| Requested fields. | [optional]
 

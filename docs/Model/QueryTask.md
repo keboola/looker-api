@@ -3,8 +3,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
 **id** | **string** | Unique Id | [optional] 
-**query_id** | **int** | Id of query | [optional] 
+**query_id** | **string** | Id of query | [optional] 
 **query** | [**\Swagger\Client\Model\Query**](Query.md) | Query | [optional] 
 **generate_links** | **bool** | whether or not to generate links in the query response. | [optional] 
 **force_production** | **bool** | Use production models to run query (even is user is in dev mode). | [optional] 
@@ -18,10 +19,9 @@ Name | Type | Description | Notes
 **runtime** | **float** | Runtime of prior queries. | [optional] 
 **rebuild_pdts** | **bool** | Rebuild PDTS used in query. | [optional] 
 **result_source** | **string** | Source of the results of the query. | [optional] 
-**look_id** | **int** | Id of look associated with query. | [optional] 
+**look_id** | **string** | Id of look associated with query. | [optional] 
 **dashboard_id** | **string** | Id of dashboard associated with query. | [optional] 
 **result_format** | **string** | The data format of the query results. | [optional] 
-**can** | **map[string,bool]** | Operations the current user is able to perform on this object | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

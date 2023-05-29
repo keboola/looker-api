@@ -11,12 +11,12 @@
  */
 
 /**
- * Looker API 3.1 Reference
+ * Looker API 4.0 Reference
  *
- * ### Authorization  The Looker API uses Looker **API3** credentials for authorization and access control. Looker admins can create API3 credentials on Looker's **Admin/Users** page. Pass API3 credentials to the **_/login** endpoint to obtain a temporary access_token. Include that access_token in the Authorization header of Looker API requests. For details, see [Looker API Authorization](https://looker.com/docs/r/api/authorization)  ### Client SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. Client SDKs for a variety of programming languages can be generated from the Looker API's Swagger JSON metadata to streamline use of the Looker API in your applications. A client SDK for Ruby is available as an example. For more information, see [Looker API Client SDKs](https://looker.com/docs/r/api/client_sdks)  ### Try It Out!  The 'api-docs' page served by the Looker instance includes 'Try It Out!' buttons for each API method. After logging in with API3 credentials, you can use the \"Try It Out!\" buttons to call the API directly from the documentation page to interactively explore API features and responses.  Note! With great power comes great responsibility: The \"Try It Out!\" button makes API calls to your live Looker instance. Be especially careful with destructive API operations such as `delete_user` or similar. There is no \"undo\" for API operations.  ### Versioning  Future releases of Looker will expand this API release-by-release to securely expose more and more of the core power of Looker to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases. For more information, see [Looker API Versioning](https://looker.com/docs/r/api/versioning)  ### In This Release  This **API 3.1** is in active development. This is where support for new Looker features will appear as non-breaking additions - new functions, new optional parameters on existing functions, or new optional properties in existing types. Additive changes should not impact your existing application code that calls the Looker API. Your existing application code will not be aware of any new Looker API functionality until you choose to upgrade your app to use a newer Looker API client SDK release.  The following are a few examples of noteworthy items that have changed between API 3.0 and API 3.1. For more comprehensive coverage of API changes, please see the release notes for your Looker release.  ### Examples of new things added in API 3.1 (compared to API 3.0):  * [Dashboard construction](#!/3.1/Dashboard/) APIs * [Themes](#!/3.1/Theme/) and [custom color collections](#!/3.1/ColorCollection) APIs * Create and run [SQL Runner](#!/3.1/Query/run_sql_query) queries * Create and run [merged results](#!/3.1/Query/create_merge_query) queries * Create and modify [dashboard filters](#!/3.1/Dashboard/create_dashboard_filter) * Create and modify [password requirements](#!/3.1/Auth/password_config)  ### Deprecated in API 3.0  The following functions and properties have been deprecated in API 3.0.  They continue to exist and work in API 3.0 for the next several Looker releases but they have not been carried forward to API 3.1:  * Dashboard Prefetch functions * User access_filter functions * User API 1.0 credentials functions * Space.is_root and Space.is_user_root properties. Use Space.is_shared_root and Space.is_users_root instead.  ### Semantic changes in API 3.1:  * [all_looks()](#!/3.1/Look/all_looks) no longer includes soft-deleted looks, matching [all_dashboards()](#!/3.1/Dashboard/all_dashboards) behavior. You can find soft-deleted looks using [search_looks()](#!/3.1/Look/search_looks) with the `deleted` param set to True. * [all_spaces()](#!/3.1/Space/all_spaces) no longer includes duplicate items * [search_users()](#!/3.1/User/search_users) no longer accepts Y,y,1,0,N,n for Boolean params, only \"true\" and \"false\". * For greater client and network compatibility, [render_task_results](#!/3.1/RenderTask/render_task_results) now returns HTTP status **202 Accepted** instead of HTTP status **102 Processing** * [all_running_queries()](#!/3.1/Query/all_running_queries) and [kill_query](#!/3.1/Query/kill_query) functions have moved into the [Query](#!/3.1/Query/) function group.   If you have application code which relies on the old behavior of the APIs above, you may continue using the API 3.0 functions in this Looker release. We strongly suggest you update your code to use API 3.1 analogs as soon as possible.
+ * API 4.0 is the current release of the Looker API. API 3.1 is deprecated.  ### Authorization  The classic method of API authorization uses Looker **API** credentials for authorization and access control. Looker admins can create API credentials on Looker's **Admin/Users** page.  API 4.0 adds additional ways to authenticate API requests, including OAuth and CORS requests.  For details, see [Looker API Authorization](https://cloud.google.com/looker/docs/r/api/authorization).   ### API Explorer  The API Explorer is a Looker-provided utility with many new and unique features for learning and using the Looker API and SDKs.  For details, see the [API Explorer documentation](https://cloud.google.com/looker/docs/r/api/explorer).   ### Looker Language SDKs  The Looker API is a RESTful system that should be usable by any programming language capable of making HTTPS requests. SDKs for a variety of programming languages are also provided to streamline using the API. Looker has an OpenSource [sdk-codegen project](https://github.com/looker-open-source/sdk-codegen) that provides several language SDKs. Language SDKs generated by `sdk-codegen` have an Authentication manager that can automatically authenticate API requests when needed.  For details on available Looker SDKs, see [Looker API Client SDKs](https://cloud.google.com/looker/docs/r/api/client_sdks).   ### API Versioning  Future releases of Looker expand the latest API version release-by-release to securely expose more and more of the core power of the Looker platform to API client applications. API endpoints marked as \"beta\" may receive breaking changes without warning (but we will try to avoid doing that). Stable (non-beta) API endpoints should not receive breaking changes in future releases.  For details, see [Looker API Versioning](https://cloud.google.com/looker/docs/r/api/versioning).   ### In This Release  API 4.0 version was introduced to make adjustments to API functions, parameters, and response types to fix bugs and inconsistencies. These changes fall outside the bounds of non-breaking additive changes we can make to the previous API 3.1.  One benefit of these type adjustments in API 4.0 is dramatically better support for strongly typed languages like TypeScript, Kotlin, Swift, Go, C#, and more.  See the [API 4.0 GA announcement](https://developers.looker.com/api/advanced-usage/version-4-ga) for more information about API 4.0.  The API Explorer can be used to [interactively compare](https://cloud.google.com/looker/docs/r/api/explorer#comparing_api_versions) the differences between API 3.1 and 4.0.   ### API and SDK Support Policies  Looker API versions and language SDKs have varying support levels. Please read the API and SDK [support policies](https://cloud.google.com/looker/docs/r/api/support-policy) for more information.
  *
- * OpenAPI spec version: 3.1.0
- * Contact: support@looker.com
+ * OpenAPI spec version: 4.0.23.6
+ * 
  * Generated by: https://github.com/swagger-api/swagger-codegen.git
  * Swagger Codegen version: 2.4.8
  */
@@ -57,8 +57,9 @@ class Dashboard implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'content_favorite_id' => 'int',
-        'content_metadata_id' => 'int',
+        'can' => 'map[string,bool]',
+        'content_favorite_id' => 'string',
+        'content_metadata_id' => 'string',
         'description' => 'string',
         'hidden' => 'bool',
         'id' => 'string',
@@ -67,33 +68,44 @@ class Dashboard implements ModelInterface, ArrayAccess
         'readonly' => 'bool',
         'refresh_interval' => 'string',
         'refresh_interval_to_i' => 'int',
-        'space' => '\Swagger\Client\Model\SpaceBase',
+        'folder' => '\Swagger\Client\Model\FolderBase',
         'title' => 'string',
-        'user_id' => 'int',
+        'user_id' => 'string',
+        'slug' => 'string',
+        'preferred_viewer' => 'string',
+        'alert_sync_with_dashboard_filter_enabled' => 'bool',
         'background_color' => 'string',
         'created_at' => '\DateTime',
+        'crossfilter_enabled' => 'bool',
         'dashboard_elements' => '\Swagger\Client\Model\DashboardElement[]',
         'dashboard_filters' => '\Swagger\Client\Model\DashboardFilter[]',
         'dashboard_layouts' => '\Swagger\Client\Model\DashboardLayout[]',
         'deleted' => 'bool',
         'deleted_at' => '\DateTime',
-        'deleter_id' => 'int',
+        'deleter_id' => 'string',
         'edit_uri' => 'string',
+        'enable_viz_full_screen' => 'bool',
         'favorite_count' => 'int',
+        'filters_bar_collapsed' => 'bool',
+        'filters_location_top' => 'bool',
         'last_accessed_at' => '\DateTime',
         'last_viewed_at' => '\DateTime',
+        'updated_at' => '\DateTime',
+        'last_updater_id' => 'string',
+        'last_updater_name' => 'string',
+        'user_name' => 'string',
         'load_configuration' => 'string',
         'lookml_link_id' => 'string',
         'show_filters_bar' => 'bool',
         'show_title' => 'bool',
-        'slug' => 'string',
-        'space_id' => 'string',
+        'folder_id' => 'string',
         'text_tile_text_color' => 'string',
         'tile_background_color' => 'string',
         'tile_text_color' => 'string',
         'title_color' => 'string',
         'view_count' => 'int',
-        'can' => 'map[string,bool]'
+        'appearance' => '\Swagger\Client\Model\DashboardAppearance',
+        'url' => 'string'
     ];
 
     /**
@@ -102,8 +114,9 @@ class Dashboard implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'content_favorite_id' => 'int64',
-        'content_metadata_id' => 'int64',
+        'can' => null,
+        'content_favorite_id' => null,
+        'content_metadata_id' => null,
         'description' => null,
         'hidden' => null,
         'id' => null,
@@ -112,33 +125,44 @@ class Dashboard implements ModelInterface, ArrayAccess
         'readonly' => null,
         'refresh_interval' => null,
         'refresh_interval_to_i' => 'int64',
-        'space' => null,
+        'folder' => null,
         'title' => null,
-        'user_id' => 'int64',
+        'user_id' => null,
+        'slug' => null,
+        'preferred_viewer' => null,
+        'alert_sync_with_dashboard_filter_enabled' => null,
         'background_color' => null,
         'created_at' => 'date-time',
+        'crossfilter_enabled' => null,
         'dashboard_elements' => null,
         'dashboard_filters' => null,
         'dashboard_layouts' => null,
         'deleted' => null,
         'deleted_at' => 'date-time',
-        'deleter_id' => 'int64',
-        'edit_uri' => 'uri',
+        'deleter_id' => null,
+        'edit_uri' => 'uri-reference',
+        'enable_viz_full_screen' => null,
         'favorite_count' => 'int64',
+        'filters_bar_collapsed' => null,
+        'filters_location_top' => null,
         'last_accessed_at' => 'date-time',
         'last_viewed_at' => 'date-time',
+        'updated_at' => 'date-time',
+        'last_updater_id' => null,
+        'last_updater_name' => null,
+        'user_name' => null,
         'load_configuration' => null,
         'lookml_link_id' => null,
         'show_filters_bar' => null,
         'show_title' => null,
-        'slug' => null,
-        'space_id' => null,
+        'folder_id' => null,
         'text_tile_text_color' => null,
         'tile_background_color' => null,
         'tile_text_color' => null,
         'title_color' => null,
         'view_count' => 'int64',
-        'can' => null
+        'appearance' => null,
+        'url' => null
     ];
 
     /**
@@ -168,6 +192,7 @@ class Dashboard implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
+        'can' => 'can',
         'content_favorite_id' => 'content_favorite_id',
         'content_metadata_id' => 'content_metadata_id',
         'description' => 'description',
@@ -178,11 +203,15 @@ class Dashboard implements ModelInterface, ArrayAccess
         'readonly' => 'readonly',
         'refresh_interval' => 'refresh_interval',
         'refresh_interval_to_i' => 'refresh_interval_to_i',
-        'space' => 'space',
+        'folder' => 'folder',
         'title' => 'title',
         'user_id' => 'user_id',
+        'slug' => 'slug',
+        'preferred_viewer' => 'preferred_viewer',
+        'alert_sync_with_dashboard_filter_enabled' => 'alert_sync_with_dashboard_filter_enabled',
         'background_color' => 'background_color',
         'created_at' => 'created_at',
+        'crossfilter_enabled' => 'crossfilter_enabled',
         'dashboard_elements' => 'dashboard_elements',
         'dashboard_filters' => 'dashboard_filters',
         'dashboard_layouts' => 'dashboard_layouts',
@@ -190,21 +219,28 @@ class Dashboard implements ModelInterface, ArrayAccess
         'deleted_at' => 'deleted_at',
         'deleter_id' => 'deleter_id',
         'edit_uri' => 'edit_uri',
+        'enable_viz_full_screen' => 'enable_viz_full_screen',
         'favorite_count' => 'favorite_count',
+        'filters_bar_collapsed' => 'filters_bar_collapsed',
+        'filters_location_top' => 'filters_location_top',
         'last_accessed_at' => 'last_accessed_at',
         'last_viewed_at' => 'last_viewed_at',
+        'updated_at' => 'updated_at',
+        'last_updater_id' => 'last_updater_id',
+        'last_updater_name' => 'last_updater_name',
+        'user_name' => 'user_name',
         'load_configuration' => 'load_configuration',
         'lookml_link_id' => 'lookml_link_id',
         'show_filters_bar' => 'show_filters_bar',
         'show_title' => 'show_title',
-        'slug' => 'slug',
-        'space_id' => 'space_id',
+        'folder_id' => 'folder_id',
         'text_tile_text_color' => 'text_tile_text_color',
         'tile_background_color' => 'tile_background_color',
         'tile_text_color' => 'tile_text_color',
         'title_color' => 'title_color',
         'view_count' => 'view_count',
-        'can' => 'can'
+        'appearance' => 'appearance',
+        'url' => 'url'
     ];
 
     /**
@@ -213,6 +249,7 @@ class Dashboard implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
+        'can' => 'setCan',
         'content_favorite_id' => 'setContentFavoriteId',
         'content_metadata_id' => 'setContentMetadataId',
         'description' => 'setDescription',
@@ -223,11 +260,15 @@ class Dashboard implements ModelInterface, ArrayAccess
         'readonly' => 'setReadonly',
         'refresh_interval' => 'setRefreshInterval',
         'refresh_interval_to_i' => 'setRefreshIntervalToI',
-        'space' => 'setSpace',
+        'folder' => 'setFolder',
         'title' => 'setTitle',
         'user_id' => 'setUserId',
+        'slug' => 'setSlug',
+        'preferred_viewer' => 'setPreferredViewer',
+        'alert_sync_with_dashboard_filter_enabled' => 'setAlertSyncWithDashboardFilterEnabled',
         'background_color' => 'setBackgroundColor',
         'created_at' => 'setCreatedAt',
+        'crossfilter_enabled' => 'setCrossfilterEnabled',
         'dashboard_elements' => 'setDashboardElements',
         'dashboard_filters' => 'setDashboardFilters',
         'dashboard_layouts' => 'setDashboardLayouts',
@@ -235,21 +276,28 @@ class Dashboard implements ModelInterface, ArrayAccess
         'deleted_at' => 'setDeletedAt',
         'deleter_id' => 'setDeleterId',
         'edit_uri' => 'setEditUri',
+        'enable_viz_full_screen' => 'setEnableVizFullScreen',
         'favorite_count' => 'setFavoriteCount',
+        'filters_bar_collapsed' => 'setFiltersBarCollapsed',
+        'filters_location_top' => 'setFiltersLocationTop',
         'last_accessed_at' => 'setLastAccessedAt',
         'last_viewed_at' => 'setLastViewedAt',
+        'updated_at' => 'setUpdatedAt',
+        'last_updater_id' => 'setLastUpdaterId',
+        'last_updater_name' => 'setLastUpdaterName',
+        'user_name' => 'setUserName',
         'load_configuration' => 'setLoadConfiguration',
         'lookml_link_id' => 'setLookmlLinkId',
         'show_filters_bar' => 'setShowFiltersBar',
         'show_title' => 'setShowTitle',
-        'slug' => 'setSlug',
-        'space_id' => 'setSpaceId',
+        'folder_id' => 'setFolderId',
         'text_tile_text_color' => 'setTextTileTextColor',
         'tile_background_color' => 'setTileBackgroundColor',
         'tile_text_color' => 'setTileTextColor',
         'title_color' => 'setTitleColor',
         'view_count' => 'setViewCount',
-        'can' => 'setCan'
+        'appearance' => 'setAppearance',
+        'url' => 'setUrl'
     ];
 
     /**
@@ -258,6 +306,7 @@ class Dashboard implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
+        'can' => 'getCan',
         'content_favorite_id' => 'getContentFavoriteId',
         'content_metadata_id' => 'getContentMetadataId',
         'description' => 'getDescription',
@@ -268,11 +317,15 @@ class Dashboard implements ModelInterface, ArrayAccess
         'readonly' => 'getReadonly',
         'refresh_interval' => 'getRefreshInterval',
         'refresh_interval_to_i' => 'getRefreshIntervalToI',
-        'space' => 'getSpace',
+        'folder' => 'getFolder',
         'title' => 'getTitle',
         'user_id' => 'getUserId',
+        'slug' => 'getSlug',
+        'preferred_viewer' => 'getPreferredViewer',
+        'alert_sync_with_dashboard_filter_enabled' => 'getAlertSyncWithDashboardFilterEnabled',
         'background_color' => 'getBackgroundColor',
         'created_at' => 'getCreatedAt',
+        'crossfilter_enabled' => 'getCrossfilterEnabled',
         'dashboard_elements' => 'getDashboardElements',
         'dashboard_filters' => 'getDashboardFilters',
         'dashboard_layouts' => 'getDashboardLayouts',
@@ -280,21 +333,28 @@ class Dashboard implements ModelInterface, ArrayAccess
         'deleted_at' => 'getDeletedAt',
         'deleter_id' => 'getDeleterId',
         'edit_uri' => 'getEditUri',
+        'enable_viz_full_screen' => 'getEnableVizFullScreen',
         'favorite_count' => 'getFavoriteCount',
+        'filters_bar_collapsed' => 'getFiltersBarCollapsed',
+        'filters_location_top' => 'getFiltersLocationTop',
         'last_accessed_at' => 'getLastAccessedAt',
         'last_viewed_at' => 'getLastViewedAt',
+        'updated_at' => 'getUpdatedAt',
+        'last_updater_id' => 'getLastUpdaterId',
+        'last_updater_name' => 'getLastUpdaterName',
+        'user_name' => 'getUserName',
         'load_configuration' => 'getLoadConfiguration',
         'lookml_link_id' => 'getLookmlLinkId',
         'show_filters_bar' => 'getShowFiltersBar',
         'show_title' => 'getShowTitle',
-        'slug' => 'getSlug',
-        'space_id' => 'getSpaceId',
+        'folder_id' => 'getFolderId',
         'text_tile_text_color' => 'getTextTileTextColor',
         'tile_background_color' => 'getTileBackgroundColor',
         'tile_text_color' => 'getTileTextColor',
         'title_color' => 'getTitleColor',
         'view_count' => 'getViewCount',
-        'can' => 'getCan'
+        'appearance' => 'getAppearance',
+        'url' => 'getUrl'
     ];
 
     /**
@@ -357,6 +417,7 @@ class Dashboard implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
         $this->container['content_favorite_id'] = isset($data['content_favorite_id']) ? $data['content_favorite_id'] : null;
         $this->container['content_metadata_id'] = isset($data['content_metadata_id']) ? $data['content_metadata_id'] : null;
         $this->container['description'] = isset($data['description']) ? $data['description'] : null;
@@ -367,11 +428,15 @@ class Dashboard implements ModelInterface, ArrayAccess
         $this->container['readonly'] = isset($data['readonly']) ? $data['readonly'] : null;
         $this->container['refresh_interval'] = isset($data['refresh_interval']) ? $data['refresh_interval'] : null;
         $this->container['refresh_interval_to_i'] = isset($data['refresh_interval_to_i']) ? $data['refresh_interval_to_i'] : null;
-        $this->container['space'] = isset($data['space']) ? $data['space'] : null;
+        $this->container['folder'] = isset($data['folder']) ? $data['folder'] : null;
         $this->container['title'] = isset($data['title']) ? $data['title'] : null;
         $this->container['user_id'] = isset($data['user_id']) ? $data['user_id'] : null;
+        $this->container['slug'] = isset($data['slug']) ? $data['slug'] : null;
+        $this->container['preferred_viewer'] = isset($data['preferred_viewer']) ? $data['preferred_viewer'] : null;
+        $this->container['alert_sync_with_dashboard_filter_enabled'] = isset($data['alert_sync_with_dashboard_filter_enabled']) ? $data['alert_sync_with_dashboard_filter_enabled'] : null;
         $this->container['background_color'] = isset($data['background_color']) ? $data['background_color'] : null;
         $this->container['created_at'] = isset($data['created_at']) ? $data['created_at'] : null;
+        $this->container['crossfilter_enabled'] = isset($data['crossfilter_enabled']) ? $data['crossfilter_enabled'] : null;
         $this->container['dashboard_elements'] = isset($data['dashboard_elements']) ? $data['dashboard_elements'] : null;
         $this->container['dashboard_filters'] = isset($data['dashboard_filters']) ? $data['dashboard_filters'] : null;
         $this->container['dashboard_layouts'] = isset($data['dashboard_layouts']) ? $data['dashboard_layouts'] : null;
@@ -379,21 +444,28 @@ class Dashboard implements ModelInterface, ArrayAccess
         $this->container['deleted_at'] = isset($data['deleted_at']) ? $data['deleted_at'] : null;
         $this->container['deleter_id'] = isset($data['deleter_id']) ? $data['deleter_id'] : null;
         $this->container['edit_uri'] = isset($data['edit_uri']) ? $data['edit_uri'] : null;
+        $this->container['enable_viz_full_screen'] = isset($data['enable_viz_full_screen']) ? $data['enable_viz_full_screen'] : null;
         $this->container['favorite_count'] = isset($data['favorite_count']) ? $data['favorite_count'] : null;
+        $this->container['filters_bar_collapsed'] = isset($data['filters_bar_collapsed']) ? $data['filters_bar_collapsed'] : null;
+        $this->container['filters_location_top'] = isset($data['filters_location_top']) ? $data['filters_location_top'] : null;
         $this->container['last_accessed_at'] = isset($data['last_accessed_at']) ? $data['last_accessed_at'] : null;
         $this->container['last_viewed_at'] = isset($data['last_viewed_at']) ? $data['last_viewed_at'] : null;
+        $this->container['updated_at'] = isset($data['updated_at']) ? $data['updated_at'] : null;
+        $this->container['last_updater_id'] = isset($data['last_updater_id']) ? $data['last_updater_id'] : null;
+        $this->container['last_updater_name'] = isset($data['last_updater_name']) ? $data['last_updater_name'] : null;
+        $this->container['user_name'] = isset($data['user_name']) ? $data['user_name'] : null;
         $this->container['load_configuration'] = isset($data['load_configuration']) ? $data['load_configuration'] : null;
         $this->container['lookml_link_id'] = isset($data['lookml_link_id']) ? $data['lookml_link_id'] : null;
         $this->container['show_filters_bar'] = isset($data['show_filters_bar']) ? $data['show_filters_bar'] : null;
         $this->container['show_title'] = isset($data['show_title']) ? $data['show_title'] : null;
-        $this->container['slug'] = isset($data['slug']) ? $data['slug'] : null;
-        $this->container['space_id'] = isset($data['space_id']) ? $data['space_id'] : null;
+        $this->container['folder_id'] = isset($data['folder_id']) ? $data['folder_id'] : null;
         $this->container['text_tile_text_color'] = isset($data['text_tile_text_color']) ? $data['text_tile_text_color'] : null;
         $this->container['tile_background_color'] = isset($data['tile_background_color']) ? $data['tile_background_color'] : null;
         $this->container['tile_text_color'] = isset($data['tile_text_color']) ? $data['tile_text_color'] : null;
         $this->container['title_color'] = isset($data['title_color']) ? $data['title_color'] : null;
         $this->container['view_count'] = isset($data['view_count']) ? $data['view_count'] : null;
-        $this->container['can'] = isset($data['can']) ? $data['can'] : null;
+        $this->container['appearance'] = isset($data['appearance']) ? $data['appearance'] : null;
+        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
     }
 
     /**
@@ -421,9 +493,33 @@ class Dashboard implements ModelInterface, ArrayAccess
 
 
     /**
+     * Gets can
+     *
+     * @return map[string,bool]
+     */
+    public function getCan()
+    {
+        return $this->container['can'];
+    }
+
+    /**
+     * Sets can
+     *
+     * @param map[string,bool] $can Operations the current user is able to perform on this object
+     *
+     * @return $this
+     */
+    public function setCan($can)
+    {
+        $this->container['can'] = $can;
+
+        return $this;
+    }
+
+    /**
      * Gets content_favorite_id
      *
-     * @return int
+     * @return string
      */
     public function getContentFavoriteId()
     {
@@ -433,7 +529,7 @@ class Dashboard implements ModelInterface, ArrayAccess
     /**
      * Sets content_favorite_id
      *
-     * @param int $content_favorite_id Content Favorite Id
+     * @param string $content_favorite_id Content Favorite Id
      *
      * @return $this
      */
@@ -447,7 +543,7 @@ class Dashboard implements ModelInterface, ArrayAccess
     /**
      * Gets content_metadata_id
      *
-     * @return int
+     * @return string
      */
     public function getContentMetadataId()
     {
@@ -457,7 +553,7 @@ class Dashboard implements ModelInterface, ArrayAccess
     /**
      * Sets content_metadata_id
      *
-     * @param int $content_metadata_id Id of content metadata
+     * @param string $content_metadata_id Id of content metadata
      *
      * @return $this
      */
@@ -661,25 +757,25 @@ class Dashboard implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets space
+     * Gets folder
      *
-     * @return \Swagger\Client\Model\SpaceBase
+     * @return \Swagger\Client\Model\FolderBase
      */
-    public function getSpace()
+    public function getFolder()
     {
-        return $this->container['space'];
+        return $this->container['folder'];
     }
 
     /**
-     * Sets space
+     * Sets folder
      *
-     * @param \Swagger\Client\Model\SpaceBase $space Space
+     * @param \Swagger\Client\Model\FolderBase $folder Folder
      *
      * @return $this
      */
-    public function setSpace($space)
+    public function setFolder($folder)
     {
-        $this->container['space'] = $space;
+        $this->container['folder'] = $folder;
 
         return $this;
     }
@@ -711,7 +807,7 @@ class Dashboard implements ModelInterface, ArrayAccess
     /**
      * Gets user_id
      *
-     * @return int
+     * @return string
      */
     public function getUserId()
     {
@@ -721,13 +817,85 @@ class Dashboard implements ModelInterface, ArrayAccess
     /**
      * Sets user_id
      *
-     * @param int $user_id Id of User
+     * @param string $user_id Id of User
      *
      * @return $this
      */
     public function setUserId($user_id)
     {
         $this->container['user_id'] = $user_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->container['slug'];
+    }
+
+    /**
+     * Sets slug
+     *
+     * @param string $slug Content Metadata Slug
+     *
+     * @return $this
+     */
+    public function setSlug($slug)
+    {
+        $this->container['slug'] = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Gets preferred_viewer
+     *
+     * @return string
+     */
+    public function getPreferredViewer()
+    {
+        return $this->container['preferred_viewer'];
+    }
+
+    /**
+     * Sets preferred_viewer
+     *
+     * @param string $preferred_viewer The preferred route for viewing this dashboard (ie: dashboards or dashboards-next)
+     *
+     * @return $this
+     */
+    public function setPreferredViewer($preferred_viewer)
+    {
+        $this->container['preferred_viewer'] = $preferred_viewer;
+
+        return $this;
+    }
+
+    /**
+     * Gets alert_sync_with_dashboard_filter_enabled
+     *
+     * @return bool
+     */
+    public function getAlertSyncWithDashboardFilterEnabled()
+    {
+        return $this->container['alert_sync_with_dashboard_filter_enabled'];
+    }
+
+    /**
+     * Sets alert_sync_with_dashboard_filter_enabled
+     *
+     * @param bool $alert_sync_with_dashboard_filter_enabled Enables alerts to keep in sync with dashboard filter changes
+     *
+     * @return $this
+     */
+    public function setAlertSyncWithDashboardFilterEnabled($alert_sync_with_dashboard_filter_enabled)
+    {
+        $this->container['alert_sync_with_dashboard_filter_enabled'] = $alert_sync_with_dashboard_filter_enabled;
 
         return $this;
     }
@@ -776,6 +944,30 @@ class Dashboard implements ModelInterface, ArrayAccess
     public function setCreatedAt($created_at)
     {
         $this->container['created_at'] = $created_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets crossfilter_enabled
+     *
+     * @return bool
+     */
+    public function getCrossfilterEnabled()
+    {
+        return $this->container['crossfilter_enabled'];
+    }
+
+    /**
+     * Sets crossfilter_enabled
+     *
+     * @param bool $crossfilter_enabled Enables crossfiltering in dashboards - only available in dashboards-next (beta)
+     *
+     * @return $this
+     */
+    public function setCrossfilterEnabled($crossfilter_enabled)
+    {
+        $this->container['crossfilter_enabled'] = $crossfilter_enabled;
 
         return $this;
     }
@@ -903,7 +1095,7 @@ class Dashboard implements ModelInterface, ArrayAccess
     /**
      * Gets deleter_id
      *
-     * @return int
+     * @return string
      */
     public function getDeleterId()
     {
@@ -913,7 +1105,7 @@ class Dashboard implements ModelInterface, ArrayAccess
     /**
      * Sets deleter_id
      *
-     * @param int $deleter_id Id of User that 'soft' deleted the dashboard.
+     * @param string $deleter_id Id of User that 'soft' deleted the dashboard.
      *
      * @return $this
      */
@@ -949,6 +1141,30 @@ class Dashboard implements ModelInterface, ArrayAccess
     }
 
     /**
+     * Gets enable_viz_full_screen
+     *
+     * @return bool
+     */
+    public function getEnableVizFullScreen()
+    {
+        return $this->container['enable_viz_full_screen'];
+    }
+
+    /**
+     * Sets enable_viz_full_screen
+     *
+     * @param bool $enable_viz_full_screen Allow visualizations to be viewed in full screen mode
+     *
+     * @return $this
+     */
+    public function setEnableVizFullScreen($enable_viz_full_screen)
+    {
+        $this->container['enable_viz_full_screen'] = $enable_viz_full_screen;
+
+        return $this;
+    }
+
+    /**
      * Gets favorite_count
      *
      * @return int
@@ -968,6 +1184,54 @@ class Dashboard implements ModelInterface, ArrayAccess
     public function setFavoriteCount($favorite_count)
     {
         $this->container['favorite_count'] = $favorite_count;
+
+        return $this;
+    }
+
+    /**
+     * Gets filters_bar_collapsed
+     *
+     * @return bool
+     */
+    public function getFiltersBarCollapsed()
+    {
+        return $this->container['filters_bar_collapsed'];
+    }
+
+    /**
+     * Sets filters_bar_collapsed
+     *
+     * @param bool $filters_bar_collapsed Sets the default state of the filters bar to collapsed or open
+     *
+     * @return $this
+     */
+    public function setFiltersBarCollapsed($filters_bar_collapsed)
+    {
+        $this->container['filters_bar_collapsed'] = $filters_bar_collapsed;
+
+        return $this;
+    }
+
+    /**
+     * Gets filters_location_top
+     *
+     * @return bool
+     */
+    public function getFiltersLocationTop()
+    {
+        return $this->container['filters_location_top'];
+    }
+
+    /**
+     * Sets filters_location_top
+     *
+     * @param bool $filters_location_top Sets the default state of the filters location to top(true) or right(false)
+     *
+     * @return $this
+     */
+    public function setFiltersLocationTop($filters_location_top)
+    {
+        $this->container['filters_location_top'] = $filters_location_top;
 
         return $this;
     }
@@ -1016,6 +1280,102 @@ class Dashboard implements ModelInterface, ArrayAccess
     public function setLastViewedAt($last_viewed_at)
     {
         $this->container['last_viewed_at'] = $last_viewed_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets updated_at
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->container['updated_at'];
+    }
+
+    /**
+     * Sets updated_at
+     *
+     * @param \DateTime $updated_at Time that the Dashboard was most recently updated.
+     *
+     * @return $this
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_updater_id
+     *
+     * @return string
+     */
+    public function getLastUpdaterId()
+    {
+        return $this->container['last_updater_id'];
+    }
+
+    /**
+     * Sets last_updater_id
+     *
+     * @param string $last_updater_id Id of User that most recently updated the dashboard.
+     *
+     * @return $this
+     */
+    public function setLastUpdaterId($last_updater_id)
+    {
+        $this->container['last_updater_id'] = $last_updater_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_updater_name
+     *
+     * @return string
+     */
+    public function getLastUpdaterName()
+    {
+        return $this->container['last_updater_name'];
+    }
+
+    /**
+     * Sets last_updater_name
+     *
+     * @param string $last_updater_name Name of User that most recently updated the dashboard.
+     *
+     * @return $this
+     */
+    public function setLastUpdaterName($last_updater_name)
+    {
+        $this->container['last_updater_name'] = $last_updater_name;
+
+        return $this;
+    }
+
+    /**
+     * Gets user_name
+     *
+     * @return string
+     */
+    public function getUserName()
+    {
+        return $this->container['user_name'];
+    }
+
+    /**
+     * Sets user_name
+     *
+     * @param string $user_name Name of User that created the dashboard.
+     *
+     * @return $this
+     */
+    public function setUserName($user_name)
+    {
+        $this->container['user_name'] = $user_name;
 
         return $this;
     }
@@ -1081,7 +1441,7 @@ class Dashboard implements ModelInterface, ArrayAccess
     /**
      * Sets show_filters_bar
      *
-     * @param bool $show_filters_bar Show filters bar.  **Security Note:** This property only affects the *cosmetic* appearance of the dashboard, not a user's ability to access data. Hiding the filters bar does **NOT** prevent users from changing filters by other means. For information on how to set up secure data access control policies, see [Control User Access to Data](https://looker.com/docs/r/api/control-access?version=6.20)
+     * @param bool $show_filters_bar Show filters bar.  **Security Note:** This property only affects the *cosmetic* appearance of the dashboard, not a user's ability to access data. Hiding the filters bar does **NOT** prevent users from changing filters by other means. For information on how to set up secure data access control policies, see [Control User Access to Data](https://cloud.google.com/looker/docs/r/api/control-access)
      *
      * @return $this
      */
@@ -1117,49 +1477,25 @@ class Dashboard implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets slug
+     * Gets folder_id
      *
      * @return string
      */
-    public function getSlug()
+    public function getFolderId()
     {
-        return $this->container['slug'];
+        return $this->container['folder_id'];
     }
 
     /**
-     * Sets slug
+     * Sets folder_id
      *
-     * @param string $slug Content Metadata Slug
+     * @param string $folder_id Id of folder
      *
      * @return $this
      */
-    public function setSlug($slug)
+    public function setFolderId($folder_id)
     {
-        $this->container['slug'] = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Gets space_id
-     *
-     * @return string
-     */
-    public function getSpaceId()
-    {
-        return $this->container['space_id'];
-    }
-
-    /**
-     * Sets space_id
-     *
-     * @param string $space_id Id of Space
-     *
-     * @return $this
-     */
-    public function setSpaceId($space_id)
-    {
-        $this->container['space_id'] = $space_id;
+        $this->container['folder_id'] = $folder_id;
 
         return $this;
     }
@@ -1285,25 +1621,49 @@ class Dashboard implements ModelInterface, ArrayAccess
     }
 
     /**
-     * Gets can
+     * Gets appearance
      *
-     * @return map[string,bool]
+     * @return \Swagger\Client\Model\DashboardAppearance
      */
-    public function getCan()
+    public function getAppearance()
     {
-        return $this->container['can'];
+        return $this->container['appearance'];
     }
 
     /**
-     * Sets can
+     * Sets appearance
      *
-     * @param map[string,bool] $can Operations the current user is able to perform on this object
+     * @param \Swagger\Client\Model\DashboardAppearance $appearance Dashboard visual settings only applicable to dashboards-next (beta)
      *
      * @return $this
      */
-    public function setCan($can)
+    public function setAppearance($appearance)
     {
-        $this->container['can'] = $can;
+        $this->container['appearance'] = $appearance;
+
+        return $this;
+    }
+
+    /**
+     * Gets url
+     *
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->container['url'];
+    }
+
+    /**
+     * Sets url
+     *
+     * @param string $url Relative URL of the dashboard
+     *
+     * @return $this
+     */
+    public function setUrl($url)
+    {
+        $this->container['url'] = $url;
 
         return $this;
     }
