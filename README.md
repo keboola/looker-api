@@ -791,3 +791,7 @@ Class | Method | HTTP request | Description
 
 
 
+
+## License
+
+MIT licensed, see [LICENSE](./LICENSE) file.
